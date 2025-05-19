@@ -51,8 +51,8 @@ private _HashMapObject = createHashMapObject [[
     ["smoke_max", 0.1],
     ["smoke_rate", 60],
 
-    ["light_max", 2500000],
-    ["light_min", 10000],
+    ["light_max", 25000],
+    ["light_min",  1000],
     ["light_rate", 0.3],
 
     ["red_max", 0.9],
