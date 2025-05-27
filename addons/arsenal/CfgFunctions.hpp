@@ -2,9 +2,9 @@ class CfgFunctions
 {
 	class ADDON            // Tag
 	{
-		class COMPONENT           // Category
+		class internal    // Category
 		{
-			file = PATH_TO_FUNC;
+			file = PATH_TO_FUNC_SUB(internal);
             class postInit { postInit = 1; };
 
 			class saveStartingLoadout { postInit = 1; };

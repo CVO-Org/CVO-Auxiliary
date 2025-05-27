@@ -1,4 +1,4 @@
-#include "../script_component.hpp"
+#include "../../script_component.hpp"
 
 /*
 	Author: Mr. Zorn
@@ -24,7 +24,8 @@ _finalKit append _baseKit;
 
 // ############ Detect ROLE KIT ############
 
-private _roles = player getVariable ["CVO_A_Roles", []];
+private _roles = player getVariable [QGVAR(roles), []];
+
 
 // Detectes ACE MEDIC and ACE Engineer
 if ([player, 1] call ace_medical_treatment_fnc_isMedic) then {_roles pushBackUnique "Medic"};
@@ -33,6 +34,7 @@ if ([player, 1] call ace_repair_fnc_isEngineer) 		then {_roles pushBackUnique "E
 if ([player, 2] call ace_medical_treatment_fnc_isMedic) then {_roles pushBackUnique "Doctor"};
 if ([player, 2] call ace_repair_fnc_isEngineer) 		then {_roles pushBackUnique "AdvEngineer"};
 
+_roles = _roles apply { toLowerANSI _x };
 diag_log format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 systemChat format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 
