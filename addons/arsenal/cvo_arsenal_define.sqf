@@ -476,7 +476,8 @@ cvo_arsenal_base append [
 // #####################################################
 // ## HOW TO DEFINE A UNIT AS A SPECIFIC ROLE:
 // ## UNIT INIT FIELD IN THE EDITOR:
-// this setVariable ["CVO_A_Roles",["Officer"]];
+// [ this, "Officer" ] call cvo_arsenal_fnc_setRole;
+// [ this, [ "Officer", "RTO" ]] call cvo_arsenal_fnc_setRole;
 // ## Further Notes: 
 // -- "Medic" and "Engineer" are autoDetected based on ACE Skill Level  
 // #####################################################

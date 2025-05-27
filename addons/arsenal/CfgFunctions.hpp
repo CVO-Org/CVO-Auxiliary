@@ -25,5 +25,11 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(missionConfig);
             class missionConfig { postInit = 1; };
         };
+
+        class public
+        {
+            file = PATH_TO_FUNC_SUB(public);
+            class setRole {};
+        };
 	};
 };
