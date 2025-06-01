@@ -42,3 +42,5 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgMarkers.hpp"
+
+#include "ACE_Tags.hpp"
