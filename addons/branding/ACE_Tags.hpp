@@ -2,8 +2,8 @@
 class GVAR(DOUBLES(Stencil,VARIANT)) {\
     displayName = "Voron";\
     requiredItem = Q(ACE_Spraypaint##VARIANT);\
-    textures[] = { PATH_TO_ADDON_3(data,stencils,cvo_stencil_##VARIANT##.paa) };\
-    icon = PATH_TO_ADDON_3(data,stencils,cvo_stencil_##VARIANT##.paa);\
+    textures[] = { PATH_TO_ADDON_3(data,stencils,cvo_stencil_##VARIANT##_ca.paa) };\
+    icon = PATH_TO_ADDON_3(data,stencils,cvo_stencil_##VARIANT##_ca.paa);\
 }
 
 
