@@ -20,9 +20,9 @@ class CfgFunctions
 			class greenmag { postInit = 1; };
 		};
 
-        class missionConfig
+        class configKit
         {
-            file = PATH_TO_FUNC_SUB(missionConfig);
+            file = PATH_TO_FUNC_SUB(configKit);
             class missionConfig { postInit = 1; };
         };
 

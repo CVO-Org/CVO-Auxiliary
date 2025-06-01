@@ -34,3 +34,7 @@ class CfgPatches {
 
 #include "CfgFunctions.hpp"
 #include "XEH\CfgXEH.hpp"
+
+#include "CfgBaseKits.hpp"
+#include "CfgBaseRoleKits.hpp"
+#include "CfgBasePersonalKits.hpp"

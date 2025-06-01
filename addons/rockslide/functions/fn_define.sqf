@@ -19,4 +19,4 @@ if (!isServer) exitWith {};
 */
 
 
-[rockslide_start, "ROCKSLIDE", 4] call FUNC(play);
+[rockslide_start, "ROCKSLIDE", 4] call FUNC(prep);

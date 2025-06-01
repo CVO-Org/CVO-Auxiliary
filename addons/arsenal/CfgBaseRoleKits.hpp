@@ -1,10 +1,11 @@
 class GVAR(BaseRoleKits) {
+
     class Base {
-        role = "";
+        id = "";
         condition = "true";
         addon_dependency = "";
         class items {};
-        code = "";
+        code = ""; // needs to return array
     };
 
 

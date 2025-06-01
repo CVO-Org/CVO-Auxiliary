@@ -939,7 +939,7 @@ switch (_mode) do
 				if (count _invites > 0) then
 				{
 					private ["_invite", "_group"];
-					_invite = _invites select (count _invites - 1);
+					_invite = _invites select -1;
 					_group = _invite select 0;
 
 					// Do not allow opening interface

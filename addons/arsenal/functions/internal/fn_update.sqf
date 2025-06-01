@@ -13,28 +13,38 @@
 
 	Examples:
 		<example>
-		[] call cvo_A_fnc_update;
+		[] call cvo_arsenal_fnc_update;
 */
 if (!hasInterface) exitWith {};
 
 private _finalKit = [];
 
-_baseKit = missionNamespace getVariable [QGVAR(base), []];
+if (isNil QGVAR(baseKit)) then { GVAR(baseKit) = []; };
+_baseKit = GVAR(baseKit);
+
+
+
 _finalKit append _baseKit;
 
 // ############ Detect ROLE KIT ############
 
-private _roles = player getVariable [QGVAR(roles), []];
+private _roles = ACE_player getVariable [QGVAR(roles), []];
 
 
 // Detectes ACE MEDIC and ACE Engineer
-if ([player, 1] call ace_medical_treatment_fnc_isMedic) then {_roles pushBackUnique "Medic"};
-if ([player, 1] call ace_repair_fnc_isEngineer) 		then {_roles pushBackUnique "Engineer"};
+if ( [ACE_player, 1] call ace_medical_treatment_fnc_isMedic ) then { _roles pushBackUnique "Medic" };
+if ( [ACE_player, 1] call ace_repair_fnc_isEngineer ) 		  then { _roles pushBackUnique "Engineer" };
 
-if ([player, 2] call ace_medical_treatment_fnc_isMedic) then {_roles pushBackUnique "Doctor"};
-if ([player, 2] call ace_repair_fnc_isEngineer) 		then {_roles pushBackUnique "AdvEngineer"};
+if ( [ACE_player, 2] call ace_medical_treatment_fnc_isMedic ) then { _roles pushBackUnique "Doctor" };
+if ( [ACE_player, 2] call ace_repair_fnc_isEngineer ) 		  then { _roles pushBackUnique "AdvEngineer" };
+
+if ( ACE_player getUnitTrait "explosiveSpecialist" )      	  then { _roles pushBackUnique "explosiveSpecialist" } else {
+	if ( "explosiveSpecialist" in _roles ) then { ACE_player setUnitTrait ["explosiveSpecialist", true]; };
+};
+
 
 _roles = _roles apply { toLowerANSI _x };
+
 diag_log format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 systemChat format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 

@@ -1,9 +1,11 @@
 class GVAR(baseKits) {
 
     class Base {
+        id = "";
         condition = "true";
-        addon_dependency = "";        
+        addon_dependency = "";
         class items {};
+        code = ""; // needs to return array
     };
 
 
@@ -32,23 +34,31 @@ class GVAR(baseKits) {
         class items {
             class ace_marker_flags_red;
             class ace_marker_flags_green;
+
             class ACE_EntrenchingTool;
+
             class ACE_SpraypaintGreen;
             class ACE_SpraypaintRed;
+
             class ACE_PlottingBoard;
-            class ACE_DAGR;
+
             class ACE_CableTie;
             class acex_intelitems_notepad;
         };
     };
     class BaseKit_Orientation: Base {
         class items {
+            class ACE_DAGR;
+
             class ItemMap;
             class ItemWatch;
+
             class ItemCompass;
             class ACE_MapTools;
+
             class ACE_Flashlight_KSF1;
             class ACE_Chemlight_Shield;
+
             class Chemlight_yellow;
         };
     };

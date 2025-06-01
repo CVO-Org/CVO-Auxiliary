@@ -112,13 +112,14 @@ cvo_arsenal_base append [
 	"ACE_fieldDressing",
 	"ACE_tourniquet", 
 	"ACE_splint",
-	"ACE_morphine",
+	"ACE_painkillers",
 	"ACE_epinephrine", 
 	"ACE_salineIV", 
 	"ACE_salineIV_500",
 	"ACE_salineIV_250",
 	"ACE_personalAidKit",
-	"ACE_bodyBag"];
+	"ACE_bodyBag"
+];
 
 // Tools & Equipment
 

@@ -1,5 +1,6 @@
 class GVAR(BasePersonalKits) {
-    Base {
+
+    class Base {
         id = "";
         condition = "true";
         addon_dependency = "";

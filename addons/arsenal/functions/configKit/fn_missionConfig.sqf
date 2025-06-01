@@ -19,18 +19,18 @@ if !(isClass _cfg) exitWith {};
 
 if (isServer) then {
     private _layerName = getText (_cfg >> "editor_layer_name");
-	private _array = [];
-    [_cfg >> "object_variable_names"] call BIS_fnc_getCfgDataArray apply { missionNamespace getVariable [_x, objNull] } select { !isNull _x } apply { _array pushBackUnique _x };
+	private _arsenalSources = [];
+    [_cfg >> "object_variable_names"] call BIS_fnc_getCfgDataArray apply { missionNamespace getVariable [_x, objNull] } select { !isNull _x } apply { _arsenalSources pushBackUnique _x };
 
     private _return = getMissionLayerEntities _layerName;
-    if (count _return > 0) then { _array append _return#0 }; 
+    if (count _return > 0) then { _arsenalSources append _return#0 }; 
 
-    [QGVAR(EH_AddAction), _array, QGVAR(EH_AddAction)] call CBA_fnc_globalEventJIP;
+    [QGVAR(EH_AddAction), _arsenalSources, QGVAR(EH_AddAction)] call CBA_fnc_globalEventJIP;
 };
 
 // Handle Base Items
-private _base = missionNamespace getVariable [QGVAR(base), []];
-if (count _base == 0) then { missionNamespace setVariable [QGVAR(base), _base] };
+private _base = missionNamespace getVariable [QGVAR(baseKit), []];
+if (_base isEqualTo []) then { missionNamespace setVariable [QGVAR(baseKit), _base] };
 configProperties [_cfg >> "Base"] apply { [_x] call BIS_fnc_getCfgDataArray } apply { _base append _x };
 
 // Handle Role Based Equipment
