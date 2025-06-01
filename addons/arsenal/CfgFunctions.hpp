@@ -24,6 +24,8 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(configKit);
             class missionConfig { postInit = 1; };
+            class getBaseKitFromConfig {};
+            class getRoleKitFromConfig {};
         };
 
         class public

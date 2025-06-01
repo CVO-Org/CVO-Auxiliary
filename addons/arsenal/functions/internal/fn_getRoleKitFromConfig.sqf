@@ -17,8 +17,11 @@
 
 
 params [
-    [ "_cfg",   configNull, [configNull] ]
+    [ "_cfg",   configNull, [configNull] ],
+    [ "_roles", "404",      [[]]         ]
 ];
+
+if (_roles isEqualTo "404") then { _roles = [ace_player] call FUNC(getUnitRoles); };
 
 // Check Addon Dependency
 private _dependency = getText (_cfg >> "addon_dependency");
@@ -34,6 +37,8 @@ private _conditionCode = switch (true) do {
 };
 
 private _conditionResult = [ace_player] call _conditionCode;
+
+
 
 
 // Handle nil as false

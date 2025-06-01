@@ -28,7 +28,7 @@ _finalKit append _baseKit;
 
 // ############ Detect ROLE KIT ############
 
-private _roles = ACE_player getVariable [QGVAR(roles), []];
+private _roles = [ace_player] call FUNC(getUnitRoles);
 
 
 // Detectes ACE MEDIC and ACE Engineer

@@ -2,6 +2,7 @@ class GVAR(BaseRoleKits) {
 
     class Base {
         id = "";
+        role = "";
         condition = "true";
         addon_dependency = "";
         class items {};
