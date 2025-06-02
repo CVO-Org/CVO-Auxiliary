@@ -8,11 +8,14 @@
             <Key ID="STR_cvo_Intel_set_cat_title">
                 <English>CVO - Intel</English>
             </Key>
+            <Key ID="STR_cvo_Intel_set_missionstart_delay">
+                <English>Delay in seconds</English>
+            </Key>
             <Key ID="STR_cvo_Intel_set_missionstart_delay_desc">
                 <English>The Initial delay after Missionstart before for the existing flags markers are being marked. This is mainly for persistancy scripts/mods to be effective before.</English>
             </Key>
-            <Key ID="STR_cvo_Intel_set_missionstart_delay_sec">
-                <English>Delay in seconds</English>
+            <Key ID="STR_cvo_Intel_set_missionstart_enable">
+                <English>Enable</English>
             </Key>
             <Key ID="STR_cvo_Intel_set_missionstart_enable_desc">
                 <English>Enables/Disables the feature. Creates Map Markers for the selected ACE Marker Flag after Missionstart.</English>
