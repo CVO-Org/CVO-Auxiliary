@@ -21,21 +21,16 @@ if !(hasInterface) exitWith {};
 
 private _code = {
 
-	private _isEnabled = missionNamespace getVariable [QSET(save_missionStart), true];
-	if !(_isEnabled) exitWith {};
-
-	private _delay = missionNamespace getVariable [QSET(save_missionStart_delay), 5];
+	if !(SET(save_missionStart)) exitWith {};
 
 	private _saveLoadout = {
-		player setVariable [QGVAR(Loadout), getUnitLoadout player];
+		player setVariable [QGVAR(Loadout), [player] call CBA_fnc_getLoadout];
 		diag_log "[CVO][Arsenal] player's CVO_Loadout saved";
 	};
 
-	if (_delay == 0) then _saveLoadout else { [ _saveLoadout , [], _delay] call CBA_fnc_waitAndExecute;	}
+	private _delay = SET(save_missionStart_delay);
+	if (_delay == 0) then _saveLoadout else { [ _saveLoadout , [], _delay] call CBA_fnc_waitAndExecute;	};
 
 };
 
 if (missionNamespace getVariable ["cba_settings_ready",false]) then _code else { ["CBA_settingsInitialized",_code,[]] call CBA_fnc_addEventHandler; };
-
-
-

@@ -6,10 +6,7 @@ class CfgFunctions
 		{
 			file = PATH_TO_FUNC;
 
-            class init_cba_eh { postInit = 1; };
-
-    	    class prep {};
-    	    class local_effects {};
+            class applyTag { postInit = 1; };
 		};
 	}; 
 };

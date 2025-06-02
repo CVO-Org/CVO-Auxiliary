@@ -40,5 +40,9 @@ class CfgPatches {
 	};
 };
 
+#include "CfgFunctions.hpp"
+
 #include "CfgVehicles.hpp"
 #include "CfgMarkers.hpp"
+
+#include "ACE_Tags.hpp"

@@ -62,7 +62,7 @@ Whenever Unit Joins or Leaves the squad. GroupIdChanged
 [
 	QSET(threshold_SL),		//    _setting     - Unique setting name. Matches resulting variable name <STRING>
 	"SLIDER",								//    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
-	[LSTRING(set_on_threshold_SL),LSTRING(set_on_threshold_SL_desc)],
+	[LSTRING(set_threshold_SL),LSTRING(set_threshold_SL_desc)],
 											//    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
 	[LSTRING(set_cat_title)],					//    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
 	[3,12,5,0,false],						//    _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>

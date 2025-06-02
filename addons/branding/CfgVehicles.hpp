@@ -16,7 +16,7 @@ class CfgVehicles
 
         class ACE_Actions {
             class ACE_MainActions {
-                displayName = ECSTRING(interaction,MainAction);
+                displayName = "$STR_ace_interaction_MainAction";
                 condition = "true";
                 position = "[-0.1, -0.35, -2.6]";
                 distance = 2;
