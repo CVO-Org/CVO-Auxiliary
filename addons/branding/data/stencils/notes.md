@@ -1,8 +1,8 @@
 # Paths for mission Makers
 
-zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_black_ca.paa
-zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_red_ca.paa
-zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_white_ca.paa
+- `zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_black_ca.paa`
+- `zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_red_ca.paa`
+- `zrn/CVO-Auxiliary/addons/branding/data/stencils/cvo_stencil_white_ca.paa`
 
 
 # How to convert paa's propperly
