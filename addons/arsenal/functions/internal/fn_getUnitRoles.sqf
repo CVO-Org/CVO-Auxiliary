@@ -23,4 +23,4 @@ if (isNull _unit) exitWith {[]};
 
 private _roles = _unit getVariable [QGVAR(roles), []];
 
-_roles apply { tolowerANSI _x } // Return
+_roles apply { toLowerANSI _x } // Return
