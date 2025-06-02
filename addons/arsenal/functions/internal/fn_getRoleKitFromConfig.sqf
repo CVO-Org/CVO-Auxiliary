@@ -23,6 +23,10 @@ params [
 
 if (_roles isEqualTo "404") then { _roles = [ace_player] call FUNC(getUnitRoles); };
 
+private _role = toLowerANSI getText (_cfg >> "role");
+
+if !(_role in _roles) exitWith {[]};
+
 // Check Addon Dependency
 private _dependency = getText (_cfg >> "addon_dependency");
 if ( _dependency isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _dependency ) } ) exitWith  { [] };
@@ -31,15 +35,12 @@ if ( _dependency isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _
 private _conditionString = getText (_cfg >> "condition");
 
 private _conditionCode = switch (true) do {
-    case (_conditionString isEqualTo ""): { {true} };                   // undefined, returns true
-    case (isNil _conditionString):  { compile _conditionString }; // its not a function
-    default { _conditionString };                                 // its a function
+    case (_conditionString isEqualTo ""): { {true} };               // undefined, returns true
+    case (isNil _conditionString): { compile _conditionString };    // its not a function
+    default { _conditionString };                                   // its a function
 };
 
 private _conditionResult = [ace_player] call _conditionCode;
-
-
-
 
 // Handle nil as false
 if (isNil "_conditionResult") then {
