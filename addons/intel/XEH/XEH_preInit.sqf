@@ -34,7 +34,7 @@
 [
 	"CVO_SET_Intel_Flag_initial_isEnabled",			//    _setting     - Unique setting name. Matches resulting variable name <STRING>
 	"CHECKBOX",								//    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
-	[LSTRING(set_enable),LSTRING(set_missionstart_enabled)],
+	[LSTRING(set_missionstart_enable),LSTRING(set_missionstart_enable_desc)],
 											//    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
 	[LSTRING(set_cat_title), LSTRING(set_subcat_missionstart)],					//    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
 	false,									//    _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
@@ -46,7 +46,7 @@
 [
 	"CVO_SET_Intel_Flag_initial_Delay",			//    _setting     - Unique setting name. Matches resulting variable name <STRING>
 	"SLIDER",								//    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
-	[LSTRING(set_delay_sec),LSTRING(set_missionstart_delay_desc)],
+	[LSTRING(set_missionstart_delay),LSTRING(set_missionstart_delay_desc)],
 											//    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
 	[LSTRING(set_cat_title), LSTRING(set_subcat_missionstart)],					//    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
 	[0, 300, 30, 0],									//    _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
