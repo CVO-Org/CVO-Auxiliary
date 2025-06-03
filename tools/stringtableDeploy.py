@@ -19,8 +19,8 @@ TRANSLATIONBODY = """**[Translation Guide](https://ace3.acemod.org/wiki/developm
 {}
 """
 
-REPOUSER = "CVO-Org"
-REPONAME = "CVO-Auxiliary"
+REPOUSER = "cvo-org"
+REPONAME = "cvo-auxiliary"
 REPOPATH = "{}/{}".format(REPOUSER,REPONAME)
 
 
