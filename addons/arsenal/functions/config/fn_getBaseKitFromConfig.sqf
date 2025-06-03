@@ -65,5 +65,4 @@ private _codeResult = [ace_player] call _codeCode;
 if !(_codeResult isEqualType []) then { _codeResult = []; };
 _returnArray append _codeResult;
 
-
-_returnArray
+_returnArray apply { toLowerANSI _x }

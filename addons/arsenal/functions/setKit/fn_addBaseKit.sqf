@@ -23,10 +23,12 @@ params [
 if (_kit isEqualTo "") exitWith {};
 if (_kit isEqualType "") then { _kit = [_kit] };
 
-if (isNil QGVAR(baseKit)) then {
-    GVAR(baseKit) = [];
+if (isNil QGVAR(kit_base)) then {
+    GVAR(kit_base) = [];
 };
 
-GVAR(baseKit) append _kit;
+GVAR(kit_base) append _kit;
+
+GVAR(kit_base) append GVAR(kit_base);
 
 true

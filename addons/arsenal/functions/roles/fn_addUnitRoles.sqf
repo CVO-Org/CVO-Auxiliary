@@ -2,7 +2,7 @@
 
 /*
 * Author: Zorn
-* Function for Mission Makers to add CVO Arsenal Roles
+* Function to add a role to the Unit
 *
 * Arguments:
 *
@@ -10,8 +10,7 @@
 * None
 *
 * Example:
-* [ this, "EOD" ] call cvo_arsenal_fnc_setRole;
-* [ this, ["EOD", "Officer"] ] call cvo_arsenal_fnc_setRole;
+* ['something', player] call prefix_component_fnc_functionname
 *
 * Public: No
 */
@@ -28,6 +27,8 @@ if ( _roles isEqualType "" ) then { _roles = [_roles]; };
 
 _roles = _roles apply { toLowerANSI _x };
 
-_unit setVariable [QGVAR(roles), _roles];
+{ _roles pushBackUnique _x; } forEach ([_unit] call FUNC(getUnitRoles));
+
+[_unit, _roles] call FUNC(setUnitRoles);
 
 true

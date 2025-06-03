@@ -1,7 +1,6 @@
-class GVAR(baseKits) {
+class GVAR(kits_base) {
 
     class Base {
-        id = "";
         condition = "true";
         addon_dependency = "";
         class items {};

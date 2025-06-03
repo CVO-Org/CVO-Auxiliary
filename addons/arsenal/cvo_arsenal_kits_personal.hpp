@@ -1,4 +1,4 @@
-class GVAR(BasePersonalKits) {
+class GVAR(kits_personal) {
 
     class Base {
         id = "";
@@ -16,7 +16,7 @@ class GVAR(BasePersonalKits) {
         code = "systemChat 'CVO_A_Playerkit test Successful - ACE_Sandbag_empty Given'; 	['ACE_Sandbag_empty']";
     };
 
-    class Zorn: Base {
+    class OverlordZorn: Base {
         id = "76561197970306509";
         class items {
             class G_Spectacles_Tinted;
@@ -25,6 +25,7 @@ class GVAR(BasePersonalKits) {
 
             class B_LegStrapBag_black_F;
             class ACE_SpraypaintBlack;
+            class ACE_SpraypaintWhite;
         };
     };
 };

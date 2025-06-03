@@ -19,41 +19,30 @@ if (!hasInterface) exitWith {};
 
 private _finalKit = [];
 
-if (isNil QGVAR(baseKit)) then { GVAR(baseKit) = []; };
-_baseKit = GVAR(baseKit);
 
+// ############ Handle Base Kit ############
+// Handle Base Kit
+if (isNil QGVAR(kit_base)) then { GVAR(kit_base) = [] };
 
+_baseKit = GVAR(kit_base);
 
 _finalKit append _baseKit;
 
-// ############ Detect ROLE KIT ############
-
+// ############ Handle Role Kit ############
 private _roles = [ace_player] call FUNC(getUnitRoles);
 
-
 // Detectes ACE MEDIC and ACE Engineer
-if ( [ACE_player, 1] call ace_medical_treatment_fnc_isMedic ) then { _roles pushBackUnique "Medic" };
-if ( [ACE_player, 1] call ace_repair_fnc_isEngineer ) 		  then { _roles pushBackUnique "Engineer" };
-
-if ( [ACE_player, 2] call ace_medical_treatment_fnc_isMedic ) then { _roles pushBackUnique "Doctor" };
-if ( [ACE_player, 2] call ace_repair_fnc_isEngineer ) 		  then { _roles pushBackUnique "AdvEngineer" };
-
-if ( ACE_player getUnitTrait "explosiveSpecialist" )      	  then { _roles pushBackUnique "explosiveSpecialist" } else {
-	if ( "explosiveSpecialist" in _roles ) then { ACE_player setUnitTrait ["explosiveSpecialist", true]; };
-};
-
-
-_roles = _roles apply { toLowerANSI _x };
+_roles = [ace_player, _roles] call FUNC(rolesByTrait);
 
 diag_log format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 systemChat format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 
+
+private _roles_hashmap = missionNamespace getVariable [QGVAR(roleKit), createHashMap];
 {// Retrieves Info from HASHMAP
-	private _hashMap_RoleKit = missionNamespace getVariable [QGVAR(roleKit), createHashMap];
-	private _array = _hashMap_RoleKit getOrDefault [_x,false];
+	private _array = _roles_hashmap getOrDefault [_x,false];
 
 	diag_log format ["_array: %1", _array];
-
 
 	if ((_array isNotEqualTo false)) then {
 		// _array = [  "KEY/ROLENAME",	[  ["ARRAY OF CLASSNAMES"],{"Optional CODEBLOCK"}  ]  ]

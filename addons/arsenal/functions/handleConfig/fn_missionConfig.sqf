@@ -29,8 +29,8 @@ if (isServer) then {
 };
 
 // Handle Base Items
-private _base = missionNamespace getVariable [QGVAR(baseKit), []];
-if (_base isEqualTo []) then { missionNamespace setVariable [QGVAR(baseKit), _base] };
+private _base = missionNamespace getVariable [QGVAR(kit_base), []];
+if (_base isEqualTo []) then { missionNamespace setVariable [QGVAR(kit_base), _base] };
 configProperties [_cfg >> "Base"] apply { [_x] call BIS_fnc_getCfgDataArray } apply { _base append _x };
 
 // Handle Role Based Equipment

@@ -12,6 +12,9 @@ if (isNull GVAR(local_box)) then { GVAR(local_box) = nil;};
 
 if (isNil QGVAR(local_box)) then {
 
+	// Initialises Base Kits from Config
+	[] call FUNC(baseKitFromConfig);
+
 	// Creates Virtual Arsenal box for the player locally if none has been existing before
 
 	GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];

@@ -1,7 +1,6 @@
-class GVAR(BaseRoleKits) {
+class GVAR(kits_role) {
 
     class Base {
-        id = "";
         role = "";
         condition = "true";
         addon_dependency = "";
