@@ -1,18 +1,27 @@
-name: SQF Validator
+name: Validate SQF
 
 on:
   push:
     branches:
-       - master_daily
-       - master
+       - main
+  pull_request:
+
 
 jobs:
-  run_python:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          architecture: 'x64'
-      - run: python tools/sqf_validator.py
+      - name: Checkout the source code
+        uses: actions/checkout@master
+      - name: Validate SQF
+        run: python3 tools/sqf_validator.py
+      - name: Validate Config
+        run: python3 tools/config_style_checker.py
+      - name: Check for BOM
+        uses: arma-actions/bom-check@master
+      - name: .editorconfig Checker
+        uses: editorconfig-checker/action-editorconfig-checker@main
+#      - name: Setup Node.js environment
+#        uses: actions/setup-node@v4
+#      - name: Check Functions
+#        run: cd tools/nodejs_tools && npm i &> /dev/null && cd ../../ && node tools/nodejs_tools/prepchecker.js

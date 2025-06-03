@@ -1,4 +1,4 @@
-name: Stringtables.xml
+name: stringtables.xml
 
 on:
   push:
