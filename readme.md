@@ -33,4 +33,3 @@ Modifies and enhances BI's dynamic groups system.
 * removes randomized insignia on group creation
 * adds insignia selection menu to group menu (click on insignia symbol)
 
-
