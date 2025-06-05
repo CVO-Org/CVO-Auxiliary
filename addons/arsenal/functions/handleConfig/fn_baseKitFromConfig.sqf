@@ -18,6 +18,12 @@
 private _configs = [];
 
 _configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits_base)) );
+
+
+private _base_configs = Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits_base));
+[QADDON, "kit", "base", _configName] joinString "_"
+
+
 _configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QGVAR(kits_base)) );
 
 {

@@ -24,6 +24,10 @@ private _roles = [ace_player] call FUNC(getUnitRoles);
 // Detectes ACE MEDIC and ACE Engineer
 _roles = [ace_player, _roles] call FUNC(rolesByTrait);
 
+diag_log format ['[CVO](ARSENAL) Player Roles: %1', _roles];
+systemChat format ['[CVO](ARSENAL) Player Roles: %1', _roles];
+
+
 private _catalog = ["arsenal_kit_role"] call EFUNC(catalog,getCatalog);
 
 private _returnArray = [];

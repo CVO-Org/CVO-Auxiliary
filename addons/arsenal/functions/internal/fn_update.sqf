@@ -22,20 +22,13 @@ private _finalKit = [];
 
 // ############ Handle Base Kit ############
 // Handle Base Kit
-if (isNil QGVAR(kit_base)) then { GVAR(kit_base) = [] };
 
-_baseKit = GVAR(kit_base);
-
-_finalKit append _baseKit;
+_finalKit append ( [] call FUNC(getBaseKits) );
 
 // ############ Handle Role Kit ############
-private _roles = [ace_player] call FUNC(getUnitRoles);
+_finalKit append ( [] call FUNC(getRoleKits) );
 
-// Detectes ACE MEDIC and ACE Engineer
-_roles = [ace_player, _roles] call FUNC(rolesByTrait);
 
-diag_log format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
-systemChat format ['[CVO](ARSENAL) Init: Player Roles: %1', _roles];
 
 
 private _roles_hashmap = missionNamespace getVariable [QGVAR(roleKit), createHashMap];
