@@ -17,13 +17,13 @@
 
 private _configs = [];
 
-_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits_role)) );
-_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QGVAR(kits_role)) );
+_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QADDON >> Q(kits_personal)) );
+_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QADDON >> Q(kits_personal)) );
 
 {
     [
         configName _x,
-        [_x] call FUNC(getRoleKitFromConfig)
-    ] call FUNC(setRoleKit);
+        [_x] call FUNC(getPersonalKitFromConfig)
+    ] call FUNC(setPersonalKit);
     
 } forEach _configs;

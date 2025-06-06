@@ -1,4 +1,4 @@
-class GVAR(kits_role) {
+class kits_role {
 
     class Base {
         role = "";

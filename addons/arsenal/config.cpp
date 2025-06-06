@@ -35,6 +35,8 @@ class CfgPatches {
 #include "CfgFunctions.hpp"
 #include "XEH\CfgXEH.hpp"
 
-#include "cvo_arsenal_kits_base.hpp"
-#include "cvo_arsenal_kits_role.hpp"
-#include "cvo_arsenal_kits_personal.hpp"
+class ADDON {
+    #include "kits_base.hpp"
+    #include "kits_role.hpp"
+    #include "kits_personal.hpp"
+};

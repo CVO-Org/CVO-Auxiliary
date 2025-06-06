@@ -1,4 +1,4 @@
-class GVAR(kits_personal) {
+class kits_personal {
 
     class Base {
         id = "";
@@ -12,6 +12,8 @@ class GVAR(kits_personal) {
         id = "_SP_PLAYER_";
         class items {
             class ACE_Banana;
+            class ACE_SpraypaintBlack;
+            class ACE_SpraypaintWhite;
         };
         code = "systemChat 'CVO_A_Playerkit test Successful - ACE_Sandbag_empty Given'; 	['ACE_Sandbag_empty']";
     };

@@ -1,4 +1,4 @@
-class GVAR(kits_base) {
+class kits_base {
 
     class Base {
         condition = "true";
