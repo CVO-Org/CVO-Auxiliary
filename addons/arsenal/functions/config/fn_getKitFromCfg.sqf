@@ -18,7 +18,8 @@
 
 /*
     class Base {
-        id = "";
+        role = "";
+        id64 = "";
         condition = "true";
         addon_dependency = "";
         class items {};
@@ -35,32 +36,22 @@ params [
 private _dependency = getText (_cfg >> "addon_dependency");
 if ( _dependency isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _dependency ) } ) exitWith  { nil };
 
+//// Convert Condition code
+private _conditionCode = getText (_cfg >> "condition") call EFUNC(common,convertStringCode);
 
+//// Convert Code code
+private _codeCode = getText (_cfg >> "code") call EFUNC(common,convertStringCode);
 
-//// Handle Condition
-private _conditionString = getText (_cfg >> "condition");
-private _conditionCode = switch (true) do {
-    case (_conditionString isEqualTo ""): { {true} };               // undefined, returns true
-    case (isNil _conditionString): { compile _conditionString };    // its not a function
-    default { _conditionString };                                   // its a function
-};
-
-//// Handle Code
-private _codeString = getText (_cfg >> "code");
-private _codeCode = switch (true) do {
-    case (_codeString isEqualTo ""): { {[]} };         // undefined, returns empty array
-    case (isNil _codeString): { compile _codeString }; // its not a function
-    default { _codeString };                           // its a function
-};
-
+//// Retrieve Items
 private _items = "true" configClasses (_cfg >> "items") apply { configName _x };
 _items = _items select { _x call CBA_fnc_getItemConfig isNotEqualTo configNull }; // rm entries that does not exist
 
 
 // Create entry-hashmap to be returned
 createHashMapFromArray [
-    ["id",  toLowerANSI getText (_cfg >> "id") ],
-    ["items", _items ],
+    ["id64",  getText (_cfg >> "id64")],
+    ["role",  toLowerANSI getText (_cfg >> "role")],
+    ["items", _items],
     ["condition", _conditionCode],
     ["code", _codeCode]
 ]

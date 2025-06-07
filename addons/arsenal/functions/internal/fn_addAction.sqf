@@ -11,40 +11,43 @@
 * None
 *
 * Example:
-* [box] call CVO_Arsenal_fnc_addArsenalInteraction
-* [[box1,box2,box3]] call CVO_Arsenal_fnc_addArsenalInteraction
+* [box] call CVO_Arsenal_fnc_addAction
+* [[box1,box2,box3]] call CVO_Arsenal_fnc_addAction
 *
 * Public: Yes
 */
 
 params [
-    ["_input", objNull, [objNull, []] ]
+    ["_objects", "", [objNull, []] ]
 ];
 
-if (_input isEqualTo objNull) exitWith {};
+diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
 
-_action = [
+if (_objects isEqualTo "") exitWith {};
+
+_objects = switch (typeName _objects) do {
+    case "OBJECT": { [_objects] };
+    case "ARRAY": { flatten _objects select { _x isEqualType objNull } select { ! isNull _x } select { ! isNil "_x" } };
+};
+
+private _action = [
 	QGVAR(open),					// ActionName
 	"Open the Arsenal",				// Name of the Action shown in the menu
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\rifle_ca.paa",		// Icon
-	{[] call FUNC(open)},			// Statement (The actual Code)
+	FUNC(open),						// Statement (The actual Code)
 	{true}							// condition
 ] call ace_interact_menu_fnc_createAction;
 
-
-private _array = switch (typeName _input) do {
-    case "OBJECT": { [_input] };
-    case "ARRAY": { flatten _input };
-};
-
 {
-    if !(_x isEqualType objNull) then {continue};
-
 	[
 		_x, 
 		0, 
 		["ACE_MainActions"], 
 		_action
-	] call ace_interact_menu_fnc_addActionToObject;	
+	] call ace_interact_menu_fnc_addActionToObject;
+} forEach _objects;
 
-} forEach _array;
+
+diag_log format ['[CVO](debug)(fn_addAction) count _objects: %1', count _objects];
+
+nil

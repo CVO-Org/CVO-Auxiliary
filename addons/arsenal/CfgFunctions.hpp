@@ -20,42 +20,23 @@ class CfgFunctions
 			class addAction {};
 		};
 
-        class handleConfig
-        {
-            file = PATH_TO_FUNC_SUB(handleConfig);
-            // class missionConfig { postInit = 1; }; // depricated
-
-            class baseKitFromConfig { postInit = 1; };
-            class roleKitFromConfig { postInit = 1; };
-            class personalKitFromConfig { postInit = 1; };
-        };
         class config
         {
             file = PATH_TO_FUNC_SUB(config);
-            class getBaseKitFromConfig {};
-            class getRoleKitFromConfig {};
-            class getPersonalKitFromConfig {};
+            class getKitFromCfg {};
+            class handleConfigKits {};
+            class mission_init { postInit = 1; };
         };
 
-        class setKit
+        class kit
         {
-            file = PATH_TO_FUNC_SUB(setKit);
-            class addBaseKit {};
-            class setBaseKit {};
-
-            class addRoleKit {};
-            class setRoleKit {};
-
-            class setPersonalKit {};
-
+            file = PATH_TO_FUNC_SUB(kit);
+            class addKit {};
+            class createKit {};
+            class getItemsFromKits {};
         };
-        class getKit
-        {
-            file = PATH_TO_FUNC_SUB(getKit);
 
-            class getRoleKits {};
-            class getPersonalKits {};
-        };
+
         class roles
         {
             file = PATH_TO_FUNC_SUB(roles);

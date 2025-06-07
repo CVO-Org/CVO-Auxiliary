@@ -165,14 +165,15 @@ cvo_arsenal_base append [
 
 	"ItemMap",
 	"ItemWatch",
-	"ItemCompass"];
+	"ItemCompass"
+];
 
 // Binoculars
 cvo_arsenal_base append [
 	"Nikon_DSLR_HUD",
 	"Nikon_DSLR",
 	"Binocular"
-	];
+];
 
 // NVGs
 cvo_arsenal_base append [	

@@ -35,8 +35,19 @@ class CfgPatches {
 #include "CfgFunctions.hpp"
 #include "XEH\CfgXEH.hpp"
 
-class ADDON {
+class GVAR(kits) {
+
+    class Base {
+        role = "";
+        id64 = "";
+        condition = "true";
+        addon_dependency = "";
+        class items {};
+        code = ""; // needs to return array
+    };
+
     #include "kits_base.hpp"
     #include "kits_role.hpp"
     #include "kits_personal.hpp"
+
 };

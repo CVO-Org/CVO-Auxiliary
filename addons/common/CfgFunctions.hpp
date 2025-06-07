@@ -19,6 +19,8 @@ class CfgFunctions
             class makeCosmetic {};
 
             class markAllLocations {};
+
+            class convertStringCode {};
 		};
     };
 };

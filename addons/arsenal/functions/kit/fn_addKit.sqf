@@ -16,21 +16,18 @@
 */
 
 params [
-    [ "_key", "", [""] ],
-    ["_entry", "", [createHashMap] ]
+    ["_entry", "", [createHashMap] ],
+    [ "_key", "", [""] ]
 ];
 
 if (_entry isEqualTo "") exitWith { false };
 
 if (_key isEqualTo "") then {
-    private _cat = call EFUNC(catalog,getCatalog);
-    private _keys = keys _cat;
-    private _index = count _keys;
-
-    while { str _index in _keys } do { _index = _index + 1; };
-    _key = str _index;
+    private _index = missionNamespace getVariable [QGVAR(kit_index), 0];
+    GVAR(kit_index) = _index + 1;
+    _key = [QADDON, "Kit", _index] joinString "_";
 };
 
-["arsenal_kit_role", _key, _entry] call EFUNC(catalog,setEntry);
+["arsenal_kits", _key, _entry] call EFUNC(catalog,setEntry);
 
 true
