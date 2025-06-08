@@ -52,6 +52,13 @@ class BaseRoleKit_ExplosiveSpecialist: Base {
         class SatchelCharge_Remote_Mag;
     };
 };
+class BaseRoleKit_ExplosiveSpecialist_IEDD: Base {
+    addon_dependency = "iedd_main";
+    role = "ExplosiveSpecialist";
+    class items {
+        class iedd_item_notebook;
+    };
+};
 
 
 // Machinegunner
