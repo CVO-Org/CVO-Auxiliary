@@ -1,1 +1,44 @@
-#include "CfgArsenal.hpp"
+/*
+// #### Mission Information - https://community.bistudio.com/wiki/Description.ext
+class Header
+{
+	gameType = "Coop";	// game type
+	minPlayers =  1;	// minimum number of players the mission supports
+	maxPlayers = 10;	// maximum number of players the mission supports
+};
+
+loadScreen = "img\cvo_default_title.paa";
+author = "Someone [CVO]";
+onLoadName = "CVO Mission Title";                   // Loading Screen: Mission Title
+onLoadMission = "CVO Mission Description, short";   // Loading Screen: Mission Description, short
+*/
+
+
+// ###### Default Stuff - Dont Touch unless really needed
+enabledebugconsole = 1;
+disabledAI = 1;
+// cba_settings_hasSettingsFile = 1;
+
+
+// ###### Respawn Settings - CVO Defaults
+respawn = 3;
+respawnDelay = 120;
+respawnDialog = 0;
+respawnOnStart = 0;
+respawnTemplates[] = {"Counter", "Wave", "ace_spectator"}; // "Tickets"
+
+
+// ###### Cfg Functions - https://community.bistudio.com/wiki/CfgFunctions
+#include "CfgFunctions.hpp"
+
+
+// ###### CVO Includes
+
+// CVO Arsenal Defines
+#include "cvo_arsenal_kits.hpp"
+
+// CVO Custom Supply Crate
+// #include "cvo_csc_presets.hpp"
+
+
+// ###### Other Includes

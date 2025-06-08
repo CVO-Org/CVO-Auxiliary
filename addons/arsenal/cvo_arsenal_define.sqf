@@ -112,13 +112,14 @@ cvo_arsenal_base append [
 	"ACE_fieldDressing",
 	"ACE_tourniquet", 
 	"ACE_splint",
-	"ACE_morphine",
+	"ACE_painkillers",
 	"ACE_epinephrine", 
 	"ACE_salineIV", 
 	"ACE_salineIV_500",
 	"ACE_salineIV_250",
 	"ACE_personalAidKit",
-	"ACE_bodyBag"];
+	"ACE_bodyBag"
+];
 
 // Tools & Equipment
 
@@ -164,14 +165,15 @@ cvo_arsenal_base append [
 
 	"ItemMap",
 	"ItemWatch",
-	"ItemCompass"];
+	"ItemCompass"
+];
 
 // Binoculars
 cvo_arsenal_base append [
 	"Nikon_DSLR_HUD",
 	"Nikon_DSLR",
 	"Binocular"
-	];
+];
 
 // NVGs
 cvo_arsenal_base append [	
@@ -476,7 +478,8 @@ cvo_arsenal_base append [
 // #####################################################
 // ## HOW TO DEFINE A UNIT AS A SPECIFIC ROLE:
 // ## UNIT INIT FIELD IN THE EDITOR:
-// this setVariable ["CVO_A_Roles",["Officer"]];
+// [ this, "Officer" ] call cvo_arsenal_fnc_setRole;
+// [ this, [ "Officer", "RTO" ]] call cvo_arsenal_fnc_setRole;
 // ## Further Notes: 
 // -- "Medic" and "Engineer" are autoDetected based on ACE Skill Level  
 // #####################################################
