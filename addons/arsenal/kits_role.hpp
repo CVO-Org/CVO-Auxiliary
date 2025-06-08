@@ -6,6 +6,7 @@ class BaseRoleKit_Medic: Base {
         class ACE_elasticBandage;
         
         class ACE_adenosine;
+        class ACE_morphine;
 
         class ACE_plasmaIV;
         class ACE_plasmaIV_500;
@@ -18,6 +19,15 @@ class BaseRoleKit_Medic: Base {
         class ACE_surgicalKit;
     };
 };
+ 
+class BaseRoleKit_Medic_suture: Base {
+    role = "medic";
+    condition = "missionNamespace getVariable ['ace_medical_treatment_consumeSurgicalKit',0] == 2";
+    class items {
+        class ACE_suture;
+    };
+};
+
 class BaseRoleKit_Doctor: Base {
     role = "Doctor";
     class items {
@@ -33,9 +43,11 @@ class BaseRoleKit_Engineer: Base {
         class ACE_ToolKit;
     };
 };
+
 class BaseRoleKit_AdvEngineer: Base {
     role = "AdvEngineer";
     class items {
+        class ACE_Fortify;
     };
 };
 
@@ -60,6 +72,15 @@ class BaseRoleKit_ExplosiveSpecialist_IEDD: Base {
     };
 };
 
+class BaseRoleKit_ExplosiveSpecialist_convertFuses: Base {
+    role = "ExplosiveSpecialist";
+    condition = "missionNamespace getvariable ['ace_grenades_convertExplosives', false]";
+    class items {
+        class ACE_DemoCharge_Remote_Mag_Throwable;
+        class ACE_SatchelCharge_Remote_Mag_Throwable;
+    };
+};
+
 
 // Machinegunner
 class BaseRoleKit_Machinegunner: Base {
@@ -74,9 +95,8 @@ class BaseRoleKit_Machinegunner: Base {
 class BaseRoleKit_Marksman: Base {
     role = "Marksman";
     class items {
-        class ACE_SpareBarrel; // Needed?
-
         class ACE_Tripod;
         class ACE_RangeCard;
+        class Rangefinder;
     };
 };
