@@ -18,5 +18,7 @@ class OverlordZorn: Base {
         class B_LegStrapBag_black_F;
         class ACE_SpraypaintBlack;
         class ACE_SpraypaintWhite;
+
+        class ACE_wirecutter;
     };
 };
