@@ -8,6 +8,7 @@ class BaseKit_Medical: Base {
         class ACE_splint;
 
         class ACE_painkillers;
+        
         class ACE_epinephrine;
 
         class ACE_salineIV;
