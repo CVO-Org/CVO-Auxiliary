@@ -22,5 +22,10 @@ class CfgFunctions
 
             class convertStringCode {};
 		};
+		class dynamicGroups // Category
+		{
+            file = PATH_TO_FUNC_SUB(dynamicGroups);
+            class enableDynamicGroups {};
+		};
     };
 };

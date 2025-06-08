@@ -100,3 +100,47 @@ class BaseRoleKit_Marksman: Base {
         class Rangefinder;
     };
 };
+
+// EW Specialist
+class BaseRoleKit_EWSpecialist: Base {
+    role = "EWSpecialist";
+    class items {
+        //spectrum device
+        class hgun_esd_01_F;
+        class acc_esd_01_flashlight;
+        class muzzle_antenna_01_f;
+        class muzzle_antenna_03_f;
+        class muzzle_antenna_02_f;
+    };
+};
+
+
+// RTO
+class BaseRoleKit_RTO: Base {
+    role = "RTO";
+    class items {
+        class ACRE_PRC77;
+        class ACRE_VHF30108SPIKE; 
+        class ACRE_VHF30108; 
+        class ACRE_VHF30108MAST;
+    };
+};
+
+// UAV
+class BaseRoleKit_UAV: Base {
+    role = "UAV";
+    class items {
+        class ACE_UAVBattery;
+    };
+    code = "switch (str side ACE_player) do {
+        case 'WEST': { 'B_UavTerminal' };
+        case 'EAST': { 'O_UavTerminal' };
+        case 'GEUR': { 'I_UavTerminal' };
+        case 'CIV':  { 'C_UavTerminal' };
+        default { '' };
+    };";
+};
+
+
+
+

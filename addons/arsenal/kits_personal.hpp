@@ -5,7 +5,7 @@ class EDITOR_DEBUG: Base {
         class ACE_SpraypaintBlack;
         class ACE_SpraypaintWhite;
     };
-    code = "systemChat 'CVO_A_Playerkit test Successful - ACE_Sandbag_empty Given'; 	['ACE_Sandbag_empty']";
+    code = "systemChat 'CVO_A_Playerkit test Successful - ACE_Sandbag_empty Given'; 'ACE_Sandbag_empty'";
 };
 
 class OverlordZorn: Base {

@@ -53,8 +53,8 @@ private _playerUID = getPlayerUID _unit;
     diag_log format ['[CVO](debug)(fn_getItemsFromKits) _kitName: %1', _kitName];
 
     // #### Check if Setting for Default Kits
-    private _settingName = [QADDON, "default_kit", _kitName] joinString "_";
-    if (!isNil _settingName && { missionNamespace getVariable _settingName } ) then { continue };
+    private _settingName = [QADDON, _kitName] joinString "_";
+    if (!isNil _settingName && { !(missionNamespace getVariable _settingName) } ) then { continue };
 
 
     // #### Check Roles ####
@@ -87,16 +87,18 @@ private _playerUID = getPlayerUID _unit;
 
     // #### Code ####
     private _codeCode = _kit get "code";
-    if (_codeCode isNotEqualTo {}) then {
-        private _codeResult = [_unit, _items] call _codeCode;
-    };
+    private _codeResult = if (_codeCode isNotEqualTo {}) then {
+        [_unit, _items] call _codeCode;
+    } else {[]};
 
     // Validate Return
-    if (isNil "_codeResult") then { _codeResult = []; };
-    if (_codeResult isEqualType "") then { _codeResult = [_codeResult]; };
+    switch (true) do {
+       case ( isNil "_codeResult" ):      { _codeResult = []; };
+       case (_codeResult isEqualType ""): { _codeResult = [_codeResult]; };
+    };
     _codeResult = _codeResult select { _x call CBA_fnc_getItemConfig isNotEqualTo configNull };
-    _returnArray append _codeResult;
 
+    _returnArray append _codeResult;
 
 } forEach _kits_catalog;
 
