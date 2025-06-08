@@ -1,4 +1,4 @@
-#include "../script_component.hpp"
+#include "../../script_component.hpp"
 
 /*
 Script Runs when the players open the arsenal.
@@ -12,8 +12,11 @@ if (isNull GVAR(local_box)) then { GVAR(local_box) = nil;};
 
 if (isNil QGVAR(local_box)) then {
 
-	// Creates Virtual Arsenal box for the player locally if none has been existing before
+	// Initialises Base Kits from Config
+	[] call FUNC(handleConfigKits);
 
+
+	// Creates Virtual Arsenal box for the player locally if none has been existing before
 	GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
 	private _localBox = GVAR(local_box);
 
@@ -24,7 +27,7 @@ if (isNil QGVAR(local_box)) then {
 	[_localBox, -1] 					call ace_cargo_fnc_setSize;					// Disables Ace Cargo Loading
 	_localBox setVariable ["ace_cargo_noRename", true];							// Disables Ace Cargo Renaming
 
-	//	hideObject GVAR(local_box);															// Hides the Object
+	hideObject _localBox;															// Hides the Object
 
 	clearBackpackCargo _localBox;													// Empties the ArsenalBox
 	clearMagazineCargo _localBox;
@@ -44,10 +47,18 @@ if (isNil QGVAR(local_box)) then {
 };
 
 // Retrieving the updated Arsenal List
-_updatedArray = [] call FUNC(update);
+[
+	GVAR(local_box),
+	call FUNC(update),
+	false
+] call ace_arsenal_fnc_addVirtualItems;
 
-
-[GVAR(local_box), _updatedArray, false] call ace_arsenal_fnc_addVirtualItems;
 
 // Opens the Arsenal remotely for the players
-[GVAR(local_box), player, false] call ace_arsenal_fnc_openBox;
+[
+	GVAR(local_box),
+	ACE_player,
+	false
+] call ace_arsenal_fnc_openBox;
+
+nil

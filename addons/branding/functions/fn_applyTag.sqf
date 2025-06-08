@@ -16,6 +16,12 @@
 */
 
 
-if (squadParams player select 3 isEqualTo "183649" && { !(profileNamespace setVariable ["CVO-Tagging", false]) }) then {
+if (
+    squadParams player isNotEqualTo [] && { squadParams player select 3 isEqualTo "183649" }
+    &&
+    {
+        !(profileNamespace setVariable ["CVO-Tagging", false])
+    }
+) then {
     profileNamespace setVariable ["CVO-Tagging", true];
 };
