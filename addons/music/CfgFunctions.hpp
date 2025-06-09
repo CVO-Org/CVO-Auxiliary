@@ -6,7 +6,6 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(debug);
             class getTrackDuration {  };
-            class test {  };
         };
 
         class config
@@ -25,7 +24,6 @@ class CfgFunctions
 
             class createDiary { postInit = 1; };
             class updateHistory {};
-
             class fade_local {};
         };
 
@@ -33,14 +31,9 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(internal);
 
-            class init_zeusAction { postInit = 1; };
-            
             class init_musicEventHandlers { preInit = 1; };
             class init_cbaEvents { preInit = 1; };
             
-            class serverUpdate_buffer {};
-            class startMonitor {};
-            class createAction {};
             class publicArray {};
             class request {};
             class catalog {};
