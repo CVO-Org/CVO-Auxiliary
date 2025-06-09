@@ -17,7 +17,6 @@ class CfgFunctions
             class fromConfig {};
             class getPlaylistName {};
             class getMusicName {};
-            class addonLoaded {};
         };
 
         class diary
