@@ -19,16 +19,12 @@ params [
     ["_className",        "",         [""]       ]
 ];
 
-private _hasMissionConfig = isClass ( missionConfigFile >> "CfgMusic" >> _className);
-private _hasConfig = isClass ( configFile >> "CfgMusic" >> _className);
-
 private _cfgPath = switch (true) do {
-    case (_hasMissionConfig): { missionConfigFile >> "CfgMusic" >> _className };
-    case (_hasConfig): { configFile >> "CfgMusic" >> _className };
+    case ( isClass ( missionConfigFile >> "CfgMusic" >> _className) ): { missionConfigFile >> "CfgMusic" >> _className };
+    case ( isClass ( configFile >> "CfgMusic" >> _className) ):        { configFile >> "CfgMusic" >> _className };
 };
-
+ 
 private _title = getText ( _cfgPath >> "name");
-
 if (_title == "") then {_title = _className};
 
 _title
