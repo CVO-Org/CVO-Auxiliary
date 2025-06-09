@@ -10,7 +10,8 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [this, "someRole"] call cvo_arsenal_fnc_addUnitRoles;
+* [this, ["someRole", "anotherRole"]] call cvo_arsenal_fnc_addUnitRoles;
 *
 * Public: No
 */
