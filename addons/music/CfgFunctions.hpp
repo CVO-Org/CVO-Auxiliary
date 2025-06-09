@@ -6,7 +6,14 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(debug);
             class getTrackDuration {  };
-            class test {  };
+        };
+
+        class action
+        {
+            file = PATH_TO_FUNC_SUB(action);
+            class init_zeusAction { postInit = 1; };
+            class createAction {};
+            class createActionChildren {};
         };
 
         class config
@@ -17,7 +24,7 @@ class CfgFunctions
             class fromConfig {};
             class getPlaylistName {};
             class getMusicName {};
-            class addonLoaded {};
+            class getTrackCfg {};
         };
 
         class diary
@@ -26,7 +33,6 @@ class CfgFunctions
 
             class createDiary { postInit = 1; };
             class updateHistory {};
-
             class fade_local {};
         };
 
@@ -34,14 +40,9 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(internal);
 
-            class init_zeusAction { postInit = 1; };
-            
             class init_musicEventHandlers { preInit = 1; };
             class init_cbaEvents { preInit = 1; };
             
-            class serverUpdate_buffer {};
-            class startMonitor {};
-            class createAction {};
             class publicArray {};
             class request {};
             class catalog {};
@@ -55,7 +56,6 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(remote);
             class request_server {};
-            class update_server {};
             class fade_client {};
             class play_client {};
         };

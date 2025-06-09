@@ -19,15 +19,9 @@ if !(isServer) exitWith {};
 
 private _configs = [];
 
-private _cfgPath = (configFile >> "CfgPlaylists");
-if (isClass _cfgPath) then {
-    private _cfgs = "true" configClasses _cfgPath;
-    _configs append _cfgs;
-};
+ _configs append ("true" configClasses (configFile >> "CfgPlaylists"));
+ _configs append ("true" configClasses (missionConfigFile >> "CfgPlaylists"));
 
-private _cfgPath = (missionConfigFile >> "CfgPlaylists");
-if (isClass _cfgPath) then {
-    private _cfgs = "true" configClasses _cfgPath;
-    _configs append _cfgs;
-};
 { [_x] call FUNC(fromConfig) } forEach _configs;
+
+nil

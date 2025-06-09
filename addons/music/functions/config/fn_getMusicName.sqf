@@ -19,16 +19,10 @@ params [
     ["_className",        "",         [""]       ]
 ];
 
-private _hasMissionConfig = isClass ( missionConfigFile >> "CfgMusic" >> _className);
-private _hasConfig = isClass ( configFile >> "CfgMusic" >> _className);
 
-private _cfgPath = switch (true) do {
-    case (_hasMissionConfig): { missionConfigFile >> "CfgMusic" >> _className };
-    case (_hasConfig): { configFile >> "CfgMusic" >> _className };
-};
-
+private _cfgPath = _className call FUNC(getTrackCfg);
+ 
 private _title = getText ( _cfgPath >> "name");
-
 if (_title == "") then {_title = _className};
 
 _title

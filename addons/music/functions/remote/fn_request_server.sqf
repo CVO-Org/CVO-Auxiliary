@@ -25,6 +25,7 @@ params [
     "_args"
 ];
 
+ZRN_LOG_1(_this);
 
 switch (_input) do {
     case "FADENEXT": {
@@ -33,7 +34,7 @@ switch (_input) do {
     };
 
     case "NEXT": {
-        if (GETMGVAR(isPlaying,false)) then {
+        if (missionNamespace getVariable [QGVAR(isPlaying), false]) then {
             ZRN_LOG_MSG(NEXT - while playing true -> FADENEXT);
             ["FADENEXT"] call FUNC(request);
         } else {

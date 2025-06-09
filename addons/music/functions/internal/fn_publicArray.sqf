@@ -2,7 +2,7 @@
 
 /*
 * Author: Zorn
-* Function to update and Broadcast the public array which is used for the ACE Interacion.
+* Function to update and publish array of playlists which is used for zeus interaction.
 *
 * Arguments:
 *
@@ -17,8 +17,8 @@
 
 params [ "_hashmap" ];
 
-private _previousKeys = GETMGVAR(public_keys,[]);
+private _previousKeys = GETMGVAR(playlists_public,[]);
 
 private _newKeys = keys  _hashmap select { !( "_pool" in _x ) && { count (_hashMap get _x) > 0 } };
 
-if ( _previousKeys isNotEqualTo _newKeys ) then { SETMGVAR_PUBLIC(public_keys,_newKeys,true);};
+if ( _previousKeys isNotEqualTo _newKeys ) then { SETMGVAR_PUBLIC(playlists_public,_newKeys,true);};

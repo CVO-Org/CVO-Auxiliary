@@ -25,15 +25,15 @@ params [
 
 
 private _updateArray = false;
-private  _cat = missionNamespace getVariable [QGVAR(HM_playlists), "404"];
+private  _cat = missionNamespace getVariable [QGVAR(playlists), "404"];
 
 if (_cat isEqualType "") then {
     _cat = createHashMap;
-    missionNamespace setVariable [QGVAR(HM_playlists), _cat];
+    missionNamespace setVariable [QGVAR(playlists), _cat];
 };
 
 switch (_selectMode) do {
-
+ 
     case "NEW": {
         _args params [["_playlist", "", [""]]];
         _cat set [_playlist, [], true];
@@ -89,7 +89,6 @@ switch (_selectMode) do {
         ZRN_LOG_MSG(Invalid Mode Provided);
     };
 };
-
 
 // Update Public Array
 if (_updateArray) then { [_cat] call FUNC(publicArray) };

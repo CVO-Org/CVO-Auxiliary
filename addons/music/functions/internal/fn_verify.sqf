@@ -19,5 +19,8 @@ params [
     ["_track",        "",         [""]       ]
 ];
 
-private _return = isClass (configFile >> "CfgMusic" >> _track);
-_return
+switch (true) do {
+    case (isClass (configFile >> "CfgMusic" >> _track)): { true };
+    case (isClass (missionConfigFile >> "CfgMusic" >> _track)): { true };
+    default { false };
+}
