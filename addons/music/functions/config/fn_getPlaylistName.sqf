@@ -19,17 +19,12 @@ params [
     ["_className",        "",         [""]       ]
 ];
 
-private _hasMissionConfig = isClass ( missionConfigFile >> "CfgPlaylists" >> _className);
-private _hasConfig = isClass ( configFile >> "CfgPlaylists" >> _className);
-
 private _cfgPath = switch (true) do {
-    case (_hasMissionConfig): { missionConfigFile >> "CfgPlaylists" >> _className };
-    case (_hasConfig): { configFile >> "CfgPlaylists" >> _className };
+    case ( isClass ( missionConfigFile >> "CfgPlaylist" >> _className) ): { missionConfigFile >> "CfgPlaylist" >> _className };
+    case ( isClass ( configFile >> "CfgPlaylist" >> _className) ):        { configFile >> "CfgPlaylist" >> _className };
 };
 
 private _title = getText ( _cfgPath >> "name");
-
 if (_title == "") then {_title = _className};
 
-//ZRN_LOG_3(_hasMissionConfig,_hasConfig,_title);
-_title
+_title // return
