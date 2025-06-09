@@ -28,7 +28,7 @@ switch (_input) do {
     case "FADECLEAR": { [QGVAR(EH_request_server), _input] call CBA_fnc_serverEvent; };
     // Default case considers inputs as playlist
     default  { 
-        if ( _input in GVAR(public_keys) ) then {
+        if ( _input in GVAR(playlists_public) ) then {
             [QGVAR(EH_request_server), _input] call CBA_fnc_serverEvent;
         };
     };

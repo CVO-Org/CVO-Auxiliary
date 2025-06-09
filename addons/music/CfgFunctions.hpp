@@ -56,7 +56,6 @@ class CfgFunctions
         {
             file = PATH_TO_FUNC_SUB(remote);
             class request_server {};
-            class update_server {};
             class fade_client {};
             class play_client {};
         };

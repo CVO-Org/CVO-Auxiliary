@@ -19,6 +19,10 @@ params ["_target", "_player", "_actionParams"];
 
 private _actions = [];
 
+private _playlists = missionNamespace getVariable [QGVAR(playlists_public), nil];
+
+if (isNil "_playlists") exitWith { _actions };
+
 private _statement = {
     params ["_target", "_player", "_actionParams"];
     _actionParams params ["_mode"];
@@ -42,6 +46,8 @@ private _statement = {
 private _playlistChildren = {
 
     params ["_target", "_player", "_actionParams"];
+    _actionParams params ["_playlists"];
+    
     private _actions = [];
 
     private _statement = {
@@ -62,7 +68,7 @@ private _playlistChildren = {
         ] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_playlistAction, [],_target];            // Current result is saved in variable _x
         
-    } forEach GETMGVAR(public_keys,[]);
+    } forEach _playlists;
 
     _actions
 };
@@ -74,6 +80,7 @@ private _playlistNodeAction = [
     ,{}                                                                 //  * 3: Statement <CODE>
     ,{true}                                                             //  * 4: Condition <CODE>
     ,_playlistChildren                                                  //  * 5: Insert children code <CODE> (Optional)
+    ,[_playlists]
 ] call ace_interact_menu_fnc_createAction;
 
 _actions pushBack [_playlistNodeAction, [], _target]; // New action, it's children, and the action's target

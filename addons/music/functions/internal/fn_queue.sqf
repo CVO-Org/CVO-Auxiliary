@@ -2,7 +2,12 @@
 
 /*
 * Author: Zorn
-* This Function manages
+* Handles queue and returns the content of the queue based on input.
+*
+* ""       -> Returns the current Queue or [] if queue is NIL
+* "CLEAR"  -> NIL's the GVAR
+* "NEXT"   -> Will Return the 
+* Default  -> add input in queue
 *
 * Arguments:
 *
@@ -18,32 +23,28 @@
 // Continue here - queue doesnt seem to work
 
 params [
-    ["_input",        "",         [""]       ]
+    ["_input", "", [""]]
 ];
 
 ZRN_LOG_MSG_1(INIT,_input);
 
 private _return = "";
 
-// Handles Return
-// ""       -> Returns the current Queue or [] if queue is NIL
-// "CLEAR"  -> NIL's the GVAR
-// "NEXT"   -> Will Return the 
-// Default  -> Store input in queue
+
+
+private _queue = missionNamespace getVariable [QGVAR(queue), nil];
 
 switch (_input) do {
     case "": {
-        private _queue = GETMGVAR(queue,"404");
-        if {_queue == "404"} then {_queue = []};
+        if {isNil "_queue"} then {_queue = []};
         _return = _queue;
     };
     case "CLEAR": {
-        SETMGVAR(queue,nil);
+        GVAR(queue) = nil;
         _return = "CLEARED";
     };
     case "NEXT":  {
-        private _queue = GETMGVAR(queue,"404");
-        if (_queue isEqualTo "404") then {
+        if (isNil "_queue") then {
             _return = "";
         } else {
             _return = _queue deleteAt 0;
@@ -52,14 +53,15 @@ switch (_input) do {
 
     };
     default {
-        private _queue = GETMGVAR(queue,"404");
-        if (_queue isEqualTo "404") then {
+        if (isNil "_queue") then {
             _queue = [];
-            SETMGVAR(queue,_queue);
+            GVAR(queue) = _queue;
         };
         _queue pushBack _input;
         _return = "STORED";
     };
 };
+
 ZRN_LOG_1(_return);
+
 _return
