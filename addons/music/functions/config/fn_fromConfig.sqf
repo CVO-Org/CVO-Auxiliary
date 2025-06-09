@@ -19,6 +19,7 @@ params [
     [   "_cfg",  configNull, [configNull]    ]
 ];
 
+private _name = configName _cfg;
 private _dependencies = getArray (_cfg >> "dependencies");
 
 private _dependenciesLoaded = true;
@@ -26,7 +27,6 @@ private _dependenciesLoaded = true;
     if ( ! isClass (configFile >> "CfgPatches" >> _x ) ) exitWith { _dependencyLoaded = false };
 } forEach _dependencies;
 
-private _name = configName _cfg;
 if (!_dependencyLoaded) exitWith {ZRN_LOG_MSG_1(Dependency Missing,_name);};
 
 private _tracks = getArray (_cfg >> "tracks");
