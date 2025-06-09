@@ -2,7 +2,7 @@
 
 /*
 * Author: Zorn
-* Function to update and Broadcast the public array which is used for the ACE Interacion.
+* Function to update and publish array of playlists which is used for zeus interaction.
 *
 * Arguments:
 *

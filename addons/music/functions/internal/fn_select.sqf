@@ -20,11 +20,11 @@ params [
     ["_selectMode", "RANDOM",   [""]]
 ];
 
-private  _cat = missionNamespace getVariable [QGVAR(HM_playlists), "404"];
+private  _cat = missionNamespace getVariable [QGVAR(playlists), "404"];
 
 if (_cat isEqualType "") then {
     _cat = createHashMap;
-    missionNamespace setVariable [QGVAR(HM_playlists), _cat];
+    missionNamespace setVariable [QGVAR(playlists), _cat];
 };
 
 

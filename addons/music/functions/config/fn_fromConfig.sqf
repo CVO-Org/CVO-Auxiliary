@@ -32,3 +32,5 @@ if (!_dependencyLoaded) exitWith {ZRN_LOG_MSG_1(Dependency Missing,_name);};
 private _tracks = getArray (_cfg >> "tracks");
 
 ["ADD", [_name, _tracks]] call FUNC(catalog);
+
+nil

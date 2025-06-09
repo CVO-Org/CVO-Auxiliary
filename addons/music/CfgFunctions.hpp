@@ -8,6 +8,14 @@ class CfgFunctions
             class getTrackDuration {  };
         };
 
+        class action
+        {
+            file = PATH_TO_FUNC_SUB(action);
+            class init_zeusAction { postInit = 1; };
+            class createAction {};
+            class createActionChildren {};
+        };
+
         class config
         {
             file = PATH_TO_FUNC_SUB(config);
@@ -16,6 +24,7 @@ class CfgFunctions
             class fromConfig {};
             class getPlaylistName {};
             class getMusicName {};
+            class getTrackCfg {};
         };
 
         class diary

@@ -19,9 +19,11 @@ params [
     ["_className",        "",         [""]       ]
 ];
 
+
 private _cfgPath = switch (true) do {
-    case ( isClass ( missionConfigFile >> "CfgPlaylist" >> _className) ): { missionConfigFile >> "CfgPlaylist" >> _className };
-    case ( isClass ( configFile >> "CfgPlaylist" >> _className) ):        { configFile >> "CfgPlaylist" >> _className };
+    case ( isClass ( missionConfigFile >> "CfgPlaylists" >> _className) ): { missionConfigFile >> "CfgPlaylists" >> _className };
+    case ( isClass ( configFile >> "CfgPlaylists" >> _className) ):        { configFile >> "CfgPlaylists" >> _className };
+    default { configNull };
 };
 
 private _title = getText ( _cfgPath >> "name");
