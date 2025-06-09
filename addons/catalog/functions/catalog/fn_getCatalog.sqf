@@ -21,7 +21,7 @@ params [
 
 if (_catName isEqualTo "") exitWith { false };
 
-private _catalog = missionNamespace getVariable [ [QADDON,_catName] joinString "_", nil ];
+private _catalog = missionNamespace getVariable [ [QPREFIX,_catName] joinString "_", nil ];
 
 if (isNil "_catalog") then {
     _catalog = createHashMap;
