@@ -5,6 +5,12 @@
             <Key ID="STR_cvo_music_set_cat_title">
                 <English>CVO - Music</English>
             </Key>
+            <Key ID="STR_cvo_music_set_default_duration">
+                <English>Default Duration</English>
+            </Key>
+            <Key ID="STR_cvo_music_set_default_duration_desc">
+                <English>Default Duration of Song in seconds.\nWill be used when CfgMusic entry has no duration defined.</English>
+            </Key>
             <Key ID="STR_cvo_music_set_delayMin">
                 <English>Minimum Delay</English>
             </Key>
@@ -16,12 +22,6 @@
             </Key>
             <Key ID="STR_cvo_music_set_delayRnd_desc">
                 <English>Random Delay in seconds.\nCombined Delay will define pause before the next title in music queue will be played.</English>
-            </Key>
-            <Key ID="STR_cvo_music_set_default_duration">
-                <English>Default Duration</English>
-            </Key>
-            <Key ID="STR_cvo_music_set_default_duration_desc">
-                <English>Default Duration of Song in seconds.\nWill be used when CfgMusic entry has no duration defined.</English>
             </Key>
             <Key ID="STR_cvo_music_set_subcat_serverSetting">
                 <English>Server Settings</English>
