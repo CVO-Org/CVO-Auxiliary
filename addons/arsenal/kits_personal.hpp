@@ -15,10 +15,12 @@ class OverlordZorn: Base {
         class G_Balaclava_blk;
         class H_Beret_blk;
 
-        class B_LegStrapBag_black_F;
         class ACE_SpraypaintBlack;
         class ACE_SpraypaintWhite;
 
         class ACE_wirecutter;
+
+        class cvo_LegStrapBag_black;
+        class cvo_Kitbag_blk;
     };
 };

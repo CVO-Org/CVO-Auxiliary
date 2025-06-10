@@ -18,6 +18,7 @@ class CfgFunctions
 			class open {};
 			class update {};
 			class addAction {};
+            class addItemsFromKit_recursive {};
 		};
 
         class config

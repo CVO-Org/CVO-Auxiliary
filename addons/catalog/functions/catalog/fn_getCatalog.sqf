@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* ["arsenal_kits"] call cvo_catalog_Fnc_getCatalog
 *
 * Public: No
 */
@@ -21,11 +21,12 @@ params [
 
 if (_catName isEqualTo "") exitWith { false };
 
-private _catalog = missionNamespace getVariable [ [QPREFIX,_catName] joinString "_", nil ];
+private _catalogName = [QPREFIX,_catName] joinString "_";
+private _catalog = missionNamespace getVariable [ _catalogName , nil ];
 
 if (isNil "_catalog") then {
     _catalog = createHashMap;
-    missionNamespace setVariable [ [QADDON,_catName] joinString "_", _catalog ];
+    missionNamespace setVariable [ _catalogName, _catalog ];
 };
 
 _catalog

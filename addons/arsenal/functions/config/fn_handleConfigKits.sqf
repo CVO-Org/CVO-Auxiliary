@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* ['something', player] call cvo_arsenal_fnc_handleConfigKits
 *
 * Public: No
 */
