@@ -16,7 +16,7 @@ parameters = [
     "-noPauseAudio",
 ]
 
-[Debugger]
+[debugger]
 extends = "default"
 workshop = [
     "1645973522", # Intercept Minimal Dev
@@ -24,21 +24,21 @@ workshop = [
 ]
 
 
-[Stratis]
+[stratis]
 extends = "default"
 dlc = ["ws","rf"]
 mission = "Stratis.Stratis"
 
 
-[GreenMag]
+[greenmag]
 extends = "Stratis"
 workshop = ["2352603233"] # Greenmag
 
-[Test]
+[test]
 extends = "default"
 mission = "exec.VR"
 
-[VR]
+[vr]
 extends = "default"
 mission = "VR.VR"
 
@@ -50,22 +50,22 @@ mission = "airlift.VR"
 extends = "default"
 mission = "rockslide.Tanoa"
 
-[bigBoom]
+[bigboom]
 extends = "default"
 mission = "bigBoom.Altis"
 
-[ULA]
+[ula]
 extends = "default"
 mission = "ULA-Dedicated-MP-Test.stratis"
 
-[CSC]
+[csc]
 extends = "default"
 mission = "CSC.Altis"
 
-[Arsenal]
+[arsenal]
 extends = "default"
 mission = "Arsenal.Altis"
 
-[Deploy]
+[deploy]
 extends = "default"
 mission = "Deploy.Altis"
