@@ -17,10 +17,13 @@
 */
 if (!hasInterface) exitWith {};
 
+params ["_box"];
+
 private _finalKit = [];
 
 _finalKit append ( missionNamespace getVariable [QGVAR(api), []] );
 
-_finalKit append ( [] call FUNC(getItemsFromKits) );
+[_box, _finalkit] call ace_arsenal_fnc_addVirtualItems;
 
-_finalkit arrayIntersect _finalkit // Removes Duplicates and Return
+( [] call FUNC(getItemsFromKits) );
+

@@ -46,13 +46,6 @@ if (isNil QGVAR(local_box)) then {
 
 };
 
-// Retrieving the updated Arsenal List
-[
-	GVAR(local_box),
-	call FUNC(update),
-	false
-] call ace_arsenal_fnc_addVirtualItems;
-
 
 // Opens the Arsenal remotely for the players
 [
@@ -60,5 +53,7 @@ if (isNil QGVAR(local_box)) then {
 	ACE_player,
 	false
 ] call ace_arsenal_fnc_openBox;
+
+GVAR(local_box) call call FUNC(update);
 
 nil

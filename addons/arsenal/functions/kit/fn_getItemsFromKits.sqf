@@ -34,14 +34,6 @@ private _returnArray = [];
 
 private _kits_catalog = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
 
-/*class Base {
-    role = "";
-    id64 = "";
-    condition = "true";
-    addon_dependency = "";
-    class items {};
-    code = ""; // needs to return array
-};*/
 
 private _playerUID = getPlayerUID _unit;
 
