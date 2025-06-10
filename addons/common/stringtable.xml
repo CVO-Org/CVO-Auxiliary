@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="cvo-auxiliary">
     <Package name="Common">
-        <Container name="CBA Settings">
-            <Key ID="STR_cvo_common_set_cat_title">
-                <English>CVO - Common</English>
-            </Key>
-            <Key ID="STR_cvo_common_set_enable_dynamicGroups">
-                <English>Enable Dynamic Groups</English>
-            </Key>
-            <Key ID="STR_cvo_common_set_enable_dynamicGroups_desc">
-                <English>Enable BIS Dynamic Groups Menu on mission start when enabled.</English>
-            </Key>
-            <Key ID="STR_cvo_common_set_subcat_common">
-                <English>CVO - Common</English>
-            </Key>
-        </Container>
+        <Container name="CBA Settings"></Container>
     </Package>
 </Project>
