@@ -1,57 +1,57 @@
 // Base Kit - Accessible for Everyone
 class BaseKit_Medical: Base {
     class items {
-        class ACE_packingBandage;
-        class ACE_fieldDressing;
+        class ACE_packingBandage {};
+        class ACE_fieldDressing {};
 
-        class ACE_tourniquet;
-        class ACE_splint;
+        class ACE_tourniquet {};
+        class ACE_splint {};
 
-        class ACE_painkillers;
+        class ACE_painkillers {};
         
-        class ACE_epinephrine;
+        class ACE_epinephrine {};
 
-        class ACE_salineIV;
-        class ACE_salineIV_500;
-        class ACE_salineIV_250;
+        class ACE_salineIV {};
+        class ACE_salineIV_500 {};
+        class ACE_salineIV_250 {};
 
-        class ACE_personalAidKit;
+        class ACE_personalAidKit {};
 
-        class ACE_bodyBag;
+        class ACE_bodyBag {};
     };
 };
 
 class BaseKit_Utility: Base {
     class items {
-        class ace_marker_flags_red;
-        class ace_marker_flags_green;
+        class ace_marker_flags_red {};
+        class ace_marker_flags_green {};
 
-        class ACE_EntrenchingTool;
+        class ACE_EntrenchingTool {};
 
-        class ACE_SpraypaintGreen;
-        class ACE_SpraypaintRed;
+        class ACE_SpraypaintGreen {};
+        class ACE_SpraypaintRed {};
 
-        class ACE_PlottingBoard;
+        class ACE_PlottingBoard {};
 
-        class ACE_CableTie;
-        class acex_intelitems_notepad;
+        class ACE_CableTie {};
+        class acex_intelitems_notepad {};
     };
 };
 
 class BaseKit_Orientation: Base {
     class items {
-        class ACE_DAGR;
+        class ACE_DAGR {};
 
-        class ItemMap;
-        class ItemWatch;
+        class ItemMap {};
+        class ItemWatch {};
 
-        class ItemCompass;
-        class ACE_MapTools;
+        class ItemCompass {};
+        class ACE_MapTools {};
 
-        class ACE_Flashlight_KSF1;
-        class ACE_Chemlight_Shield;
+        class ACE_Flashlight_KSF1 {};
+        class ACE_Chemlight_Shield {};
 
-        class Chemlight_yellow;
+        class Chemlight_yellow {};
     };
 };
 
@@ -60,24 +60,24 @@ class BaseKit_Orientation: Base {
 class ACE_Hearing_Enabled: Base {
     condition = "missionNamespace getVariable ['ace_hearing_enableCombatdeafness', true]"; // Find right Setting Variable
     class items {
-        class ACE_EarPlugs;
+        class ACE_EarPlugs {};
     };
 };
 
 class ACE_Overheating_Enabled: Base {
     condition = "missionNamespace getVariable ['ace_overheating_enabled', true]";
     class items {
-        class ACE_WaterBottle;
-        class ACE_Canteen;
+        class ACE_WaterBottle {};
+        class ACE_Canteen {};
     };
 };
 
 class ACE_FieldRations_Enabled: Base {
     condition = "missionNamespace getVariable ['ace_field_rations_enabled', true]";
     class items {
-        class ACE_WaterBottle;
-        class ACE_Canteen;
-        class ACE_Humanitarian_Ration;
+        class ACE_WaterBottle {};
+        class ACE_Canteen {};
+        class ACE_Humanitarian_Ration {};
     };
 };
 
@@ -86,15 +86,15 @@ class ACE_FieldRations_Enabled: Base {
 class ImmersionCigs_Loaded: Base {
     addon_dependency = "cigs_core"; // Find right Addon to be checked
     class items {
-        class cigs_lighter;
-        class cigs_matches;
-        class cigs_voron_cigpack;
+        class cigs_lighter {};
+        class cigs_matches {};
+        class cigs_voron_cigpack {};
     };
 };
 
 class GreenMag_Loaded: Base {
     addon_dependency = "greenmag_main"; // Find right Addon to be checked
     class items {
-        class greenmag_item_speedloader;
+        class greenmag_item_speedloader {};
     };
 };
