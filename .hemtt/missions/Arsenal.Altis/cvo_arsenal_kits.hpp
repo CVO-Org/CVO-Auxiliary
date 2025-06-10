@@ -17,7 +17,7 @@
 *   condition            <STRING>   Code as String, needs to return boolean.                        <Default: ""> Empty String will skip check.             Example: condition = "missionNamespace getVariable ["cvo_nightFight", false]";
 *   code                 <STRING>   Code as String, needs to return array of classnames.            <Default: ""> Empty String will skip execution.         Example: code = "if (1 == 1) then { ["ace_banana"] } else { [] }";
 *   items <CLASS with SUBCLASSES>                                                                                                                           Example: class items {
-*   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                                                                                   |     class ace_banana;
+*   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                                                                                   |     class ace_banana {};
 *   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                                                                                   | };
 *
 */
@@ -33,9 +33,9 @@ class cvo_arsenal_kits
     // Base Kit - AK47 for everyone!
     class AK74: Base {
         class items {
-            class ACE_bodyBag;
-            class ACE_bodyBag_blue;
-            class ACE_bodyBag_white;
+            class ACE_bodyBag {};
+            class ACE_bodyBag_blue {};
+            class ACE_bodyBag_white {};
         };
     };
     
@@ -43,7 +43,7 @@ class cvo_arsenal_kits
     class BarrelsForMG: Base {
         role = "Machinegunner";
         class items {
-            class ACE_personalAidKit;
+            class ACE_personalAidKit {};
         };
     };
 
@@ -51,8 +51,8 @@ class cvo_arsenal_kits
     class something: Base {
         id64 = "123123";
         class items {
-            class ace_banana;
-            class ACE_suture;
+            class ace_banana {};
+            class ACE_suture {};
         };
     };
 };
