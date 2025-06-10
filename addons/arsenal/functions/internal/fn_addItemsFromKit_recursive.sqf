@@ -19,7 +19,7 @@ params [
     [ "_box",   objNull,                 [objNull]       ],
     [ "_unit",  ACE_player,              [objNull]       ],
     [ "_roles", [],                      [[]]            ],
-    [ "_id64",  getPlayerUID ACE_player, [[]]            ],
+    [ "_id64",  getPlayerUID ACE_player, [""]            ],
     [ "_kits",  createHashMap,           [createHashMap] ]
 ];
 
@@ -28,15 +28,17 @@ if (count _kits == 0) exitWith {};
 
 
 private _nextIteration = {
-    [FUNC(getItemsFromKit_recursive), [_unit, _roles, _id64, _kits]] call CBA_fnc_execNextFrame;
+    [FUNC(addItemsFromKit_recursive), [_box, _unit, _roles, _id64, _kits]] call CBA_fnc_execNextFrame;
 };
 
 private _returnArray = [];
 
-private _kitName = keys _kits select 0;
+private _kitKeys = keys _kits;
+_KitKeys sort true;
+private _kitName = _KitKeys select 0;
 private _kit = _kits deleteAt _kitName;
 
-diag_log format ['[CVO](debug)(fn_getItemsFromKits) _kitName: %1', _kitName];
+ZRN_LOG_1(_kitName);
 
 // #### Check if Setting for Default Kits
 private _settingName = [QADDON, _kitName] joinString "_";
@@ -68,7 +70,8 @@ if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" 
 };
 
 if (!_conditionResult) then { continue };
-diag_log format ['[CVO](debug)(fn_getItemsFromKits) Added: %1', _kitName];
+ZRN_LOG_MSG_1(Added:,_kitName);
+
 _returnArray append _items;
 
 

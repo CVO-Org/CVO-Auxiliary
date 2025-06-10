@@ -25,5 +25,20 @@ _finalKit append ( missionNamespace getVariable [QGVAR(api), []] );
 
 [_box, _finalkit] call ace_arsenal_fnc_addVirtualItems;
 
-( [] call FUNC(getItemsFromKits) );
+private _unit = ACE_player;
 
+// ## get Roles
+private _roles = [_unit] call FUNC(getUnitRoles);
+_roles = [_unit, _roles] call FUNC(rolesByTrait);
+systemChat format ['[CVO](ARSENAL) Player Roles: %1', _roles];
+
+// ## get PlayerUID
+private _id64 = getPlayerUID _unit;
+
+// ## Get Kits Catalog
+private _kits = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
+
+// Start Recursive Function
+[_box, _unit, _roles, _id64, _kits] call FUNC(addItemsFromKit_recursive);
+
+nil

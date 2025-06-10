@@ -32,7 +32,7 @@ systemChat format ['[CVO](ARSENAL) Player Roles: %1', _roles];
 
 private _returnArray = [];
 
-private _kits_catalog = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
+private _kits = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
 
 
 private _playerUID = getPlayerUID _unit;
@@ -42,7 +42,7 @@ private _playerUID = getPlayerUID _unit;
     private _kitName = _x;
     private _kit = _y;
 
-    diag_log format ['[CVO](debug)(fn_getItemsFromKits) _kitName: %1', _kitName];
+    ZRN_LOG_1(_kitName);
 
     // #### Check if Setting for Default Kits
     private _settingName = [QADDON, _kitName] joinString "_";
@@ -73,7 +73,7 @@ private _playerUID = getPlayerUID _unit;
     };
 
     if (!_conditionResult) then { continue };
-    diag_log format ['[CVO](debug)(fn_getItemsFromKits) Added: %1', _kitName];
+    ZRN_LOG_MSG_1(Added:,_kitName);
     _returnArray append _items;
 
 

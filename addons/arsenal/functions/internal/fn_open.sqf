@@ -42,7 +42,7 @@ if (isNil QGVAR(local_box)) then {
 } else {
 
 	// Removes current content	
-	[GVAR(local_box), true, false] call ace_arsenal_fnc_removeVirtualItems;
+	[GVAR(local_box), false, false] call ace_arsenal_fnc_initBox;
 
 };
 
@@ -54,6 +54,6 @@ if (isNil QGVAR(local_box)) then {
 	false
 ] call ace_arsenal_fnc_openBox;
 
-GVAR(local_box) call call FUNC(update);
+GVAR(local_box) call FUNC(update);
 
 nil
