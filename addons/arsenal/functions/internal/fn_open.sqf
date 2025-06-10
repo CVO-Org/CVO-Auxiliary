@@ -22,10 +22,10 @@ if (isNil QGVAR(local_box)) then {
 
 	player setVariable [QGVAR(local_box), _localBox, false];
 
-	[_localBox, false] 				call ace_dragging_fnc_setDraggable;			// Disables Dragging
-	[_localBox, false] 				call ace_dragging_fnc_setCarryable;			// Disables Carrying
+	[_localBox, false] 				call ace_dragging_fnc_setDraggable;			    // Disables Dragging
+	[_localBox, false] 				call ace_dragging_fnc_setCarryable;			    // Disables Carrying
 	[_localBox, -1] 					call ace_cargo_fnc_setSize;					// Disables Ace Cargo Loading
-	_localBox setVariable ["ace_cargo_noRename", true];							// Disables Ace Cargo Renaming
+	_localBox setVariable ["ace_cargo_noRename", true];							    // Disables Ace Cargo Renaming
 
 	hideObject _localBox;															// Hides the Object
 
@@ -36,10 +36,10 @@ if (isNil QGVAR(local_box)) then {
 
 	_localBox enableSimulation false;												// Disables Simulation
 
-
 	[_localBox, false, false] call ace_arsenal_fnc_initBox;
 
 } else {
+
 
 	// Removes current content	
 	[GVAR(local_box), false, false] call ace_arsenal_fnc_initBox;
