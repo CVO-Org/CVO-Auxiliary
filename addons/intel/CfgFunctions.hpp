@@ -7,16 +7,14 @@ class CfgFunctions
 			file = PATH_TO_FUNC;
 
 		};
-        class markerFlags
-        {
+        class markerFlags {
             file = PATH_TO_FUNC_SUB(markerFlags);
 
     	    class postInit { postInit = 1; };
     	    class createFlagMarker {};
     	    class findAllFlags {};
         };
-        class intel_objects
-        {
+        class intel_objects {
             file = PATH_TO_FUNC_SUB(intel_objects);
 
             class init { postInit = 1; };
@@ -34,6 +32,14 @@ class CfgFunctions
             class diary_getText {};
             class diary_setRecordText {};
             class diary_updateRecord {};
-        };        
+        };
+
+        class personalities {
+            file = PATH_TO_FUNC_SUB(personalities);
+
+            class createDiarySubject {};
+            class setPersonality {};
+
+        };
 	}; 
 };
