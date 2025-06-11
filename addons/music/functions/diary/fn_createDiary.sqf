@@ -19,7 +19,7 @@ if !(hasInterface) exitWith {};
 
 
 // Create Music Subject
-GVAR(subject) = player createDiarySubject [QGVAR(diary_subject), LLSTRING(diary_subject_title)];
+GVAR(subject) = player createDiarySubject [QGVAR(diary_subject), LLSTRING(diary_subject_title), QPATHTOEF(branding,data\Raven_Voron_256.paa)];
 
 // Create Initial Music History Entry
 ["INIT"] call CVO_MUSIC_fnc_updateHistory;
