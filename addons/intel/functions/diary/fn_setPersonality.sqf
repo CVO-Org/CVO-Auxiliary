@@ -38,35 +38,26 @@ params [
     [ "_text",      "",     [""]      ],
     [ "_icon",      "",     [""]      ],
     [ "_newName",   "",     [""]      ],
+    [ "_subject",   "",     ["", []]  ],
     [ "_target",    player, [objNull] ]
 ];
 
-["personalities", "Personalities"] call FUNC(createDiarySubject);
-
-private _currentRecords = _target allDiaryRecords "personalities";
-private _index = _currentRecords findIf { _x#1 == _name };
-
-if (_image isEqualTo "") then {_image = QPATHTOF(data\personalities_default.paa)};
-
-if (_newName != "") then { _name = _newName; };
-
-private _body = format ["
-<img width='250' image='%2' >></img>%1%1
-<font size=20 face='EtelkaMonospaceProBold' color='#0099ff'>%3</font>%1
-<font size=14 face='EtelkaMonospaceProBold' color='#0099ff'>%4</font>%1%1
-<font size=12 face='EtelkaMonospaceProBold'>%5</font>
-",
-"<br />",
-_image,
-_name,
-_subtitle,
-_text
-];
+_subject = [_subject, "Personalities"] select (_subject isEqualTo "");
 
 
-if (_index > -1) then {
-    private _record = _currentRecords select _index select 8;
-    _target setDiaryRecordText [["personalities", _record], [_name, _body, _icon]];
-} else {
-    _target createDiaryRecord ["personalities", [_name, _body, _icon]]
+switch (_image) do {
+    case "":     { _image = QPATHTOF(data\personalities_default.paa) };
+    case "NONE": { _image = "" };
 };
+
+[
+	_subject		
+	,_name
+	,_image
+	,_subtitle
+	,_text
+	,_icon
+	,_newName
+	,_target
+] call cvo_intel_fnc_setEntry;
+
