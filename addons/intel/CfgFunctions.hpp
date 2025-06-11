@@ -35,7 +35,7 @@ class CfgFunctions
         };
 
         class diary {
-            file = PATH_TO_FUNC_SUB(personalities);
+            file = PATH_TO_FUNC_SUB(diary);
 
             class createDiaryCategory {};
             class createDiarySubject {};
