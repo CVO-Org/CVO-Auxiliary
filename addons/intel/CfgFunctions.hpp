@@ -34,10 +34,13 @@ class CfgFunctions
             class diary_updateRecord {};
         };
 
-        class personalities {
+        class diary {
             file = PATH_TO_FUNC_SUB(personalities);
 
             class createDiarySubject {};
+
+            class setEntry {};
+
             class setPersonality {};
 
         };
