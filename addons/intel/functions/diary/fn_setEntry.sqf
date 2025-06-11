@@ -20,7 +20,7 @@ params [
     [ "_name",       "",         [""]      ],
     [ "_image",      "",         [""]      ],
     [ "_subtitle",   "",         [""]      ],
-    [ "_body",       "",         [""]      ],
+    [ "_text",       "",         [""]      ],
     [ "_icon",       "",         [""]      ],
     [ "_newName",    "",         [""]      ],
     [ "_target",     player,     [objNull] ]
