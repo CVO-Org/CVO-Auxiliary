@@ -15,6 +15,23 @@
 * Public: No
 */
 
+/* Copy Paste Template
+[
+    "Subject"      // Subject Display Name 
+    ,"Titel"       // Record Display Name
+    ,""            // Image inside the Entry. getMissionPath "\data\personalities.paa"
+    ,""            // Subtitles
+    ,"
+Block 1 Channel  1: 1-1 - Infantry
+<br/> Block 1 Channel  2: 1-2 - Infantry
+"                   // Text Body
+    // ,_icon       // Image next to the entry Title (small flags for example)
+    // ,_newName
+    // ,_target
+] call cvo_intel_fnc_setEntry;
+
+*/
+
 params [
     [ "_subject",    "",         ["", []]  ],
     [ "_name",       "",         [""]      ],
