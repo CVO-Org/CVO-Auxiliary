@@ -76,7 +76,7 @@ private _body = format ["
 %4
 <font size=%1 face='EtelkaMonospaceProBold'>%5</font>
 ",
-missionNamespace getVariable [QSET(size_body),10],
+missionNamespace getVariable [QSET(size_body),11],
 _name,
 _image,
 _subtitle,
