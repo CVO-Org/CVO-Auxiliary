@@ -13,40 +13,59 @@
 * Public: No
 */
 
-[
-    _subject        
-    ,_name
-    ,_image         // Image inside the Entry. getMissionPath "\data\personalities.paa"
-    ,_subtitle
-    ,_text
-    // ,_icon       // Image next to the entry Title (small flags for example)
-    // ,_newName
-    // ,_target
-] call cvo_intel_fnc_setEntry;
-
-/*
-[
-	"ENEMY FORCES"		
-	,"AAF Loyalists"
-	,""		   // getMissionPath "\data\personalities.paa"
-	,"Altis Armed Forces Loyalists"		   // _subtitle
-	,"There are rumours that a hardcore group of ex-AAF veterans still hold out, hoping to one day bring Arkanteros back into power."		   // _text
-	,""
-	// ,_newName
-	// ,_target
-] call cvo_intel_fnc_setEntry;
-
-*/
-
 params [
-    ["_subject",    "",         ["", []]    ],
-    ["_name",       "",         [""]        ],
-    ["_image",      "",         [""]        ],
-    ["_subtitle",   "",         [""]        ],
-    ["_body",       "",         [""]        ],
-    ["_newName",    "",        [""]         ],
-    ["_target",     player,     [objNull]   ]
+    [ "_subject",    "",         ["", []]  ],
+    [ "_name",       "",         [""]      ],
+    [ "_image",      "",         [""]      ],
+    [ "_subtitle",   "",         [""]      ],
+    [ "_body",       "",         [""]      ],
+    [ "_icon",       "",         [""]      ],
+    [ "_newName",    "",         [""]      ],
+    [ "_target",     player,     [objNull] ]
 ];
 
 if (_subject == "") exitWith {};
 
+if (_subject isEqualType "") then { _subject = [_subject] };
+
+_subject params ["_subjectDisplay", ["_subjectIcon", "", [""]]];
+_subjectID = toLowerANSI _subjectDisplay splitString " " joinString "_";
+[_subjectID, _subjectDisplay, _subjectIcon] call FUNC(createDiarySubject);
+
+
+private _currentRecords = _target allDiaryRecords _subjectID;
+private _index = _currentRecords findIf { _x#1 == _name };
+
+
+if (_newName != "") then { _name = _newName; };
+
+// Handle Default Image
+private _img_width = missionNamespace getVariable [QSET(img_width), 350];
+if (_image isEqualTo "") then {"<br/>"} else {
+    _image = format ["<img width='%1' image='%2' >></img><br/><br/>", _img_width, _image]
+};
+
+if (_subtitle isEqualTo "") then {"<br/>"} else {
+    _subtitle = format ["<font size=14 face='EtelkaMonospaceProBold' color='#0099ff'>%1</font><br/><br/>", _subtitle]
+};
+
+
+private _body = format ["
+<br/><font size=20 face='EtelkaMonospaceProBold' color='#0099ff'>%1</font><br/>
+%2
+%3
+<font size=12 face='EtelkaMonospaceProBold'>%4</font>
+",
+_name,
+_image,
+_subtitle,
+_text
+];
+
+
+if (_index > -1) then {
+    private _record = _currentRecords select _index select 8;
+    _target setDiaryRecordText [[_subjectID, _record], [_name, _body, _icon]];
+} else {
+    _target createDiaryRecord [_subjectID, [_name, _body, _icon]]
+};
