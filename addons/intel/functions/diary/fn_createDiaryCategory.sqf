@@ -43,9 +43,9 @@ if (_title != "") then {
     private _isOdd = _remaining / 2 % 1 == 1;
     private _pre = "";
     private _post = "";
-    for "_i" from 1 to ceil _remaining do {
+    for "_i" from 1 to (ceil _remaining / 2) do {
         _pre = _pre + "=";
-        if (_isOdd && {_i == ceil _remaining}) then { continue };
+        if (_isOdd && {_i == (ceil _remaining / 2)}) then { continue };
         _post = _post + "=";
     };
 
