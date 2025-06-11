@@ -1,3 +1,5 @@
+#include "../../script_component.hpp"
+
 /*
 * Author: Zorn
 * Function to create/update an entry within a given subject.
@@ -30,6 +32,7 @@ if (_subject isEqualType "") then { _subject = [_subject] };
 
 _subject params ["_subjectDisplay", ["_subjectIcon", "", [""]]];
 _subjectID = toLowerANSI _subjectDisplay splitString " " joinString "_";
+
 [_subjectID, _subjectDisplay, _subjectIcon] call FUNC(createDiarySubject);
 
 
