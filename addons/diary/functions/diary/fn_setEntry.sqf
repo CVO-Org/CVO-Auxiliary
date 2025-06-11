@@ -61,21 +61,22 @@ if (_newName != "") then { _name = _newName; };
 
 // Handle Default Image
 private _img_width = missionNamespace getVariable [QSET(img_width), 350];
-if (_image isEqualTo "") then {"<br/>"} else {
+if (_image isEqualTo "") then {"<br/><br/>"} else {
     _image = format ["<img width='%1' image='%2' >></img><br/><br/>", _img_width, _image]
 };
 
-if (_subtitle isEqualTo "") then {"<br/>"} else {
+if (_subtitle isEqualTo "") then {"<br/><br/>"} else {
     _subtitle = format ["<font size=14 face='EtelkaMonospaceProBold' color='#0099ff'>%1</font><br/><br/>", _subtitle]
 };
 
 
 private _body = format ["
-<br/><font size=20 face='EtelkaMonospaceProBold' color='#0099ff'>%1</font><br/>
-%2
+<br/><font size=20 face='EtelkaMonospaceProBold' color='#0099ff'>%2</font><br/>
 %3
-<font size=12 face='EtelkaMonospaceProBold'>%4</font>
+%4
+<font size=%1 face='EtelkaMonospaceProBold'>%5</font>
 ",
+missionNamespace getVariable [QSET(size_body),11],
 _name,
 _image,
 _subtitle,
@@ -85,7 +86,9 @@ _text
 
 if (_index > -1) then {
     private _record = _currentRecords select _index select 8;
+    ZRN_LOG_MSG_2(Entry updated,_name,_subjectID);
     _target setDiaryRecordText [[_subjectID, _record], [_name, _body, _icon]];
 } else {
-    _target createDiaryRecord [_subjectID, [_name, _body, _icon]]
+    ZRN_LOG_MSG_2(Entry created,_name,_subjectID);
+    _target createDiaryRecord [_subjectID, [_name, _body, _icon]];
 };

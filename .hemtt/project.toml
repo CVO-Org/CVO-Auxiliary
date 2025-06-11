@@ -14,9 +14,7 @@ include = [
     "mod.cpp",      # These files are copied to the build directory by default
     "meta.cpp",     # They do not need to be added to your list
     "LICENSE",
-    "/img/*.paa",
-    "logo_ca.paa",
-    "logo_co.paa",
+    "img/*.paa",
     "*.bikey"
 ]
 exclude = [

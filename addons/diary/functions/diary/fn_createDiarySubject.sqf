@@ -29,4 +29,6 @@ if (_subject in _subjects) exitWith {};
 
 _target createDiarySubject [_subject, _displayName, _picture];
 
+ZRN_LOG_MSG_1(Subject created:,_subject);
+
 nil
