@@ -27,7 +27,6 @@ private _subjects =  allDiarySubjects _target apply { _x#0 };
 
 if (_subject in _subjects) exitWith {};
 
-
-_target createDiarySubject [_subjectTitle, _displayName, _picture];
+_target createDiarySubject [_subject, _displayName, _picture];
 
 nil
