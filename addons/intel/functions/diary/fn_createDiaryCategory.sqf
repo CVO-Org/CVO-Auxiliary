@@ -10,37 +10,40 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* ["", "CVO", " "] call prefix_component_fnc_functionname
 *
 * Public: No
 */
 
 params [
-    ["_title",  "",     [""]      ],
-    ["_icon",   "",     [""]      ],
-    ["_addLine", false, [""]      ],
-    ["_target", player, [objNull] ]
+    ["_title",   "",     [""]      ],
+    ["_icon",    "",     [""]      ],
+    ["_addLine", "",     [""]      ],
+    ["_target",  player, [objNull] ]
 ];
 
 #define MAXCHAR 18
-#define CHAR Q(#)
 
 private _index = missionNamespace getVariable [QGVAR(diary_spacer_index), 0];
 
+if (_icon == "CVO") then { _icon = "zrn\cvo\addons\branding\data\Raven_Voron_256.paa"; };
+
+ private _isOnlySpacer = (_title == "");
 // Create Empty Spacer
+
 [
     ["cvo", "spacer", _index ] joinString "_"
     ,""
-    ,""
+    ,["",_icon] select _isOnlySpacer
     ,_target
 ] call FUNC(createDiarySubject);
 INC(_index);
 
 // If title is defined, also create the "category Title" spacer
-if (_title != "") then {
+if (!_isOnlySpacer) then {
     _title = toUpper _title;
     
-    private _str = if (_addLine isEqualType "") then {
+    private _str = if (_addLine isNotEqualTo "") then {
         private _max = MAXCHAR;
         private _remaining = _max - count _title - 2;
         private _str = "";
