@@ -59,5 +59,5 @@ switch (_image) do {
 	,_icon
 	,_newName
 	,_target
-] call cvo_intel_fnc_setEntry;
+] call FUNC(setEntry);
 
