@@ -53,7 +53,7 @@ class CfgFunctions
         class vehicles {
             file = PATH_TO_FUNC_SUB(vehicles);
             
-            class moveUnitsIntoVehicle {};
+            class moveUnitsIntoVehicles {};
             class secureVehicle {};
         };
         
