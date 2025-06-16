@@ -9,12 +9,6 @@ class CfgFunctions
             class preInit { preInit = 1; };
 		};
 
-        class autoInit {
-            file = PATH_TO_FUNC_SUB(autoInit);
-            
-            class antiFlubber { postInit = 1; };    // Antiflubber, controlled by description.ext: enableAntiFlubber = 1;
-        };       
-
         class code {
             file = PATH_TO_FUNC_SUB(code);
 
