@@ -1,3 +1,5 @@
+#include "../../script_component.hpp"
+
 /*
 * Author: Zorn
 * Creates Waypoints to Slingload slingloadable cargo to an destination and then returns to a waiting point.

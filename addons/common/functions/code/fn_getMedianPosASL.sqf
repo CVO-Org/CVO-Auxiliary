@@ -1,3 +1,5 @@
+#include "../../script_component.hpp"
+
 /*
 * Author: Zorn - Jenna
 * returns middle position of all objects within a layer

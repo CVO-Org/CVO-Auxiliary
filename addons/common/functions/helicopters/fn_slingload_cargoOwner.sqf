@@ -1,3 +1,5 @@
+#include "../../script_component.hpp"
+
 /*
 * Author: Zorn
 * Adds eventhandler to the helicopter to change the owner of sling loaded cargo.
@@ -28,24 +30,3 @@ if (isServer) then {
         _cargo setOwner 2;
     }];
 };
-
-
-
-
-
-/*
-
-if (isServer) then {
-    this addEventHandler ["RopeAttach", {
-        params ["_heli", "_rope", "_cargo"];
-        _cargo setOwner (owner driver _heli);
-    }];
-
-    this addEventHandler ["RopeBreak", {
-        params ["_heli", "_rope", "_cargo"];
-        _cargo setOwner 2;
-    }];
-};
-
-
-*/
