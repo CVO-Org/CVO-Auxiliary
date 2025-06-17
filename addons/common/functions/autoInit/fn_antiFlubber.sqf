@@ -15,16 +15,16 @@ diag_log "[CVO](debug)(fn_antiFlubber) Enabled!";
 
 if (hasInterface) then {
 
-	waitUntil {!isNull player && isplayer player};
+	waitUntil {!isNull player && isPlayer player};
 	if (isNil "DM_Debug") then {DM_Debug = false;};
 	if (DM_Debug) then {(format["%1 has joined and is running antiFlubber.sqf", (name player)]) remoteExec ["systemChat", -2];};
 
-	player addEventHandler ["fired",
+	player addEventHandler ["Fired",
 	{
 		
 		
 		comment "Check if the description / tooltip of the grenade magazine has the word 'smoke' in it. as far as I can tell all the smoke grenades we have fulfil this criteria";
-		if !(["smoke", (getText (configfile >> "CfgMagazines" >> (_this select 5) >> "descriptionShort"))] call BIS_fnc_inString) exitWith {if (DM_Debug) then {systemChat "antiFlubber - You fired a non 'smoke' weapon.";};};
+		if !(["smoke", (getText (configFile >> "CfgMagazines" >> (_this select 5) >> "descriptionShort"))] call BIS_fnc_inString) exitWith {if (DM_Debug) then {systemChat "antiFlubber - You fired a non 'smoke' weapon.";};};
 		comment "Fired event handler goes off even when you throw something. Check if we are throwing something or the hand smoke will hit an invisible 0.5m wall whenever you throw it.";
 		if ((_this select 1) == "throw") exitWith {if (DM_Debug) then {systemChat "antiFlubber - You Threw a Smoke Grenade.";};};
 		 comment "CharlieG smoke rounds set the script off, do a quick check to see if we are firing the smoke rocket. The russian fast smoke grenade does not need to be stopped.";
