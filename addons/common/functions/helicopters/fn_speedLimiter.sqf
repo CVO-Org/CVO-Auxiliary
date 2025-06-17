@@ -31,7 +31,7 @@ private _parameters = [_heli, _tgt];
 private _delay = 0;
 
 private _condition = {
-    ! isNil QGVAR(API_disableSpeedLimiter)
+    isNil QGVAR(API_disableSpeedLimiter)
     &&
     {
         alive (_this#0) && { (getPos (_this#0) select 2) > 5 };
@@ -42,7 +42,6 @@ private _codeToRun = {
     params ["_heli", "_tgt"];
     private _limit = linearConversion [3000, 500, _heli distance2D _tgt, 200, 50, true];
     _heli limitSpeed _limit;
-    driver _heli limitSpeed _limit;
     if ( is3DENPreview && { ace_player in _heli } ) then { systemChat format ["Speed: %1/%2",floor speed _heli, floor _limit] };
 };
 
