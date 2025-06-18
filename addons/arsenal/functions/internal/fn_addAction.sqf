@@ -25,7 +25,7 @@ params [
 
 ZRN_LOG_MSG_1(INIT,_objects);
 
-if (_objects isEqualType []) then { _objects = [_objects]; };
+if (_objects isEqualType objNull) then { _objects = [_objects]; };
 
 _objects = flatten (_objects select { _x isEqualType objNull } select { !isNull _x } select { !isNil "_x" });
 
