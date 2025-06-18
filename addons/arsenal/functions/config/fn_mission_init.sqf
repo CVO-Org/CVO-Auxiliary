@@ -22,8 +22,16 @@ private _objects =  getArray (missionConfigFile >> QGVAR(kits) >> "object_variab
 
 if (_layerName isNotEqualTo "") then { _objects append (getMissionLayerEntities _layerName # 0); };
 
-diag_log format ['[CVO](debug)(fn_mission_init) _layerName: %1 - _objects: %2', _layerName , _objects];
+_objects = _objects select { !isNull _x };
 
-[QGVAR(EH_addAction), [_objects]] call CBA_fnc_globalEventJIP;
+ZRN_LOG_MSG_2(Mission Config - Init,_layerName,_objects);
+
+{
+    [
+        [QGVAR(EH_addAction), _x] call CBA_fnc_globalEventJIP,
+        _x
+    ] call CBA_fnc_removeGlobalEventJIP;
+
+} forEach _objects;
 
 nil

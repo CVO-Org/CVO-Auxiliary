@@ -15,20 +15,19 @@
 * Public: No
 */
 
-// RemoteExec Event
-[QGVAR(EH_remote), {
-    
-    private _code = switch (typeName (_this#1)) do {
-        case "STRING": { (_this#0) call FUNC(convertStringCode) };
-        case "CODE": { _this#2 };
-        default { {} };
-    };
-    
-    _this#0 call _code;
+[
+    QGVAR(EH_remote),
+    {
+        params ["_args", "_code"];
+        _code = switch (typeName (_code)) do {
+            case "STRING": { (_code) call FUNC(convertStringCode) };
+            case "CODE": { _code };
+            default { {} };
+        };
+        _args call _code;
+    }
+] call CBA_fnc_addEventHandler;
 
-}] call CBA_fnc_addEventHandler;
-
-// fn_toggleLayerAI CBA Event
 [
     QGVAR(eh_toggleAIfeature),
     {
@@ -53,11 +52,8 @@
         };
 
         [_units, _mode, _features,_recursiveCode] call _recursiveCode;
-
     }
 ] call CBA_fnc_addEventHandler;
-
-// Move Unit into Vehicle
 
 [
     QGVAR(EH_UnitIntoVehicle), // eventname
@@ -70,5 +66,4 @@
         _unit moveInCargo [_vic, _index, false];
         _unit assignAsCargoIndex [_vic, _index];
     }
-
 ] call CBA_fnc_addEventHandler;

@@ -17,25 +17,29 @@
 * Public: Yes
 */
 
+if !(hasInterface) exitWith {};
+
 params [
-    ["_objects", "", [objNull, []] ]
+    ["_objects", objNull, [objNull, []] ]
 ];
 
-diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
+ZRN_LOG_MSG_1(INIT,_objects);
 
-if (_objects isEqualTo "") exitWith {};
+if (_objects isEqualType []) then { _objects = [_objects]; };
 
-_objects = switch (typeName _objects) do {
-    case "OBJECT": { [_objects] };
-    case "ARRAY": { flatten _objects select { _x isEqualType objNull } select { ! isNull _x } select { ! isNil "_x" } };
-};
+_objects = flatten _objects select { _x isEqualType objNull } select { !isNull _x } select { !isNil "_x" };
 
 private _action = [
-	QGVAR(open),					// ActionName
-	"Open the Arsenal",				// Name of the Action shown in the menu
-	"\A3\ui_f\data\igui\cfg\simpleTasks\types\rifle_ca.paa",		// Icon
-	FUNC(open),						// Statement (The actual Code)
-	{true}							// condition
+	QGVAR(open)						// ActionName
+	,"Open the Arsenal"				// Name of the Action shown in the menu
+	,"\A3\ui_f\data\igui\cfg\simpleTasks\types\rifle_ca.paa"		// Icon
+	,FUNC(open)						// Statement (The actual Code)
+	,{true}							// condition
+	,{}								// child
+	,[]								// params
+	,[0,0,0]						// offset
+	,3								// range
+	,[false,false,false,false,true]	// line of sight check disabled
 ] call ace_interact_menu_fnc_createAction;
 
 {
@@ -48,6 +52,6 @@ private _action = [
 } forEach _objects;
 
 
-diag_log format ['[CVO](debug)(fn_addAction) count _objects: %1', count _objects];
+ZRN_LOG_MSG_1(Added Action to:,_objects);
 
 nil
