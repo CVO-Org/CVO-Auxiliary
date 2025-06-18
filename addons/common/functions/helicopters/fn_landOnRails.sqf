@@ -19,7 +19,8 @@ params [
     [ "_heli",       objNull, [objNull]      ],
     [ "_lz",         objNull, [objNull]      ],
     [ "_duration",   15,      [0]            ],
-    [ "_forceDur",   120,     [0]            ]
+    [ "_forceDur",   120,     [0]            ],
+    [ "_forceDis",   true,    [true]         ]
 ];
 
 if (isNull _heli || isNull _lz) exitWith { systemChat "Object not provided"; };
@@ -56,7 +57,6 @@ private _releaseTime = _endTime + _forceDur;
 private _codeArgs = [_heli, _positions, _lz, _startVectorUp, _startVectorDir, _endVectorDir];
 private _parameters = [_startTime, _endTime, _codeArgs, _releaseTime, _duration];
 
-
 private _condition = { _this#3 > CBA_missionTime };
 
 private _codeToRun = {
@@ -66,7 +66,6 @@ private _codeToRun = {
     private _progress = linearConversion [_startTime, _endTime, CBA_missionTime, 0, 1, true];
 
     private _newPos = _progress bezierInterpolation _positions;
-
 
     _heli setPosASL _newPos;
     
@@ -101,3 +100,18 @@ private _delay = 0;
     };
 }, _delay, [_codeToRun, _parameters, _exitCode, _condition]] call CBA_fnc_addPerFrameHandler;
 
+
+
+// handle forced dismount
+
+if (_forceDis) then {
+    [
+        {
+            getPos _this # 2 < 3
+        },
+        {
+            [FUNC(orderlyDismount), _this, 2] call CBA_fnc_waitAndExecute;
+        },
+        _heli
+    ] call CBA_fnc_waitUntilAndExecute;
+};

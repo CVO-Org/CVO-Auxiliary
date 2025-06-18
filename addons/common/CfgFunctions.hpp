@@ -61,6 +61,8 @@ class CfgFunctions
             
             class moveUnitsIntoVehicles {};
             class secureVehicle {};
+
+            class orderlyDismount {};
         };
         
     };
