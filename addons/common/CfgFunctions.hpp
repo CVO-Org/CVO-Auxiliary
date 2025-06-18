@@ -54,6 +54,8 @@ class CfgFunctions
             class fullHeal {};
             class holdaction_tp {};
             class makeCosmetic {};
+
+            class subtitles {};
         };
 
         class vehicles {
