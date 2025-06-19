@@ -17,7 +17,8 @@
 
 params [
     [ "_vehicle", objNull, [objNull] ],
-    [ "_delay",   0.9,     [0]       ]
+    [ "_delay",   0.9,     [0]       ],
+    [ "_offset",  "",      [[]], [2] ]
 ];
 
 ZRN_LOG_1(_this);
@@ -29,10 +30,18 @@ _units append (fullCrew [_vehicle, "cargo"]);
 
 _units = _units apply { _x#0 };
 
-ZRN_LOG_MSG_2(INIT,_vehicle,_units);
+if (_offset isNotEqualTo "") then {
+    _offset params ["_dis", "_dir"];
+    _offset = _vehicle getRelPos [_dis, _dir];
+};
+
+
+
+// ZRN_LOG_MSG_3(INIT,_vehicle,_units,_offset);
+
 
 private _recCode = {
-    params ["_units", "_recCode", "_delay"];
+    params ["_units", "_recCode", "_delay", "_offset"];
 
     private _unit = _units deleteAt 0;
     
@@ -41,17 +50,27 @@ private _recCode = {
         [
             _unit,
             {
-                moveOut _this;
-                unassignVehicle _this;
-                [_this] allowGetIn false;
+                params ["_unit"];
+                
+                _unit allowDamage false;
+                
+                moveOut _unit;
+                unassignVehicle _unit;
+                [_unit] allowGetIn false;
+
+                if (_offset isNotEqualTo "") then {
+                    _unit setVehiclePosition [_offset, [], 5];
+                };
+
+                [{ _this allowDamage true; }, _unit, 2] call CBA_fnc_waitAndExecute;
             }
         ],
-        _unit
+        [_unit, _offset]
     ] call CBA_fnc_targetEvent;
 
     if (_units isEqualTo []) exitWith {};
 
-    [_recCode, [_units, _recCode, _delay], _delay] call CBA_fnc_waitAndExecute;
+    [_recCode, [_units, _recCode, _delay, _offset], _delay] call CBA_fnc_waitAndExecute;
 };
 
-[_units, _recCode, _delay] call _recCode;
+[_units, _recCode, _delay, _offset] call _recCode;
