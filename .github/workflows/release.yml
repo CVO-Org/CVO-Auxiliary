@@ -16,7 +16,7 @@ name: Release
 
 env:
   FOLDER: '@cvo_aux'
-  WORKSHOPID: '3037257908'
+  WORKSHOPID: '3504300122'
 
 on:
   release:
