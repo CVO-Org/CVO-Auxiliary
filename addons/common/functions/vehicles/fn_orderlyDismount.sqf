@@ -59,7 +59,7 @@ private _recCode = {
                 [_unit] allowGetIn false;
 
                 if !(_offset isEqualType "") then {
-                    _unit setVehiclePosition [_offset, [], 5];
+                    _unit setVehiclePosition [_offset, [], 3];
                 };
 
                 [{ _this allowDamage true; }, _unit, 2] call CBA_fnc_waitAndExecute;
