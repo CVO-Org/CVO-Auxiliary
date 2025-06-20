@@ -20,7 +20,8 @@ params [
     [ "_lz",         objNull, [objNull]      ],
     [ "_duration",   15,      [0]            ],
     [ "_forceDur",   120,     [0]            ],
-    [ "_forceDis",   true,    [true]         ]
+    [ "_forceDis",   true,    [true]         ],
+    [ "_offset",     "",      ["", []], [2]  ]
 ];
 
 if (isNull _heli || isNull _lz) exitWith { systemChat "Object not provided"; };
@@ -107,11 +108,11 @@ private _delay = 0;
 if (_forceDis) then {
     [
         {
-            getPos _this # 2 < 3
+            getPos (_this#0) # 2 < 3
         },
         {
             [FUNC(orderlyDismount), _this, 2] call CBA_fnc_waitAndExecute;
         },
-        _heli
+        [_heli, _offset]
     ] call CBA_fnc_waitUntilAndExecute;
 };

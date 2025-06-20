@@ -17,8 +17,8 @@
 
 params [
     [ "_vehicle", objNull, [objNull] ],
-    [ "_delay",   0.9,     [0]       ],
-    [ "_offset",  "",      [[]], [2] ]
+    [ "_offset",  "",      ["", []], [2] ],
+    [ "_delay",   0.9,     [0]       ]
 ];
 
 ZRN_LOG_1(_this);
@@ -50,7 +50,7 @@ private _recCode = {
         [
             _unit,
             {
-                params ["_unit"];
+                params ["_unit", "_offset"];
                 
                 _unit allowDamage false;
                 
@@ -58,7 +58,7 @@ private _recCode = {
                 unassignVehicle _unit;
                 [_unit] allowGetIn false;
 
-                if (_offset isNotEqualTo "") then {
+                if !(_offset isEqualType "") then {
                     _unit setVehiclePosition [_offset, [], 5];
                 };
 

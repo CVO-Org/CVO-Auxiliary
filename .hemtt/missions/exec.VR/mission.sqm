@@ -12,14 +12,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=8;
+		nextID=9;
 	};
 	class Camera
 	{
-		pos[]={-45.09684,110.67404,-88.062462};
-		dir[]={-0.84126753,-0.33061826,0.42774889};
-		up[]={-0.29471099,0.9437629,0.14984824};
-		aside[]={0.45323589,1.6295235e-07,0.89139414};
+		pos[]={-82.170654,84.980453,-198.65385};
+		dir[]={-0.38766786,-0.26192722,0.88380539};
+		up[]={-0.10521418,0.96508873,0.23986737};
+		aside[]={0.9157784,-1.3702083e-07,0.4016915};
 	};
 };
 binarizationWanted=0;
@@ -2974,7 +2974,7 @@ class Mission
 			flags=2;
 			class Attributes
 			{
-				init="[this, lz] call cvo_common_fnc_landonrails;";
+				init="[this, lz, 15, 30, true, [90,5]] call cvo_common_fnc_landonrails;";
 				name="heli";
 			};
 			id=278;
