@@ -21,7 +21,8 @@ params [
     [ "_duration",   15,      [0]            ],
     [ "_forceDur",   120,     [0]            ],
     [ "_forceDis",   true,    [true]         ],
-    [ "_offset",     "",      ["", []], [2]  ]
+    [ "_offset",     "",      ["", []], [2]  ],
+    [ "_engineOff",  true,   [0, false]      ]
 ];
 
 if (isNull _heli || isNull _lz) exitWith { systemChat "Object not provided"; };
@@ -41,6 +42,9 @@ private _positions = [_startPos, _intermediary, _endPos];
 private _startVectorUp = vectorUp _heli;
 private _startVectorDir = vectorDir _heli;
 private _endVectorDir = (getPosASL _heli vectorMultiply [1,1,0]) vectorFromTo (getPosASL _lz vectorMultiply [1,1,0]);
+
+if (_engineOff isEqualTo true) then { _engineOff = 0 };
+if (_engineOff isEqualType 0) then { _heli setVariable ["landOnRails_engineOff", _engineOff, true]};
 
 
 /*
@@ -83,8 +87,14 @@ private _exitCode = {
 
     [QGVAR(forcedLandingDone), [_heli, _lz]] call CBA_fnc_localEvent;
 
-    [ { _this#0 engineOn false; } , [_heli], 10] call CBA_fnc_waitAndExecute;
-
+    private _engineOffDelay = _heli getVariable ["landOnRails_engineOff", nil];
+    if !(isNil "_engineOffDelay") then {
+        if (_engineOffDelay > 0) then {
+            [ { _this engineOn false; } , _heli, _engineOffDelay] call CBA_fnc_waitAndExecute;
+        } else {
+            [{ _this engineOn false; } , _heli] call CBA_fnc_execNextFrame;
+        };
+    };
 };
 
 private _delay = 0;

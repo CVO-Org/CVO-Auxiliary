@@ -23,7 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="exec";
+sourceName="~exec";
 addons[]=
 {
 	"A3_Characters_F",

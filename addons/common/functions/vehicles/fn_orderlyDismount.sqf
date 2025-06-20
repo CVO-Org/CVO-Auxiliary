@@ -48,7 +48,7 @@ private _recCode = {
     [
         QGVAR(EH_remote),
         [
-            _unit,
+            [_unit, _offset], // Params for the remote EH code
             {
                 params ["_unit", "_offset"];
                 
@@ -63,9 +63,9 @@ private _recCode = {
                 };
 
                 [{ _this allowDamage true; }, _unit, 2] call CBA_fnc_waitAndExecute;
-            }
-        ],
-        [_unit, _offset]
+            }   // remote EH Code
+        ], // Params for the Event
+        _unit   // Target
     ] call CBA_fnc_targetEvent;
 
     if (_units isEqualTo []) exitWith {};
