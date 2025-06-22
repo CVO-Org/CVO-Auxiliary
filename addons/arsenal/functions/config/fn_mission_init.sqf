@@ -15,23 +15,30 @@
 * Public: No
 */
 
-if !(isServer) exitWith {};
+diag_log "[CVO](debug)(fn_mission_init)  Pre isServer Exit ";
+
+if (!isServer) exitWith {};
+
+diag_log "[CVO](debug)(fn_mission_init) Post isServer Exit ";
 
 private _layerName = getText (missionConfigFile >> QGVAR(kits) >> "editor_layer_name");
+
+diag_log format ['[CVO](debug)(fn_mission_init) _layerName: %1', _layerName];
+
 private _objects =  getArray (missionConfigFile >> QGVAR(kits) >> "object_variable_names") apply { missionNamespace getVariable [_x, objNull] };
 
+diag_log format ['[CVO](debug)(fn_mission_init) Pre Layer _objects: %1', _objects];
+
 if (_layerName isNotEqualTo "") then { _objects append (getMissionLayerEntities _layerName # 0); };
+
+diag_log format ['[CVO](debug)(fn_mission_init) Post Layer _objects: %1', _objects];
 
 _objects = _objects select { !isNull _x };
 
 ZRN_LOG_MSG_2(Mission Config - Init,_layerName,_objects);
 
-{
-    [
-        [QGVAR(EH_addAction), _x] call CBA_fnc_globalEventJIP,
-        _x
-    ] call CBA_fnc_removeGlobalEventJIP;
+missionNamespace setVariable [QGVAR(globalAccesspointArray), _objects, true];
 
-} forEach _objects;
+diag_log format ['[CVO](debug)(fn_mission_init) : published - count: %1', count GVAR(globalAccesspointArray)];
 
 nil

@@ -27,6 +27,7 @@ class CfgFunctions
             class getKitFromCfg {};
             class handleConfigKits {};
             class mission_init { postInit = 1; };
+            class client_init { postInit = 1; };
         };
 
         class kit

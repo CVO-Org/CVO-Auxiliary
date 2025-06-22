@@ -17,17 +17,23 @@
 * Public: Yes
 */
 
+diag_log format ['[CVO](debug)(fn_addAction) _this: %1', _this];
+
 if !(hasInterface) exitWith {};
 
 params [
     ["_objects", objNull, [objNull, []] ]
 ];
 
+diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
+
 ZRN_LOG_MSG_1(INIT,_objects);
 
 if (_objects isEqualType objNull) then { _objects = [_objects]; };
 
-_objects = flatten (_objects select { _x isEqualType objNull } select { !isNull _x } select { !isNil "_x" });
+_objects = _objects select { _x isEqualType objNull } select { !isNull _x };
+
+diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
 
 private _action = [
 	QGVAR(open)						// ActionName
