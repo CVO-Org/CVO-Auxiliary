@@ -31,7 +31,7 @@ class cvo_arsenal_kits
     import Base from cvo_arsenal_kits;
 
     // Base Kit - AK47 for everyone!
-    class AK74: Base {
+    class TestingMission_Base: Base {
         class items {
             class ACE_bodyBag {};
             class ACE_bodyBag_blue {};
@@ -40,7 +40,7 @@ class cvo_arsenal_kits
     };
     
     // Role Kit - Spare Barrels for Machinegunner's!
-    class BarrelsForMG: Base {
+    class TestingMission_Role: Base {
         role = "Machinegunner";
         class items {
             class ACE_personalAidKit {};
@@ -48,7 +48,7 @@ class cvo_arsenal_kits
     };
 
     // Personal Kit - Banana for the good boi!
-    class something: Base {
+    class TestingMission_SteamID: Base {
         id64 = "123123";
         class items {
             class ace_banana {};
