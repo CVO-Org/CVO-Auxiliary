@@ -12,6 +12,7 @@ class CfgFunctions
 		{
 			file = PATH_TO_FUNC_SUB(internal);
             class postInit { postInit = 1; };
+            class preInit { preInit = 1; };
 
 			class saveStartingLoadout { postInit = 1; };
 
@@ -27,7 +28,7 @@ class CfgFunctions
             class getKitFromCfg {};
             class handleConfigKits {};
             class mission_init { postInit = 1; };
-            class client_init { postInit = 1; };
+            class client_init {};
         };
 
         class kit

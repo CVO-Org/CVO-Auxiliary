@@ -17,23 +17,19 @@
 * Public: Yes
 */
 
-diag_log format ['[CVO](debug)(fn_addAction) _this: %1', _this];
-
 if !(hasInterface) exitWith {};
 
-params [
-    ["_objects", objNull, [objNull, []] ]
-];
+ZRN_LOG_MSG_1(INIT,_this);
 
-diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
+private _objects = switch (typeName _this) do {
+	case "OBJECT": { [_this] };
+	case "ARRAY": { _this };
+	default { [] };
+};
 
-ZRN_LOG_MSG_1(INIT,_objects);
+_objects = flatten _objects select { _x isEqualType objNull }  select { !isNull _x };
 
-if (_objects isEqualType objNull) then { _objects = [_objects]; };
-
-_objects = _objects select { _x isEqualType objNull } select { !isNull _x };
-
-diag_log format ['[CVO](debug)(fn_addAction) _objects: %1', _objects];
+if (_objects isEqualTo []) exitWith { ZRN_LOG_MSG(Failed: No Objects Provided); };
 
 private _action = [
 	QGVAR(open)						// ActionName
@@ -56,8 +52,5 @@ private _action = [
 		_action
 	] call ace_interact_menu_fnc_addActionToObject;
 } forEach _objects;
-
-
-ZRN_LOG_MSG_1(Added Action to:,_objects);
 
 nil
