@@ -23,14 +23,11 @@ private _layerName = getText (missionConfigFile >> QGVAR(kits) >> "editor_layer_
 
 private _objects =  getArray (missionConfigFile >> QGVAR(kits) >> "object_variable_names") apply { missionNamespace getVariable [_x, objNull] };
 
-
 if (_layerName isNotEqualTo "") then { _objects append flatten (getMissionLayerEntities _layerName # 0); };
 
 _objects = _objects select { !isNull _x };
 
-
 [QGVAR(EH_AddAction), _objects, QGVAR(EH_AddAction)] call CBA_fnc_globalEventJIP;
-
 
 // missionNamespace setVariable [QGVAR(globalAccesspointArray), _objects, true];
 
