@@ -15,6 +15,8 @@
 * Public: No
 */
 
+// Un-used alternative to cba globalJIP. not needed anymore. delete later maybe.
+
 if !(hasInterface) exitWith {};
 
 diag_log format ['[CVO](debug)(fn_client_init) diag_frameNo: %1', diag_frameNo];
@@ -29,5 +31,5 @@ diag_log format ['[CVO](debug)(fn_client_init) diag_frameNo: %1', diag_frameNo];
     },
     "",
     90,
-    { diag_log '[CVO](debug)(fn_client_init) no globalAccesspointArray found - timeout' }
+    { ZRN_LOG_MSG(globalAccesspointArray not found - timeout); }
 ] call CBA_fnc_waitUntilAndExecute;

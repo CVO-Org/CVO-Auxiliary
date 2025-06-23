@@ -12,9 +12,10 @@ if (isNull GVAR(local_box)) then { GVAR(local_box) = nil;};
 
 if (isNil QGVAR(local_box)) then {
 
+	ZRN_LOG_MSG(Creating Local Box);
+
 	// Initialises Base Kits from Config
 	[] call FUNC(handleConfigKits);
-
 
 	// Creates Virtual Arsenal box for the player locally if none has been existing before
 	GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -39,7 +40,6 @@ if (isNil QGVAR(local_box)) then {
 	[_localBox, false, false] call ace_arsenal_fnc_initBox;
 
 } else {
-
 
 	// Removes current content	
 	[GVAR(local_box), false, false] call ace_arsenal_fnc_initBox;

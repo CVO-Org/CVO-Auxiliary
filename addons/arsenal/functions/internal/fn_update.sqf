@@ -39,6 +39,6 @@ private _id64 = getPlayerUID _unit;
 private _kits = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
 
 // Start Recursive Function
-[_box, _unit, _roles, _id64, _kits, _sortedKeys] call FUNC(addItemsFromKit_recursive);
+[_box, _unit, _roles, _id64, _kits] call FUNC(addItemsFromKit_recursive);
 
 nil

@@ -25,7 +25,7 @@ private _objects =  getArray (missionConfigFile >> QGVAR(kits) >> "object_variab
 
 if (_layerName isNotEqualTo "") then { _objects append flatten (getMissionLayerEntities _layerName # 0); };
 
-_objects = _objects select { !isNull _x };
+_objects = flatten _objects select { !isNull _x };
 
 [QGVAR(EH_AddAction), _objects, QGVAR(EH_AddAction)] call CBA_fnc_globalEventJIP;
 

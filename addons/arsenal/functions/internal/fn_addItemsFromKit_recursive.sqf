@@ -27,14 +27,16 @@ params [
 ];
 
 if (isNull _box) exitWith {};
-private _count = count _kits;
+
+if (isNil "_keys") then {
+    _keys = keys _kits;
+    _keys sort true;
+};
+
+private _count = count _keys;
 
 if (_total == -1) then {
     _total = _count;
-    if (isNil "_keys") then {
-        _keys = keys _kits;
-        _keys sort true;
-    };
 };
 
 if (_count == 0) exitWith { systemChat format ['[CVO][ARSENAL] %1/%2 Kits added', _added, _total]; };
@@ -46,7 +48,7 @@ private _nextIteration = {
 private _returnArray = [];
 
 private _kitName = _keys deleteAt 0;
-private _kit = _kits deleteAt _kitName;
+private _kit = _kits get _kitName;
 
 diag_log format ['[CVO][arsenal](Kits) %1/%2 - %3',_count,_total,_kitName];
 

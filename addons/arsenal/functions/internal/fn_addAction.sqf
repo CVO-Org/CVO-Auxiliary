@@ -19,8 +19,6 @@
 
 if !(hasInterface) exitWith {};
 
-ZRN_LOG_MSG_1(INIT,_this);
-
 private _objects = switch (typeName _this) do {
 	case "OBJECT": { [_this] };
 	case "ARRAY": { _this };
@@ -51,6 +49,9 @@ private _action = [
 		["ACE_MainActions"], 
 		_action
 	] call ace_interact_menu_fnc_addActionToObject;
+
+	ZRN_LOG_MSG_1(Action Added:,_x);
+	
 } forEach _objects;
 
 nil
