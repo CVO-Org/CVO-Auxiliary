@@ -4,7 +4,7 @@
 
 // "DefaultEntry" is a special case and will define the "Defaults" for all properties.
 
-class CfgCustomSupplyCrates
+class cvo_csc_kits
 {
     class DefaultEntry
     {

@@ -5,7 +5,7 @@
 
 // "DefaultEntry" is a special case and will define the "Defaults" for all the implemented
 
-class CfgCustomSupplyCrates
+class cvo_csc_kits
 {
     class DefaultEntry
     {
@@ -19,6 +19,7 @@ class CfgCustomSupplyCrates
         // "AIRDROP" will start the airdrop feature. Target Pos will be defined through "airdrop_targetMode"/"airdrop_targetMode_zeus"
         // "POS" will take spawn_pos [2/3D or Object] and spawn the crate on that position
         // "REL" will spawn the crate relative to its size behind the provided object
+
         zeus_mode = "AIRDROP";
         normal_mode = "REL";
         box_class = "C_supplyCrate_F";
@@ -109,5 +110,3 @@ class CfgCustomSupplyCrates
         };
     };
 };
-
-

@@ -15,19 +15,12 @@
 * Public: No
 */
 
-private _cfg = missionConfigFile >> "CfgCustomSupplyCrates"; 
-if (!isClass _cfg) exitWith {};
-
-private _exclude = ["DefaultEntry"];
-
-private _configs = "true" configClasses _cfg select { !(configName _x in _exclude) };
+private _configs = Q(configName _x != QQ(DefaultEntry)) configClasses (missionConfigFile >> QGVAR(kits));
 
 {
     private _index = 1 + _forEachIndex; 
     private _map = createHashMap;
-    configProperties [_x]
-    select
-    { ! ( configName _x in ["name", "items", "backpacks", "link_classes", "link_objects"] ) }
+    configProperties [_x] select { ! ( configName _x in ["name", "items", "backpacks", "link_classes", "link_objects"] ) }
     apply
     { 
         private _value = [_x] call BIS_fnc_getCfgData;
