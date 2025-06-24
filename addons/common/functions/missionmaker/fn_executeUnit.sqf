@@ -1,18 +1,30 @@
 #include "../../script_component.hpp"
+/*
+* Author: Zorn
+* Function to execute a unit and make it dead and flop over funny with variety.
+*
+* Arguments:
+*
+* Return Value:
+* None
+*
+* Example:
+* [this, "RND", 5000] call cvo_common_fnc_executeUnit;
+*
+* Public: No
+*/
 
 params  [
-    ["_target", objNull,    [objNull]   ],
-    ["_dir",    "RND",      [0,""]      ],
-    ["_mag",    300,        [0]         ],
-    ["_rndVal", 90,         [0]         ],
-    ["_offset", [0,0,1.5],  [[]],   [3] ],
-    ["_delay",  2,          [0]         ]
+    ["_target", objNull,        [objNull]   ],
+    ["_dir",    "RND",          [0,""]      ],
+    ["_mag",    500,            [0]         ],
+    ["_rndVal", 180,            [0]         ],
+    ["_offset", [0,0.5,1.0],    [[]],   [3] ],
+    ["_delay",  2,              [0]         ]
 ];
-
 
 if (!isServer) exitWith {};
 if (_target == objNull) exitWith {};
-
 
 if (CBA_MissionTime < 3) exitWith { [missionNamespace getVariable _fnc_scriptName, _this, 3 + random 3] call CBA_fnc_waitAndExecute; };
 
