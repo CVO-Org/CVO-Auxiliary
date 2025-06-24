@@ -17,9 +17,9 @@
 
 
 params [
-    ["_target",  false,     [objNull, []], [2,3] ],
+    ["_target",      false,     [objNull, []], [2,3] ],
     ["_networkName", "Default", [""]                 ],
-    ["_params",  [],        [[]]                 ]
+    ["_params",      [],        [[]]                 ]
 ];
 
 private _network = [_networkName] call FUNC(network);
@@ -31,7 +31,7 @@ private _type = switch (true) do {
     default { "undefined" };
 };
 
-
+if (_type in ["VIC", "STATIC"]) then { _target setVariable [QGVAR(network), _networkName]};
 
 private _destination = createHashMapFromArray _params;
 _destination merge createHashMapFromArray [

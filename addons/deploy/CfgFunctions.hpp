@@ -27,7 +27,11 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(ui);
             
             class openDialog {};
+
             class ui_onLoad {};
+            class ui_onUnload {};
+
+            class ui_update {};
         };
     };
 };

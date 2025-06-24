@@ -15,7 +15,9 @@
 * Public: No
 */
 
-params [ "_destination" ];
+params [ ["_destination", nil, [createHashMap]] ];
+
+if (isNil "_destination") exitWith {};
 
 private _type = _destination get "type";
 private _target = _destination get "target";
@@ -31,7 +33,7 @@ if (_type isEqualTo "VIC") then {
 
 // Grid
 private _pos = mapGridPosition _target;
-private _grid = format ["[%1-%2]", _pos select [0,2], _pos select [count _pos /2,2] ];
+private _grid = format ["[%1-%2]", _pos select [0,2], _pos select [count _pos / 2,2] ];
 
 // Relative
 private _loc = nearestLocation [_target, ["NameCity", "NameCityCapital", "NameVillage"]];

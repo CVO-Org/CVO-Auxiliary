@@ -15,10 +15,11 @@
 * Public: No
 */
 
-params [
-    [ "_networkName", "Default", [""] ]
-];
+params ["_target", "_player", "_params"];
+_params params  ["_networkName"];
 
 private _dialog = createDialog [QGVAR(dialog), true];
+
 _dialog setVariable [QGVAR(network), _networkName];
+_dialog setVariable [QGVAR(departure), _target];
 

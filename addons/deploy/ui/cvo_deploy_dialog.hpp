@@ -3,10 +3,14 @@ class GVAR(dialog) {
 	idd = 69010;
 
     onLoad = Q(_this call FUNC(ui_onLoad));
+    onUnload = Q(_this call FUNC(ui_onUnload));
 
     class Controls {
         class List_Destinations: RscListBox {
             idc = 1500;
+
+            style = LB_TEXTURES;
+
             x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.5 * GUI_GRID_CENTER_W);
@@ -76,7 +80,7 @@ class GVAR(dialog) {
 
         class Status_Text: RscText {
             idc = 1003;
-            text = "The destination is currently busy..."; //--- ToDo: Localize;
+            text = "No Destination selected"; //--- ToDo: Localize;
             x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.5 * GUI_GRID_CENTER_W);

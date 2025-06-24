@@ -8,18 +8,18 @@ class EditorData
 	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=306;
+		nextID=307;
 	};
 	class LayerIndexProvider
 	{
-		nextID=10;
+		nextID=13;
 	};
 	class Camera
 	{
-		pos[]={-43.315212,82.210693,-252.91336};
-		dir[]={-0.24076827,-0.22473145,0.94420677};
-		up[]={-0.055528581,0.97442073,0.21776317};
-		aside[]={0.96899289,0,0.24708861};
+		pos[]={19.302652,19.468575,-43.853222};
+		dir[]={-0.52316648,-0.32865265,0.78631055};
+		up[]={-0.18205293,0.94445086,0.27362254};
+		aside[]={0.83255845,0,0.5539372};
 	};
 };
 binarizationWanted=0;
@@ -33,13 +33,14 @@ addons[]=
 	"cvo_branding",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Air_F_Heli_Heli_Transport_03",
-	"ace_realisticnames"
+	"ace_realisticnames",
+	"A3_Structures_F_Civ_InfoBoards"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -89,6 +90,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item7
+		{
+			className="A3_Structures_F";
+			name="Arma 3 - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -125,7 +133,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=21;
+		items=22;
 		class Item0
 		{
 			dataType="Group";
@@ -138,7 +146,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={-16,5.0014391,-16.950001};
+						position[]={23,5.0014391,-13.950001};
 					};
 					side="West";
 					flags=7;
@@ -256,12 +264,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22.693001,6.6262865,-23.650999};
+				position[]={10,6.6262865,-4};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				init="[this] call cvo_deploy_fnc_destination;";
 				name="car";
 			};
 			id=187;
@@ -277,7 +286,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]";
 						};
 					};
 				};
@@ -295,6 +304,8 @@ class Mission
 			flags=5;
 			class Attributes
 			{
+				ammo=0.89999998;
+				init="[this] call cvo_deploy_fnc_departure;";
 				name="flagpole";
 			};
 			id=188;
@@ -3596,6 +3607,23 @@ class Mission
 			};
 			id=301;
 			atlOffset=45;
+		};
+		class Item21
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={25,5.9688811,-9};
+				angles[]={0,1.1557395,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="[this] call cvo_deploy_fnc_departure;";
+			};
+			id=306;
+			type="MapBoard_altis_F";
 		};
 	};
 };
