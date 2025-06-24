@@ -56,6 +56,7 @@ class CfgFunctions
             class makeCosmetic {};
 
             class subtitles {};
+            class makeRemovable {};
         };
 
         class vehicles {
