@@ -26,7 +26,8 @@ class CfgFunctions
         class ui {
             file = PATH_TO_FUNC_SUB(ui);
             
-            // class function { /* preInit = 1; */ };
+            class openDialog {};
+            class ui_onLoad {};
         };
     };
 };
