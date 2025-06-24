@@ -2,20 +2,31 @@ class CfgFunctions
 {
     class ADDON
     {
-        class COMPONENT
-        {
-            file = PATH_TO_FUNC;
-
+        class internal {
+            file = PATH_TO_FUNC_SUB(internal);
+            
+            // class function { /* preInit = 1; */ };
             class network {};
-
-            class departure {};
-            class destination {};
 
             class addAction {};
             class addAction_children {};
             class getName {};
 
             class teleport {};
+        };
+
+        class public {
+            file = PATH_TO_FUNC_SUB(public);
+            
+            class departure {};
+            class destination {};
+            class destination_remove {};
+        };
+
+        class ui {
+            file = PATH_TO_FUNC_SUB(ui);
+            
+            // class function { /* preInit = 1; */ };
         };
     };
 };
