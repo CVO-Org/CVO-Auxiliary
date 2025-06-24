@@ -1,0 +1,85 @@
+class Rsc_CVO_Redeploy {
+
+	idd = 69010;
+
+    class Controls {
+        class List_Destinations: RscListBox {
+            idc = 1500;
+            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.5 * GUI_GRID_CENTER_W);
+            h = Q(20.5 * GUI_GRID_CENTER_H);
+            colorBackground[] = {0,0,0,0.8};
+        };
+
+        class Status_Text: RscText
+        {
+            idc = 1003;
+            text = "The destination is currently busy..."; //--- ToDo: Localize;
+            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.5 * GUI_GRID_CENTER_W);
+            h = Q(01.2 * GUI_GRID_CENTER_H);
+            colorBackground[] = {0,0,0,0.8};
+        };
+
+        class RscButtonMenuCancel_2700: RscButtonMenuCancel {
+            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(07.0 * GUI_GRID_CENTER_W);
+            h = Q(01.2 * GUI_GRID_CENTER_H);
+        };
+
+        class RscButtonMenuOK_2600: RscButtonMenuOK {
+            text = "Deploy";
+            onLoad = "(_this # 0) ctrlEnable false;";
+
+            x = Q(28.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(12.0 * GUI_GRID_CENTER_W);
+            h = Q(01.2 * GUI_GRID_CENTER_H);
+        };
+    };
+
+	class ControlsBackground {
+        class Title_Background: RscText {
+            idc = 1000;
+            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(40.0 * GUI_GRID_CENTER_W);
+            h = Q(02.0 * GUI_GRID_CENTER_H);
+            colorBackground[] = {0.411765,0,0,0.8};
+        };
+
+        class Title_Icon: RscPicture {
+            idc = 1200;
+            text = "zrn\cvo\addons\branding\data\Raven_Voron_white_64.paa";
+            x = Q(00.25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(01.50 * GUI_GRID_CENTER_W);
+            h = Q(01.50 * GUI_GRID_CENTER_H);
+        };
+
+        class Title_Text: RscText {
+            idc = 1001;
+            text = "CVO Deploy";
+            x = Q(02.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(17.5 * GUI_GRID_CENTER_W);
+            h = Q(01.5 * GUI_GRID_CENTER_H);
+        };
+
+        class Title_Name: RscText {
+            idc = 1002;
+            text = "Username";
+            style = ST_RIGHT;
+
+            onLoad = "_this#0 ctrlSetText name ace_player";
+
+            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.0 * GUI_GRID_CENTER_W);
+            h = Q(01.0 * GUI_GRID_CENTER_H);
+        };
+    };
+};
