@@ -18,7 +18,7 @@
 params [
     [ "_speaker",    "",         [""] ],
     [ "_text",       "",         [""] ],
-    [ "_color",      "#F18B1D",  [""] ]
+    [ "_color",      "ORANGE",   [""] ]
 ];
 
 _color = switch (_color) do {

@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [this] call cvo_deploy_fnc_destination;
 *
 * Public: No
 */
