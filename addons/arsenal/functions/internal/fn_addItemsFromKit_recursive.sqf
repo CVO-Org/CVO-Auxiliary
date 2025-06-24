@@ -19,26 +19,38 @@ params [
     [ "_box",   objNull,                 [objNull]       ],
     [ "_unit",  ACE_player,              [objNull]       ],
     [ "_roles", [],                      [[]]            ],
-    [ "_id64",  getPlayerUID ACE_player, [""]            ],
-    [ "_kits",  createHashMap,           [createHashMap] ]
+    [ "_id64",  getPlayerUID player,     [""]            ],
+    [ "_kits",  createHashMap,           [createHashMap] ],
+    [ "_total", -1,                      [0]             ],
+    [ "_keys",  nil,                     [[]]            ],
+    [ "_added", 0,                       [0]             ]
 ];
 
 if (isNull _box) exitWith {};
-if (count _kits == 0) exitWith {};
 
+if (isNil "_keys") then {
+    _keys = keys _kits;
+    _keys sort true;
+};
+
+private _count = count _keys;
+
+if (_total == -1) then {
+    _total = _count;
+};
+
+if (_count == 0) exitWith { systemChat format ['[CVO][ARSENAL] %1/%2 Kits added', _added, _total]; };
 
 private _nextIteration = {
-    [FUNC(addItemsFromKit_recursive), [_box, _unit, _roles, _id64, _kits]] call CBA_fnc_execNextFrame;
+    [FUNC(addItemsFromKit_recursive), [_box, _unit, _roles, _id64, _kits, _total, _keys, _added]] call CBA_fnc_execNextFrame;
 };
 
 private _returnArray = [];
 
-private _kitKeys = keys _kits;
-_KitKeys sort true;
-private _kitName = _KitKeys select 0;
-private _kit = _kits deleteAt _kitName;
+private _kitName = _keys deleteAt 0;
+private _kit = _kits get _kitName;
 
-ZRN_LOG_1(_kitName);
+diag_log format ['[CVO][arsenal](Kits) %1/%2 - %3',_count,_total,_kitName];
 
 // #### Check if Setting for Default Kits
 private _settingName = [QADDON, _kitName] joinString "_";
@@ -52,12 +64,10 @@ if (_role isNotEqualTo "" && { !( _role in _roles) }) exitWith _nextIteration;
 
 
 // #### Check ID64 ####
-private _id64 = _kit get "id64";
-if (_id64 isNotEqualTo "" && { _playerUID isNotEqualTo _id64 }) exitWith _nextIteration;
-
+private _kitID = _kit get "id64";
+if (_kitID isNotEqualTo "" && { _kitID isNotEqualTo _id64 }) exitWith _nextIteration;
 
 private _items = _kit get "items";
-
 
 // #### Condition ####
 private _conditionCode = _kit get "condition";
@@ -70,7 +80,6 @@ if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" 
 };
 
 if (!_conditionResult) then { continue };
-ZRN_LOG_MSG_1(Added:,_kitName);
 
 _returnArray append _items;
 
@@ -89,8 +98,13 @@ switch (true) do {
 _codeResult = _codeResult select { _x call CBA_fnc_getItemConfig isNotEqualTo configNull };
 _returnArray append _codeResult;
 
+
+diag_log format ['[CVO][arsenal](Kits) %1/%2 - Added: %3',_count,_total,_returnArray];
+
 // Add stuff to the Arsenal
 [_box, _returnArray arrayIntersect _returnArray] call ace_arsenal_fnc_addVirtualItems;
+
+_added = _added + 1;
 
 call _nextIteration;
 

@@ -30,3 +30,4 @@ private _network = [_networkName] call FUNC(network);
 _network get "departure" pushBackUnique _object;
 
 [_object, _networkName, _offset] call FUNC(addAction);
+

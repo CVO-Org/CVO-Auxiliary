@@ -17,11 +17,12 @@
 
 
 params ["_target", "_player", "_actionParams"];
-_actionParams params [["_networkName", "404", [""]]];
+_actionParams params [["_networkName", nil, [""]]];
 
 private _actions = [];
-if (_networkName isEqualTo "404") then { _networkName = _target getVariable [QGVAR(NetworkName), "404"]; };
-if (_networkName isEqualTo "404") exitWith {};
+if (isNil "_networkName") then { _networkName = _target getVariable [QGVAR(NetworkName), nil]; };
+if (isNil "_networkName") exitWith {};
+
 private _network = [_networkName] call FUNC(network);
 
 private _destinations = _network get "destinations";

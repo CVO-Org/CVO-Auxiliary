@@ -34,7 +34,6 @@ private _returnArray = [];
 
 private _kits = ["arsenal_kits"] call EFUNC(catalog,getCatalog);
 
-
 private _playerUID = getPlayerUID _unit;
 
 {
@@ -73,7 +72,6 @@ private _playerUID = getPlayerUID _unit;
     };
 
     if (!_conditionResult) then { continue };
-    ZRN_LOG_MSG_1(Added:,_kitName);
     _returnArray append _items;
 
 
@@ -91,6 +89,8 @@ private _playerUID = getPlayerUID _unit;
     _codeResult = _codeResult select { _x call CBA_fnc_getItemConfig isNotEqualTo configNull };
 
     _returnArray append _codeResult;
+    
+    ZRN_LOG_MSG_1(Added:,_kitName);
 
 } forEach _kits_catalog;
 

@@ -1,3 +1,4 @@
+#include "../../script_component.hpp"
 /*
 	Author: Mr. Zorn
 
@@ -59,7 +60,7 @@ if (_target isEqualTo "") exitWith {false};
 // Here we create the action which we later attach to something
 _cvo_fullAceHeal = [
 	"CVO_FullHeal",									// Action Name
-	"Get Full Health Check",						// Name for the ACE Interaction Menu
+	"Get full health Check",						// Name for the ACE Interaction Menu
 	"zrn\cvo\addons\common\data\redCrystal.paa",		// custom Icon
 	_code,											// Statement - the code you're executing
 	{true},											// Condition
@@ -67,6 +68,7 @@ _cvo_fullAceHeal = [
 	[_duration, _chance]							// action parameters
 
 ] call ace_interact_menu_fnc_createAction;
+
 
 switch (typeName _target) do {
 

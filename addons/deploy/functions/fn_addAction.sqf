@@ -41,7 +41,7 @@ private _aceAction = [
     _networkName splitString " " joinString "_"                                         // * 0: Action name <STRING>
     ,_network getOrDefault ["displayName", "CVO Deploy"]                            //  * 1: Name of the action shown in the menu <STRING>
     ,_network getOrDefault ["icon", QPATHTOEF(branding,data\Raven_Voron_256.paa)]    //  * 2: Icon <STRING> "\A3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"
-    ,{systemChat "yolo"}                                     //  * 3: Statement <CODE>
+    ,{}                                     //  * 3: Statement <CODE>
     ,{true}                                 //  * 4: Condition <CODE>
     ,FUNC(addAction_children)               //  * 5: Insert children code <CODE> (Optional)
     ,_params                                //  * 6: Action parameters <ANY> (Optional)

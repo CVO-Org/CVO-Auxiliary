@@ -1,6 +1,6 @@
 ![alt text](/img/readme/cvo_aux_title.png)
 # Steam Workshop
-https://steamcommunity.com/sharedfiles/filedetails/?id=3037257908
+https://steamcommunity.com/sharedfiles/filedetails/?id=3504300122
 
 
 # Addons

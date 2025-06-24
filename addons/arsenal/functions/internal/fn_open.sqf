@@ -12,9 +12,10 @@ if (isNull GVAR(local_box)) then { GVAR(local_box) = nil;};
 
 if (isNil QGVAR(local_box)) then {
 
+	ZRN_LOG_MSG(Creating Local Box);
+
 	// Initialises Base Kits from Config
 	[] call FUNC(handleConfigKits);
-
 
 	// Creates Virtual Arsenal box for the player locally if none has been existing before
 	GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -22,10 +23,10 @@ if (isNil QGVAR(local_box)) then {
 
 	player setVariable [QGVAR(local_box), _localBox, false];
 
-	[_localBox, false] 				call ace_dragging_fnc_setDraggable;			// Disables Dragging
-	[_localBox, false] 				call ace_dragging_fnc_setCarryable;			// Disables Carrying
+	[_localBox, false] 				call ace_dragging_fnc_setDraggable;			    // Disables Dragging
+	[_localBox, false] 				call ace_dragging_fnc_setCarryable;			    // Disables Carrying
 	[_localBox, -1] 					call ace_cargo_fnc_setSize;					// Disables Ace Cargo Loading
-	_localBox setVariable ["ace_cargo_noRename", true];							// Disables Ace Cargo Renaming
+	_localBox setVariable ["ace_cargo_noRename", true];							    // Disables Ace Cargo Renaming
 
 	hideObject _localBox;															// Hides the Object
 
@@ -35,7 +36,6 @@ if (isNil QGVAR(local_box)) then {
 	clearItemCargo _localBox;
 
 	_localBox enableSimulation false;												// Disables Simulation
-
 
 	[_localBox, false, false] call ace_arsenal_fnc_initBox;
 

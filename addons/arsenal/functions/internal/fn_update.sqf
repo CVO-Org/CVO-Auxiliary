@@ -30,7 +30,7 @@ private _unit = ACE_player;
 // ## get Roles
 private _roles = [_unit] call FUNC(getUnitRoles);
 _roles = [_unit, _roles] call FUNC(rolesByTrait);
-systemChat format ['[CVO](ARSENAL) Player Roles: %1', _roles];
+systemChat format ['[CVO][ARSENAL] Player Roles: %1', _roles];
 
 // ## get PlayerUID
 private _id64 = getPlayerUID _unit;

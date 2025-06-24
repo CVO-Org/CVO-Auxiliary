@@ -19,8 +19,14 @@ if !(hasInterface) exitWith {};
 
 private _configs = [];
 
-_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits)) );
-_configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QGVAR(kits)) );
+private _configKit_mod = Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits));
+private _configKit_mis = Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QGVAR(kits));
+
+_configKit_mod = [_configKit_mod, [], { configName _x }, "ASCEND"] call BIS_fnc_sortBy;
+_configKit_mis = [_configKit_mis, [], { configName _x }, "ASCEND"] call BIS_fnc_sortBy;
+
+_configs append _configKit_mod;
+_configs append _configKit_mis;
 
 {
     [

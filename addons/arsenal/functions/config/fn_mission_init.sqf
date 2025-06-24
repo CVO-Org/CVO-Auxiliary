@@ -15,15 +15,20 @@
 * Public: No
 */
 
-if !(isServer) exitWith {};
+
+if (!isServer) exitWith {};
+
 
 private _layerName = getText (missionConfigFile >> QGVAR(kits) >> "editor_layer_name");
+
 private _objects =  getArray (missionConfigFile >> QGVAR(kits) >> "object_variable_names") apply { missionNamespace getVariable [_x, objNull] };
 
-if (_layerName isNotEqualTo "") then { _objects append (getMissionLayerEntities _layerName # 0); };
+if (_layerName isNotEqualTo "") then { _objects append flatten (getMissionLayerEntities _layerName # 0); };
 
-diag_log format ['[CVO](debug)(fn_mission_init) _layerName: %1 - _objects: %2', _layerName , _objects];
+_objects = flatten _objects select { !isNull _x };
 
-[QGVAR(EH_addAction), [_objects]] call CBA_fnc_globalEventJIP;
+[QGVAR(EH_AddAction), _objects, QGVAR(EH_AddAction)] call CBA_fnc_globalEventJIP;
+
+// missionNamespace setVariable [QGVAR(globalAccesspointArray), _objects, true];
 
 nil
