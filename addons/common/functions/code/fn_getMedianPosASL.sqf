@@ -11,23 +11,33 @@
 * _medianPosition - Position in ASL Format
 *
 * Example:
-* ['something', player] call cvo_common_fnc_getMedianPosASL
+* [_objArray, true] call cvo_common_fnc_getMedianPosASL
 *
 * Public: Yes
 */
 
 params [
-    ["_objArray", [], [[]]]
+    [ "_input",               [],     [[]]    ],
+    [ "_returnMinMaxRadius",  false,  [true]  ]
 ];
 
-if (!isServer) exitWith {false};
-if (count _objArray == 0) exitWith {false};
+if (_input isEqualTo []) exitWith {false};
 
 
 // get Median Position as "target pos" - thanks jenna!
 
-private _medianPosition = [];
-{ _medianPosition = _medianPosition vectorAdd (getPosASL _x); } forEach _objects;
-_medianPosition = _medianPosition vectorMultiply (1/count _objects);
+private _positions = _input apply {
+    switch (true) do {
+        case (_x isEqualType []): { _x };
+        case (_x isEqualType objNull): { getPosASL _x };
+        default { nil };
+    };
+} select { !isNil "_x" };
 
-_medianPosition
+private _medianPosition = [];
+{ _medianPosition = _medianPosition vectorAdd _x; } forEach _positions;
+_medianPosition = _medianPosition vectorMultiply (1/count _positions);
+
+private _radii = _positions apply { _medianPosition vectorDistance _x };
+
+[ _medianPosition, [_medianPosition, selectMin _radii, selectMax _radii]] select _returnMinMaxRadius // return
