@@ -35,3 +35,9 @@ class CfgPatches {
 
 #include "CfgFunctions.hpp"
 #include "XEH\CfgXEH.hpp"
+
+
+#include "ui\CommonDefines.hpp"
+#include "ui\BaseControls.hpp"
+
+#include "ui\cvo_deploy_dialog.hpp"
