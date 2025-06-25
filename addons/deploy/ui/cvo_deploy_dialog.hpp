@@ -6,6 +6,7 @@ class GVAR(dialog) {
     onUnload = Q(_this call FUNC(ui_onUnload));
 
     class Controls {
+
         class List_Destinations: RscListBox {
             idc = 1500;
 
@@ -78,6 +79,22 @@ class GVAR(dialog) {
             y = Q(00.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.0 * GUI_GRID_CENTER_W);
             h = Q(01.0 * GUI_GRID_CENTER_H);
+        };
+
+        class Map_Destinations : RscMapControl {
+            idc = 1600;
+
+            type = CT_MAP;
+
+            showMarkers = 0;
+            moveOnEdges = 0;
+
+            scaleMin = 0.03;
+
+            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.5 * GUI_GRID_CENTER_W);
+            h = Q(20.5 * GUI_GRID_CENTER_H);
         };
 
         class Status_Text: RscText {

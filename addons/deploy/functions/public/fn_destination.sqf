@@ -25,11 +25,14 @@ params [
 private _network = [_networkName] call FUNC(network);
 
 private _type = switch (true) do {
-    case (typeName _target == "ARRAY"): { "POS" };
+    case (_target isEqualType false):        { false };
+    case (_target isEqualType []):           { "POS" };
     case ( _target isKindOf "AllVehicles" ): { "VIC" };
-    case ( _target isKindOf "Static" ): { "STATIC" };
-    default { "undefined" };
+    case ( _target isKindOf "Static" ):      { "STATIC" };
+    default { false };
 };
+
+if (_type isEqualTo false) exitWith {};
 
 if (_type in ["VIC", "STATIC"]) then { _target setVariable [QGVAR(network), _networkName]};
 

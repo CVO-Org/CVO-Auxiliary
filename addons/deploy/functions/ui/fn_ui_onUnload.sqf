@@ -21,6 +21,9 @@ params ["_display", "_exitCode"];
 private _handle = _display getVariable [QGVAR(pfh_handle), nil];
 if !(isNil "_handle") then { _handle call CBA_fnc_removePerFrameHandler; };
 
+private _drawIcon_handle = _display getVariable [QGVAR(drawIcon_handle), nil];
+if !(isNil "_drawIcon_handle") then { _drawIcon_handle call CBA_fnc_removePerFrameHandler; };
+
 
 // Handle Teleportation
 if (_exitCode isEqualTo 1) then {

@@ -29,10 +29,12 @@ class CfgFunctions
             class openDialog {};
 
             class ui_update {};
+            class ui_update_map {};
 
             class ui_onLoad {};
             class ui_onUnload {};
             class ui_onLBSelChanged {};
+
 
         };
     };

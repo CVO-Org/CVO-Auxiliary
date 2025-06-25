@@ -26,6 +26,11 @@ params ["_display", ""]; // display, config
         // Start PFH to update/refresh the dialog content on a regular interval
         private _handle = [{ (_this#0) call FUNC(ui_update) }, 2, _this ] call CBA_fnc_addPerFrameHandler;
 
+        [
+            _this,
+            _this displayCtrl 1600
+        ] call FUNC(ui_update_map);
+
         // Add pfh handle so it can be stopped onUnload
         _this setVariable [QGVAR(pfh_handle), _handle];
     },

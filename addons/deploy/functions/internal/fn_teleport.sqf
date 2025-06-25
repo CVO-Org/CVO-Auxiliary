@@ -25,7 +25,7 @@ private _min =    _destination get "min";
 private _max =    _destination get "max";
 
 private _code = switch (true) do {
-    case (typeName _target == "ARRAY"): { { _this#0 setPosASL _this#1 } };
+    case (_target isEqualType [] ): { { if (count (_this#1) == 2) then { _this#0 setPos _this#1 } else { _this#0 setPosASL _this#1 } } };
     case (_target emptyPositions  "" > 0) : { { _this#0 moveInAny _this#1 } };
     default {
         _target = getPos _target findEmptyPosition [_min,_max, typeOf _player];
