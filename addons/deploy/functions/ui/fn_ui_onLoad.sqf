@@ -15,41 +15,20 @@
 * Public: No
 */
 
+params ["_display", ""]; // display, config
 
-_condition = { _this#0 getVariable [QGVAR(network), "404"] isNotEqualTo "404" };                // condition - Needs to return bool
-_statement = {
-    params [ "_dialog", "_cfg" ];
-
-    private _networkName = _dialog getVariable [QGVAR(network), "404"];
-
-    private _network = [_networkName] call FUNC(network);
-
-    private _destinations = _network get "destinations";
-
-    if (isNil "_destinations") exitWith { diag_log "[CVO](debug)(fn_ui_onLoad) Failed - _destinations not defined ";};
-
-    private _ctrl_listbox = _dialog displayCtrl 1500;
-    {
-        diag_log format ['[CVO](debug)(fn_ui_onLoad) _x: %1', _x];
-        private _destination = _x;
-        private _str = [_destination] call FUNC(getName);
-        private _index = _ctrl_listbox lbAdd _str;
-    } forEach _destinations;
-
-
-    diag_log format ['[CVO](debug)(fn_ui_onLoad) _dialog: %1 - _network: %2', _dialog , _network];
-
-    private _handle = [FUNC(ui_update), 1, [_dialog, _network] ] call CBA_fnc_addPerFrameHandler;
-    _dialog setVariable [QGVAR(pfh_handle), _handle];
-
-};
-
-
+// Wait until the network has been attached to the display
 [
-    _condition,
-    _statement,
-    _this
+    {
+        _this getVariable [QGVAR(network), "404"] isNotEqualTo "404"
+    },
+    {
+        // Start PFH to update/refresh the dialog content on a regular interval
+        private _handle = [{ (_this#0) call FUNC(ui_update) }, 2, _this ] call CBA_fnc_addPerFrameHandler;
+
+        // Add pfh handle so it can be stopped onUnload
+        _this setVariable [QGVAR(pfh_handle), _handle];
+    },
+    _display
 ] call CBA_fnc_waitUntilAndExecute;
-
-
 

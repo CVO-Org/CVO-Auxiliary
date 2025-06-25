@@ -15,37 +15,74 @@
 * Public: No
 */
 
-params ["_args", ""];
-_args params ["_dialog", "_network"];
+params ["_display"];
 
+// Get Network Destinations
+private _network = _display getVariable QGVAR(network);
 private _destinations = _network get "destinations";
+_destinations = _destinations apply { [_x get "destinationID", _x] };   // [destID, destination]
 
-diag_log format ['[CVO](debug)(fn_ui_update) _destinations: %1', _destinations];
+// Get CT_Listbox Items
+private _listControl = _display displayCtrl 1500;
+private _listAmount = lbSize _listControl;
+private _listItems = if (_listAmount == 0) then { [] } else {
+    private _return = []; // [destinationID, list_index ]
+    for "_listIndex" from 0 to (_listAmount -1) do { _return pushBack [_listControl lbData _listIndex, _listIndex]; };
+    _return
+};
 
-private _ctrl_listbox = _dialog displayCtrl 1500;
+// Identify what what needs be done and add to the queue
+private _queue = []; // [Task, destination, destinationID, listIndex]
 
+// Handle all current Destinations
 {
-    private _destination = _x;
-    private _str = [_destination] call FUNC(getName);
-    control lbSetText [_forEachIndex, _str];
-    
+    _x params ["_destinationID", "_destination"];
+    private _index = _listItems findIf { _x#0 isEqualTo _destinationID };
+    if (_index == -1) then {
+        _queue pushBack ["ADD", _destination, _destinationID, -1];
+    } else {
+        _listItems deleteAt _index params ["", "_listIndex"];
+        _queue pushBack ["UPDATE", _destination, _destinationID, _listIndex];
+    };
 } forEach _destinations;
 
-// Get the currently selected Index
-private _curSelIndex = lbCurSel _ctrl_listbox;
+// Remove remaining list Items, as there is  longer valid destination for them
+{ _queue pushBack ["REMOVE", nil, nil, _x#0]; } forEach _listItems;
 
-// Store currently selected index on Display
-_dialog setVariable [QGVAR(curSel_index), lbCurSel _ctrl_listbox];
+// Process the queue
+{
+    _x params ["_task", "_destination", "_destinationID", "_listIndex"];
 
-// Handle Edge Cases
+    switch (_task) do {
+        case "ADD": {
+            _listIndex = _listControl lbAdd ([_destination] call FUNC(getName));
+            _listControl lbSetData [_listIndex, _destinationID];
+        };
+        case "REMOVE": {
+            _listControl lbDelete _listIndex;
+        };
+        case "UPDATE": {
+            _listControl lbSetText [_listIndex, ([_destination] call FUNC(getName))];
+        };
+        default {};
+    };
+} forEach _queue;
+
+
+// UPDATE: OKButton and Status Text
+// Get the currently selected Index and store
+private _curSelIndex = lbCurSel _listControl;
+_display setVariable [QGVAR(curSel_index), _curSelIndex];
+
+// Handle Specific Cases 
+// Later: Handle "busy" destination check here
 private _state = switch (true) do {
     case (_curSelIndex == -1): { "NONE" };
     default { true };
 };
 
-// Adjust Display Controls: OKButton and Status Text
-private _ctrlButtonOK = _dialog displayCtrl 1;
-private _ctrlStatusText = _dialog displayCtrl 1003;
+private _ctrlButtonOK = _display displayCtrl 1;
+private _ctrlStatusText = _display displayCtrl 1003;
 
 if (_state isEqualTo true) then {
 
@@ -53,10 +90,12 @@ if (_state isEqualTo true) then {
     _ctrlButtonOK ctrlEnable true;
     _ctrlStatusText ctrlSetText "You can deploy to the selected destination!";
 
+
 } else {
     // Can not Fasttravel
 
     private _str = switch (_state) do {
+        case "BUSY": { "The selected destination is currently busy!" }; // will be used later
         case "NONE": { "No Destination selected!" };
         default { "No valid destination selected!" };
     };
@@ -65,4 +104,3 @@ if (_state isEqualTo true) then {
     _ctrlStatusText ctrlSetText _str;
 
 };
-

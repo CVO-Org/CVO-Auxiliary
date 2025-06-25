@@ -24,7 +24,8 @@ private _network = missionNamespace getVariable [[QADDON,_networkName] joinStrin
 if (_network isEqualTo "404") then {
     _network = createHashMapFromArray [
         ["departure", []],
-        ["destinations", []]
+        ["destinations", []],
+        ["nextDestinationIndex", 0]
     ];
     missionNamespace setVariable [[QADDON,_networkName] joinString "_",_network];
 };

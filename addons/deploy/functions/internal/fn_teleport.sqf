@@ -15,8 +15,6 @@
 * Public: Yes
 */
 
-diag_log format ['[CVO](debug)(fn_teleport) _this: %1', _this];
-
 params ["", "_player", "_actionParams"];
 _actionParams params ["_destination"];
 

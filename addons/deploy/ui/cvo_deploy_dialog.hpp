@@ -11,6 +11,8 @@ class GVAR(dialog) {
 
             style = LB_TEXTURES;
 
+            onLBSelChanged = Q(_this call FUNC(ui_onLBSelChanged););
+
             x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.5 * GUI_GRID_CENTER_W);

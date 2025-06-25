@@ -18,8 +18,9 @@
 params ["_target", "_player", "_params"];
 _params params  ["_networkName"];
 
-private _dialog = createDialog [QGVAR(dialog), true];
+private _display = createDialog [QGVAR(dialog), true];
 
-_dialog setVariable [QGVAR(network), _networkName];
-_dialog setVariable [QGVAR(departure), _target];
+private _network = [_networkName] call FUNC(network);
 
+_display setVariable [QGVAR(network), _network];
+_display setVariable [QGVAR(departure), _target];
