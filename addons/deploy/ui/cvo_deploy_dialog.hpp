@@ -41,6 +41,18 @@ class GVAR(dialog) {
     };
 
 	class ControlsBackground {
+        class Background: RscText {
+            idc = 1004;
+            text = "";
+
+            colorBackground[] = {0.0,0,0,0.5};
+
+            x = Q(-0.25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(-0.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(40.5 * GUI_GRID_CENTER_W);
+            h = Q(25.5 * GUI_GRID_CENTER_H);
+        };
+
         class Title_Background: RscText {
             idc = 1000;
             x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
@@ -106,7 +118,5 @@ class GVAR(dialog) {
             h = Q(01.2 * GUI_GRID_CENTER_H);
             colorBackground[] = {0,0,0,0.8};
         };
-
-
     };
 };
