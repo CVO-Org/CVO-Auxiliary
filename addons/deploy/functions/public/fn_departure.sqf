@@ -1,4 +1,4 @@
-#include "../script_component.hpp"
+#include "../../script_component.hpp"
 
 /*
 * Author: Zorn
@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call cvo_fnc_sth
+* [this] call cvo_deploy_fnc_departure;
 *
 * Public: Yes
 */
