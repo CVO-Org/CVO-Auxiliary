@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={25.217173,19.468575,-59.476913};
-		dir[]={-0.32443032,-0.40034872,0.85701078};
-		up[]={-0.14173983,0.91636372,0.37441859};
-		aside[]={0.93523151,-1.3038516e-07,0.35404152};
+		pos[]={25.203096,36.296677,18.89769};
+		dir[]={-0.42462841,-0.5893476,0.68728513};
+		up[]={-0.3097662,0.80787915,0.50137383};
+		aside[]={0.85072708,-1.3926183e-08,0.52560824};
 	};
 };
 binarizationWanted=0;
@@ -27,20 +27,31 @@ sourceName="exec";
 addons[]=
 {
 	"A3_Characters_F",
+	"A3_Weapons_F_Mark_Machineguns_M200",
+	"A3_Weapons_F_Mark_Acc",
+	"A3_Weapons_F",
+	"ace_reload",
+	"ace_smallarms",
+	"ace_ballistics",
+	"ace_realisticnames",
+	"ace_attach",
+	"ace_chemlights",
+	"A3_Weapons_F_Items",
+	"ace_medical_treatment",
+	"ace_logistics_wirecutter",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Soft_F_Quadbike_01",
 	"A3_Structures_F_Kart_Mil_Flags",
 	"cvo_branding",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Air_F_Heli_Heli_Transport_03",
-	"ace_realisticnames",
-	"A3_Structures_F_Civ_InfoBoards"
+	"A3_Structures_F_Argo_Military_Fortifications"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=17;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -50,50 +61,113 @@ class AddonsMetaData
 		};
 		class Item1
 		{
+			className="A3_Weapons_F_Mark";
+			name="Arma 3 Marksmen - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="ace_reload";
+			name="ACE3 - Reload";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item4
+		{
+			className="ace_smallarms";
+			name="ACE3 - Small Arms";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item5
+		{
+			className="ace_ballistics";
+			name="ACE3 - Ballistics";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item6
+		{
+			className="ace_attach";
+			name="ACE3 - Attach";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item7
+		{
+			className="ace_chemlights";
+			name="ACE3 - Chemlights";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item8
+		{
+			className="ace_medical_treatment";
+			name="ACE3 - Medical Treatment";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item9
+		{
+			className="ace_logistics_wirecutter";
+			name="ACE3 - Logistics Wire Cutter";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item10
+		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item2
+		class Item11
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item3
+		class Item12
 		{
 			className="A3_Structures_F_Kart";
 			name="Arma 3 Karts - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item13
 		{
 			className="cvo_branding";
 			name="CVO Auxiliary - Branding";
 			author="CVO Team";
 			url="https://github.com/OverlordZorn/CVO-Auxiliary";
 		};
-		class Item5
+		class Item14
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item6
+		class Item15
 		{
 			className="A3_Air_F_Heli";
 			name="Arma 3 Helicopters - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item16
 		{
-			className="A3_Structures_F";
-			name="Arma 3 - Buildings and Structures";
+			className="A3_Structures_F_Argo";
+			name="Arma 3 Malden - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -101,9 +175,11 @@ class AddonsMetaData
 };
 dlcs[]=
 {
+	"Mark",
 	"Kart",
 	"Aow",
-	"Heli"
+	"Heli",
+	"Argo"
 };
 randomSeed=4540948;
 class ScenarioData
@@ -146,13 +222,103 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={23,5.0014391,-13.950001};
+						position[]={63,5.0014391,-37.950001};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
 						isPlayer=1;
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="LMG_Mk200_BI_F";
+								underBarrel="bipod_03_F_blk";
+								firemode="LMG_Mk200_BI_F:manual";
+								class primaryMuzzleMag
+								{
+									name="200Rnd_65x39_cased_Box";
+									ammoLeft=200;
+								};
+							};
+							class uniform
+							{
+								typeName="U_BG_Guerilla2_1";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=4;
+									class Item0
+									{
+										name="MiniGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+									class Item1
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="Chemlight_blue";
+										count=2;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_TacVest_blk";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="200Rnd_65x39_cased_Box";
+										count=2;
+										ammoLeft=200;
+									};
+								};
+							};
+							class backpack
+							{
+								typeName="B_AssaultPack_ocamo";
+								isBackpack=1;
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="ACE_wirecutter";
+										count=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							headgear="H_Bandanna_khk";
+						};
 					};
 					id=1;
 					type="B_G_Soldier_AR_F";
@@ -264,13 +430,12 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10,6.6262865,-4};
+				position[]={22.693001,6.6262865,-23.650999};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="[this] call cvo_deploy_fnc_destination;";
 				name="car";
 			};
 			id=187;
@@ -286,7 +451,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]";
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -304,8 +469,6 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				ammo=0.89999998;
-				init="[this] call cvo_deploy_fnc_departure;";
 				name="flagpole";
 			};
 			id=188;
@@ -457,7 +620,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt";
 							};
 							id=5;
@@ -518,7 +681,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_1";
 							};
 							id=109;
@@ -579,7 +742,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_2";
 							};
 							id=111;
@@ -640,7 +803,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_3";
 							};
 							id=113;
@@ -701,7 +864,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_4";
 							};
 							id=115;
@@ -762,7 +925,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_5";
 							};
 							id=117;
@@ -823,7 +986,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_6";
 							};
 							id=119;
@@ -884,7 +1047,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_7";
 							};
 							id=121;
@@ -945,7 +1108,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_8";
 							};
 							id=123;
@@ -1006,7 +1169,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_9";
 							};
 							id=125;
@@ -1067,7 +1230,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_10";
 							};
 							id=127;
@@ -1128,7 +1291,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_11";
 							};
 							id=129;
@@ -1189,7 +1352,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_12";
 							};
 							id=131;
@@ -1250,7 +1413,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_13";
 							};
 							id=133;
@@ -1311,7 +1474,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_14";
 							};
 							id=135;
@@ -1372,7 +1535,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_15";
 							};
 							id=137;
@@ -1433,7 +1596,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_16";
 							};
 							id=139;
@@ -1494,7 +1657,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_17";
 							};
 							id=141;
@@ -1555,7 +1718,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_18";
 							};
 							id=143;
@@ -1616,7 +1779,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_19";
 							};
 							id=145;
@@ -1677,7 +1840,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_20";
 							};
 							id=147;
@@ -1738,7 +1901,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_21";
 							};
 							id=149;
@@ -1799,7 +1962,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_22";
 							};
 							id=151;
@@ -1860,7 +2023,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_23";
 							};
 							id=153;
@@ -1921,7 +2084,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_24";
 							};
 							id=155;
@@ -1982,7 +2145,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_25";
 							};
 							id=157;
@@ -2043,7 +2206,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_26";
 							};
 							id=159;
@@ -2104,7 +2267,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_27";
 							};
 							id=161;
@@ -2165,7 +2328,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_28";
 							};
 							id=163;
@@ -2226,7 +2389,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_29";
 							};
 							id=165;
@@ -2287,7 +2450,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_30";
 							};
 							id=167;
@@ -2348,7 +2511,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_31";
 							};
 							id=169;
@@ -2409,7 +2572,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_32";
 							};
 							id=171;
@@ -2470,7 +2633,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_33";
 							};
 							id=173;
@@ -2531,7 +2694,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_34";
 							};
 							id=175;
@@ -2592,7 +2755,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_35";
 							};
 							id=177;
@@ -2653,7 +2816,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_36";
 							};
 							id=179;
@@ -2714,7 +2877,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_37";
 							};
 							id=181;
@@ -2775,7 +2938,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_38";
 							};
 							id=183;
@@ -2836,7 +2999,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
-								init="[this] call cvo_common_fnc_executeUnit;";
+								init="[this, ""RND""] call cvo_common_fnc_executeUnit;";
 								name="tgt_39";
 							};
 							id=185;
@@ -3613,17 +3776,16 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={25,5.9688811,-9};
-				angles[]={0,1.1557395,0};
+				position[]={63.379002,5,-32.778999};
 			};
 			side="Empty";
-			flags=4;
+			flags=5;
 			class Attributes
 			{
-				init="[this] call cvo_deploy_fnc_departure;";
+				init=" [this, 30, ""ACE_wirecutter""] call cvo_common_fnc_makeRemovable;";
 			};
 			id=306;
-			type="MapBoard_altis_F";
+			type="Land_Barricade_01_4m_F";
 		};
 	};
 };
