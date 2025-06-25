@@ -34,6 +34,11 @@ private _type = switch (true) do {
 
 if (_type isEqualTo false) exitWith {};
 
+if (_network get "destinations" findIf { _x get "target" isEqualTo _target } > -1 ) exitWith {
+    ZRN_LOG_MSG_2(Failed: Target already defined as destination in Network,_target,_networkName);
+};
+
+
 if (_type in ["VIC", "STATIC"]) then { _target setVariable [QGVAR(network), _networkName]};
 
 private _destination = createHashMapFromArray _params;
