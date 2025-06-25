@@ -53,7 +53,7 @@ private _rel = format ["%1 %2 from %3", _distance, _direction, className _loc];
 
 
 private _return = switch (_type) do {
-    case "VIC": { format ["%1 %2 %3", _grid, _vehicleInfo, _rel] };
+    case "VIC": { format ["%1 %2 - %3", _grid, _rel, _vehicleInfo ] };
     case "POS";
     case "STATIC";
     default { format ["%1 %2", _grid, _rel] };
