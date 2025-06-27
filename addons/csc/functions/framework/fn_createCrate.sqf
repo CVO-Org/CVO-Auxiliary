@@ -18,16 +18,16 @@
 if !(isServer) exitWith {};
 
 params [
-    ["_entry",  "404",  [createHashMap] ]
+    ["_entry",  nil,  [createHashMap] ]
 ];
 
-if (_entry isEqualTo "404") exitWith {};
+if (isNil "_entry") exitWith {};
 
-private _box = createVehicle [_entry get "box_class", [0,0,0],[],2,"CAN_COLLIDE"];
+private _box = createVehicle [_entry getOrDefault ["box_class", "C_supplyCrate_F"], [0,0,0],[],2,"CAN_COLLIDE"];
 
-_box setVariable ["ace_cargo_customname", _entry get "name", true];
+_box setVariable ["ace_cargo_customname", _entry getOrDefault ["displayName", "DisplayName"], true];
 
-if (_entry get "box_empty") then {
+if (_entry getOrDefault ["box_empty", true]) then {
     // Empties the inventory of the Box
     clearBackpackCargoGlobal _box;
     clearMagazineCargoGlobal _box;
@@ -35,8 +35,8 @@ if (_entry get "box_empty") then {
     clearItemCargoGlobal _box;
 };
 
-private _items = _entry get "items";
-private _backpacks = _entry get "backpacks";
+private _items =     _entry getOrDefault ["items", []];
+private _backpacks = _entry getOrDefault ["backpacks", []];
 
 if (count _items > 0) then {
     {	_box addItemCargoGlobal [_x # 0, _x # 1] } forEach _items;
@@ -96,21 +96,35 @@ if (_entry getOrDefault ["ace_refuel_source", false]) then {
 
 // ACE Drag
 [
-    _box,
-    _entry getOrDefault ["ace_drag_canDrag", true],
-    _entry getOrDefault ["ace_drag_relPOS", [0,1.5,0]],
-    _entry getOrDefault ["ace_drag_dir", 0],
-    _entry getOrDefault ["ace_drag_ignoreWeight", true]
-] remoteExecCall [ "ace_dragging_fnc_setDraggable", [0,-2] select isDedicated, _box ];
+    [
+        QGVAR(EH_ace_setDraggable),
+        [
+            _box,
+            _entry getOrDefault ["ace_drag_canDrag", true],
+            _entry getOrDefault ["ace_drag_relPOS", [0,1.5,0]],
+            _entry getOrDefault ["ace_drag_dir", 0],
+            _entry getOrDefault ["ace_drag_ignoreWeight", true]
+        ]
+    ] call CBA_fnc_globalEventJIP,
+    _box
+] call CBA_fnc_removeGlobalEventJIP;
+
 
 // ACE Carry
+
 [
-    _box,
-    _entry getOrDefault ["ace_carry_canCarry", true],
-    _entry getOrDefault ["ace_carry_relPOS", [0,1,1]],
-    _entry getOrDefault ["ace_carry_dir", 0],
-    _entry getOrDefault ["ace_carry_ignoreWeight", false]
-] remoteExecCall [ "ace_dragging_fnc_setCarryable", [0,-2] select isDedicated, _box ];
+    [
+        QGVAR(EH_ace_setCarryable),
+        [
+            _box,
+            _entry getOrDefault ["ace_carry_canCarry", true],
+            _entry getOrDefault ["ace_carry_relPOS", [0,1,1]],
+            _entry getOrDefault ["ace_carry_dir", 0],
+            _entry getOrDefault ["ace_carry_ignoreWeight", false]
+        ]
+    ] call CBA_fnc_globalEventJIP,
+    _box
+] call CBA_fnc_removeGlobalEventJIP;
 
 
 //////////////////////////////////////////////////
@@ -125,8 +139,8 @@ if (_entry getOrDefault ["ace_cargo_setSize", "DEFAULT"] isEqualType 0) then {
 
 private _space =        _entry getOrDefault ["ace_cargo_setSpace", 0];
 private _addWheels =    _entry getOrDefault ["ace_cargo_add_spareWheels", 0];   // cargoSize = 1
-private _addJerryCans = _entry getOrDefault ["ace_cargo_add_jerrycans", 0]; // cargoSize = 1
-private _addTracks =    _entry getOrDefault ["ace_cargo_add_tracks", 0];      // cargoSize = 2
+private _addJerryCans = _entry getOrDefault ["ace_cargo_add_jerrycans", 0];     // cargoSize = 1
+private _addTracks =    _entry getOrDefault ["ace_cargo_add_tracks", 0];        // cargoSize = 2
 _space = _space + _addWheels + _addJerryCans + _addTracks * 2;
 
 
@@ -134,13 +148,12 @@ _space = _space + _addWheels + _addJerryCans + _addTracks * 2;
 [_box, _space] call ace_cargo_fnc_setSpace;
 
 
-
 while {_addWheels > 0}    do { ["ACE_Wheel",           _box]  call ace_cargo_fnc_loadItem; _addWheels = _addWheels -1; };
 while {_addJerryCans > 0} do { ["Land_CanisterFuel_F", _box]  call ace_cargo_fnc_loadItem; _addJerryCans = _addJerryCans -1 };
 while {_addTracks > 0}    do { ["ACE_Track",           _box]  call ace_cargo_fnc_loadItem; _addTracks = _addTracks -1};
 
+[QGVAR(api_crateSpawned), [_box, _title] ] call CBA_fnc_ServerEvent;
 
-["cvo_csc_Event_crateSpawnedServer", [_box, _title] ] call CBA_fnc_ServerEvent; // legacy for HAM SR
-[QGVAR(box_created_server), [_box, _title] ] call CBA_fnc_ServerEvent;
+_box setVehiclePosition [[0,0,0], [], 100];
 
 _box

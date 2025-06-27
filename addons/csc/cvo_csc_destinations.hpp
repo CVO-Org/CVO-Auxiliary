@@ -4,8 +4,8 @@
 // "true" and "false" will be converted into booleans
 
 // "DefaultEntry" is a special case and will define the "Defaults" for all the implemented
-
-class cvo_csc_kits
+/*
+class GVAR(destinations)
 {
     class DefaultEntry
     {
@@ -110,3 +110,4 @@ class cvo_csc_kits
         };
     };
 };
+*/

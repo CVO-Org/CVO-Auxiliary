@@ -34,3 +34,9 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
+
+class GVAR(presets) {
+    #include "cvo_csc_crates.hpp"
+    #include "cvo_csc_delivery_modes.hpp"
+    #include "cvo_csc_destinations.hpp"
+};
