@@ -22,7 +22,7 @@ class BaseRoleKit_Medic: Base {
  
 class BaseRoleKit_Medic_suture: Base {
     role = "medic";
-    condition = "missionNamespace getVariable ['ace_medical_treatment_consumeSurgicalKit',0] == 2";
+    condition = "missionNamespace getVariable ['ace_medical_treatment_consumeSurgicalKit',0] isEqualTo 2";
     class items {
         class ACE_suture {};
     };
