@@ -79,7 +79,7 @@ if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" 
     _conditionResult = false;
 };
 
-if (!_conditionResult) then { continue };
+if (!_conditionResult) exitWith _nextIteration;
 
 _returnArray append _items;
 
