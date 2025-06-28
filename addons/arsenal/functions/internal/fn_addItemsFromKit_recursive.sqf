@@ -70,7 +70,7 @@ if (_kitID isNotEqualTo "" && { _kitID isNotEqualTo _id64 }) exitWith _nextItera
 private _items = _kit get "items";
 
 // #### Condition ####
-private _conditionCode = _kit get "condition";
+private _conditionCode = _kit getOrDefault ["condition", {}];
 private _conditionResult = [_unit, _items] call _conditionCode;
 
 // validate Return
@@ -85,7 +85,7 @@ _returnArray append _items;
 
 
 // #### Code ####
-private _codeCode = _kit get "code";
+private _codeCode = _kit getOrDefault ["code", {}];
 private _codeResult = if (_codeCode isNotEqualTo {}) then {
     [_unit, _items] call _codeCode;
 } else {[]};
