@@ -12,7 +12,7 @@
 * 
 *
 * Example:
-* getText (_cfg >> "statement") call cvo_common_fnc_convertStringCode
+* getText (configFile >> "abe_banana" >> "condition") call cvo_common_fnc_convertStringCode
 *
 * Public: No
 */
@@ -21,6 +21,7 @@ params [ ["_stringCode", "", [""] ] ];
 
 switch (true) do {
     case (_stringCode isEqualTo ""): { {} };                    // undefined, returns empty code
-    case (isNil _stringCode): { compile _stringCode };          // its not a function
-    default { missionNamespace getVariable _stringCode };       // its a function
+    case (!(missionNamespace isNil _stringCode)): { missionNamespace getVariable [_stringCode, {}] }; // missionNamespace FNC
+    case (!(     uiNamespace isNil _stringCode)): {      uiNamespace getVariable [_stringCode, {}] }; // uiNamespace FNC
+    default { compile _stringCode };
 } // return
