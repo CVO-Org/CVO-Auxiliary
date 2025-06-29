@@ -17,17 +17,6 @@
 
 
 
-params [
-    [ "_box",            objNull,    [objNull]               ],
-    [ "_destination",    [0,0,0],    [[], objNull],  [2,3]   ],
-    [ "_deliveryMethod", [0,0,0],    [[], objNull],  [2,3]   ]
-];
+params [ "_box", "_destination", "_deliveryMethod" ];
 
-
-
-
-
-
-
-
-[QGVAR(EH_request), []] call CBA_fnc_serverEvent;
+[QGVAR(EH_request), [_box, _destination, _deliveryMethod]] call CBA_fnc_serverEvent;

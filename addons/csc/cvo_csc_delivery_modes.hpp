@@ -1,17 +1,11 @@
-// This file serves as an example for a missionConfig based setup of CSC for a mission.
-// Insert the following into your description.ext
-// #include "CfgCustomSupplyCrates.hpp"
-// "true" and "false" will be converted into booleans
+e and will define the "Defaults" for all the implemented
 
-// "DefaultEntry" is a special case and will define the "Defaults" for all the implemented
-
-class GVAR(delivery)
-{
+class GVAR(delivery_modes) {
     class Base {
 
         displayName = "";
 
-        functionname = "";
+        code = "";
 
         class parameters {
         };
@@ -21,7 +15,7 @@ class GVAR(delivery)
 
         displayName = "Airdrop";
 
-        functionname = "";
+        code = "";
 
         class parameters {
             airframe_side = "CIV";                  // String version: "WEST" "EAST" "GUER" "CIV"

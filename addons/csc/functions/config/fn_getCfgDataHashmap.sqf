@@ -26,15 +26,31 @@ private _properties = configProperties [_cfg];
 
 private _returnHashMap = createHashMap;
 
+private _convertApply = {
+    switch (true) do {
+        case (_x isEqualType [] ): { _x apply _convertApply };
+        case (_x isEqualTo "true"): { true };
+        case (_x isEqualTo "false"): { false };
+        case (_x isEqualTo "(true)"): { true };
+        case (_x isEqualTo "(false)"): { false };
+        default { _x };
+    };
+};
+
+private _convertCall = {
+    switch (true) do {
+        case (_this isEqualType [] ): { _this apply _convertApply };
+        case (_this isEqualTo "true"): { true };
+        case (_this isEqualTo "false"): { false };
+        case (_this isEqualTo "(true)"): { true };
+        case (_this isEqualTo "(false)"): { false };
+        default { _this };
+    };
+};
+
 {
     private _config = _x;
-    private _value = _x call BIS_fnc_getCfgData;
-
-    private _value = switch (_value) do {
-        case "true": { true };
-        case "false": { false };
-        default { _value };
-    };
+    private _value = _x call BIS_fnc_getCfgData call _convertCall;
 
     _returnHashMap set [
         configName _x,
