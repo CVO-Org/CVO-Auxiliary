@@ -20,6 +20,13 @@ class CfgFunctions
             class getCfgDataHashmap {};
         };
 
+        class destinations {
+            file = PATH_TO_FUNC_SUB(destinations);
+            
+            class destination_fixed {};
+            class destination_objRelative {};
+        };
+
        
         
 

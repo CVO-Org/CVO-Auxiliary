@@ -20,6 +20,7 @@ class CfgFunctions
 
             class convertStringCode {};
             class getMedianPosASL {};
+            class getSizeOf {};
         };
        
         class debug {

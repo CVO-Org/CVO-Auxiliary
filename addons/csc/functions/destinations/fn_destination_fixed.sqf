@@ -2,7 +2,7 @@
 
 /*
 * Author: Zorn
-* [Description]
+* Function to return a fixed position from the cfg parameters
 *
 * Arguments:
 *
@@ -14,3 +14,7 @@
 *
 * Public: No
 */
+
+params [ "_requestHashmap", "_paramsHashmap" ];
+
+_paramsHashmap getOrDefault ["_position", [0,0,0]]

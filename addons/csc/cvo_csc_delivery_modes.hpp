@@ -1,5 +1,3 @@
-e and will define the "Defaults" for all the implemented
-
 class GVAR(delivery_modes) {
     class Base {
 
