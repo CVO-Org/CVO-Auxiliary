@@ -20,7 +20,7 @@ params [
     [ "_className", "", [""] ]
 ];
 
-if (isNil QGVAR(db_sizeOf)) then { GVAR(db_sizeOf) = createHashmap; };
+if (isNil QGVAR(db_sizeOf)) then { GVAR(db_sizeOf) = createHashMap; };
 private _db = GVAR(db_sizeOf);
 
 if (_className in keys _db) then {
