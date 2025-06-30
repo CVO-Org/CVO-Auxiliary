@@ -1,3 +1,4 @@
+/*
 #include "../../script_component.hpp"
 
 /*
@@ -14,6 +15,7 @@
 *
 * Public: No
 */
+/*
 
 if !(isServer) exitWith {};
 
