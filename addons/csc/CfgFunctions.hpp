@@ -12,6 +12,8 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(framework);
 
             class createCrate {};
+            class request_client {};
+            class request_server {};
         };
         
         class config {
