@@ -22,7 +22,7 @@ params [
 ];
 
 _color = switch (_color) do {
-    case "CVO_RED": { "#690000" };
+    case "CVO_RED": { QCVO_RED_HEX };
     case "INDFOR":  { "#008000" };
     case "BLUFOR":  { "#004C99" };
     case "REDFOR":  { "#800000" };

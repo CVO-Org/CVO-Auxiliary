@@ -40,3 +40,9 @@ class GVAR(presets) {
     #include "cvo_csc_delivery_modes.hpp"
     #include "cvo_csc_destinations.hpp"
 };
+
+// UI
+// UI Stuff
+#include "ui\CommonDefines.hpp"
+#include "ui\BaseControls.hpp"
+#include "ui\cvo_csc_request.hpp"

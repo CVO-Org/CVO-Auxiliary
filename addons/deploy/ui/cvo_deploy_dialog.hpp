@@ -1,6 +1,6 @@
 class GVAR(dialog) {
 
-	idd = 69010;
+	idd = CVO_IDD_DEPLOY;
 
     onLoad = Q(_this call FUNC(ui_onLoad));
     onUnload = Q(_this call FUNC(ui_onUnload));
@@ -29,6 +29,7 @@ class GVAR(dialog) {
             h = Q(01.2 * GUI_GRID_CENTER_H);
         };
 
+
         class RscButtonMenuOK_2600: RscButtonMenuOK {
             text = "Deploy";
             onLoad = "(_this#0) ctrlEnable false;";
@@ -39,6 +40,7 @@ class GVAR(dialog) {
             h = Q(01.2 * GUI_GRID_CENTER_H);
         };
     };
+
 
 	class ControlsBackground {
         class Background: RscText {
@@ -59,8 +61,9 @@ class GVAR(dialog) {
             y = Q(00.0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(40.0 * GUI_GRID_CENTER_W);
             h = Q(02.0 * GUI_GRID_CENTER_H);
-            colorBackground[] = {0.411765,0,0,0.8};
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
+
 
         class Title_Icon: RscPicture {
             idc = 1200;
@@ -71,6 +74,7 @@ class GVAR(dialog) {
             h = Q(01.50 * GUI_GRID_CENTER_H);
         };
 
+
         class Title_Text: RscText {
             idc = 1001;
             text = "CVO Deploy";
@@ -79,6 +83,7 @@ class GVAR(dialog) {
             w = Q(17.5 * GUI_GRID_CENTER_W);
             h = Q(01.5 * GUI_GRID_CENTER_H);
         };
+
 
         class Title_Name: RscText {
             idc = 1002;
@@ -92,6 +97,7 @@ class GVAR(dialog) {
             w = Q(19.0 * GUI_GRID_CENTER_W);
             h = Q(01.0 * GUI_GRID_CENTER_H);
         };
+
 
         class Map_Destinations : RscMapControl {
             idc = 1600;
@@ -108,6 +114,7 @@ class GVAR(dialog) {
             w = Q(19.5 * GUI_GRID_CENTER_W);
             h = Q(20.5 * GUI_GRID_CENTER_H);
         };
+
 
         class Status_Text: RscText {
             idc = 1003;

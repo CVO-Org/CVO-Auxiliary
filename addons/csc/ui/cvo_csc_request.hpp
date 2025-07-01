@@ -1,42 +1,31 @@
-class GVAR(display) {
+class GVAR(request) {
 
-	idd = 69020;
+	idd = CVO_IDD_CSC;
 
     // onLoad = Q(_this call FUNC(ui_onLoad));
     // onUnload = Q(_this call FUNC(ui_onUnload));
 
     class Controls {
 
-        class List_Destinations: RscListNBox {
-            idc = 1500;
 
-            style = LB_TEXTURES;
-
-            onLBSelChanged = Q(_this call FUNC(ui_onLBSelChanged););
-
-            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(19.5 * GUI_GRID_CENTER_W);
-            h = Q(20.5 * GUI_GRID_CENTER_H);
-            colorBackground[] = {0,0,0,0.8};
-        };
+        #include "cvo_csc_request_crates_ListNBox.hpp"
 
 
         class RscButtonMenuCancel_2700: RscButtonMenuCancel {
-            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(07.0 * GUI_GRID_CENTER_W);
-            h = Q(01.2 * GUI_GRID_CENTER_H);
+            x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(07.00 * GUI_GRID_CENTER_W);
+            h = Q(01.25 * GUI_GRID_CENTER_H);
         };
 
         class RscButtonMenuOK_2600: RscButtonMenuOK {
-            text = "Deploy";
+            text = "Request";
             onLoad = "(_this#0) ctrlEnable false;";
 
-            x = Q(28.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(12.0 * GUI_GRID_CENTER_W);
-            h = Q(01.2 * GUI_GRID_CENTER_H);
+            x = Q(28.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(12.00 * GUI_GRID_CENTER_W);
+            h = Q(01.25 * GUI_GRID_CENTER_H);
         };
     };
 
@@ -49,17 +38,19 @@ class GVAR(display) {
 
             x = Q(-0.25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(-0.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(40.5 * GUI_GRID_CENTER_W);
-            h = Q(25.5 * GUI_GRID_CENTER_H);
+            w = Q(40.50 * GUI_GRID_CENTER_W);
+            h = Q(25.50 * GUI_GRID_CENTER_H);
         };
 
         class Title_Background: RscText {
             idc = 1000;
-            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(00.0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(40.0 * GUI_GRID_CENTER_W);
-            h = Q(02.0 * GUI_GRID_CENTER_H);
-            colorBackground[] = {0.411765,0,0,0.8};
+
+            x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.00 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(40.00 * GUI_GRID_CENTER_W);
+            h = Q(02.00 * GUI_GRID_CENTER_H);
+
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
 
         class Title_Icon: RscPicture {
@@ -73,49 +64,110 @@ class GVAR(display) {
 
         class Title_Text: RscText {
             idc = 1001;
-            text = "CVO Custom Supply Crates";
-            x = Q(02.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            text = "CVO Custom Supply Crates Request";
+            x = Q(02.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(00.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(17.5 * GUI_GRID_CENTER_W);
-            h = Q(01.5 * GUI_GRID_CENTER_H);
+            w = Q(17.50 * GUI_GRID_CENTER_W);
+            h = Q(01.50 * GUI_GRID_CENTER_H);
         };
 
         class Title_Name: RscText {
             idc = 1002;
-            text = "Username";
+            text = "AccessPoint";
             style = ST_RIGHT;
 
-            onLoad = "_this#0 ctrlSetText name ace_player";
+            // onLoad = "_this#0 ctrlSetText name ace_player";
 
-            x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(00.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(19.0 * GUI_GRID_CENTER_W);
-            h = Q(01.0 * GUI_GRID_CENTER_H);
+            x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(00.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.00 * GUI_GRID_CENTER_W);
+            h = Q(01.00 * GUI_GRID_CENTER_H);
         };
 
-        class Map_Destinations : RscMapControl {
-            idc = 1600;
 
-            type = CT_MAP;
 
-            showMarkers = 0;
-            moveOnEdges = 0;
+        // Crates Selection
+        class Crates_Subtitle_Background: RscText {
+            idc = 1005;
 
-            scaleMin = 0.03;
+            x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(02.00 * GUI_GRID_CENTER_H);
 
-            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(19.5 * GUI_GRID_CENTER_W);
-            h = Q(20.5 * GUI_GRID_CENTER_H);
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
+        };
+        class Crates_Subtitle_Text: RscText {
+            idc = 1006;
+
+            text = "Crates"; //--- ToDo: Localize;
+            style = ST_CENTER;
+
+            x = Q(00.25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(01.50 * GUI_GRID_CENTER_H);
         };
 
+
+
+        // Destination Selection
+        class Destination_Subtitle_Background: RscText {
+            idc = 1007;
+
+            x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(02.00 * GUI_GRID_CENTER_H);
+
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
+        };
+        class Destination_Subtitle_Text: RscText {
+            idc = 1008;
+
+            text = "Destination"; //--- ToDo: Localize;
+            style = ST_CENTER;
+
+            x = Q(21.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(02.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(01.50 * GUI_GRID_CENTER_H);
+        };
+
+
+
+        // Destination Selection
+        class Delivery_Subtitle_Background: RscText {
+            idc = 1009;
+
+            x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(13.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(02.00 * GUI_GRID_CENTER_H);
+
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
+        };
+        class Delivery_Subtitle_Text: RscText {
+            idc = 1010;
+
+            text = "Delivery Mode"; //--- ToDo: Localize;
+            style = ST_CENTER;
+
+            x = Q(21.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(13.75 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(01.50 * GUI_GRID_CENTER_H);
+        };
+
+
+        // Bottom Left Status Text Bar
         class Status_Text: RscText {
             idc = 1003;
-            text = "No Destination selected"; //--- ToDo: Localize;
-            x = Q(00.0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(23.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
-            w = Q(19.5 * GUI_GRID_CENTER_W);
-            h = Q(01.2 * GUI_GRID_CENTER_H);
+            text = "Request invalid"; //--- ToDo: Localize;
+            x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+            y = Q(23.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            w = Q(19.50 * GUI_GRID_CENTER_W);
+            h = Q(01.25 * GUI_GRID_CENTER_H);
             colorBackground[] = {0,0,0,0.8};
         };
     };

@@ -29,9 +29,12 @@ class CfgFunctions
             class destination_objRelative {};
         };
 
-       
-        
-
-
+       class ui {
+           file = PATH_TO_FUNC_SUB(ui);
+           
+           class openDialog {};
+           
+           class ui_update_listNBox {};
+       };
     };
 };
