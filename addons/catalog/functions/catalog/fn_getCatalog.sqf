@@ -21,7 +21,12 @@ params [
 
 if (_catName isEqualTo "") exitWith { false };
 
-private _catalogName = [QPREFIX,_catName] joinString "_";
+private _catalogName = if (QPREFIX in _catName) then {
+    _catName
+} else {
+    [QPREFIX,_catName] joinString "_"
+};
+
 private _catalog = missionNamespace getVariable [ _catalogName , nil ];
 
 if (isNil "_catalog") then {

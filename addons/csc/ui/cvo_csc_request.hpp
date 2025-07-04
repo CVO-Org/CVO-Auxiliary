@@ -1,9 +1,9 @@
 class GVAR(request) {
 
-	idd = CVO_IDD_CSC;
+	idd = CVO_IDD_CSC_REQUEST;
 
-    // onLoad = Q(_this call FUNC(ui_onLoad));
-    // onUnload = Q(_this call FUNC(ui_onUnload));
+    onLoad = Q(_this call FUNC(ui_onLoad));
+    onUnload = Q(_this call FUNC(ui_onUnload));
 
     class Controls {
 
@@ -98,9 +98,9 @@ class GVAR(request) {
             colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
         class Crates_Subtitle_Text: RscText {
-            idc = 1006;
+            idc = CVO_IDC_CSC_Crates_Subtitle_Text;
 
-            text = "Crates"; //--- ToDo: Localize;
+            text = "Custom Supply Crates [ 0 / 1 ]"; //--- ToDo: Localize;
             style = ST_CENTER;
 
             x = Q(00.25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
@@ -154,7 +154,7 @@ class GVAR(request) {
             style = ST_CENTER;
 
             x = Q(21.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(13.75 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            y = Q(13.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.50 * GUI_GRID_CENTER_W);
             h = Q(01.50 * GUI_GRID_CENTER_H);
         };

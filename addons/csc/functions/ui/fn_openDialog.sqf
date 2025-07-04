@@ -10,21 +10,19 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [] call cvo_csc_fnc_openDialog;
 *
 * Public: No
 */
 
 
-params ["_target", "_player", "_params"];
+params [["_target", objNull], ["_player", ACE_player], ["_params", []]];
 
-_params params  ["_accessPoint"];
+_params params [["_accessPoint", createHashMap]];
 
-private _display = createDialog [QGVAR(dialog), true];
+private _display = createDialog [QGVAR(request), true];
 
-/*
-private _network = [_networkName] call FUNC(network);
+_display setVariable ["requester", _player];
+_display setVariable ["target", _target];
 
-_display setVariable [QGVAR(network), _network];
-_display setVariable [QGVAR(departure), _target];
-*/
+{ _display setVariable [ _x, _accessPoint getOrDefault [_x, [ "Crate 1", "Crate 2", "Crate 3" ]] ]; } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];

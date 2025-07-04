@@ -1,10 +1,10 @@
 class Crates_ListNBox: RscListNBox {
-    idc = CVO_CSC_Crate;
+    idc = CVO_IDC_CSC_Crates_ListNBox;
 
     type = CT_LISTNBOX;
     style = LB_TEXTURES;
 
-    // onLBSelChanged = Q(_this call FUNC(ui_onLBSelChanged););
+    onLBSelChanged = Q(_this call FUNC(ui_crates_update_info););
 
     x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
     y = Q(04.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
@@ -13,36 +13,51 @@ class Crates_ListNBox: RscListNBox {
 
     colorBackground[] = {0,0,0,0.8};
 
-	drawSideArrows = 1;
+	drawSideArrows = 0;
     
-    idcLeft = CVO_CSC_Crate_arrowMinus;
-    idcRight = CVO_CSC_Crate_arrowPlus;
+    idcLeft = CVO_IDC_CSC_Crates_ListNBox_arrowMinus;
+    idcRight = CVO_IDC_CSC_Crates_ListNBox_arrowPlus;
 
-    collumns[] = { 0.1, 0.8, 0.9 };
-
-    // collumns[] = {
-    //     Q(01.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X),
-    //     Q(16.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X)
-    // };
+    columns[] = { 0.1, 0.8 };
 
 };
 
 class ArrowLeft: RscButton {
-    idc = CVO_CSC_Crate_arrowMinus;
+
+    idc = CVO_IDC_CSC_Crates_ListNBox_arrowMinus;
+
+    onButtonClick = QUOTE([ARR_2(-1,(_this#0))] call FUNC(ui_crates_update););
+    
     text = "-";
-    colorBackground[] = {0,0,0,1};
-    onButtonClick = ""; // QUOTE([ARR_2(ctrlParent (_this select 0),-1)] call FUNC(buttonCargo));
-    fade = 1;
-    enable = 0;
-    x = Q(00.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-    y = Q(00.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+
+    SizeEx = Q(GUI_TEXT_SIZE_LARGE);    // 0.5
+
+    style = ST_CENTER;
+
+    // fade = 1;
+    // enable = 0;
+
+    x = -100; // Q(00.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+    y = -100; // Q(00.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
     w = Q(01.00 * GUI_GRID_CENTER_W);
     h = Q(01.00 * GUI_GRID_CENTER_H);
-    sizeEx = QUOTE(7 * GRID_H);
+
+	colorBackground[] = { 1, 1, 1, 0 };
+	colorBackgroundActive[] = { 1, 1, 1, 0 };
+	colorBackgroundDisabled[] = { 1, 1, 1, 0 };
+	colorFocused[] = { 1, 1, 1, 0 };
+	colorShadow[] = { 1, 1, 1, 0 };
+	borderSize = 0;
+
+    shadow = 0;
+
 };
 
 class ArrowRight: ArrowLeft {
-    idc = CVO_CSC_Crate_arrowPlus;
-    onButtonClick = ""; // QUOTE([ARR_2(ctrlParent (_this select 0),1)] call FUNC(buttonCargo));
+
+    idc = CVO_IDC_CSC_Crates_ListNBox_arrowPlus;
+
+    onButtonClick = QUOTE([ARR_2(1,(_this#0))] call FUNC(ui_crates_update););
+    
     text = "+";
 };

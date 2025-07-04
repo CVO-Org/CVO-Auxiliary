@@ -4,14 +4,19 @@
 // CVO IDDs
 
 #define CVO_IDD_DEPLOY 69000
-#define CVO_IDD_CSC 69100
+#define CVO_IDD_CSC_REQUEST 69100
 
 
 // CVO CSC IDCs
 
-#define CVO_CSC_Crate 1500
-#define CVO_CSC_Crate_arrowMinus 1511
-#define CVO_CSC_Crate_arrowPlus 1512
+#define CVO_IDC_CSC_Crates_ListNBox 1500
+#define CVO_IDC_CSC_Crates_ListNBox_arrowMinus 1511
+#define CVO_IDC_CSC_Crates_ListNBox_arrowPlus 1512
+#define CVO_IDC_CSC_Crates_Subtitle_Text 1006
+
+#define CVO_IDC_CSC_ButtonOK 1
+#define CVO_IDC_CSC_ButtonCancel 2
+
 
 
 // CVO COLORS

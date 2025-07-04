@@ -2,7 +2,7 @@
 
 /*
 * Author: Zorn
-* Function to update the ListNBox control
+* Function to create an accesspoint on an Object
 *
 * Arguments:
 *
@@ -15,5 +15,6 @@
 * Public: No
 */
 
-params ["_requestHashmap", "_display", "_control"];
-
+params [
+    ["_cratesAsClassnames",        [],         []       ]
+];

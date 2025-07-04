@@ -14,7 +14,10 @@ class CfgFunctions
             class createCrate {};
             class request_client {};
             class request_server {};
+
+            class createAccessPoint {};
         };
+
         
         class config {
             file = PATH_TO_FUNC_SUB(config);
@@ -32,9 +35,16 @@ class CfgFunctions
        class ui {
            file = PATH_TO_FUNC_SUB(ui);
            
-           class openDialog {};
+            class openDialog {};
            
-           class ui_update_listNBox {};
+            class ui_onLoad {};
+            class ui_onUnload {};
+            
+            class ui_crates_init {};
+
+            class ui_crates_update {};
+            class ui_crates_update_info {};
+            class ui_crates_check_amount {};
        };
     };
 };

@@ -27,6 +27,8 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(debug);
 
             class markAllLocations {};
+            class stringPadding {};
+            class ui_lnb_output {};
         };
 
         class helicopters {

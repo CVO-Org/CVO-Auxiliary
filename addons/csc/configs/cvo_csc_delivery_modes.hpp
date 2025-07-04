@@ -5,6 +5,8 @@ class GVAR(delivery_modes) {
 
         code = "";
 
+        maxCrates = 1;
+
         class parameters {
         };
     };
@@ -14,6 +16,8 @@ class GVAR(delivery_modes) {
         displayName = "Airdrop";
 
         code = "";
+
+        maxCrates = 3;
 
         class parameters {
             airframe_side = "CIV";                  // String version: "WEST" "EAST" "GUER" "CIV"
