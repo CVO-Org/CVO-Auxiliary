@@ -25,4 +25,4 @@ private _display = createDialog [QGVAR(request), true];
 _display setVariable ["requester", _player];
 _display setVariable ["target", _target];
 
-{ _display setVariable [ _x, _accessPoint getOrDefault [_x, [ "Crate 1", "Crate 2", "Crate 3" ]] ]; } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];
+{ _display setVariable [ _x, _accessPoint getOrDefault [_x, [ "Crate 1", "Crate 2", "Crate 3", "Crate 1", "Crate 2", "Crate 1", "Crate 2", "Crate 1", "Crate 2", "Crate 1", "Crate 2","Crate 1", "Crate 2" ]] ]; } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];

@@ -7,9 +7,9 @@ class GVAR(request) {
 
     class Controls {
 
-
-        #include "cvo_csc_request_crates_ListNBox.hpp"
-
+        #include "cvo_csc_request_crates.hpp"
+        #include "cvo_csc_request_delivery.hpp"
+        #include "cvo_csc_request_destination.hpp"
 
         class RscButtonMenuCancel_2700: RscButtonMenuCancel {
             x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
@@ -88,7 +88,7 @@ class GVAR(request) {
 
         // Crates Selection
         class Crates_Subtitle_Background: RscText {
-            idc = 1005;
+            idc = CVO_IDC_CSC_Crates_Subtitle_Background;
 
             x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
@@ -113,7 +113,7 @@ class GVAR(request) {
 
         // Destination Selection
         class Destination_Subtitle_Background: RscText {
-            idc = 1007;
+            idc = CVO_IDC_CSC_Destination_Subtitle_Background;
 
             x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
@@ -123,7 +123,7 @@ class GVAR(request) {
             colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
         class Destination_Subtitle_Text: RscText {
-            idc = 1008;
+            idc = CVO_IDC_CSC_Destination_Subtitle_Text;
 
             text = "Destination"; //--- ToDo: Localize;
             style = ST_CENTER;
@@ -135,10 +135,9 @@ class GVAR(request) {
         };
 
 
-
-        // Destination Selection
+        // Delivery Selection
         class Delivery_Subtitle_Background: RscText {
-            idc = 1009;
+            idc = CVO_IDC_CSC_Delivery_Subtitle_Background;
 
             x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(13.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
@@ -148,7 +147,7 @@ class GVAR(request) {
             colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
         class Delivery_Subtitle_Text: RscText {
-            idc = 1010;
+            idc = CVO_IDC_CSC_Delivery_Subtitle_Text;
 
             text = "Delivery Mode"; //--- ToDo: Localize;
             style = ST_CENTER;

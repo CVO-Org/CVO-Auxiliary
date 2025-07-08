@@ -29,7 +29,7 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(destinations);
             
             class destination_fixed {};
-            class destination_objRelative {};
+            class destination_relativeTo {};
         };
 
        class ui {

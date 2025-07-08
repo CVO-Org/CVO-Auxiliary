@@ -8,12 +8,29 @@
 
 
 // CVO CSC IDCs
+// Crates
+#define CVO_IDC_CSC_Crates_Subtitle_Text 1500
+#define CVO_IDC_CSC_Crates_Subtitle_Background 1501
 
-#define CVO_IDC_CSC_Crates_ListNBox 1500
+#define CVO_IDC_CSC_Crates_ListNBox 1510
 #define CVO_IDC_CSC_Crates_ListNBox_arrowMinus 1511
 #define CVO_IDC_CSC_Crates_ListNBox_arrowPlus 1512
-#define CVO_IDC_CSC_Crates_Subtitle_Text 1006
 
+// Delivery
+#define CVO_IDC_CSC_Delivery_Subtitle_Text 1600
+#define CVO_IDC_CSC_Delivery_Subtitle_Background 1601
+
+#define CVO_IDC_CSC_Delivery_ListBox 1610
+#define CVO_IDC_CSC_Delivery_Description 1611
+
+// Destination
+#define CVO_IDC_CSC_Destination_Subtitle_Text 1700
+#define CVO_IDC_CSC_Destination_Subtitle_Background 1701
+
+#define CVO_IDC_CSC_Destination_ListBox 1710
+#define CVO_IDC_CSC_Destination_Description 1711
+
+// Others
 #define CVO_IDC_CSC_ButtonOK 1
 #define CVO_IDC_CSC_ButtonCancel 2
 
