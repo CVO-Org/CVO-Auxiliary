@@ -24,7 +24,7 @@ _reference = switch (_reference) do {
     case "TARGET": { _requestHashmap getOrDefault ["target", objNull] };
     case objNull: { objNull };
     default {
-        if (!isNil _reference) then { missionNameSpace } else { }
+        if (!isNil _reference) then { missionNamespace getVariable _reference } else { ACE_Player };
     };
 };
 

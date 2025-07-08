@@ -28,7 +28,7 @@ class CfgFunctions
         class destinations {
             file = PATH_TO_FUNC_SUB(destinations);
             
-            class destination_fixed {};
+            class destination_fixedPos {};
             class destination_relativeTo {};
         };
 
