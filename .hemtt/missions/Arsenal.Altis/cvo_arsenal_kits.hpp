@@ -49,7 +49,7 @@ class cvo_arsenal_kits
 
     // Personal Kit - Banana for the good boi!
     class TestingMission_SteamID: Base {
-        id64 = "123123";
+        id64[] = {"123123", "_SP_PLAYER_"};
         class items {
             class ace_banana {};
             class ACE_suture {};
