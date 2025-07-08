@@ -9,7 +9,7 @@ class Crates_ListNBox: RscListNBox {
     x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
     y = Q(04.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
     w = Q(19.50 * GUI_GRID_CENTER_W);
-    h = Q(09.00 * GUI_GRID_CENTER_H);
+    h = Q(07.50 * GUI_GRID_CENTER_H);
 
     colorBackground[] = {0,0,0,0.8};
 
@@ -60,4 +60,24 @@ class ArrowRight: ArrowLeft {
     onButtonClick = QUOTE([ARR_2(1,(_this#0))] call FUNC(ui_crates_update););
     
     text = "+";
+};
+
+class Crates_Description: RscText {
+    idc = CVO_IDC_CSC_Crates_ListNBox_Description;
+
+    type = ST_MULTI;
+    lineSpacing = 1;
+    
+    SizeEx = Q(GUI_TEXT_SIZE_MEDIUM);
+
+
+    text = "Crates Description";
+
+    x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+    y = Q(13.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+    w = Q(19.50 * GUI_GRID_CENTER_W);
+    h = Q(10.00 * GUI_GRID_CENTER_H);
+
+    colorBackground[] = {0,0,0,0.6};            
+
 };

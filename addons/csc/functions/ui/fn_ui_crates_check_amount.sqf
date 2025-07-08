@@ -46,9 +46,18 @@ switch (true) do {
 
 // Disable OK Button if more Crates are selected then maximum possible
 switch (true) do {
-    case ( _curTotal isEqualTo 0   ): { ctrlEnable [CVO_IDC_CSC_ButtonOK, false]; };
-    case ( _curTotal >  _maxCrates ): { ctrlEnable [CVO_IDC_CSC_ButtonOK, false]; };
-    case ( _curTotal <= _maxCrates ): { ctrlEnable [CVO_IDC_CSC_ButtonOK, true ]; };
+    case ( _curTotal isEqualTo 0   ): {
+        ctrlEnable [CVO_IDC_CSC_ButtonOK, false];
+            ctrlSetText [CVO_IDC_CSC_Status, "No crates selected."];
+    };
+    case ( _curTotal >  _maxCrates ): {
+        ctrlEnable [CVO_IDC_CSC_ButtonOK, false];
+        ctrlSetText [CVO_IDC_CSC_Status, "Too many crates selected."];
+    };
+    case ( _curTotal <= _maxCrates ): {
+        ctrlEnable [CVO_IDC_CSC_ButtonOK, true ];
+        ctrlSetText [CVO_IDC_CSC_Status, "Request can be processed."];
+    };
 };
 
 ctrlSetText [CVO_IDC_CSC_Crates_Subtitle_Text, format ["Custom Supply Crates [ %1 / %2 ]", _curTotal, _maxCrates ]];

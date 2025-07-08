@@ -1,6 +1,11 @@
 // This file is used to store some more or less important Numbers, values etc. as macros
 
 
+#define GUI_TEXT_SIZE_SMALL 	(GUI_GRID_H * 0.8)
+#define GUI_TEXT_SIZE_MEDIUM 	(GUI_GRID_H * 1)
+#define GUI_TEXT_SIZE_LARGE 	(GUI_GRID_H * 1.2)
+
+
 // CVO IDDs
 
 #define CVO_IDD_DEPLOY 69000
@@ -13,8 +18,10 @@
 #define CVO_IDC_CSC_Crates_Subtitle_Background 1501
 
 #define CVO_IDC_CSC_Crates_ListNBox 1510
-#define CVO_IDC_CSC_Crates_ListNBox_arrowMinus 1511
-#define CVO_IDC_CSC_Crates_ListNBox_arrowPlus 1512
+#define CVO_IDC_CSC_Crates_ListNBox_Description 1511
+
+#define CVO_IDC_CSC_Crates_ListNBox_arrowMinus 1521
+#define CVO_IDC_CSC_Crates_ListNBox_arrowPlus 1522
 
 // Delivery
 #define CVO_IDC_CSC_Delivery_Subtitle_Text 1600
@@ -31,6 +38,7 @@
 #define CVO_IDC_CSC_Destination_Description 1711
 
 // Others
+#define CVO_IDC_CSC_Status 1100
 #define CVO_IDC_CSC_ButtonOK 1
 #define CVO_IDC_CSC_ButtonCancel 2
 

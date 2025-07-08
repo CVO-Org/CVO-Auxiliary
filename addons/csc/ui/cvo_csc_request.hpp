@@ -161,7 +161,7 @@ class GVAR(request) {
 
         // Bottom Left Status Text Bar
         class Status_Text: RscText {
-            idc = 1003;
+            idc = CVO_IDC_CSC_Status;
             text = "Request invalid"; //--- ToDo: Localize;
             x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(23.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
