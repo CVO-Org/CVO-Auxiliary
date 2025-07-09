@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [ _catName, _entryName ] call cvo_catalog_fnc_delEntry;
 *
 * Public: No
 */
