@@ -17,14 +17,18 @@
 
 params ["_display"];
 
-private _crates = _display getVariable QGVAR(crates);   // array of Configs
-private _ctrl = _display displayCtrl CVO_IDC_CSC_Crates_ListNBox;
 
+//// Update Crates ListNBox
+// Init Vars
+_display setVariable [QGVAR(maxCrates), 3];
+_display setVariable [QGVAR(totalCrates), 0];
+
+// get crate data
 private _array = [];
 {
     _array pushBack [
         [
-            _x, //getText ([QGVAR(crates), _x, configNull] call EFUNC(catalog,getEntry) >> "displayName");
+            getText ([QGVAR(crates), _x, configNull] call EFUNC(catalog,getEntry) >> "displayName"),
             "0"
         ],  // Text
         [
@@ -34,11 +38,27 @@ private _array = [];
             _x
         ]   // Data // Config Name
     ]
-} forEach _crates;
+} forEach (_display getVariable QGVAR(crates));   // array of Configs
 
-_display setVariable [QGVAR(maxCrates), 3];
-_display setVariable [QGVAR(totalCrates), 0];
-
+// add crate data
 lnbAddArray [ CVO_IDC_CSC_Crates_ListNBox, _array ];
 
-[] call FUNC(ui_crates_check_amount); // update the + and - button 
+
+//// Update Destination ListBox
+{
+    lbAdd [
+        CVO_IDC_CSC_Destination_ListBox,
+        getText ([QGVAR(destinations), _x, configNull] call EFUNC(catalog,getEntry) >> "displayName")
+    ];
+} forEach (_display getVariable QGVAR(destinations));   // array of Configs
+lbSetCurSel [CVO_IDC_CSC_Destination_ListBox, 0];
+
+
+//// Update Delivery Mode ListBox
+{
+    lbAdd [
+        CVO_IDC_CSC_Delivery_ListBox,
+        getText ([QGVAR(delivery_modes), _x, configNull] call EFUNC(catalog,getEntry) >> "displayName")
+    ];
+} forEach (_display getVariable QGVAR(delivery_modes));   // array of Configs
+lbSetCurSel [CVO_IDC_CSC_Delivery_ListBox, 0];

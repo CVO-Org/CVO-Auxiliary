@@ -20,7 +20,7 @@
     {
         params ["_args", "_code"];
         _code = switch (typeName (_code)) do {
-            case "STRING": { (_code) call FUNC(convertStringCode) };
+            case "STRING": { (_code) call FUNC(convertStringCode) }; // TODO once cba updates, replace with cba variant
             case "CODE": { _code };
             default { {} };
         };

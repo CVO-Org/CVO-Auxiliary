@@ -5,11 +5,14 @@
 
 // "DefaultEntry" is a special case and will define the "Defaults" for all the implemented
 
-class GVAR(crates)
-{
-    class Base {
+class GVAR(crates) {
+    class base {
 
         displayName = "displayName";
+
+        description = "medical stuff";
+
+        hideInZeus = "false";
 
         items[] = {};
         backpacks[] = {};
@@ -50,7 +53,7 @@ class GVAR(crates)
         ace_cargo_add_tracks = 0;
     };
 
-    class base_MedicalCrate: Base {
+    class base_medicalCrate: base {
         displayName = "Medical Supply Crate";
 
         box_class = "ACE_medicalSupplyCrate_advanced";

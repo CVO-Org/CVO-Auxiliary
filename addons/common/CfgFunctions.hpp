@@ -18,7 +18,7 @@ class CfgFunctions
         class code {
             file = PATH_TO_FUNC_SUB(code);
 
-            class convertStringCode {};
+            class convertStringCode {}; // TODO once cba updates, replace with cba variant
             class getMedianPosASL {};
             class getSizeOf {};
         };

@@ -15,8 +15,6 @@
 * Public: No
 */
 
-diag_log format ['[CVO](debug)(fn_ui_onLoad) _this: %1', _this];
-
 params ["_display"];
 
 [

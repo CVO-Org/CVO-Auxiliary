@@ -42,16 +42,16 @@ private _crates = [];
     
 } forEach _crate_list;
 
-// PLACEHOLDER
-private _deliveryClass =    "PLACEHOLDER";
-private _DestinationClass = "PLACEHOLDER";
 
 private _request = createHashMapFromArray [
+    [ "crates",        _crates ],
     [ "requester",     _display getVariable "requester" ],
-    [ "target",        _display getVariable "target"    ],
-    [ "crates",        _crates           ],
-    [ "destination",   _destinationClass ],
-    [ "delivery_mode", _deliveryClass    ]
+    [ "target",        _display getVariable "target" ],
+    [ "destination",   _display getVariable QGVAR(destination) ],
+    [ "delivery_mode", _display getVariable QGVAR(delivery_mode) ]
 ];
 
-diag_log format ['[CVO](debug)(fn_ui_onUnload) _request: %1', _request];
+ZRN_LOG_MSG_1(REQUEST Established. Handling Destination next,_request);
+
+[_request] call FUNC(handle_destination);
+

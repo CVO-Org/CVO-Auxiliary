@@ -1,17 +1,30 @@
 class GVAR(delivery_modes) {
-    class Base {
+    class base {
 
         displayName = "";
+        description = "";
+
 
         code = "";
-
         maxCrates = 1;
+
+        hideInZeus = "false";
 
         class parameters {
         };
     };
 
-    class Base_Airdrop : Base {
+    class base_spawn: base {
+
+        displayName = "Spawn";
+        description = "Will just spawn the crates at/around the provided position";
+
+        code = QFUNC(base_spawn);
+
+        maxCrates = 5;
+    };
+
+    class base_airdrop: base {
 
         displayName = "Airdrop";
 

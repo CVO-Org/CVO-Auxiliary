@@ -65,7 +65,8 @@ class ArrowRight: ArrowLeft {
 class Crates_Description: RscText {
     idc = CVO_IDC_CSC_Crates_ListNBox_Description;
 
-    type = ST_MULTI;
+    // type = ST_MULTI;
+    
     lineSpacing = 1;
     
     SizeEx = Q(GUI_TEXT_SIZE_MEDIUM);

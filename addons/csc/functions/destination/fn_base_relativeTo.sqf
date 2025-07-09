@@ -24,20 +24,22 @@ _reference = switch (_reference) do {
     case "TARGET": { _requestHashmap getOrDefault ["target", objNull] };
     case objNull: { objNull };
     default {
-        if (!isNil _reference) then { missionNamespace getVariable _reference } else { ACE_Player };
+        if (!isNil _reference) then { missionNamespace getVariable _reference } else { objNull };
     };
 };
+
+if (isNull _reference) exitWith { [0,0,0] };
 
 private _mode = _paramsHashmap getOrDefault ["mode", "FRONT"];
 
 switch (_mode) do {
     case "FRONT": {
-        private _maxSize = selectMax (_requestHashmap get "crates" apply { getText (_x >> "box_class") call EFUNC(common,getSizeOf) });
+        private _maxSize = selectMax (_requestHashmap get "crates" apply { getText (([QGVAR(crates), _x] call EFUNC(catalog,getEntry)) >> "box_class") call EFUNC(common,getSizeOf) });
         _reference getRelPos [ (_reference call BIS_fnc_boundingBoxDimensions select 0) / 2 + 3 + _maxSize, 0 ];
     };
 
     case "BEHIND": {
-        private _maxSize = selectMax (_requestHashmap get "crates" apply { getText (_x >> "box_class") call EFUNC(common,getSizeOf) });
+        private _maxSize = selectMax (_requestHashmap get "crates" apply { getText (([QGVAR(crates), _x] call EFUNC(catalog,getEntry)) >> "box_class") call EFUNC(common,getSizeOf) });
         _reference getRelPos [ (_reference call BIS_fnc_boundingBoxDimensions select 0) / 2 + 3 + _maxSize, 180 ];
     };
     

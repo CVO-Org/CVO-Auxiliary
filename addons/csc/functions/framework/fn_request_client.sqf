@@ -16,7 +16,10 @@
 */
 
 
+params [ ["_request", nil, [createHashMap]] ];
 
-params [ "_box", "_destination", "_deliveryMethod" ];
+if (isNil "_request") exitWith { ZRN_LOG_MSG(something is fucky!); };
 
-[QGVAR(EH_request), [_box, _destination, _deliveryMethod]] call CBA_fnc_serverEvent;
+ZRN_LOG_MSG_1(Request Recieved - Sending to Server,_request);
+
+[QGVAR(EH_request), [_request]] call CBA_fnc_serverEvent;

@@ -20,9 +20,9 @@
 {
     private _type = _x;
     private _configs = [];
-    _configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (       configFile >> QADDON >> _type) );
-    _configs append ( Q(configName _x isNotEqualTo QQ(Base)) configClasses (missionConfigFile >> QADDON >> _type) );
+    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (       configFile >> QGVAR(presets) >> _type) );
+    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (missionConfigFile >> QGVAR(presets) >> _type) );
 
-    { [_type, configName _x, _x] call EFUNC(catalog,setEntry); } forEach _configs;
+    { [_type, toLower configName _x, _x] call EFUNC(catalog,setEntry); } forEach _configs;
 
 } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];

@@ -8,7 +8,9 @@ class Destination_List: RscListBox {
     w = Q(19.50 * GUI_GRID_CENTER_W);
     h = Q(04.00 * GUI_GRID_CENTER_H);
 
-    colorBackground[] = {0,0,0,0.6};            
+    colorBackground[] = {0,0,0,0.6};
+    
+    onLBSelChanged = Q(call FUNC(ui_destination_onSelected););
 };
 
 class Destination_Mode_Desc: RscText {
