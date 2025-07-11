@@ -19,13 +19,11 @@ params [ "_requestHashmap", "_paramsHashmap" ];
 
 private _reference = _paramsHashmap getOrDefault ["reference", objNull];
 
-_reference = switch (_reference) do {
-    case "PLAYER": { _requestHashmap getOrDefault ["requester", ACE_Player] };
-    case "TARGET": { _requestHashmap getOrDefault ["target", objNull] };
-    case objNull: { objNull };
-    default {
-        if (!isNil _reference) then { missionNamespace getVariable _reference } else { objNull };
-    };
+_reference = switch (true) do {
+    case (_reference isEqualTo "PLAYER"): { _requestHashmap getOrDefault ["requester", ACE_Player] };
+    case (_reference isEqualTo "TARGET"): { _requestHashmap getOrDefault ["target", objNull] };
+    case (!isNil _reference): { missionNamespace getVariable _reference };
+    default { objNull };
 };
 
 if (isNull _reference) exitWith { [0,0,0] };
@@ -44,7 +42,7 @@ switch (_mode) do {
     };
     
     case "OFFSET": {
-        private _offset = _paramsHashmap getOrDefault ["offset", [2,0,2]];
+        private _offset = _paramsHashmap getOrDefault ["offset", [0,0,2]];
         getPosASL _reference vectorAdd _offset
     };
     

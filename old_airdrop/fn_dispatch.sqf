@@ -97,5 +97,6 @@ private _cleanup = {
     _aircraft getVariable QGVAR(pfeh_id) call CBA_fnc_removePerFrameHandler;
     ZRN_LOG_MSG_2(PFEH Stopped,_thisEvent,_aircraft);
 };
+
 _aircraft addEventHandler ["Killed", _cleanup];
 _aircraft addEventHandler ["Deleted", _cleanup];

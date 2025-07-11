@@ -56,3 +56,4 @@ class cvo_arsenal_kits
         };
     };
 };
+ 
