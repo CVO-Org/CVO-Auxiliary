@@ -54,6 +54,7 @@ private _returnArray = [];
 private _kitName = _keys deleteAt 0;
 private _kit = _kits get _kitName;
 
+diag_log format ['(Processing)[%1/%2] %3',1 + _total - _count, _total, _kitName];
 systemChat format ['(Processing)[%1/%2] %3',1 + _total - _count, _total, _kitName];
 
 // #### Check if Setting for Default Kits
@@ -81,7 +82,12 @@ private _items = _kit get "items";
 
 // #### Condition ####
 private _conditionCode = _kit getOrDefault ["condition", {}];
+
+ZRN_LOG_1(_conditionCode);
+
 private _conditionResult = [_unit, _items] call _conditionCode;
+
+ZRN_LOG_1(_conditionResult);
 
 // validate Return
 if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" }) then {
