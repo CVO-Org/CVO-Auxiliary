@@ -13,6 +13,7 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(delivery);
             
             class base_spawn {};
+            class base_airdrop {};
         };
         
         class destination {
@@ -63,5 +64,12 @@ class CfgFunctions
             
             class getCfgDataHashmap {}; // TODO once cba updates, replace with cba variant
         };
+
+        class misc {
+            file = PATH_TO_FUNC_SUB(misc);
+            
+            class parachuteCrate {};
+        };
+        
     };
 };

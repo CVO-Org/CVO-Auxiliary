@@ -17,22 +17,30 @@
 
 params [ "_request", "_parameters" ];
 
+ZRN_LOG_1(_this);
 
 // Starting Position
 private _startPos = _parameters getOrDefault ["pos_start", [0,0,1000]];
 _startPos set [2, 0 max (ATLToASL _startPos # 2) + 100];
 
 // Target Position
-private _targetPos = _request getOrDefault ["Destination", [0,0,0]];
-
+private _targetPos = _request getOrDefault ["destination", [0,0,0]];
 
 // Create Aircraft
-private _aircraft = createVehicle [(_parameters get "airframe_class"), [0,0,0], [], 0, "FLY"];
+private _aircraft = createVehicle [(_parameters getOrDefault ["airframe_class", "C_Heli_Light_01_civil_F"]), [0,0,0], [], 0, "FLY"];
 
 _aircraft flyInHeight [_parameters getOrDefault ["airdrop_alt",150], _parameters getOrDefault ["airdrop_alt_forced", true]];
 _aircraft flyInHeightASL (_parameters getOrDefault ["airdrop_flyInHeightASL", [50,50,50]]);
 
-private _grp = (_parameters get "airframe_side") createVehicleCrew _aircraft;
+private _side = switch (_parameters getOrDefault ["airframe_side", "CIV"]) do {
+    case "WEST": { west };
+    case "EAST": { east };
+    case "GUER": { independent };
+    case "CIV":  { civilian };
+    default { civilian };
+};
+
+private _grp = _side createVehicleCrew _aircraft;
 _grp addVehicle _aircraft;
 _grp setCombatBehaviour "CARELESS";
 _grp deleteGroupWhenEmpty true;
@@ -52,9 +60,9 @@ if (_parameters getOrDefault ["airframe_protected", true]) then {
 
 // Provide Waypoints
 _grp addWaypoint [_targetPos, 25];
-_grp addWaypoint [_targetPos getPos [250, _dir], 25];
+_grp addWaypoint [_targetPos getPos [350, _dir], 25];
 
-private _endpos = _parameters getOrDefault ["airdrop_pos_end", [0,0,0]];
+private _endpos = _parameters getOrDefault ["pos_end", [0,0,0]];
 
 _endPos = switch true do {
     case (_endPos isEqualTo "RETURN"):   { _startPos };
@@ -65,54 +73,34 @@ _endPos = switch true do {
 
 [
     {
-        params ["_request", "_parameters", "_aircraft"];
+        params ["_request", "_aircraft", "_parameters"];
+        _request get "destination" distance2D _aircraft < 50
     },
     {
-        params ["_request", "_parameters", "_aircraft"];
+        params ["_request", "_aircraft", "_parameters"];
+        private _crates = _request get "crates";
+
+        private _recursive = {
+            params ["_crates", "_vehicle", "_parameters", "_recursive"];
+            private _crate = _crates deleteAt 0;
+            [_crate, _vehicle, _parameters] call FUNC(parachuteCrate);
+
+            if (_crates isEqualTo []) exitWith {};
+            [ _recursive, [_crates, _vehicle, _parameters, _recursive], 3 ] call CBA_fnc_waitAndExecute;
+        };
+
+        [_crates, _vehicle, _parameters, _recursive] call _recursive;
     },
     [
         _request,
-        _parameters,
-        _aircraft
+        _aircraft,
+        _parameters
     ],
-    _parameters getOrDefault ["timeout", 600],
+    _parameters getOrDefault ["timeout", 900],
     {
-        params ["_request", "_parameters", "_aircraft"];
+        params ["_request", "_aircraft", "_parameters"];
+        deleteVehicleCrew _aircraft;
+        deleteVehicle _aircraft;
+        { deleteVehicle _x } forEach (_request get "crates");
     }
 ] call CBA_fnc_waitUntilAndExecute;
-
-
-
-
-
-
-
-
-
-/*
-
-private _posAircraft = getPosASL _aircraft;
-
-private _offsetBox   = boundingBox _box select 2;
-private _offsetAir   = boundingBox _aircraft select 2;
-private _offsetTotal = _offsetAir + _offsetBox;
-
-private _spawnPos = if ((_posAircraft # 2 - _offsetTotal) > MIN_ALTITUDE) then {
-    ZRN_LOG_MSG(DROPPED Beneath);
-    [ _posAircraft # 0, _posAircraft # 1, _posAircraft # 2 - _offsetTotal ]
-} else {
-    ZRN_LOG_MSG(DROPPED Behind);
-    _aircraft getRelPos [_offsetTotal, 180]
-};
-
-
-
-
-
-
-if (_entry getOrDefault ["airdrop_attachSmoke", ""]) then {
-    private _smoke = createVehicle [_entry get "airdrop_class_smoke", [0,0,10], [], 0, "CAN_COLLIDE"];
-    _smoke attachTo [attachedTo _box, [0,0,0]];
-};
-
-*/

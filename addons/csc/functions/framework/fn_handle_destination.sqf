@@ -20,9 +20,13 @@ params ["_request"];
 
 private _cfg = [QGVAR(destinations), _request get "destination", configNull] call EFUNC(catalog,getEntry);
 
-private _code = getText (_cfg >> "code") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+ZRN_LOG_1(_cfg);
 
-diag_log format ['[CVO](debug)(fn_handle_destination) _code: %1', _code];
+private _codeString = getText (_cfg >> "code");
+
+ZRN_LOG_1(_codeString);
+
+private _code = _codeString call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
 
 private _return = [_request, (_cfg >> "parameters") call FUNC(getCfgDataHashmap)] call _code;
 

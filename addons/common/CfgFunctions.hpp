@@ -21,6 +21,7 @@ class CfgFunctions
             class convertStringCode {}; // TODO once cba updates, replace with cba variant
             class getMedianPosASL {};
             class getSizeOf {};
+            class getBoundingBoxRealOf {};
         };
        
         class debug {

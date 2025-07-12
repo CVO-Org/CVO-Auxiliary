@@ -156,4 +156,8 @@ while {_addTracks > 0}    do { ["ACE_Track",           _box]  call ace_cargo_fnc
 
 _box setVehiclePosition [[0,0,0], [], 100];
 
+// add object to all curators
+
+{ _x addCuratorEditableObjects [[_box], false] } forEach allCurators;
+
 _box

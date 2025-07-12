@@ -11,7 +11,7 @@
 * None
 *
 * Example:
-* [_className] call cvo_common_fnc_getSizeOf
+* [_className] call cvo_common_fnc_getBoundingBoxRealOf
 *
 * Public: No
 */
@@ -27,7 +27,7 @@ if (_className in keys _db) then {
     _db get _className // return
 } else {
     private _obj = _className createVehicleLocal [0,0,0];
-    private _size = sizeOf _className;
+    private _size = boundingBoxReal _obj;
     _db set [_className, _size];
     deleteVehicle _obj;
     _size // return

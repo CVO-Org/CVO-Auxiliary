@@ -28,7 +28,7 @@ private _cfg = [
 ] call EFUNC(catalog,getEntry);
 
 // Store currently selected Mode
-_display setVariable [QGVAR(destination), configName _cfg];
+_display setVariable [QGVAR(destination), toLower configName _cfg];
 
 private _text = getText (_cfg >> "description");
 

@@ -28,9 +28,13 @@ private _request = createHashMapFromArray [
 params ["_request"];
 
 private _className = _request get "delivery_mode";
+
 private _cfg = [ QGVAR(delivery_modes), _className ] call EFUNC(catalog,getEntry);
 
-private _code = getText (_cfg >> "code") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+private _stringCode = getText (_cfg >> "code");
+
+private _code = _stringCode call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+
 private _parameters = (_cfg >> "parameters") call FUNC(getCfgDataHashmap);
 
 ZRN_LOG_MSG_1(Request Recieved - Init Delivery,_className);

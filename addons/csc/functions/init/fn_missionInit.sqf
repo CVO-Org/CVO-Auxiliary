@@ -20,8 +20,8 @@
 {
     private _type = _x;
     private _configs = [];
-    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (       configFile >> QGVAR(presets) >> _type) );
-    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (missionConfigFile >> QGVAR(presets) >> _type) );
+    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (       configFile >> _type) );
+    _configs append ( Q(configName _x isNotEqualTo QQ(base)) configClasses (missionConfigFile >> _type) );
 
     { [_type, toLower configName _x, _x] call EFUNC(catalog,setEntry); } forEach _configs;
 

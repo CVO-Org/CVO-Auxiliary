@@ -27,7 +27,7 @@ private _cfg = [
 ] call EFUNC(catalog,getEntry);
 
 // Store currently selected Mode
-_display setVariable [QGVAR(delivery_mode), configName _cfg];
+_display setVariable [QGVAR(delivery_mode), toLower configName _cfg];
 
 //// Update Max Crates
 _display setVariable [QGVAR(maxCrates), getNumber (_cfg >> "maxCrates")];

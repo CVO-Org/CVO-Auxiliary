@@ -17,4 +17,8 @@
 
 params [ "_requestHashmap", "_paramsHashmap" ];
 
-_paramsHashmap getOrDefault ["_position", [0,0,0]]
+private _return = _paramsHashmap getOrDefault ["position", [0,0,0]];
+
+ZRN_LOG_1(_return);
+
+_return

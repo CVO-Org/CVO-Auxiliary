@@ -28,7 +28,7 @@ class GVAR(delivery_modes) {
 
         displayName = "Airdrop";
 
-        code = "";
+        code = QFUNC(base_airdrop);
 
         maxCrates = 3;
 
@@ -40,18 +40,19 @@ class GVAR(delivery_modes) {
             pos_start[] = { 0, 0, 0 };
             pos_end = "RETURN";
 
-            airdrop_alt = 100;
+            airdrop_alt = 150;
             airdrop_alt_forced = "true";
 
             airdrop_flyInHeightASL[] = { 35, 35, 35 };
 
-            airdrop_attachSmoke = "true";
             airdrop_class_smoke = "SmokeShellOrange"; // CfgMagazines
 
             parachute_class = "B_Parachute_02_F";
 
             parachute_attachStrobe = "true";
             parachute_strobe_class = "ACE_IR_Strobe_Effect";
+
+            parachute_chemlight_class = "Chemlight_yellow";
         };
     };
 };

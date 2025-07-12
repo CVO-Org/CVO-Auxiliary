@@ -10,7 +10,7 @@ class GVAR(crates) {
 
         displayName = "displayName";
 
-        description = "medical stuff";
+        description = "Medical Stuff";
 
         hideInZeus = "false";
 
