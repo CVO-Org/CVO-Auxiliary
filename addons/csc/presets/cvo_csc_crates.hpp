@@ -10,9 +10,9 @@ class GVAR(crates) {
 
         displayName = "displayName";
 
-        description = "Medical Stuff";
+        description = "Base Description - You shouldnt see this tbh.";
 
-        hideInZeus = "false";
+        scope = 2;
 
         items[] = {};
         backpacks[] = {};
@@ -54,7 +54,10 @@ class GVAR(crates) {
     };
 
     class base_medicalCrate: base {
+
         displayName = "Medical Supply Crate";
+
+        scope = 2;
 
         box_class = "ACE_medicalSupplyCrate_advanced";
         box_empty = "true";

@@ -16,7 +16,6 @@
 * Public: No
 */
 
-//    ["_strobeClassName", "ACE_IR_Strobe_Effect"]
 params [
     "_object",
     "_vehicle",
@@ -57,13 +56,19 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
     _object attachTo [_parachute, [0, 0, ((_bb2 select 2) - (_bb1 select 2)) / 2]];
     _parachute setVelocity _velocity;
 
-    if ((ace_cargo_disableParadropEffectsClasstypes findIf {_object isKindOf _x}) == -1) then {
-        private _light = createVehicle [_params getOrDefault ["parachute_chemlight_class", "Chemlight_yellow"], [0, 0, 0]];
+    // Handle Chemlight on Box
+    private _class_chemlight = _params getOrDefault ["parachute_class_chemlight", "Chemlight_yellow"];
+    if (! isClass (configFile >> "CfgVehicles" >> _class_chemlight) || { ! isClass (configFile >> "CfgAmmo" >> _class_chemlight) } ) then { _class_chemlight = ""; };
+    if (_class_chemlight isNotEqualTo "") then {
+        private _light = createVehicle [_class_chemlight, [0, 0, 0]];
         _light attachTo [_object, [0, 0, 0]];
     };
 
-    if (_params get "parachute_attachStrobe") then {
-        private _strobe = createVehicle [_params get "parachute_strobe_class", [0,0,10], [], 0, "CAN_COLLIDE"];
+    // Handle Strobe Above Parachute
+    private _class_strobe = _params getOrDefault ["parachute_class_strobe", "ACE_IR_Strobe_Effect"];
+    if (! isClass (configFile >> "CfgVehicles" >> _class_strobe) || { ! isClass (configFile >> "CfgAmmo" >> _class_strobe) } ) then { _class_strobe = ""; };
+    if (_class_strobe isNotEqualTo "") then {
+        private _strobe = createVehicle [_class_strobe, [0,0,10], [], 0, "CAN_COLLIDE"];
         _strobe attachTo [attachedTo _object, [0,0,32]];
         [
             { getPos (_this#0) select 2 < 1 },
@@ -74,19 +79,22 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
 }, [_object, _parameters], 0.7] call CBA_fnc_waitAndExecute;
 
 
-// Create smoke effect when crate landed
+// Handle Smoke once Landed
+private _class_smoke = _parameters getOrDefault ["parachute_class_smoke","SmokeShellYellow"];
+if (! isClass (configFile >> "CfgVehicles" >> _class_smoke) || { ! isClass (configFile >> "CfgAmmo" >> _class_smoke) } ) then { _class_smoke = ""; };
+
 [
     {
         params ["_args", "_pfhID"];
-        _args params [ "_object", ["_smokeClass", "", [""]] ];
+        _args params [ "_object", ["_class_smoke", "", [""]] ];
 
         if (isNull _object) exitWith { _pfhID call CBA_fnc_removePerFrameHandler; };
 
         if (getPos _object select 2 < 1) exitWith {
             _pfhID call CBA_fnc_removePerFrameHandler;
 
-            if (_smokeClass isNotEqualTo "") then {
-                private _smoke = createVehicle [_smokeClass, [0, 0, 0]];
+            if (_class_smoke isNotEqualTo "") then {
+                private _smoke = createVehicle [_class_smoke, [0, 0, 0]];
                 _smoke attachTo [_object, [0, 0, 0]];
             };
         };
@@ -94,6 +102,6 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
     1,
     [
         _object,
-        _parameters getOrDefault ["airdrop_class_smoke","SmokeShellYellow"]
+        _class_smoke
     ]
 ] call CBA_fnc_addPerFrameHandler;

@@ -20,9 +20,32 @@ params [["_target", objNull], ["_player", ACE_player], ["_params", []]];
 
 _params params [["_accessPoint", createHashMap]];
 
+//// Input Sanitasation
+private _crates = _accessPoint getOrDefault [QGVAR(crates), []];
+private _destinations = _accessPoint getOrDefault [QGVAR(destinations), []];
+private _delivery_modes = _accessPoint getOrDefault [QGVAR(delivery_modes), []];
+
+
+
+ 
+
 private _display = createDialog [QGVAR(request), true];
 
 _display setVariable ["requester", _player];
 _display setVariable ["target", _target];
 
-{ _display setVariable [ _x, _accessPoint getOrDefault [_x, keys (missionNamespace getVariable _x)] ]; } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];
+
+_display setVariable [
+    QGVAR(crates),
+    [_crates, keys (missionNamespace getVariable QGVAR(crates))] select (_crates isEqualTo [])
+];
+
+_display setVariable [
+    QGVAR(destinations),
+    [_destinations, keys (missionNamespace getVariable QGVAR(destinations))] select (_destinations isEqualTo [])
+];
+
+_display setVariable [
+    QGVAR(delivery_modes),
+    [_delivery_modes, keys (missionNamespace getVariable QGVAR(delivery_modes))] select (_delivery_modes isEqualTo [])
+];

@@ -2,11 +2,13 @@ class cvo_csc_destinations {
 
     import base from cvo_csc_destinations;
 
-    class tarp {
+    class tarp: base {
         displayName = "Tarp.";   // Just as an example
-        description = "On the Tarp.";
+        description = "On the Tarp";
 
         code = "cvo_csc_fnc_base_relativeTo";
+
+        scope = 2;
 
         class parameters {
             mode = "OFFSET"; // "BEHIND", "OFFSET"

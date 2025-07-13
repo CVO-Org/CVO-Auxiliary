@@ -48,14 +48,13 @@ class GVAR(delivery_modes) {
 
             airdrop_flyInHeightASL[] = { 35, 35, 35 };
 
-            airdrop_class_smoke = "SmokeShellOrange"; // CfgMagazines
 
             parachute_class = "B_Parachute_02_F";
 
-            parachute_attachStrobe = "true";
-            parachute_strobe_class = "ACE_IR_Strobe_Effect";
-
-            parachute_chemlight_class = "Chemlight_yellow";
+            // CfgVehicles or CfgAmmo
+            parachute_class_strobe = "ACE_IR_Strobe_Effect";
+            parachute_class_chemlight = "Chemlight_yellow";
+            parachute_class_smoke = "SmokeShellOrange";
         };
     };
 };
