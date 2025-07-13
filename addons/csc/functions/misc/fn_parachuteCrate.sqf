@@ -3,6 +3,7 @@
 /*
 * Author: Zorn
 * Function to take a Crate, put it to a certain position and parachute it.
+* Most of it is from ACE Cargo Parachuting a Crate
 *
 * Arguments:
 *
@@ -64,24 +65,35 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
     if (_params get "parachute_attachStrobe") then {
         private _strobe = createVehicle [_params get "parachute_strobe_class", [0,0,10], [], 0, "CAN_COLLIDE"];
         _strobe attachTo [attachedTo _object, [0,0,32]];
-        [ {	isTouchingGround (_this#1) }, { deleteVehicle (_this#0) }, [_strobe, _object] ] call CBA_fnc_waitUntilAndExecute;
+        [
+            { getPos (_this#0) select 2 < 1 },
+            { deleteVehicle (_this#1) },
+            [_object, _strobe]
+        ] call CBA_fnc_waitUntilAndExecute;
     };
 }, [_object, _parameters], 0.7] call CBA_fnc_waitAndExecute;
 
 
 // Create smoke effect when crate landed
-[{
-    params ["_args", "_pfhID"];
-    _args params ["_object", "_smokeClass"];
+[
+    {
+        params ["_args", "_pfhID"];
+        _args params [ "_object", ["_smokeClass", "", [""]] ];
 
-    if (isNull _object) exitWith { _pfhID call CBA_fnc_removePerFrameHandler; };
+        if (isNull _object) exitWith { _pfhID call CBA_fnc_removePerFrameHandler; };
 
-    if (getPos _object select 2 < 1) exitWith {
-        _pfhID call CBA_fnc_removePerFrameHandler;
+        if (getPos _object select 2 < 1) exitWith {
+            _pfhID call CBA_fnc_removePerFrameHandler;
 
-        if ((GVAR(disableParadropEffectsClasstypes) findIf {_object isKindOf _x}) == -1) then {
-            private _smoke = _smokeClass createVehicle [0, 0, 0];
-            _smoke attachTo [_object, [0, 0, 0]];
+            if (_smokeClass isNotEqualTo "") then {
+                private _smoke = createVehicle [_smokeClass, [0, 0, 0]];
+                _smoke attachTo [_object, [0, 0, 0]];
+            };
         };
-    };
-}, 1, [_object, _parameters getOrDefault ["airdrop_class_smoke","SmokeShellYellow"]]] call CBA_fnc_addPerFrameHandler;
+    },
+    1,
+    [
+        _object,
+        _parameters getOrDefault ["airdrop_class_smoke","SmokeShellYellow"]
+    ]
+] call CBA_fnc_addPerFrameHandler;

@@ -59,8 +59,19 @@ if (_parameters getOrDefault ["airframe_protected", true]) then {
 };
 
 // Provide Waypoints
+
+// Pre-Target Waypoint
+private _preWP = _grp addWaypoint [vectorLinearConversion [0, 1, 0.66, _startPos, _targetPos, true], 25];
+// Target Waypoint
 _grp addWaypoint [_targetPos, 25];
-_grp addWaypoint [_targetPos getPos [350, _dir], 25];
+// Post-Target Waypoint
+private _postWP = _grp addWaypoint [_targetPos getPos [500, _dir], 25];
+
+private _speedLimit = _request getOrDefault ["airdrop_speedLimit", 0];
+if (_speedLimit isNotEqualTo 0) then {
+    _preWP  setWaypointStatements ["true", "vehicle this limitSpeed " + str _speedLimit + ";"];
+    _postWP setWaypointStatements ["true", "vehicle this limitSpeed " + str 999 + ";"];
+};
 
 private _endpos = _parameters getOrDefault ["pos_end", [0,0,0]];
 
@@ -71,25 +82,31 @@ _endPos = switch true do {
     default { [0,0,0] };
 };
 
+private _wpEnd = _grp addWaypoint [_endPos, 100];
+_wpEnd setWaypointStatements ["true", "{deleteVehicle _x} forEach ([vehicle this] + thisList)"];
+
 [
     {
         params ["_request", "_aircraft", "_parameters"];
-        _request get "destination" distance2D _aircraft < 50
+        (_request get "destination" distance2D _aircraft) < (speed _aircraft)
     },
     {
         params ["_request", "_aircraft", "_parameters"];
         private _crates = _request get "crates";
 
         private _recursive = {
-            params ["_crates", "_vehicle", "_parameters", "_recursive"];
+            params ["_crates", "_aircraft", "_parameters", "_recursive"];
+
+            diag_log format ['[CVO](debug)(fn_base_airdrop) _crates: %1', _crates];
+
             private _crate = _crates deleteAt 0;
-            [_crate, _vehicle, _parameters] call FUNC(parachuteCrate);
+            [_crate, _aircraft, _parameters] call FUNC(parachuteCrate);
 
             if (_crates isEqualTo []) exitWith {};
-            [ _recursive, [_crates, _vehicle, _parameters, _recursive], 3 ] call CBA_fnc_waitAndExecute;
+            [ _recursive, [_crates, _aircraft, _parameters, _recursive], 1.0 ] call CBA_fnc_waitAndExecute;
         };
 
-        [_crates, _vehicle, _parameters, _recursive] call _recursive;
+        [_crates, _aircraft, _parameters, _recursive] call _recursive;
     },
     [
         _request,

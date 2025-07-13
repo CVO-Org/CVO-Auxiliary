@@ -27,6 +27,7 @@ class GVAR(delivery_modes) {
     class base_airdrop: base {
 
         displayName = "Airdrop";
+        description = "Will send a Helicopter to airdrop the desired crates.";
 
         code = QFUNC(base_airdrop);
 
@@ -37,11 +38,13 @@ class GVAR(delivery_modes) {
             airframe_protected = "true";
             airframe_class = "C_Heli_Light_01_civil_F";
 
-            pos_start[] = { 0, 0, 0 };
+
+            pos_start[] = { 8400,7400.00,0 };
             pos_end = "RETURN";
 
-            airdrop_alt = 150;
+            airdrop_alt = 100;
             airdrop_alt_forced = "true";
+            airdrop_speedLimit = 150;
 
             airdrop_flyInHeightASL[] = { 35, 35, 35 };
 
