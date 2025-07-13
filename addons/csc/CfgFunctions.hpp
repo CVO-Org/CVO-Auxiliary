@@ -30,7 +30,7 @@ class CfgFunctions
             class handle_destination {};
             class handle_delivery {};
             
-            class getDefaultCrates {};
+            class getDefaultPresets {};
             class createCrate {};
 
             class request_client {};

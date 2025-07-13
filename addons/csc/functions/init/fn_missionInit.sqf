@@ -16,7 +16,7 @@
 * Public: No
 */
 
-
+//// Establish 
 {
     private _type = _x;
     private _configs = [];

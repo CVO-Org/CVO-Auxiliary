@@ -24,14 +24,14 @@ params [
 ];
 
 switch (true) do {
-    case (_crates isEqualTo "DEFAULT"): { _crates = "DEFAULT" call FUNC(getDefaultCrates); };
+    case (_crates isEqualTo "DEFAULT"): { _crates = ["DEFAULT", "CRATES"] call FUNC(getDefaultPresets); };
     case (_crates isEqualType ""): { _crates = [_crates]; };
 };
 
 // Verifying Input
-private _keys_crates         =  keys GVAR(crates);
-private _keys_destinations   =  keys GVAR(destinations);
-private _keys_delivery_modes =  keys GVAR(delivery_modes);
+private _keys_crates         = keys GVAR(crates);
+private _keys_destinations   = keys GVAR(destinations);
+private _keys_delivery_modes = keys GVAR(delivery_modes);
 _crates         = _crates         select { _x isEqualType "" } apply { toLower _x } select { _x in _keys_crates };
 _destinations   = _destinations   select { _x isEqualType "" } apply { toLower _x } select { _x in _keys_destinations };
 _delivery_modes = _delivery_modes select { _x isEqualType "" } apply { toLower _x } select { _x in _keys_delivery_modes };
