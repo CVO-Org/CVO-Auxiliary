@@ -39,7 +39,13 @@ if (_total == -1) then {
     _total = _count;
 };
 
-if (_count == 0) exitWith { systemChat format ['[CVO][ARSENAL] %1/%2 Kits added', _added, _total]; };
+if (_count == 0) exitWith {
+    systemChat " "; systemChat " "; systemChat " "; systemChat " ";
+    systemChat format ['(Done) %1 out of %2 Kits added', _added, _total];
+    systemChat format ['(Done) Roles detected: %1', _roles];
+    diag_log format ['(Done) %1 out of %2 Kits added', _added, _total];
+
+};
 
 private _nextIteration = {
     [FUNC(addItemsFromKit_recursive), [_box, _unit, _roles, _id64, _kits, _total, _keys, _added]] call CBA_fnc_execNextFrame;
@@ -50,7 +56,8 @@ private _returnArray = [];
 private _kitName = _keys deleteAt 0;
 private _kit = _kits get _kitName;
 
-diag_log format ['[CVO][arsenal](Kits) %1/%2 - %3',_count,_total,_kitName];
+diag_log format ['(Processing)[%1/%2] %3',1 + _total - _count, _total, _kitName];
+systemChat format ['(Processing)[%1/%2] %3',1 + _total - _count, _total, _kitName];
 
 // #### Check if Setting for Default Kits
 private _settingName = [QADDON, _kitName] joinString "_";
@@ -65,13 +72,24 @@ if (_role isNotEqualTo "" && { !( _role in _roles) }) exitWith _nextIteration;
 
 // #### Check ID64 ####
 private _kitID = _kit get "id64";
-if (_kitID isNotEqualTo "" && { _kitID isNotEqualTo _id64 }) exitWith _nextIteration;
+if ( _kitID isNotEqualTo "") then {
+    if (_kitID isEqualType "") then { _kitID = [_kitID]; };
+    _kitID = _id64 in _kitID;
+};
+if (_kitID isEqualTo false) exitWith _nextIteration;
+
 
 private _items = _kit get "items";
 
+
 // #### Condition ####
 private _conditionCode = _kit getOrDefault ["condition", {}];
+
+ZRN_LOG_1(_conditionCode);
+
 private _conditionResult = [_unit, _items] call _conditionCode;
+
+ZRN_LOG_1(_conditionResult);
 
 // validate Return
 if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" }) then {
@@ -98,8 +116,8 @@ switch (true) do {
 _codeResult = _codeResult select { _x call CBA_fnc_getItemConfig isNotEqualTo configNull };
 _returnArray append _codeResult;
 
-
-diag_log format ['[CVO][arsenal](Kits) %1/%2 - Added: %3',_count,_total,_returnArray];
+systemChat format ['(Processing)[%1/%2] %3 - ADDED',1 + _total - _count, _total, _kitName];
+diag_log format ['(Processing)[%1/%2] %3 - ADDED',1 + _total - _count, _total, _kitName];
 
 // Add stuff to the Arsenal
 [_box, _returnArray arrayIntersect _returnArray] call ace_arsenal_fnc_addVirtualItems;
