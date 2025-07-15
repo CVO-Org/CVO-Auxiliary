@@ -48,7 +48,8 @@ private _request = createHashMapFromArray [
     [ "requester",     _display getVariable "requester" ],
     [ "target",        _display getVariable "target" ],
     [ "destination",   _display getVariable QGVAR(destination) ],
-    [ "delivery_mode", _display getVariable QGVAR(delivery_mode) ]
+    [ "delivery_mode", _display getVariable QGVAR(delivery_mode) ],
+    [ "isZeus",        _display getVariable "isZeus" ]
 ];
 
 ZRN_LOG_MSG_1(REQUEST Established. Handling Destination next,_request);
