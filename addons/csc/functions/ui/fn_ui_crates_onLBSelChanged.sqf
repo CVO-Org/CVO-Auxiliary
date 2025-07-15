@@ -21,4 +21,4 @@ diag_log format ['[CVO](debug)(fn_ui_crates_onLBSelChanged) _this: %1', _this];
 
 call FUNC(ui_update_arrows); // update the + and - button 
 
-call FUNC(ui_update_crate_desc);  
+call FUNC(ui_update_crate_desc);

@@ -121,3 +121,18 @@ _wpEnd setWaypointStatements ["true", "{deleteVehicle _x} forEach ([vehicle this
         { deleteVehicle _x } forEach (_request get "crates");
     }
 ] call CBA_fnc_waitUntilAndExecute;
+
+// Declare the mode as isBusy
+private _isBusyVarName = format ["%1_isBusy", _request get "delivery_mode"];
+
+diag_log format ['[CVO](debug)(fn_base_airdrop) _isBusyVarName: %1', _isBusyVarName];
+
+missionNamespace setVariable [_isBusyVarName, true, true];
+
+// Revert isBusy once the aircraft is deleted
+_aircraft setVariable [QGVAR(isBusyVarName), _isBusyVarName, true];
+_aircraft addEventHandler ["Deleted", {
+	params ["_aircraft"];
+    private _isBusyVarName = _aircraft getVariable QGVAR(isBusyVarName);
+    missionNamespace setVariable [_isBusyVarName, nil, true];
+}];
