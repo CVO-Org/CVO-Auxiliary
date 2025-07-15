@@ -2,8 +2,8 @@ class GVAR(request) {
 
 	idd = CVO_IDD_CSC_REQUEST;
 
-    onLoad = Q(_this call FUNC(ui_onLoad));
-    onUnload = Q(_this call FUNC(ui_onUnload));
+    onLoad = Q(call FUNC(ui_onLoad));
+    onUnload = Q(call FUNC(ui_onUnload));
 
     class Controls {
 

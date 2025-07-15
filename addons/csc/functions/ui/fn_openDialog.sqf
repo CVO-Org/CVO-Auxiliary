@@ -49,3 +49,8 @@ _display setVariable [
     QGVAR(delivery_modes),
     [_delivery_modes, keys (missionNamespace getVariable QGVAR(delivery_modes))] select (_delivery_modes isEqualTo [])
 ];
+
+// Add Tooltips to all 3 Description Text Boxes.
+displayCtrl CVO_IDC_CSC_Crates_ListNBox_Description ctrlSetTooltip "Click on textbox and use Arrow Up and Down to scroll.";
+displayCtrl CVO_IDC_CSC_Delivery_Description        ctrlSetTooltip "Click on textbox and use Arrow Up and Down to scroll.";
+displayCtrl CVO_IDC_CSC_Destination_Description     ctrlSetTooltip "Click on textbox and use Arrow Up and Down to scroll.";

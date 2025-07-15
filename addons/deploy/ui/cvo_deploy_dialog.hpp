@@ -2,8 +2,8 @@ class GVAR(dialog) {
 
 	idd = CVO_IDD_DEPLOY;
 
-    onLoad = Q(_this call FUNC(ui_onLoad));
-    onUnload = Q(_this call FUNC(ui_onUnload));
+    onLoad = Q(call FUNC(ui_onLoad));
+    onUnload = Q(call FUNC(ui_onUnload));
 
     class Controls {
 
@@ -12,7 +12,7 @@ class GVAR(dialog) {
 
             style = LB_TEXTURES;
 
-            onLBSelChanged = Q(_this call FUNC(ui_onLBSelChanged););
+            onLBSelChanged = Q(call FUNC(ui_onLBSelChanged););
 
             x = Q(20.5 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);

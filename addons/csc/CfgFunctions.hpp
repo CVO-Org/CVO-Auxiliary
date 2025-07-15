@@ -9,11 +9,22 @@ class CfgFunctions
             class missionInit { preInit = 1; };
         };
 
+        class accessPoint {
+            file = PATH_TO_FUNC_SUB(accessPoint);
+            
+            class createAction {};
+
+            class createAccessPoint {};
+            class createAccessPointZeus { postInit = 1; };
+        };
+        
+
         class delivery {
             file = PATH_TO_FUNC_SUB(delivery);
             
             class base_spawn {};
             class base_airdrop {};
+            class base_airdrop_desc {};
         };
         
         class destination {
@@ -36,7 +47,6 @@ class CfgFunctions
             class request_client {};
             class request_server {};
 
-            class createAccessPoint {};
         };
 
         
@@ -51,9 +61,11 @@ class CfgFunctions
             class ui_crates_init {};
 
             class ui_crates_update {};
-            class ui_crates_update_info {};
-            class ui_crates_check_amount {};
+            class ui_update_arrows {};
+            class ui_update_canRequest {};
+            class ui_update_crate_desc {};
 
+            class ui_crates_onLBSelChanged {};
             class ui_delivery_onSelected {};
             class ui_destination_onSelected {};
        };

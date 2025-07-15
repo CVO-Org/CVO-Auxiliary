@@ -4,7 +4,7 @@ class Crates_ListNBox: RscListNBox {
     type = CT_LISTNBOX;
     style = LB_TEXTURES;
 
-    onLBSelChanged = Q(_this call FUNC(ui_crates_update_info););
+    onLBSelChanged = Q(call FUNC(ui_crates_update_info););
 
     x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
     y = Q(04.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
@@ -65,14 +65,16 @@ class ArrowRight: ArrowLeft {
 class Crates_Description: RscText {
     idc = CVO_IDC_CSC_Crates_ListNBox_Description;
 
-    // type = ST_MULTI;
-    
+    type = CT_STATIC;
+    style = ST_MULTI;
+
     lineSpacing = 1;
     
-    SizeEx = Q(GUI_TEXT_SIZE_MEDIUM);
+	font = "EtelkaMonospacePro";
+    SizeEx = Q(GUI_TEXT_SIZE_SMALL * 0.8);
 
 
-    text = "Crates Description";
+    text = "BeebBoob Error";
 
     x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
     y = Q(13.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);

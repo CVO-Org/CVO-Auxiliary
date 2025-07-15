@@ -26,3 +26,4 @@
     { [_type, toLower configName _x, _x] call EFUNC(catalog,setEntry); } forEach _configs;
 
 } forEach [ QGVAR(crates), QGVAR(destinations), QGVAR(delivery_modes) ];
+

@@ -15,7 +15,7 @@
 * Public: No
 */
 
-params ["", "_index"];
+params ["_control", "_index"];
 
 // Common
 private _display = findDisplay CVO_IDD_CSC_REQUEST;
@@ -30,11 +30,20 @@ private _cfg = [
 _display setVariable [QGVAR(delivery_mode), toLower configName _cfg];
 
 //// Update Max Crates
-_display setVariable [QGVAR(maxCrates), getNumber (_cfg >> "maxCrates")];
+private _maxCrates = getNumber (_cfg >> "maxCrates");
+_display setVariable [QGVAR(maxCrates), _maxCrates];
+
 // Request crate amount check
-[] call FUNC(ui_crates_check_amount);
+[] call FUNC(ui_update_arrows);
 
 
 //// Update Description
-private _text = getText (_cfg >> "description");
-ctrlSetText [CVO_IDC_CSC_Delivery_Description, _text];
+private _code_desc = getText (_cfg >> "code_description") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+
+private _desc = _cfg call _code_desc;
+_desc = format ["Up to %1 crates%2", _maxCrates, _desc];
+
+ctrlSetText [
+    CVO_IDC_CSC_Delivery_Description,
+    _desc
+];

@@ -1,37 +1,29 @@
 class GVAR(delivery_modes) {
-    class base {
 
-        displayName = "";
-        description = "";
-
-
-        code = "";
-        maxCrates = 1;
-
-        hideInZeus = "false";
-
-        class parameters {
-        };
-    };
+    #include "cvo_csc_delivery_modes_base.hpp"
 
     class base_spawn: base {
 
-        displayName = "Spawn";
-        description = "Will just spawn the crates at/around the provided position";
+        displayName = "Default: Spawn";
+        code_description = """ will be made available at the provided position."""; // tripple Quotes for simply return the string
 
         code = QFUNC(base_spawn);
 
         maxCrates = 5;
+
+        scope = 1;
     };
 
     class base_airdrop: base {
 
-        displayName = "Airdrop";
-        description = "Will send a Helicopter to airdrop the desired crates.";
+        displayName = "Default: Airdrop";
+        code_description = QFUNC(base_airdrop_desc);
 
         code = QFUNC(base_airdrop);
 
         maxCrates = 3;
+
+        scope = 1;
 
         class parameters {
             airframe_side = "CIV";                  // String version: "WEST" "EAST" "GUER" "CIV"

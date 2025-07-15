@@ -1,17 +1,6 @@
 class GVAR(destinations)
 {
-    class base {
-
-        displayName = "";
-        description = "";
-
-        code = "";
-
-        hideInZeus = "false";
-
-        class parameters {
-        };
-    };
+    #include "cvo_csc_destinations_base.hpp"
 
     class base_fixed_debug: base {
 
@@ -19,6 +8,8 @@ class GVAR(destinations)
         description = "Predefined, fixed prosition - in this case, the debug corner.";
 
         code = QFUNC(base_fixedPos); // Function name or stringCode
+
+        scope = 0;
         
         class parameters {
             position[] = { 0, 0, 0 };
@@ -28,6 +19,7 @@ class GVAR(destinations)
     class base_mapClick: base {
         displayName = "via Mapclick";
         description = "Manually define the desired destination via map-click.";
+        scope = 1;
 
         code = QFUNC(base_mapClick);
 
@@ -37,6 +29,7 @@ class GVAR(destinations)
     class base_infrontPlayer: base {
         displayName = "Infront of Player";   // Just as an example
         description = "In front of the player";
+        scope = 1;
 
         code = QFUNC(base_relativeTo);
 

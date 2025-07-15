@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [_str, _targetWidth] call cvo_common_fnc_stringPadding
 *
 * Public: No
 */

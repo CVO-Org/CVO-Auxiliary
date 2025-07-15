@@ -34,6 +34,6 @@ private _oldTotal = _display getVariable [QGVAR(totalCrates), 0];
 private _newTotal = [ _oldTotal, _oldTotal + _change ] select (_newValue != _oldValue);
 _display setVariable [QGVAR(totalCrates), _newTotal];
 
-[] call FUNC(ui_crates_check_amount);
+[] call FUNC(ui_update_arrows);
 
 true
