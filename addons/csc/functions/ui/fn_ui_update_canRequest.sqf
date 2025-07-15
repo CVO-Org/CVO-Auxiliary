@@ -30,7 +30,7 @@ private _isBusy = !isNil format ["%1_isBusy", _curSel_delivery_mode];
 switch (true) do {
     case ( _isBusy ): {
         ctrlEnable [CVO_IDC_CSC_ButtonOK, false];
-        ctrlSetText [CVO_IDC_CSC_Status, "The selected delivery mode is busy."];
+        ctrlSetText [CVO_IDC_CSC_Status, "The selected delivery mode is currently busy."];
     };
     case ( _curTotal isEqualTo 0 ): {
         ctrlEnable [CVO_IDC_CSC_ButtonOK, false];
