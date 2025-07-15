@@ -33,9 +33,9 @@ private _cfg = [ QGVAR(delivery_modes), _className ] call EFUNC(catalog,getEntry
 
 private _stringCode = getText (_cfg >> "code");
 
-private _code = _stringCode call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+private _code = _stringCode call CBA_fnc_convertStringCode;
 
-private _parameters = (_cfg >> "parameters") call FUNC(getCfgDataHashmap);
+private _parameters = (_cfg >> "parameters") call cba_fnc_getCfgDataHashmap;
 
 ZRN_LOG_MSG_1(Request Recieved - Init Delivery,_className);
 

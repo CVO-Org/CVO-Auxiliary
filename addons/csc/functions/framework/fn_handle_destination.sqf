@@ -26,9 +26,9 @@ private _codeString = getText (_cfg >> "code");
 
 ZRN_LOG_1(_codeString);
 
-private _code = _codeString call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+private _code = _codeString call CBA_fnc_convertStringCode;
 
-private _return = [_request, (_cfg >> "parameters") call FUNC(getCfgDataHashmap)] call _code;
+private _return = [_request, (_cfg >> "parameters") call cba_fnc_getCfgDataHashmap] call _code;
 
 // handle return
 switch (true) do {
