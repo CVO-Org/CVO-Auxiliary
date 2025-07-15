@@ -44,7 +44,6 @@ if (_count == 0) exitWith {
     systemChat format ['(Done) %1 out of %2 Kits added', _added, _total];
     systemChat format ['(Done) Roles detected: %1', _roles];
     diag_log format ['(Done) %1 out of %2 Kits added', _added, _total];
-
 };
 
 private _nextIteration = {
