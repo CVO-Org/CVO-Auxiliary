@@ -26,8 +26,6 @@ params [
     ["_input", "", [""]]
 ];
 
-ZRN_LOG_MSG_1(INIT,_input);
-
 private _return = "";
 
 
@@ -61,7 +59,5 @@ switch (_input) do {
         _return = "STORED";
     };
 };
-
-ZRN_LOG_1(_return);
 
 _return

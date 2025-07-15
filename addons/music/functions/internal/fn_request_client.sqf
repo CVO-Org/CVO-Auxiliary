@@ -20,8 +20,6 @@ params [
     ["_data",  "", [""] ]
 ];
 
-ZRN_LOG_MSG_1(INIT,_input);
-
 switch (_input) do {
     case "NEXT":      { [QGVAR(EH_request_server), _input] call CBA_fnc_serverEvent; };
     case "FADENEXT":  { [QGVAR(EH_request_server), _input] call CBA_fnc_serverEvent; };

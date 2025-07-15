@@ -18,8 +18,12 @@
 if !(hasInterface) exitWith {};
 
 addMusicEventHandler ["MusicStart", {
-    ZRN_LOG_MSG_1(mEH triggered - started,_this);
 	params ["_musicClassname", "_eventHandlerId", "_currentPosition", "_totalLength"];
 
     [_musicClassname] call FUNC(updateHistory);
+
+    if ( SET(systemChatCurrentMusic) ) then {
+        private _track = getText ( [configFile, missionConfigFile] select (isClass (missionConfigFile >> "CfgMusic" >> _musicClassname)) >> "CfgMusic" >> _musicClassname >> "name" );
+        systemChat format ["Currently Playing: %1",_track];
+    };
 }];

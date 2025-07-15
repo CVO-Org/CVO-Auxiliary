@@ -25,17 +25,15 @@ params [
     "_data", ""
 ];
 
-ZRN_LOG_1(_this);
-
 switch (_mode) do {
     case "FADENEXT": {
         [QGVAR(EH_fade_remote), DEFAULTFADETIME] call CBA_fnc_globalEvent;
         [ { ["NEXT"] call FUNC(request_server) } , [], DEFAULTFADETIME * 1.1] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(isPlaying), false, true];
     };
 
     case "NEXT": {
         if (missionNamespace getVariable [QGVAR(isPlaying), false]) then {
-            ZRN_LOG_MSG(NEXT - while playing true -> FADENEXT);
             ["FADENEXT"] call FUNC(request_server);
         } else {
             private _nextTrack = ["NEXT"] call FUNC(queue);
@@ -46,6 +44,7 @@ switch (_mode) do {
     case "FADECLEAR": {
         [QGVAR(EH_fade_remote), DEFAULTFADETIME] call CBA_fnc_globalEvent;
         ["CLEAR"] call FUNC(queue);
+        missionNamespace setVariable [QGVAR(isPlaying), false, true];
     };
 
     case "PLAYLIST": {

@@ -26,7 +26,6 @@ switch (true) do {
 
     case ( _currentlyPlaying ): {
         [_track] call FUNC(queue);
-        ZRN_LOG_MSG_1(push to queue,_this);
     };
 
     case (!_currentlyPlaying ): {
@@ -39,14 +38,14 @@ switch (true) do {
         _duration = _duration + SET(delay_min) + random SET(delay_random);
 
         // Set Global Flag and reset after delay. Also request next song in queue.
-        missionNamespace getVariable [QGVAR(isPlaying), true];
+        missionNamespace setVariable [QGVAR(isPlaying), true, true];
+
         [
-            {
-                missionNamespace getVariable [QGVAR(isPlaying), false, true];
-                ["NEXT"] call FUNC(request_server);
-            },
+            { missionNamespace getVariable [QGVAR(isPlaying), false]; },
+            { },
             [],
-            _duration
-        ] call CBA_fnc_waitAndExecute;
+            _duration,
+            { missionNamespace setVariable [QGVAR(isPlaying), false, true]; ["NEXT"] call FUNC(request_server); }
+        ] call CBA_fnc_waitUntilAndExecute;
     };
 };
