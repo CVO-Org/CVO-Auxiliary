@@ -37,10 +37,10 @@ private _dependency = getText (_cfg >> "addon_dependency");
 if ( _dependency isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _dependency ) } ) exitWith  { nil };
 
 //// Convert Condition code
-private _conditionCode = getText (_cfg >> "condition") call EFUNC(common,convertStringCode);
+private _conditionCode = getText (_cfg >> "condition") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
 
 //// Convert Code code
-private _codeCode = getText (_cfg >> "code") call EFUNC(common,convertStringCode);
+private _codeCode = getText (_cfg >> "code") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
 
 //// Retrieve Items
 private _items = "true" configClasses (_cfg >> "items") apply { configName _x };

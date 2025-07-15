@@ -14,4 +14,4 @@ private _cond1 = missionNamespace getVariable [["cvo", "ula","remaining", _layer
 private _cond2 = ( (getPosASL _objSource) distance2D (_lMap get "medianPosASL") ) <= _distance;
 
 // Return
-_cond1 && {_cond2}
+_cond1 && _cond2

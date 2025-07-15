@@ -18,14 +18,18 @@ class CfgFunctions
         class code {
             file = PATH_TO_FUNC_SUB(code);
 
-            class convertStringCode {};
+            class convertStringCode {}; // TODO once cba updates, replace with cba variant
             class getMedianPosASL {};
+            class getSizeOf {};
+            class getBoundingBoxRealOf {};
         };
        
         class debug {
             file = PATH_TO_FUNC_SUB(debug);
 
             class markAllLocations {};
+            class stringPadding {};
+            class ui_lnb_output {};
         };
 
         class helicopters {

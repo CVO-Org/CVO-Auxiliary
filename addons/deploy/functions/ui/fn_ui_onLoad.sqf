@@ -20,7 +20,7 @@ params ["_display", ""]; // display, config
 // Wait until the network has been attached to the display
 [
     {
-        _this getVariable [QGVAR(network), "404"] isNotEqualTo "404"
+        !(_this isNil QGVAR(network))
     },
     {
         // Start PFH to update/refresh the dialog content on a regular interval

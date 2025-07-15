@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [QGVAR(somethign), "Key", "value"] call cvo_catalog_fnc_setEntry;
 *
 * Public: No
 */

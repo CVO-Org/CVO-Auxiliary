@@ -2,54 +2,87 @@ class CfgFunctions
 {
 	class ADDON            // Tag
 	{
-		class DOUBLES(COMPONENT,old)           // Category
-		{
-			file = PATH_TO_FUNC_SUB(old);
-			class addCSC {};
-		};
+        class init {
+            file = PATH_TO_FUNC_SUB(init);
+            
+            class cbaEvents { preInit = 1; };
+            class missionInit { preInit = 1; };
+        };
 
-		class DOUBLES(COMPONENT,internal)           // Category
-		{
-			file = PATH_TO_FUNC_SUB(internal);
-
-            class preInit { preInit = 1; };
-
-            class catalog {};
-            class getCatName {};
-
+        class accessPoint {
+            file = PATH_TO_FUNC_SUB(accessPoint);
+            
             class createAction {};
 
-            class request {};
+            class createAccessPoint {};
+            class createAccessPointZeus { postInit = 1; };
+        };
+        
+
+        class delivery {
+            file = PATH_TO_FUNC_SUB(delivery);
+            
+            class base_spawn {};
+            class base_airdrop {};
+            class base_airdrop_desc {};
+        };
+        
+        class destination {
+            file = PATH_TO_FUNC_SUB(destination);
+            
+            class base_mapClick {};
+            class base_fixedPos {};
+            class base_relativeTo {};
+        };
+
+        class framework {
+            file = PATH_TO_FUNC_SUB(framework);
+
+            class handle_destination {};
+            class handle_delivery {};
+            
+            class getDefaultPresets {};
+            class createCrate {};
+
+            class request_client {};
             class request_server {};
 
-            class getPos {};
-            class createCrate {};
-		};
-
-		class DOUBLES(COMPONENT,airdrop)           // Category
-		{
-			file = PATH_TO_FUNC_SUB(airdrop);
-
-            class getPosFromMap {};
-			class dispatch {};
-            class dropCrate {};
-
-            class request_airdrop {};
-		};
-        class DOUBLES(COMPONENT,missionConfig)
-        {
-            file = PATH_TO_FUNC_SUB(missionConfig);
-            class updateDefault { preInit = 1; };
-            class importPresets { postInit = 1; };
         };
 
-        class COMPONENT
-        {
-            file = PATH_TO_FUNC;
+        
+       class ui {
+           file = PATH_TO_FUNC_SUB(ui);
+           
+            class openDialog {};
+           
+            class ui_onLoad {};
+            class ui_onUnload {};
+            
+            class ui_crates_init {};
 
-            class defaultEntry {};
-            class register {};
-            class link {};
+            class ui_crates_update {};
+            class ui_update_arrows {};
+            class ui_update_canRequest {};
+            class ui_update_crate_desc {};
+
+            class ui_crates_onLBSelChanged {};
+            class ui_delivery_onSelected {};
+            class ui_destination_onSelected {};
+       };
+
+
+        // Temporary
+        class config {
+            file = PATH_TO_FUNC_SUB(config);
+            
+            class getCfgDataHashmap {}; // TODO once cba updates, replace with cba variant
         };
+
+        class misc {
+            file = PATH_TO_FUNC_SUB(misc);
+            
+            class parachuteCrate {};
+        };
+        
     };
 };

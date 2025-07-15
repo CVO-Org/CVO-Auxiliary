@@ -3,22 +3,6 @@
 
 # Custom Supply Crates
 
-System to add an ACE Interaction to an Object/Classname. 
-
-Interaction will create a Supplycrate that will be filled based on provided parameters.
-Also supports other ACE features like rearm, repair, refuel. Can be preloaded with ACE Spareparts.
-
-## Parameters
-| index 	| param         	| type                  	| default           	| description                                                        	|
-|-------	|---------------	|-----------------------	|-------------------	|--------------------------------------------------------------------	|
-| 0     	| target        	| obj or classname      	| objNull           	| defines where the ace action is being added                        	|
-| 1     	| title         	| string                	| "Default Name"    	| Name of the Crate and Displayname of the Interaction               	|
-| 2     	| itemArray     	| array                 	| []                	| Array of items: [["classname", 69], ["ace_banana",69]]             	|
-| 3     	| className     	| string                	| "LandWoodenBox_F" 	| Classname of desired Crateobject                                   	|
-| 4     	| backpackArray 	| array                 	| []                	| Array of backpacks, like itemArray                                 	|
-| 5     	| spawnLoc      	| String, Object or POS 	| "REL"             	| REL - Relative to the target, at position of object or at position 	|
-| 6     	| hashmap       	| Hashmap               	| createHashmap     	| Hashmap of additional attributes, for details, see below           	|
-
 
 ### Currently supported values for the Hashmap
 keys and default values
@@ -57,32 +41,4 @@ createHashmapFromArray [
 ]
 ```
 ## CBA Events
-`cvo_csc_Event_crateSpawnedServer` - ServerEvent
-
-## Example
-```sqf
-[
-	cursorObject, 
-	"Monkey Care Package",
-	[
-		["Ace_banana", 100],
-		["ace_maptools",100]
-	]
-] call CVO_CSC_fnc_addCSC;
-```
-
-```sqf
-[
-	"ACM_APD_Unimog", 
-	"CBRN Package", 
-	[
-		["U_C_CBRN_Suit_01_Blue_F",6],
-		["G_RegulatorMask_F",6]
-	],
-	"LandWoodenBox_F",
-	objNull,
-	[
-		["B_SCBA_01_F",6]
-	],
-] call CVO_CSC_fnc_addCSC;
-```
+`cvo_csc_api_crateSpawnedServer` - ServerEvent

@@ -34,3 +34,13 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
+
+#include "presets\cvo_csc_crates.hpp"
+#include "presets\cvo_csc_delivery_modes.hpp"
+#include "presets\cvo_csc_destinations.hpp"
+
+// UI
+// UI Stuff
+#include "ui\CommonDefines.hpp"
+#include "ui\BaseControls.hpp"
+#include "ui\cvo_csc_request.hpp"
