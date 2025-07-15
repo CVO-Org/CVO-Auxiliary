@@ -21,7 +21,7 @@ private _airframeDisplayName = getText (configFile >> "CfgVehicles" >> getText (
 
 format [
 " will be air-dropped by %1 %2 at %3 meters ATL.",
-["a", "an"] select ( _airframeDisplayName select [0,1] in ["a", "e", "i", "o", "u", "1", "8"] ),
+["a", "an"] select ( toLower (_airframeDisplayName select [0,1]) in ["a", "e", "i", "o", "u", "1", "8"] ),
 _airframeDisplayName,
 getNumber (_cfg >> "parameters" >> "airdrop_alt")
 ] // return

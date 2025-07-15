@@ -17,7 +17,7 @@
 
 params ["_display", "_exitCode"];
 
-if (_exitCode == 2) exitWith {diag_log format ['[CVO](debug)(fn_ui_onUnload) Cancel - _exitCode: %1', _exitCode];};
+if (_exitCode == 2) exitWith { };
 
 private _ctrl_crates = _display displayCtrl CVO_IDC_CSC_Crates_ListNBox;
 

@@ -81,7 +81,13 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
 
 // Handle Smoke once Landed
 private _class_smoke = _parameters getOrDefault ["parachute_class_smoke","SmokeShellYellow"];
+diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
+
+diag_log format ['[CVO](debug)(fn_parachuteCrate) cond1: %1', ! isClass (configFile >> "CfgVehicles" >> _class_smoke)];
+diag_log format ['[CVO](debug)(fn_parachuteCrate) cond2: %1', ! isClass (configFile >> "CfgAmmo" >> _class_smoke)];
+
 if (! isClass (configFile >> "CfgVehicles" >> _class_smoke) || { ! isClass (configFile >> "CfgAmmo" >> _class_smoke) } ) then { _class_smoke = ""; };
+diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
 
 [
     {
@@ -92,10 +98,13 @@ if (! isClass (configFile >> "CfgVehicles" >> _class_smoke) || { ! isClass (conf
 
         if (getPos _object select 2 < 1) exitWith {
             _pfhID call CBA_fnc_removePerFrameHandler;
+            
+            diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
 
             if (_class_smoke isNotEqualTo "") then {
                 private _smoke = createVehicle [_class_smoke, [0, 0, 0]];
                 _smoke attachTo [_object, [0, 0, 0]];
+                diag_log format ['[CVO](debug)(fn_parachuteCrate) _smoke: %1', _smoke];
             };
         };
     },

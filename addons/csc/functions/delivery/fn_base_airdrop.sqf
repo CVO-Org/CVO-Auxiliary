@@ -21,7 +21,7 @@ ZRN_LOG_1(_this);
 
 // Starting Position
 private _startPos = _parameters getOrDefault ["pos_start", [0,0,1000]];
-_startPos set [2, 0 max (ATLToASL _startPos # 2) + 100];
+_startPos set [2, 1000 max (ATLToASL _startPos # 2)];
 
 // Target Position
 private _targetPos = _request getOrDefault ["destination", [0,0,0]];

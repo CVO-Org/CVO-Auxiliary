@@ -38,7 +38,6 @@ private _cfg = [
     configNull
 ] call EFUNC(catalog,getEntry);
 
-
 private _items = getArray (_cfg >> "items") apply { [_x#0 call cba_fnc_getItemConfig, _x#1] } select { _x#0 isNotEqualTo configNull };
 
 private _desc ="Content:\n";
@@ -52,8 +51,6 @@ private _desc ="Content:\n";
     ];
     _desc = _desc + _line;
 } forEach _items;
-
-
 
 ctrlSetText [
     CVO_IDC_CSC_Crates_ListNBox_Description,

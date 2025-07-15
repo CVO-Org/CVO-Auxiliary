@@ -4,7 +4,7 @@ class Crates_ListNBox: RscListNBox {
     type = CT_LISTNBOX;
     style = LB_TEXTURES;
 
-    onLBSelChanged = Q(call FUNC(ui_crates_update_info););
+    onLBSelChanged = Q(call FUNC(ui_crates_onLBSelChanged););
 
     x = Q(00.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
     y = Q(04.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);

@@ -4,7 +4,7 @@ class GVAR(delivery_modes) {
 
     class base_spawn: baseDelivery {
 
-        displayName = "Default: Spawn";
+        displayName = "Spawn";
         code_description = """ will be made available at the provided position."""; // tripple Quotes for simply return the string
 
         code = QFUNC(base_spawn);
@@ -16,7 +16,7 @@ class GVAR(delivery_modes) {
 
     class base_airdrop: baseDelivery {
 
-        displayName = "Default: Airdrop";
+        displayName = "Airdrop: Default";
         code_description = QFUNC(base_airdrop_desc);
 
         code = QFUNC(base_airdrop);

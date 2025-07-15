@@ -13,7 +13,7 @@ class GVAR(crates) {
 
         displayName = "Medical Supply Crate";
 
-        scope = 0;
+        scope = 2;
 
         box_class = "ACE_medicalSupplyCrate_advanced";
         box_empty = "true";
