@@ -39,7 +39,7 @@ switch (true) do {
         _duration = _duration + SET(delay_min) + random SET(delay_random);
 
         // Set Global Flag and reset after delay. Also request next song in queue.
-        missionNamespace getVariable [QGVAR(isPlaying), true, true];
+        missionNamespace getVariable [QGVAR(isPlaying), true];
         [
             {
                 missionNamespace getVariable [QGVAR(isPlaying), false, true];

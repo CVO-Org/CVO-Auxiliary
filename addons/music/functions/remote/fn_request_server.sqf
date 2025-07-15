@@ -49,12 +49,7 @@ switch (_mode) do {
     };
 
     case "PLAYLIST": {
-        [
-            [
-                _data
-                "RANDOM"
-            ] call FUNC(select);
-        ] call FUNC(play);
+        [ [ _data, "RANDOM" ] call FUNC(select) ] call FUNC(play);
     };
 
     case "SONG": {
