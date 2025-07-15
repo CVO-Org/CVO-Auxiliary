@@ -26,7 +26,7 @@ if (isNil "_playlists") exitWith { _actions };
 private _statement = {
     params ["_target", "_player", "_actionParams"];
     _actionParams params ["_mode"];
-    [_mode] call FUNC(request);
+    [_mode] call FUNC(request_client);
 };
 
 // Add "NEXT" "FADENEXT" "FADECLEAR"
@@ -53,7 +53,7 @@ private _playlistChildren = {
     private _statement = {
         params ["_target", "_player", "_actionParams"];
         _actionParams params ["_mode"];
-        [_mode] call FUNC(request);
+        [_mode] call FUNC(request_client);
     };
 
     {

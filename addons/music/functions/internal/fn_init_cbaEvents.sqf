@@ -17,3 +17,5 @@
 
 [QGVAR(EH_play_remote), FUNC(play_client)] call CBA_fnc_addEventHandler;
 [QGVAR(EH_fade_remote), FUNC(fade_client)] call CBA_fnc_addEventHandler;
+
+[QGVAR(EH_request_server), FUNC(request_server)] call CBA_fnc_addEventHandler;
