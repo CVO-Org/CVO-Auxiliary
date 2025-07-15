@@ -22,7 +22,8 @@ private _destinations = ["ZEUS", "DESTINATIONS"] call FUNC(getDefaultPresets);
 private _accessPoint = createHashMapFromArray [
     [QGVAR(crates),         _crates        ],
     [QGVAR(destinations),   _destinations  ],
-    [QGVAR(delivery_modes), _delivery_modes]
+    [QGVAR(delivery_modes), _delivery_modes],
+    ["isZeus",              true           ]
 ];
 
 private _conditionCode = { true };
