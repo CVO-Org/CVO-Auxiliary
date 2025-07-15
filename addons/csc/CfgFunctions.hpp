@@ -70,14 +70,6 @@ class CfgFunctions
             class ui_destination_onSelected {};
        };
 
-
-        // Temporary
-        class config {
-            file = PATH_TO_FUNC_SUB(config);
-            
-            class getCfgDataHashmap {}; // TODO once cba updates, replace with cba variant
-        };
-
         class misc {
             file = PATH_TO_FUNC_SUB(misc);
             

@@ -38,7 +38,7 @@ _display setVariable [QGVAR(maxCrates), _maxCrates];
 
 
 //// Update Description
-private _code_desc = getText (_cfg >> "code_description") call EFUNC(common,convertStringCode); // TODO once cba updates, replace with cba variant
+private _code_desc = getText (_cfg >> "code_description") call CBA_fnc_convertStringCode;
 
 private _desc = _cfg call _code_desc;
 _desc = format ["Up to %1 crates%2", _maxCrates, _desc];
