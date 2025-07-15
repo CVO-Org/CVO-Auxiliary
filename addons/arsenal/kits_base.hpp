@@ -1,5 +1,5 @@
 // Base Kit - Accessible for Everyone
-class BaseKit_Medical: Base {
+class baseKit_Medical: baseKit {
     class items {
         class ACE_packingBandage {};
         class ACE_fieldDressing {};
@@ -21,7 +21,7 @@ class BaseKit_Medical: Base {
     };
 };
 
-class BaseKit_Utility: Base {
+class baseKit_Utility: baseKit {
     class items {
         class ace_marker_flags_red {};
         class ace_marker_flags_green {};
@@ -38,7 +38,7 @@ class BaseKit_Utility: Base {
     };
 };
 
-class BaseKit_Orientation: Base {
+class baseKit_Orientation: baseKit {
     class items {
         class ACE_DAGR {};
 
@@ -57,14 +57,14 @@ class BaseKit_Orientation: Base {
 
 
 // Base Kit - Setting Based
-class ACE_Hearing_Enabled: Base {
+class ACE_Hearing_Enabled: baseKit {
     condition = "missionNamespace getVariable ['ace_hearing_enableCombatdeafness', true]"; // Find right Setting Variable
     class items {
         class ACE_EarPlugs {};
     };
 };
 
-class ACE_Overheating_Enabled: Base {
+class ACE_Overheating_Enabled: baseKit {
     condition = "missionNamespace getVariable ['ace_overheating_enabled', true]";
     class items {
         class ACE_WaterBottle {};
@@ -72,7 +72,7 @@ class ACE_Overheating_Enabled: Base {
     };
 };
 
-class ACE_FieldRations_Enabled: Base {
+class ACE_FieldRations_Enabled: baseKit {
     condition = "missionNamespace getVariable ['ace_field_rations_enabled', true]";
     class items {
         class ACE_WaterBottle {};
@@ -83,7 +83,7 @@ class ACE_FieldRations_Enabled: Base {
 
 
 // Base Kit - Mod Dependent
-class ImmersionCigs_Loaded: Base {
+class ImmersionCigs_Loaded: baseKit {
     addon_dependency = "cigs_core"; // Find right Addon to be checked
     class items {
         class cigs_lighter {};
@@ -92,7 +92,7 @@ class ImmersionCigs_Loaded: Base {
     };
 };
 
-class GreenMag_Loaded: Base {
+class GreenMag_Loaded: baseKit {
     addon_dependency = "greenmag_main"; // Find right Addon to be checked
     class items {
         class greenmag_item_speedloader {};

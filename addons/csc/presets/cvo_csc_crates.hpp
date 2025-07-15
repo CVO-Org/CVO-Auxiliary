@@ -9,7 +9,7 @@ class GVAR(crates) {
 
     #include "cvo_csc_crates_base.hpp"
 
-    class base_medicalCrate: base {
+    class base_medicalCrate: baseCrate {
 
         displayName = "Medical Supply Crate";
 

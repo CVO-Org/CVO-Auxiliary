@@ -1,4 +1,4 @@
-class base {
+class baseDelivery {
 
     displayName = "";
     code_description = "";

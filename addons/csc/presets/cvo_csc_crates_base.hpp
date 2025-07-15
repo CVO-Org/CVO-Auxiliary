@@ -1,8 +1,8 @@
 // This is the Base Class for CSC Crates
 
-class base {
+class baseCrate {
 
-    displayName = "displayName";
+    displayName = "Base Crate";
 
     description = "Base Description - You shouldnt see this tbh.";
 

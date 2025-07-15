@@ -2,7 +2,7 @@ class GVAR(delivery_modes) {
 
     #include "cvo_csc_delivery_modes_base.hpp"
 
-    class base_spawn: base {
+    class base_spawn: baseDelivery {
 
         displayName = "Default: Spawn";
         code_description = """ will be made available at the provided position."""; // tripple Quotes for simply return the string
@@ -14,7 +14,7 @@ class GVAR(delivery_modes) {
         scope = 1;
     };
 
-    class base_airdrop: base {
+    class base_airdrop: baseDelivery {
 
         displayName = "Default: Airdrop";
         code_description = QFUNC(base_airdrop_desc);

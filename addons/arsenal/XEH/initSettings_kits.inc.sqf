@@ -28,7 +28,7 @@ QSET(test) -> "ADDON_set_test"
 */
 
 
-private _configs = Q(configName _x isNotEqualTo QQ(Base)) configClasses (configFile >> QGVAR(kits));
+private _configs = Q(configName _x isNotEqualTo QQ(baseKit)) configClasses (configFile >> QGVAR(kits));
 private _configs = _configs select { getText (_x >> "id64") == ""}; // Remove Hardcoded Personal Kits from Settings
 
 {

@@ -1,4 +1,4 @@
-class base {
+class baseDestination {
 
     displayName = "";
     description = "";

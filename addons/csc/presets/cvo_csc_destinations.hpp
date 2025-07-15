@@ -2,7 +2,7 @@ class GVAR(destinations)
 {
     #include "cvo_csc_destinations_base.hpp"
 
-    class base_fixed_debug: base {
+    class base_fixed_debug: baseDestination {
 
         displayName = "Debug Corner";
         description = "Predefined, fixed prosition - in this case, the debug corner.";
@@ -16,7 +16,7 @@ class GVAR(destinations)
         };
     };
     
-    class base_mapClick: base {
+    class base_mapClick: baseDestination {
         displayName = "via Mapclick";
         description = "Manually define the desired destination via map-click.";
         scope = 1;
@@ -26,7 +26,7 @@ class GVAR(destinations)
         class parameters {};
     };
 
-    class base_infrontPlayer: base {
+    class base_infrontPlayer: baseDestination {
         displayName = "Infront of Player";   // Just as an example
         description = "In front of the player";
         scope = 1;

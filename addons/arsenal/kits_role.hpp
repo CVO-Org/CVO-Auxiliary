@@ -1,5 +1,5 @@
 // ACE MEDICAL
-class BaseRoleKit_Medic: Base {
+class BaseRoleKit_Medic: baseKit {
     role = "Medic";
     class items {
         class ACE_quikclot {};
@@ -20,7 +20,7 @@ class BaseRoleKit_Medic: Base {
     };
 };
  
-class BaseRoleKit_Medic_suture: Base {
+class BaseRoleKit_Medic_suture: baseKit {
     role = "medic";
     condition = "missionNamespace getVariable ['ace_medical_treatment_consumeSurgicalKit',0] isEqualTo 2";
     class items {
@@ -28,7 +28,7 @@ class BaseRoleKit_Medic_suture: Base {
     };
 };
 
-class BaseRoleKit_Doctor: Base {
+class BaseRoleKit_Doctor: baseKit {
     role = "Doctor";
     class items {
     };
@@ -36,7 +36,7 @@ class BaseRoleKit_Doctor: Base {
 
 
 // ACE ENGINEER
-class BaseRoleKit_Engineer: Base {
+class BaseRoleKit_Engineer: baseKit {
     role = "Engineer";
     class items {
         class ACE_wirecutter {};
@@ -44,7 +44,7 @@ class BaseRoleKit_Engineer: Base {
     };
 };
 
-class BaseRoleKit_AdvEngineer: Base {
+class BaseRoleKit_AdvEngineer: baseKit {
     role = "AdvEngineer";
     class items {
         class ACE_Fortify {};
@@ -53,7 +53,7 @@ class BaseRoleKit_AdvEngineer: Base {
 
 
 // EXPLOSIVE SPECIALIST
-class BaseRoleKit_ExplosiveSpecialist: Base {
+class BaseRoleKit_ExplosiveSpecialist: baseKit {
     role = "ExplosiveSpecialist";
     class items {
         class ACE_VMH3 {};
@@ -64,7 +64,7 @@ class BaseRoleKit_ExplosiveSpecialist: Base {
         class SatchelCharge_Remote_Mag {};
     };
 };
-class BaseRoleKit_ExplosiveSpecialist_IEDD: Base {
+class BaseRoleKit_ExplosiveSpecialist_IEDD: baseKit {
     addon_dependency = "iedd_main";
     role = "ExplosiveSpecialist";
     class items {
@@ -72,7 +72,7 @@ class BaseRoleKit_ExplosiveSpecialist_IEDD: Base {
     };
 };
 
-class BaseRoleKit_ExplosiveSpecialist_convertFuses: Base {
+class BaseRoleKit_ExplosiveSpecialist_convertFuses: baseKit {
     role = "ExplosiveSpecialist";
     condition = "missionNamespace getvariable ['ace_grenades_convertExplosives', false]";
     class items {
@@ -83,7 +83,7 @@ class BaseRoleKit_ExplosiveSpecialist_convertFuses: Base {
 
 
 // Machinegunner
-class BaseRoleKit_Machinegunner: Base {
+class BaseRoleKit_Machinegunner: baseKit {
     role = "Machinegunner";
     class items {
         class ACE_SpareBarrel {};
@@ -92,7 +92,7 @@ class BaseRoleKit_Machinegunner: Base {
 
 
 // Marksman
-class BaseRoleKit_Marksman: Base {
+class BaseRoleKit_Marksman: baseKit {
     role = "Marksman";
     class items {
         class ACE_Tripod {};
@@ -102,7 +102,7 @@ class BaseRoleKit_Marksman: Base {
 };
 
 // EW Specialist
-class BaseRoleKit_EWSpecialist: Base {
+class BaseRoleKit_EWSpecialist: baseKit {
     role = "EWSpecialist";
     class items {
         //spectrum device
@@ -116,7 +116,7 @@ class BaseRoleKit_EWSpecialist: Base {
 
 
 // RTO
-class BaseRoleKit_RTO: Base {
+class BaseRoleKit_RTO: baseKit {
     role = "RTO";
     class items {
         class ACRE_PRC77 {};
@@ -127,7 +127,7 @@ class BaseRoleKit_RTO: Base {
 };
 
 // UAV
-class BaseRoleKit_UAV: Base {
+class BaseRoleKit_UAV: baseKit {
     role = "UAV";
     class items {
         class ACE_UAVBattery {};
@@ -140,7 +140,3 @@ class BaseRoleKit_UAV: Base {
         default { '' };
     };";
 };
-
-
-
-

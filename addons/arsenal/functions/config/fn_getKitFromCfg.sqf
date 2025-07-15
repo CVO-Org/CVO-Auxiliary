@@ -15,18 +15,6 @@
 * Public: No
 */
 
-
-/*
-    class Base {
-        role = "";
-        id64 = "";
-        condition = "true";
-        addon_dependency = "";
-        class items {};
-        code = ""; // needs to return array
-    };
-*/
-
 params [
     [ "_cfg",   configNull, [configNull] ]
 ];
