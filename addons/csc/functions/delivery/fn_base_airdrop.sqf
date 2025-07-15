@@ -122,7 +122,10 @@ _wpEnd setWaypointStatements ["true", "{deleteVehicle _x} forEach ([vehicle this
     }
 ] call CBA_fnc_waitUntilAndExecute;
 
-// Declare the mode as isBusy
+
+
+// Declare the mode as isBusy if not requested by Zeus
+if !(_request getOrDefault ["isZeus", false]) exitWith {};
 private _isBusyVarName = format ["%1_isBusy", _request get "delivery_mode"];
 
 diag_log format ['[CVO](debug)(fn_base_airdrop) _isBusyVarName: %1', _isBusyVarName];

@@ -24,6 +24,7 @@ _params params [["_accessPoint", createHashMap]];
 private _crates = _accessPoint getOrDefault [QGVAR(crates), []];
 private _destinations = _accessPoint getOrDefault [QGVAR(destinations), []];
 private _delivery_modes = _accessPoint getOrDefault [QGVAR(delivery_modes), []];
+private _isZeus = _accessPoint getOrDefault ["isZeus", false];
 
 
 
@@ -33,7 +34,7 @@ private _display = createDialog [QGVAR(request), true];
 
 _display setVariable ["requester", _player];
 _display setVariable ["target", _target];
-
+_display setVariable ["isZeus", _isZeus];
 
 _display setVariable [
     QGVAR(crates),
