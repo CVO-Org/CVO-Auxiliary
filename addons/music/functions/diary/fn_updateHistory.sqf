@@ -24,10 +24,8 @@ if (_class == "") exitWith {};
 private _record = GETMGVAR(record_musicHistory,"404");
 private _title = LLSTRING(diary_record_MusicHistory_Title);
 
-ZRN_LOG_1(_title);
 
 if (_record isEqualTo "404") then {
-    ZRN_LOG_1(_record);
     // Create The Diary Entry
     _record = player createDiaryRecord [
         QGVAR(diary_subject), [ _title, "yaaay" ]

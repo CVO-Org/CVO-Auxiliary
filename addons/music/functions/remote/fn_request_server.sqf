@@ -15,44 +15,49 @@
 * Public: No
 */
 
-#define DEFAULTFADETIME 10
+#define DEFAULTFADETIME 5
 
 if !(isServer) exitWith {};
 
 
 params [
-    ["_input", "", [""] ],
-    "_args"
+    ["_mode", "", [""] ],
+    "_data", ""
 ];
 
-ZRN_LOG_1(_this);
-
-switch (_input) do {
+switch (_mode) do {
     case "FADENEXT": {
         [QGVAR(EH_fade_remote), DEFAULTFADETIME] call CBA_fnc_globalEvent;
-        [ { ["NEXT"] call FUNC(request) } , [], DEFAULTFADETIME * 1.1] call CBA_fnc_waitAndExecute;
+        [ { ["NEXT"] call FUNC(request_server) } , [], DEFAULTFADETIME * 1.1] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(isPlaying), false, true];
     };
 
     case "NEXT": {
         if (missionNamespace getVariable [QGVAR(isPlaying), false]) then {
-            ZRN_LOG_MSG(NEXT - while playing true -> FADENEXT);
-            ["FADENEXT"] call FUNC(request);
+            ["FADENEXT"] call FUNC(request_server);
         } else {
             private _nextTrack = ["NEXT"] call FUNC(queue);
             if (_nextTrack isEqualTo "") exitWith {};        // No track 
             [_nextTrack] call FUNC(play);
         };
     };
-
     case "FADECLEAR": {
         [QGVAR(EH_fade_remote), DEFAULTFADETIME] call CBA_fnc_globalEvent;
         ["CLEAR"] call FUNC(queue);
+        missionNamespace setVariable [QGVAR(isPlaying), false, true];
     };
 
-    default { 
-        // Assume provided string is the name of a playlist and select based on cba setting
-        private _selectMode = "RANDOM";
-        private _track = [_input, _selectMode] call FUNC(select);
-        [_track] call FUNC(play);
+    case "PLAYLIST": {
+        [ [ _data, "RANDOM" ] call FUNC(select) ] call FUNC(play);
+    };
+
+    case "SONG": {
+        [_data] call FUNC(play);
+    };
+
+    case "SONG_FADENEXT": {
+        ["CLEAR"] call FUNC(queue); // Clear Queue
+        [_data] call FUNC(queue); // Add to empty Queue
+        ["FADENEXT"] call FUNC(request_server); // Fade Current and play next
     };
 };

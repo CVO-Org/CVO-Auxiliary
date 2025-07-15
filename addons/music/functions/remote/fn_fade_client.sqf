@@ -23,8 +23,6 @@ params [
 	["_fadeTime", 5, [0]]
 ];
 
-ZRN_LOG_MSG_1(INIT,_fadeTime);
-
 if ( GETMGVAR(isFading,false) ) exitWith {};
 
 SETMGVAR(isFading,true);

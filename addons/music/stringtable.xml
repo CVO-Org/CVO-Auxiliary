@@ -26,6 +26,12 @@
             <Key ID="STR_cvo_music_set_subcat_serverSetting">
                 <English>Server Settings</English>
             </Key>
+            <Key ID="STR_cvo_music_set_systemChatCurrentMusic">
+                <English>SystemChat Track Title</English>
+            </Key>
+            <Key ID="STR_cvo_music_set_systemChatCurrentMusic_desc">
+                <English>Defines if the currently played music track shall be displayed in systemChat.</English>
+            </Key>
         </Container>
         <Container name="Music Diary">
             <Key ID="STR_cvo_music_diary_faded">

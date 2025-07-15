@@ -16,42 +16,36 @@
 * Public: No
 */
 
+if (!isServer) exitWith { systemChat "fn_play needs to be executed on the server" };
 
-params [
-    ["_track",        "",         [""]       ]
-];
+params [ ["_track",  "", [""] ] ];
 
+private _currentlyPlaying = missionNamespace getVariable [QGVAR(isPlaying), false];
 
+switch (true) do {
 
-if ( missionNamespace getVariable [QGVAR(isPlaying), false] ) then {
+    case ( _currentlyPlaying ): {
+        [_track] call FUNC(queue);
+    };
 
-    [_track] call FUNC(queue);
-    ZRN_LOG_MSG_1(push to queue,_this);
+    case (!_currentlyPlaying ): {
+        // play music for players
+        [QGVAR(EH_play_remote), [_track]] call CBA_fnc_globalEvent;
 
-} else {
+        // Get Duration and Delay
+        private _duration = getNumber ((_track call FUNC(getTrackCfg)) >> "duration");
+        if (_duration == 0) then { _duration = SET(default_duration); };
+        _duration = _duration + SET(delay_min) + random SET(delay_random);
 
-    // play music for players
-    [QGVAR(EH_play_remote), [_track]] call CBA_fnc_globalEvent;
-    ZRN_LOG_MSG_1(Play,_this);    
+        // Set Global Flag and reset after delay. Also request next song in queue.
+        missionNamespace setVariable [QGVAR(isPlaying), true, true];
 
-
-    // Get Duration and Delay
-    private _duration = getNumber ((_track call FUNC(getTrackCfg)) >> "duration");
-    ZRN_LOG_1(_duration);
-    if (_duration == 0) then { _duration = SET(default_duration); };
-    ZRN_LOG_1(_duration);
-    _duration = _duration + SET(delay_min) + random SET(delay_random);
-    ZRN_LOG_1(_duration);
-
-    // Set Global Flag and reset after delay. Also request next song in queue.
-    GVAR(isPlaying) = true;
-    [
-        {
-            GVAR(isPlaying) = false;
-            ["NEXT"] call FUNC(request_server);
-        },
-        [],
-        _duration
-    ] call CBA_fnc_waitAndExecute;
-
+        [
+            { missionNamespace getVariable [QGVAR(isPlaying), false]; },
+            { },
+            [],
+            _duration,
+            { missionNamespace setVariable [QGVAR(isPlaying), false, true]; ["NEXT"] call FUNC(request_server); }
+        ] call CBA_fnc_waitUntilAndExecute;
+    };
 };

@@ -44,7 +44,7 @@ class CfgFunctions
             class init_cbaEvents { preInit = 1; };
             
             class publicArray {};
-            class request {};
+            class request_client {};
             class catalog {};
             class select {};
             class verify {};
