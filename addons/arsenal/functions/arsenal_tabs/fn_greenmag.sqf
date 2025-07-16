@@ -24,4 +24,4 @@ private _greenTab = "('greenmag' in configName _x) && !('core' in configName _x)
 
 // Creates GreenMag Arsenal Tab
 [_greenTab, "greenMag", QPATH_TO_ADDON(data\greenMag.paa)] call ace_arsenal_fnc_addRightPanelButton;
-diag_log "[CVO] [ARSENAL] - Green Tab Applied";
+ZRN_LOG_MSG(Green Tab Applied);
