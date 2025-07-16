@@ -86,9 +86,7 @@ _text
 
 if (_index > -1) then {
     private _record = _currentRecords select _index select 8;
-    ZRN_LOG_MSG_2(Entry updated,_name,_subjectID);
     _target setDiaryRecordText [[_subjectID, _record], [_name, _body, _icon]];
 } else {
-    ZRN_LOG_MSG_2(Entry created,_name,_subjectID);
     _target createDiaryRecord [_subjectID, [_name, _body, _icon]];
 };

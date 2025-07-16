@@ -60,7 +60,6 @@ if (!_isOnlySpacer) then {
         ,_target
     ] call FUNC(createDiarySubject);
     INC(_index);
-    ZRN_LOG_MSG_1(Category created:,_title);
 };
 
 missionNamespace setVariable [QGVAR(diary_spacer_index), _index];

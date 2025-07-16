@@ -83,12 +83,8 @@ private _items = _kit get "items";
 
 // #### Condition ####
 private _conditionCode = _kit getOrDefault ["condition", {}];
-
-ZRN_LOG_1(_conditionCode);
-
 private _conditionResult = [_unit, _items] call _conditionCode;
 
-ZRN_LOG_1(_conditionResult);
 
 // validate Return
 if (isNil "_conditionResult" || { typeName _conditionResult isNotEqualTo "BOOL" }) then {
