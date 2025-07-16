@@ -58,7 +58,7 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
 
     // Handle Chemlight on Box
     private _class_chemlight = _params getOrDefault ["parachute_class_chemlight", "Chemlight_yellow"];
-    if (! isClass (configFile >> "CfgVehicles" >> _class_chemlight) || { ! isClass (configFile >> "CfgAmmo" >> _class_chemlight) } ) then { _class_chemlight = ""; };
+    if (! isClass (configFile >> "CfgVehicles" >> _class_chemlight) && { ! isClass (configFile >> "CfgAmmo" >> _class_chemlight) } ) then { _class_chemlight = ""; };
     if (_class_chemlight isNotEqualTo "") then {
         private _light = createVehicle [_class_chemlight, [0, 0, 0]];
         _light attachTo [_object, [0, 0, 0]];
@@ -66,7 +66,7 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
 
     // Handle Strobe Above Parachute
     private _class_strobe = _params getOrDefault ["parachute_class_strobe", "ACE_IR_Strobe_Effect"];
-    if (! isClass (configFile >> "CfgVehicles" >> _class_strobe) || { ! isClass (configFile >> "CfgAmmo" >> _class_strobe) } ) then { _class_strobe = ""; };
+    if (! isClass (configFile >> "CfgVehicles" >> _class_strobe) && { ! isClass (configFile >> "CfgAmmo" >> _class_strobe) } ) then { _class_strobe = ""; };
     if (_class_strobe isNotEqualTo "") then {
         private _strobe = createVehicle [_class_strobe, [0,0,10], [], 0, "CAN_COLLIDE"];
         _strobe attachTo [attachedTo _object, [0,0,32]];
@@ -81,13 +81,8 @@ _object setPosASL (AGLToASL _posBehindVehicleAGL);
 
 // Handle Smoke once Landed
 private _class_smoke = _parameters getOrDefault ["parachute_class_smoke","SmokeShellYellow"];
-diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
 
-diag_log format ['[CVO](debug)(fn_parachuteCrate) cond1: %1', ! isClass (configFile >> "CfgVehicles" >> _class_smoke)];
-diag_log format ['[CVO](debug)(fn_parachuteCrate) cond2: %1', ! isClass (configFile >> "CfgAmmo" >> _class_smoke)];
-
-if (! isClass (configFile >> "CfgVehicles" >> _class_smoke) || { ! isClass (configFile >> "CfgAmmo" >> _class_smoke) } ) then { _class_smoke = ""; };
-diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
+if (! isClass (configFile >> "CfgVehicles" >> _class_smoke) && { ! isClass (configFile >> "CfgAmmo" >> _class_smoke) } ) then { _class_smoke = ""; };
 
 [
     {
@@ -99,12 +94,9 @@ diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smok
         if (getPos _object select 2 < 1) exitWith {
             _pfhID call CBA_fnc_removePerFrameHandler;
             
-            diag_log format ['[CVO](debug)(fn_parachuteCrate) _class_smoke: %1', _class_smoke];
-
             if (_class_smoke isNotEqualTo "") then {
                 private _smoke = createVehicle [_class_smoke, [0, 0, 0]];
                 _smoke attachTo [_object, [0, 0, 0]];
-                diag_log format ['[CVO](debug)(fn_parachuteCrate) _smoke: %1', _smoke];
             };
         };
     },
