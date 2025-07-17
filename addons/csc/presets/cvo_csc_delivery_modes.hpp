@@ -9,7 +9,7 @@ class GVAR(delivery_modes) {
 
         code = QFUNC(base_spawn);
 
-        maxCrates = 5;
+        maxCrates = 1;
 
         scope = 1;
     };
@@ -21,7 +21,7 @@ class GVAR(delivery_modes) {
 
         code = QFUNC(base_airdrop);
 
-        maxCrates = 3;
+        maxCrates = 2;
 
         scope = 1;
 
