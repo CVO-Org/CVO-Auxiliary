@@ -115,12 +115,12 @@ class GVAR(request) {
         class Destination_Subtitle_Background: RscText {
             idc = CVO_IDC_CSC_Destination_Subtitle_Background;
 
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
+
             x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(02.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.50 * GUI_GRID_CENTER_W);
             h = Q(02.00 * GUI_GRID_CENTER_H);
-
-            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
         class Destination_Subtitle_Text: RscText {
             idc = CVO_IDC_CSC_Destination_Subtitle_Text;
@@ -129,7 +129,7 @@ class GVAR(request) {
             style = ST_CENTER;
 
             x = Q(21.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(02.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            y = Q(13.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.50 * GUI_GRID_CENTER_W);
             h = Q(01.50 * GUI_GRID_CENTER_H);
         };
@@ -139,12 +139,12 @@ class GVAR(request) {
         class Delivery_Subtitle_Background: RscText {
             idc = CVO_IDC_CSC_Delivery_Subtitle_Background;
 
+            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
+
             x = Q(20.50 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
             y = Q(13.25 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.50 * GUI_GRID_CENTER_W);
             h = Q(02.00 * GUI_GRID_CENTER_H);
-
-            colorBackground[] = CVO_RED_RGBA_ARRAY_CONFIG(0.8);
         };
         class Delivery_Subtitle_Text: RscText {
             idc = CVO_IDC_CSC_Delivery_Subtitle_Text;
@@ -153,7 +153,7 @@ class GVAR(request) {
             style = ST_CENTER;
 
             x = Q(21.00 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-            y = Q(13.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+            y = Q(02.50 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
             w = Q(19.50 * GUI_GRID_CENTER_W);
             h = Q(01.50 * GUI_GRID_CENTER_H);
         };

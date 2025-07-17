@@ -32,6 +32,9 @@ private _aircraft = createVehicle [(_parameters getOrDefault ["airframe_class", 
 _aircraft flyInHeight [_parameters getOrDefault ["airdrop_alt",150], _parameters getOrDefault ["airdrop_alt_forced", true]];
 _aircraft flyInHeightASL (_parameters getOrDefault ["airdrop_flyInHeightASL", [50,50,50]]);
 
+[{ _this setVelocityModelSpace [0, 66, 66]; }, _aircraft] call CBA_fnc_execNextFrame;
+
+
 private _side = switch (_parameters getOrDefault ["airframe_side", "CIV"]) do {
     case "WEST": { west };
     case "EAST": { east };
@@ -53,6 +56,8 @@ _aircraft setPosASL _startPos;
 private _dir = (_startPos getDir _targetPos);
 _aircraft setDir _dir;
 
+// _aircraft
+
 // If enabled, make Asset Invincible
 if (_parameters getOrDefault ["airframe_protected", true]) then {
     { _x allowDamage false; } forEach [_aircraft] + crew _aircraft;
@@ -62,28 +67,37 @@ if (_parameters getOrDefault ["airframe_protected", true]) then {
 
 // Pre-Target Waypoint
 private _preWP = _grp addWaypoint [vectorLinearConversion [0, 1, 0.66, _startPos, _targetPos, true], 25];
-// Target Waypoint
-_grp addWaypoint [_targetPos, 25];
-// Post-Target Waypoint
-private _postWP = _grp addWaypoint [_targetPos getPos [500, _dir], 25];
 
-private _speedLimit = _request getOrDefault ["airdrop_speedLimit", 0];
-if (_speedLimit isNotEqualTo 0) then {
-    _preWP  setWaypointStatements ["true", "vehicle this limitSpeed " + str _speedLimit + ";"];
-    _postWP setWaypointStatements ["true", "vehicle this limitSpeed " + str 999 + ";"];
+
+// Target Waypoint
+private _tgtWP = _grp addWaypoint [_targetPos, 25];
+
+private _speedMode = _request getOrDefault ["airdrop_speedLimit", "LIMITED"];
+switch (_speedMode) do {
+    case "FULL":    { _tgtWP setWaypointSpeed "FULL"; };
+    case "NORMAL":  { _tgtWP setWaypointSpeed "NORMAL"; };
+    case "LIMITED";
+    default { _tgtWP setWaypointSpeed "LIMITED"; };
 };
 
-private _endpos = _parameters getOrDefault ["pos_end", [0,0,0]];
 
-_endPos = switch true do {
-    case (_endPos isEqualTo "RETURN"):   { _startPos };
-    case (_endPos isEqualTo "CONTINUE"): { _targetPos getPos [10000, _dir] };
-    case (_endPos isEqualType []):       { _endPos };
+
+// Post-Target Waypoint
+private _postWP = _grp addWaypoint [_targetPos getPos [500, _dir], 25];
+_postWP setWaypointSpeed "FULL";
+
+
+// Return Waypoint
+private _endWP_Pos = _parameters getOrDefault ["pos_end", [0,0,0]];
+_endWP_Pos = switch true do {
+    case (_endWP_Pos isEqualTo "RETURN"):   { _startPos };
+    case (_endWP_Pos isEqualTo "CONTINUE"): { _targetPos getPos [10000, _dir] };
+    case (_endWP_Pos isEqualType []):       { _endWP_Pos };
     default { [0,0,0] };
 };
 
-private _wpEnd = _grp addWaypoint [_endPos, 100];
-_wpEnd setWaypointStatements ["true", "{deleteVehicle _x} forEach ([vehicle this] + thisList)"];
+private _endWP = _grp addWaypoint [_endWP_Pos, 100];
+_endWP setWaypointStatements ["true", "{deleteVehicle _x} forEach ([vehicle this] + thisList)"];
 
 [
     {
