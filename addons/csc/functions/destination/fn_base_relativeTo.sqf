@@ -30,7 +30,9 @@ if (isNull _reference) exitWith { [0,0,0] };
 
 private _mode = _paramsHashmap getOrDefault ["mode", "FRONT"];
 
-switch (_mode) do {
+
+
+private _return = switch (_mode) do {
     case "FRONT": {
         private _maxSize = selectMax (_requestHashmap get "crates" apply { getText (([QGVAR(crates), _x] call EFUNC(catalog,getEntry)) >> "box_class") call EFUNC(common,getSizeOf) });
         _reference getRelPos [ (_reference call BIS_fnc_boundingBoxDimensions select 0) / 2 + 3 + _maxSize, 0 ];
@@ -47,4 +49,16 @@ switch (_mode) do {
     };
     
     default { [0,0,0] };
-} // Return
+};
+
+private _randomOffset = _paramsHashmap getOrDefault ["randomOffset", 0];
+
+if (_randomOffset isNotEqualTo 0) then {
+    _return = _return vectorAdd [
+        selectRandom [-1, 0, 1] * _randomOffset,
+        selectRandom [-1, 0, 1] * _randomOffset,
+        0
+    ];
+};
+
+_return

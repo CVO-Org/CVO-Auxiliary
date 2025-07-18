@@ -19,6 +19,14 @@ params [ "_requestHashmap", "_paramsHashmap" ];
 
 private _return = _paramsHashmap getOrDefault ["position", [0,0,0]];
 
-ZRN_LOG_1(_return);
+private _randomOffset = _paramsHashmap getOrDefault ["randomOffset", 0];
+
+if (_randomOffset isNotEqualTo 0) then {
+    _return = _return vectorAdd [
+        selectRandom [-1, 0, 1] * _randomOffset,
+        selectRandom [-1, 0, 1] * _randomOffset,
+        0
+    ];
+};
 
 _return
