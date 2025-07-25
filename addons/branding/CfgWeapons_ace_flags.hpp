@@ -6,7 +6,7 @@ class PVAR(flag_red_cvo): ace_flags_white {
     author = "$STR_cvo_Author";
     displayName = "Flag (CVO - Red - Small)";
 
-    ace_flags_texture = QPATHTOF(data\flag_voron_red_512.paa); // Path to the flag texture
+    ace_flags_texture = QPATHTOF(data\ace_portable_flag_cvo_red.paa); // Path to the flag texture
     ace_flags_carrier = QPVAR(carrier_flag_red); // Classname of the corresponding vehicle that gets placed.
     
     picture = "\z\ace\addons\flags\data\pictures\red_item.paa"; // Path to the picture for the inventory item
@@ -28,7 +28,7 @@ class PVAR(flag_olive_cvo): PVAR(flag_red_cvo) {
     author = "$STR_cvo_Author";
     displayName = "Flag (CVO - Olive - Small)";
 
-    ace_flags_texture = QPATHTOF(data\flag_voron_olive_512.paa); // Path to the flag texture
+    ace_flags_texture = QPATHTOF(data\ace_portable_flag_cvo_olive.paa); // Path to the flag texture
     ace_flags_carrier = QPVAR(carrier_flag_olive); // Classname of the corresponding vehicle that gets placed.
     
     picture = "z\ace\addons\flags\data\pictures\green_item.paa"; // Path to the picture for the inventory item
