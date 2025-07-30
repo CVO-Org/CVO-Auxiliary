@@ -22,6 +22,7 @@ params [
     ["_target",  player, [objNull] ]
 ];
 
+// Max amount of characters that can be used in the map briefing menu (top left).
 #define MAXCHAR 18
 
 private _index = missionNamespace getVariable [QGVAR(diary_spacer_index), 0];
