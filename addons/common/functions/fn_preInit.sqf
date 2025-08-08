@@ -55,8 +55,9 @@
     }
 ] call CBA_fnc_addEventHandler;
 
+
 [
-    QGVAR(EH_UnitIntoVehicle), // eventname
+    QGVAR(EH_UnitIntoVehicle),
     {
         params ["_unit", "_slot"];
         _slot params  ["_vic", "_index"];
@@ -67,3 +68,8 @@
         _unit assignAsCargoIndex [_vic, _index];
     }
 ] call CBA_fnc_addEventHandler;
+
+
+
+// fn_RadioMessage
+[QGVAR(EH_chatMessage), FUNC(chatMessage_remote)] call CBA_fnc_addEventHandler;

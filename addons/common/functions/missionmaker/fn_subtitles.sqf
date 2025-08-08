@@ -31,7 +31,7 @@ _color = switch (_color) do {
     default { _color };
 };
 
-if (_speaker isEqualNotTo "") then { _speaker = _speaker + ":"};
+if (_speaker isNotEqualTo "") then { _speaker = _speaker + ":"};
 
 private _string = format [" 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
