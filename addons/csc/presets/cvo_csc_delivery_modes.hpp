@@ -79,6 +79,31 @@ class GVAR(delivery_modes) {
             parachute_class_chemlight = "Chemlight_yellow";
             parachute_class_smoke = "SmokeShellOrange";
         };
+    };
 
+    class base_drone: baseDelivery {
+        displayName = "Drone Delivery";
+
+        code_description = """ will be delivered via a drone."""; // tripple Quotes for simply return the string
+
+        maxCrates = 1;
+
+        code = QFUNC(base_drone);
+
+        scope = 2;
+
+        class parameters {
+
+            drone_class = "B_UAV_06_F";
+            drone_protected = "true";
+            drone_side = "CIV";
+
+            pos_start[] = { 8472.65, 7361.97, 0 }; 
+            post_end = "RETURN";
+
+            alt_journey = 100;
+            alt_final = 35; // should be above 20
+            alt_drop = 2; // below 10 will disable objectAvoidance and hardforce the ATL
+        };
     };
 };
