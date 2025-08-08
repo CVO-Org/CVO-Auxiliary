@@ -16,6 +16,8 @@ class CfgFunctions
 
             class createAccessPoint {};
             class createAccessPointZeus { postInit = 1; };
+
+            class createAccessPointPlayer {};
         };
         
 
