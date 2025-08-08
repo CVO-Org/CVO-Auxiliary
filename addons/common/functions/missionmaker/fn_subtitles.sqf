@@ -31,11 +31,12 @@ _color = switch (_color) do {
     default { _color };
 };
 
+if _speaker isEqualNotTo "" then { _speaker = _speaker + ":"};
 
 private _string = format [" 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <t align = 'center' shadow = '2' color='%3' size='2' font='RobotoCondensedBold'>
-%1:</t><br/><br/>
+%1</t><br/><br/>
 <t color='#ffffff' size='1.5' font='RobotoCondensed'>
 %2
 </t>
