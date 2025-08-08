@@ -48,11 +48,14 @@ _grp addVehicle _aircraft;
 _grp setCombatBehaviour "CARELESS";
 _grp deleteGroupWhenEmpty true;
 
+// Add vic to curator
+{ _x addCuratorEditableObjects [[_aircraft], true] } forEach allCurators;
+
 //  Manage ACE HC Blacklist
 [[_aircraft] + units _grp, true] call ace_headless_fnc_blacklist;
 
 // Place and Rotate Plane
-_aircraft setPosASL _startPos;
+_aircraft setPos _startPos;
 private _dir = (_startPos getDir _targetPos);
 _aircraft setDir _dir;
 

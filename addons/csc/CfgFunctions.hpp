@@ -25,6 +25,7 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(delivery);
             
             class base_spawn {};
+            class base_drone {};
             class base_airdrop {};
             class base_airdrop_desc {};
         };
