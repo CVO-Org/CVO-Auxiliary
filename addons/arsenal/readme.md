@@ -25,11 +25,18 @@ Some roles will be automatically assigned, based on a units trait.
        - `[ this, ["someRole", "anotherRole"] ] call cvo_arsenal_fnc_addUnitRoles;`
        - More Infos [here](functions/roles/fn_addUnitRoles.sqf)
 
-## Hardcoded Kits / Example Kits
-The following kits, hardcoded by `CVO Aux Arsenal` can be referenced as examples on how to format a kit.
+
+## Config Properties
+
+### Example Kit Configurations
+The following kits can be referenced as examples on how to format a kit.
+
+Further, those kits are hardcoded through the mod itself. They can be disabled through CBA Settings when needed.
+
 - [Base Kits - Available vor Everyone](kits_base.hpp)
 - [Role Kits - Available for certain Roles](kits_role.hpp)
 - [Personal Kits - Available for individual Players](kits_personal.hpp)
+
 
 ### General Attributes
 | Attribute Name        | DataType           | Description                                                                                                 | 
