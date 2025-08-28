@@ -19,7 +19,11 @@ Some roles will be automatically assigned, based on a units trait.
 ## How to Implement
    1. Load CVO Aux Mod
    2. Create `cvo_arsenal_kits.hpp` and include into mission's `description.ext`
-   3. 
+   3. Define Units Roles:
+       - `[ this, "someRole" ] call cvo_arsenal_fnc_addUnitRoles;`
+       - `[ this, ["someRole"] ] call cvo_arsenal_fnc_addUnitRoles;`
+       - `[ this, ["someRole", "anotherRole"] ] call cvo_arsenal_fnc_addUnitRoles;`
+       - More Infos [here](functions/roles/fn_addUnitRoles.sqf)
 
 ## Hardcoded Kits / Example Kits
 The following kits, hardcoded by `CVO Aux Arsenal` can be referenced as examples on how to format a kit.
