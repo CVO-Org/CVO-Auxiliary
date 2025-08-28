@@ -26,7 +26,7 @@ Some roles will be automatically assigned, based on a units trait.
        - More Infos [here](functions/roles/fn_addUnitRoles.sqf)
 
 
-## Config Properties
+## Kit Configuration
 
 ### Example Kit Configurations
 The following kits can be referenced as examples on how to format a kit.
@@ -37,16 +37,14 @@ Further, those kits are hardcoded through the mod itself. They can be disabled t
 - [Role Kits - Available for certain Roles](kits_role.hpp)
 - [Personal Kits - Available for individual Players](kits_personal.hpp)
 
-
-### General Attributes
+### Config Properties
+#### General Attributes
 | Attribute Name        | DataType           | Description                                                                                                 | 
 | :-------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------- | 
 | editor_layer_name     | <STRING>           | Provide an Eden Editor layer name.<br> All Objects inside this Layer will be made into CVO Arsenal Objects. | 
 | object_variable_names | <ARRAY of STRINGS> | Provide the variable names of individual objects to make them into CVO Arsenal Objects.                     | 
 
-
- 
-### Kit Attributes:
+ #### Kit Attributes:
 
 | Attribute Name   | DataType                | Description                                                     | Default              |
 | :--------------- | ----------------------- | --------------------------------------------------------------- | -------------------- |
@@ -59,8 +57,9 @@ Further, those kits are hardcoded through the mod itself. They can be disabled t
 
 
 ### Regex Replace Templates
+Regex to update old style Unit Role Definition to the new Function call.
+Only needed when updating an old mission to the new system.
 ```regex
 this setVariable \[""CVO_A_ROLES"",\[(.*)\]\];
-
 [this, [$1]] call cvo_arsenal_fnc_addUnitRoles;
 ```
