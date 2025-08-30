@@ -20,9 +20,7 @@ diag_log format ['[CVO](debug)(fn_findAllFlags) ACE Marker Flags found: %1', cou
 	private _isEnabled = missionNamespace getVariable[ ["CVO_SET_Intel_Flag_initial",_color] joinString "_", false];
 	diag_log format ['[CVO](debug)(fn_findAllFlags) _x: %1 - _color: %2 - _isEnabled: %3', _x , _color ,_isEnabled];
 
-	if (_isEnabled) then {
-		[_x] call FUNC(createFlagMarker);
-	};
+	if (_isEnabled) then { [_x] call FUNC(createFlagMarker); };
 
 } forEach _flags;
 

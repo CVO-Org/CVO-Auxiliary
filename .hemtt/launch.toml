@@ -29,6 +29,9 @@ extends = "default"
 dlc = ["ws","rf"]
 mission = "Stratis.Stratis"
 
+[intel]
+extends = "default"
+mission = "intel.VR"
 
 [greenmag]
 extends = "stratis"

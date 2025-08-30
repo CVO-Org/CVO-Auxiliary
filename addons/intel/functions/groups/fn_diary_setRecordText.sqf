@@ -8,14 +8,16 @@
 *
 * Return Value:
 * None
-*
+* 
 * Example:
 * ['something', player] call prefix_component_fnc_functionname
 *
 * Public: No
 */
 
-private _text =  [] call FUNC(diary_getText);
+params ["_discoveredIntelGroups"];
+
+private _text =  [_discoveredIntelGroups] call FUNC(diary_getText);
 
 player setDiaryRecordText [
     [

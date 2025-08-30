@@ -67,3 +67,6 @@
         _unit assignAsCargoIndex [_vic, _index];
     }
 ] call CBA_fnc_addEventHandler;
+
+
+ [QGVAR(EH_zeusMessage), FUNC(zeusMessage)] call CBA_fnc_addEventHandler;

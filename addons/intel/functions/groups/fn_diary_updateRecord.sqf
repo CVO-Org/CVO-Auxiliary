@@ -15,8 +15,7 @@
 * Public: No
 */
 
-
-diag_log "[CVO](debug)(fn_diary_updateRecord) init";
+params ["_discoveredIntelGroups"];
 
 [] call FUNC(diary_createSubject);
-[] call FUNC(diary_setRecordText);
+[_discoveredIntelGroups] call FUNC(diary_setRecordText);

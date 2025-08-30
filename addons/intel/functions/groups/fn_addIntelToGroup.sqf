@@ -15,19 +15,19 @@
 * Public: No
 */
 
+diag_log format ['[CVO](debug)(fn_addIntelToGroup) _this: %1', _this];
 
 params [
     ["_intelGroup",  "",    [""]   ],
-    ["_objVarName", "",    [""]   ]
+    ["_objVarName", "",     [""]   ]
 ];
 
-ZRN_LOG_1(_this);
+if (_intelGroup isEqualTo "") exitWith {};
 
-if (_intelGroup == "") exitWith {};
+private _database = missionNamespace getVariable QGVAR(group_database);
 
-private _database = missionNamespace getVariable [ QGVAR(group_database), "404" ];
-
-if (_database == "404") then {
+if (isNil "_database") then {
+    diag_log format ['[CVO](debug)(fn_addIntelToGroup) Database created: %1', true];
     _database = createHashMap;
     missionNamespace setVariable [ QGVAR(group_database), _database ];
 };
@@ -43,4 +43,3 @@ private _obj = missionNamespace getVariable [_objVarName, ""];
 if (_obj isEqualTo "") then { ZRN_LOG_MSG_1(object not found,_obj); };
 
 _obj setVariable [QGVAR(group), _intelGroup];
-[_obj] call FUNC(addDeletedEH);

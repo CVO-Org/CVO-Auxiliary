@@ -19,3 +19,7 @@
 [ QGVAR(EH_addIntelAction),  FUNC(addIntelAction)     ] call CBA_fnc_addEventHandler;
 [ QGVAR(EH_addIntelEntry),   FUNC(addIntelEntry)      ] call CBA_fnc_addEventHandler;
 
+[QGVAR(EH_handleIntelGroup), FUNC(handleIntelGroup)] call CBA_fnc_addEventHandler;
+
+[QGVAR(EH_Notify), CBA_fnc_notify] call CBA_fnc_addEventHandler;
+

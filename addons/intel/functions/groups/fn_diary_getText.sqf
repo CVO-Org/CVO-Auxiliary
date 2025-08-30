@@ -15,17 +15,11 @@
 * Public: No
 */
 
-diag_log "[CVO](debug)(fn_diary_getText) Init ";
+params ["_discoveredIntelGroups"];
 
-private _discoveredIntelGroups = missionNamespace getVariable [QGVAR(discovered), []];
+_discoveredIntelGroups = [ _discoveredIntelGroups, [_discoveredIntelGroups] ] select (_discoveredIntelGroups isEqualType "");
 
-
-private _stringArray = [];
-
-private _header = "<font face='EtelkaMonospacePro' color='#0099ff' size='14'>Intel Found:</font>";
-
-_stringArray pushBack _header;
-
+private _stringArray = ["<font face='EtelkaMonospacePro' color='#0099ff' size='14'>Intel Found:</font>"];
 {
     private _groupName = _x;
 
