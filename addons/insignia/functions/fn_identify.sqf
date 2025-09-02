@@ -68,7 +68,7 @@ private _notLowestRank = (
 );
 
 
-private _leadership =  switch (_regexReturn) do {
+private _leadership = switch (_regexReturn) do {
     case "1-0": {
         switch _steamID do {
             case "76561197970306509": { 69 };
@@ -92,9 +92,13 @@ private _leadership =  switch (_regexReturn) do {
     };
 };
 
-
-private _isMedic = [_unit, 1] call ace_medical_treatment_fnc_isMedic;
-private _isEngineer = [_unit, 1] call ace_repair_fnc_isEngineer;
+[
+    [false, false],
+    [
+        [_unit, 1] call ace_medical_treatment_fnc_isMedic,
+        [_unit, 1] call ace_repair_fnc_isEngineer
+    ]
+] select SET(autoAssignTraits) params ["_isMedic", "_isEngineer"];
 
 private _type = switch (_callSign) do {
 

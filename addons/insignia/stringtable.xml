@@ -2,6 +2,12 @@
 <Project name="cvo-auxiliary">
     <Package name="Insignia">
         <Container name="CBA Settings">
+            <Key ID="STR_cvo_insignia_set_autoAssignTraits">
+                <English>Auto Assign Traits</English>
+            </Key>
+            <Key ID="STR_cvo_insignia_set_autoAssignTraits_desc">
+                <English>Defines if Traits like Medic or Engineer should be automatically assigned.</English>
+            </Key>
             <Key ID="STR_cvo_insignia_set_cat_title">
                 <English>CVO - Insignia</English>
             </Key>
