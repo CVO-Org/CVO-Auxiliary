@@ -11,6 +11,7 @@
 * None
 *
 * Example begin:
+
 [
     "Mc Dude",
     "", // default Image
@@ -44,7 +45,6 @@ params [
 
 _subject = [_subject, "Personalities"] select (_subject isEqualTo "");
 
-
 switch (_image) do {
     case "":     { _image = QPATHTOF(data\personalities_default.paa) };
     case "NONE": { _image = "" };
@@ -60,4 +60,3 @@ switch (_image) do {
 	,_newName
 	,_target
 ] call FUNC(setEntry);
-

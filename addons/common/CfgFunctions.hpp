@@ -22,6 +22,11 @@ class CfgFunctions
             class getSizeOf {};
             class getBoundingBoxRealOf {};
         };
+
+        class utility {
+            file = PATH_TO_FUNC_SUB(utility);
+            class zeusMessage {};
+        };
        
         class debug {
             file = PATH_TO_FUNC_SUB(debug);

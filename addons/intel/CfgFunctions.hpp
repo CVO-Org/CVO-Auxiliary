@@ -2,36 +2,38 @@ class CfgFunctions
 {
 	class ADDON            // Tag
 	{
-		class COMPONENT           // Category
-		{
-			file = PATH_TO_FUNC;
-
-		};
-        class markerFlags {
-            file = PATH_TO_FUNC_SUB(markerFlags);
-
-    	    class postInit { postInit = 1; };
-    	    class createFlagMarker {};
-    	    class findAllFlags {};
-        };
-        class intel_objects {
-            file = PATH_TO_FUNC_SUB(intel_objects);
-
-            class init { postInit = 1; };
-
-            class createIntel {};
-
-            class addIntelEntry {};
+        class action {
+            file = PATH_TO_FUNC_SUB(action);
+            
+            class action_statement {};
             class addIntelAction {};
+            class removeintelAction {};
+        };
 
-            class addIntelToGroup {};
+        class api {
+            file = PATH_TO_FUNC_SUB(api);
+            
+            class createIntel {};
+        };
+        
+        class intel {
+            file = PATH_TO_FUNC_SUB(intel);
 
-            class addDeletedEH {};
-            class checkGroup {};
-            class diary_createSubject {};
-            class diary_getText {};
-            class diary_setRecordText {};
-            class diary_updateRecord {};
+            class handleJIP { postInit = 1; };
+            class init { preInit = 1; };
+        
+            class intelFound {};
+            class publishIntel {};
+
+            class createIntelSubject {};
+            class writeIntelDiary {};
+        };
+
+        class summary {
+            file = PATH_TO_FUNC_SUB(summary);
+            
+            class getGroups {};
+            class updateSummary {};
         };
 	}; 
 };
