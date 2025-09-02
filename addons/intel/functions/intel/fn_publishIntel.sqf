@@ -21,8 +21,10 @@ params [ "_id", "_finder"];
 private _intelData = missionNamespace getVariable _id;
 private _intelTitle = _intelData getVariable "intelTitle";
 
+_intelData setVariable ["found", true, false]; // Caches 
+
 private _finderName = switch (true) do {
-    case (_finder isEqualTo player): { LSTRING(PlayerFoundIntel_You) };
+    case (_finder isEqualTo player): { LLSTRING(PlayerFoundIntel_You) };
     case (_finder in units group player): { name _finder };
     default { groupId group _finder };
 };

@@ -13,58 +13,47 @@ Your teams will be issued the correct PPE at your next pre-shift meeting.%1
 
 [
     laptop,
-    "Become leet Haxxor",
     "Network-Log",
     _text,
-    "KEYBOARD",
+    nil,
     false
 ] call cvo_intel_fnc_createIntel;
 
 [
     laptop_1,
-    "Become leet Haxxor",
     "E-Mails",
     _text,
-    "KEYBOARD",
+    nil,
     false
 ] call cvo_intel_fnc_createIntel;
 
 [
     laptop_2,
-    "Become leet Haxxor",
     "E-Mails",
     _text,
-    "KEYBOARD",
-    false
+    nil,
+    true
 ] call cvo_intel_fnc_createIntel;
 
 [
     laptop_3,
-    "Become leet Haxxor",
     "Network-Log",
     _text,
-    "KEYBOARD",
-    false,
-    "Test Group"
+    "Test Group",
+    false
 ] call cvo_intel_fnc_createIntel;
 
 [
     laptop_4,
-    "Become leet Haxxor",
     "E-Mails",
     _text,
-    "KEYBOARD",
-    false,
     "Test Group"
 ] call cvo_intel_fnc_createIntel;
 
 [
     laptop_5,
-    "Become leet Haxxor",
     "Network-Log",
     _text,
-    "KEYBOARD",
-    false,
-    "Test Group"
+    "Test Group",
+    false
 ] call cvo_intel_fnc_createIntel;
-

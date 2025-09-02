@@ -15,7 +15,7 @@
 * Public: No
 */
 
-params [ "_object", objNull, [objNull] ];
+params [ ["_object", objNull, [objNull]] ];
 
 if (isNull _object) exitWith {};
 

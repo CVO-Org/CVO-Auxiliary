@@ -17,16 +17,19 @@
 
 if !(isServer) exitWith {};
 
+
 params [
     ["_object",             objNull,                [objNull]      ],
-    ["_actionTitle",        "Action String",        [""]           ],
     ["_intelTitle",         "Diary Record Title",   [""]           ],
     ["_intelContent",       "Diary Body",           [""]           ],
-    ["_actionSound",        "BODY",                 [""]           ],
-    ["_removeObject",       true,                   [true]         ],
     ["_intelGroupName",     "General",              [""]           ],
-    ["_actionDuration",     15,                     [0]            ]
+    ["_removeObject",       true,                   [true]         ],
+    ["_actionTitle",        "Gather Intel",         [""]           ],
+    ["_actionDuration",     15,                     [0]            ],
+    ["_actionSound",        "AUTO",                 [""]           ],   // "AUTO", "BODY", "KEYBOARD"
+    ["_shareWith",          "DEFAULT",              [""]           ]
 ];
+
 
 if (_object isEqualTo objNull) exitWith { false };
 
@@ -34,6 +37,24 @@ if (_object isEqualTo objNull) exitWith { false };
 // Store Intel in 
 private _intelCatalog = [QGVAR(catalog)] call EFUNC(catalog,getCatalog);
 private _id = [QPREFIX, QCOMPONENT, count keys _intelCatalog] joinString "_";
+
+// Check if object is type of Laptop, Keyboard or alike
+if (_actionSound isEqualTo "AUTO") then {
+    private _laptops = [
+        "Land_Laptop_F",
+        "Land_Laptop_unfolded_F",
+        "Land_Laptop_02_F",
+        "Land_Laptop_03_base_F",
+        "Land_MultiScreenComputer_01_base_F",
+        "Land_PCSet_01_case_F",
+        "Land_PCSet_01_keyboard_F",
+        "Land_PCSet_01_mouse_F",
+        "Land_PCSet_01_mousepad_base_F",
+        "Land_PCSet_01_screen_F",
+        "Land_IPPhone_01_base_F"
+    ];
+    _actionSound = ["KEYBOARD", "BODY"] select (_laptops findIf { _object isKindOf _x } == -1);
+};
 
 // Debug Mode
 if ( is3DENPreview ) then {
@@ -56,12 +77,13 @@ private _namespace = true call CBA_fnc_createNamespace;
     ["intelTitle",      _intelTitle     ],
     ["intelContent",    _intelContent   ],
     ["intelGroup",      _intelGroupName ],
-    ["shareWith",       "SIDE"          ], // "GLOBAL", "SIDE", "GROUP", "UNIT" // TODO: CBA Setting for Default Value + propper param input
+    ["shareWith",       _shareWith      ], // "GLOBAL", "SIDE", "GROUP", "UNIT", "DEFAULT"
     // Internal
-    ["intelFoundByAll",   false         ],
-    ["intelFoundBySide",  []            ],
-    ["intelFoundByGroup", []            ],
-    ["intelFoundByUnit",  []            ]
+    ["found",        false  ],    // Local cache, shall never be published
+    ["foundByAll",   false  ],
+    ["foundBySide",  []     ],
+    ["foundByGroup", []     ],
+    ["foundByUnit",  []     ]
 ];
 
 missionNamespace setVariable [_id, _namespace, true];
@@ -70,5 +92,5 @@ missionNamespace setVariable [_id, _namespace, true];
 
 
 // Update Public Intel Catalog
-_intelCatalog set ["id", _namespace];
+_intelCatalog set [_id, _namespace];
 missionNamespace setVariable [QGVAR(catalog), _intelCatalog, true];

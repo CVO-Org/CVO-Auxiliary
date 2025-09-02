@@ -25,15 +25,15 @@ private _map = createHashMap;
     private _intelData = _y;
 
     private _intelGroup = _intelData getVariable "intelGroup";
-    private _hasBeenFound = _intelData getVariable "intelFound";
+    private _hasBeenFound = _intelData getVariable "found";
 
     if (_intelGroup in keys _map) then {
         private _entry = _map get _intelGroup;
 
-        _entry set ["total", _entry get "total" + 1];
+        _entry set ["total", (_entry get "total") + 1];
 
         if (_hasBeenFound) then {
-            _entry set ["found", _entry get "found" + 1];
+            _entry set ["found", (_entry get "found") + 1];
         };
 
     } else {
@@ -48,7 +48,11 @@ private _map = createHashMap;
 
 } forEach _catalog;
 
-private _return = keys _map sort true;
+private _return = keys _map;
+_return sort true;
+
+diag_log format ['[CVO](debug)(fn_getGroups) _return: %1', _return];
+
 _return apply {
     [
         _x,

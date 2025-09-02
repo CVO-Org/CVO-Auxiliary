@@ -20,10 +20,12 @@ class CfgFunctions
             file = PATH_TO_FUNC_SUB(intel);
 
             class handleJIP { postInit = 1; };
-            class init { postInit = 1; };
+            class init { preInit = 1; };
         
             class intelFound {};
             class publishIntel {};
+
+            class createIntelSubject {};
             class writeIntelDiary {};
         };
 

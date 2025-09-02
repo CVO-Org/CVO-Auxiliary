@@ -29,10 +29,10 @@ if (_didJIP) then {
         private _namespace = _y;
 
         private _hasIntel = switch (true) do {
-            case (_namespace getVariable "intelFoundByAll"): { true };
-            case ( side player in (_namespace getVariable "intelFoundBySide") ): { true };
-            case ( group player in (_namespace getVariable "intelFoundByGroup") ): { true };
-            case ( player in (_namespace getVariable "intelFoundByUnit") ): { true };
+            case (_namespace getVariable "foundByAll"): { true };
+            case ( side player in (_namespace getVariable "foundBySide") ): { true };
+            case ( group player in (_namespace getVariable "foundByGroup") ): { true };
+            case ( player in (_namespace getVariable "foundByUnit") ): { true };
             default { false };
         };
 

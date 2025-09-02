@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="cvo-auxiliary">
     <Package name="Intel">
+        <Container name="CBA Settings">
+            <Key ID="STR_cvo_intel_set_disableIntelSummary">
+                <English>Disable Intel Summary</English>
+            </Key>
+            <Key ID="STR_cvo_intel_set_disableIntelSummary_desc">
+                <English>Disables the Intel Summary Display which informs the player about the amount of remaining intel per intelgroup.</English>
+            </Key>
+        </Container>
+        <Container name="CBA Settings">
+            <Key ID="STR_cvo_intel_set_default_shareWith">
+                <English>Default ShareWith</English>
+            </Key>
+            <Key ID="STR_cvo_intel_set_default_shareWith_desc">
+                <English>Defines the default "ShareWith" option which controls with whom found intel is being shared.</English>
+            </Key>
+        </Container>
         <Container name="CBA Settings Categories">
             <Key ID="STR_cvo_Intel_set_cat_title">
                 <English>CVO - Intel</English>
             </Key>
             <Key ID="STR_cvo_Intel_set_subcat_general">
                 <English>General</English>
-            </Key>
-        </Container>
-        <Container name="CBA Settings">
-            <Key ID="STR_cvo_arsenal_set_disableIntelSummary">
-                <English>Disable Intel Summary</English>
-            </Key>
-            <Key ID="STR_cvo_arsenal_set_disableIntelSummary_desc">
-                <English>Disables the Intel Summary Display which informs the player about the amount of remaining intel per intelgroup.</English>
-            </Key>
-        </Container>
-        <Container name="CBA Settings">
-            <Key ID="STR_cvo_arsenal_set_default_shareWith">
-                <English>Default ShareWith</English>
-            </Key>
-            <Key ID="STR_cvo_arsenal_set_default_shareWith_desc">
-                <English>Defines the default "ShareWith" option which controls with whom found intel is being shared.</English>
             </Key>
         </Container>
         <Container name="Intel Object">

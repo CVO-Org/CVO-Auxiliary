@@ -19,11 +19,10 @@
  * None
  *
  * Example:
- * [_object, 0, true, 0, "Pick Up Intel", 1, "Intel!", "Notes..."] call zen_modules_fnc_addIntelAction
+ * [_object, _id] call zen_modules_fnc_addIntelAction
  *
  * Public: No
  */
-
 
 
 params ["_object", "_id"];

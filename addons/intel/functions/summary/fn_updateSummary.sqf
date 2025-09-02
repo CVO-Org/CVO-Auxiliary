@@ -18,13 +18,16 @@
 privateAll;
 
 if (SET(disableIntelSummary)) exitWith {
-    if (player diarySubjectExists "intelSummary") then { player removeDiarySubject "intelSummary"; };
+    if (player diarySubjectExists QGVAR(intel_summary)) then { player removeDiarySubject QGVAR(intel_summary); };
 };
 
+private _groups = [] call FUNC(getGroups);
+if (_groups isEqualTo []) exitWith {};
+
 // Create Diary Subject
-if !(player diarySubjectExists "intelSummary") then {
-    player createDiarySubject ["intelSummary", "Intel Summary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa"];
-    player createDiaryRecord ["intelSummary", ["Intel Summary", ""], taskNull, "NONE", false];
+if !(player diarySubjectExists QGVAR(intel_summary)) then {
+    player createDiarySubject [QGVAR(intel_summary), "Intel Summary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa"];
+    player createDiaryRecord [QGVAR(intel_summary), ["Intel Summary", ""], taskNull, "NONE", false];
 };
 
 // Get Summary Text
@@ -39,15 +42,15 @@ private _stringArray = ["<font face='EtelkaMonospacePro' color='#0099ff' size='1
         format ["<font size=10 face='EtelkaMonospacePro'>%1 / %2 - %3 - Complete!</font>",_found, _total, _groupName]
     ] select (_found == _total);
     _stringArray pushBack _text;
-} forEach ( call FUNC(getGroups) );
+} forEach _groups;
 
 private _text = _stringArray joinString "<br />";
 
 // Update Diary Entry
 player setDiaryRecordText [
     [
-        "intelSummary",
-        player allDiaryRecords "intelSummary" select 0 select -1
+        QGVAR(intel_summary),
+        player allDiaryRecords QGVAR(intel_summary) select 0 select -1
     ],
     [
         "Intel Summary",
