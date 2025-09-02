@@ -26,30 +26,22 @@
 
 
 
-params ["_object", "_share", "_delete", "_actionText", "_soundType", "_duration", "_title", "_text"];
+params ["_object", "_id"];
 
-ZRN_LOG_1(_this);
+private _intelData = missionNamespace getVariable _id;
 
-
-// Removing previous action regardless of type to handle switching action types
-private _actionID = _object getVariable QGVAR(intelActionID);
-
-
-if (!isNil "_actionID") then {
-    [_object, _actionID] call BIS_fnc_holdActionRemove;
-};
-
-
-[_object, 0, ["ACE_MainActions", QGVAR(intelAction)]] call ace_interact_menu_fnc_removeActionFromObject;
+private _actionTitle    = _intelData getVariable "actionTitle";
+private _actionSound    = _intelData getVariable "actionSound";
+private _actionDuration = _intelData getVariable "actionDuration";
 
 private _action = [
     QGVAR(intelAction),
-    _actionText,
+    _actionTitle,
     "\a3\ui_f\data\igui\cfg\simpletasks\types\documents_ca.paa",
     FUNC(action_statement),
     {true},
     {},
-    [_title, _text, _share, _delete, _actionText, _actionSounds, _duration, _fnc_addIntel]
+    [_id, _actionTitle, _actionSound, _actionDuration]
 ] call ace_interact_menu_fnc_createAction;
 
 [_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;

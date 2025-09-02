@@ -15,12 +15,15 @@
 * Public: No
 */
 
-params ["_title", "_text"];
+params ["_id"];
 
-ZRN_LOG_1(_this);
+private _intelData = missionNamespace getVariable _id;
+
+private _intelTitle = _intelData getVariable "intelTitle";
+private _intelContent = _intelData getVariable "intelContent";
 
 if !(player diarySubjectExists QGVAR(intel)) then {
     player createDiarySubject [QGVAR(intel), "Intel"];
 };
 
-player createDiaryRecord [QGVAR(intel), [_title, _text]];
+player createDiaryRecord [QGVAR(intel), [_intelTitle, _intelContent]];
