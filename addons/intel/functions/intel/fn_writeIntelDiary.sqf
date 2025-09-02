@@ -36,7 +36,7 @@ if (_index == -1) then {
     private _existingRecord =  _allRecords select _index select 8;
     private _existingContent = _allRecords select _index select 2;
 
-    private _newIntelContent = [_existingContent, "####################################################","",_intelContent] joinString "<br />";
+    private _newIntelContent = [_existingContent, "", "####################################################","",_intelContent] joinString "<br />";
 
     player setDiaryRecordText [[QGVAR(intel), _existingRecord], [_intelTitle, _newIntelContent]];
 
