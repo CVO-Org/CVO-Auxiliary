@@ -23,6 +23,12 @@
             <Key ID="STR_cvo_insignia_set_threshold_SL_desc">
                 <English>An Infantrysquad needs to have atleast this many units for the highest ranking Unit to become an SL instead of a TL.</English>
             </Key>
+            <Key ID="STR_cvo_insignia_set_autoAssignTraits">
+                <English>Auto Assign Traits</English>
+            </Key>
+            <Key ID="STR_cvo_insignia_set_autoAssignTraits_desc">
+                <English>Defines if Traits like Medic or Engineer should be automatically assigned.</English>
+            </Key>
         </Container>
     </Package>
 </Project>
