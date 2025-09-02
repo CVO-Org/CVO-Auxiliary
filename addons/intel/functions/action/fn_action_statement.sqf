@@ -75,7 +75,8 @@ if (_actionSounds isNotEqualTo []) then { _object setVariable [QGVAR(nextTimeFor
         private _nextTimeForSound = _object getVariable [QGVAR(nextTimeForSound), _time];
 
         if (_time > _nextTimeForSound) then {
-            playSound selectRandom _actionSounds;
+
+            [_object, selectRandom _actionSounds, 25, true, true, 0.15] call CBA_fnc_globalSay3D;
 
             private _nextDelay = random [MIN_SOUND_DELAY, MID_SOUND_DELAY, MAX_SOUND_DELAY];
             _object setVariable [QGVAR(nextTimeForSound), _time + _nextDelay];
