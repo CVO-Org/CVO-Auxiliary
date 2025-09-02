@@ -83,7 +83,9 @@ if (_actionSound isEqualTo "AUTO") then {
         "Land_PCSet_01_mouse_F",
         "Land_PCSet_01_mousepad_base_F",
         "Land_PCSet_01_screen_F",
-        "Land_IPPhone_01_base_F"
+        "Land_IPPhone_01_base_F",
+        "Item_Laptop_Unfolded",
+        "Item_Laptop_Closed"
     ];
     _actionSound = ["KEYBOARD", "BODY"] select (_laptops findIf { _object isKindOf _x } == -1);
 };
