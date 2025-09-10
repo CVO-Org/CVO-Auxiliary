@@ -6,8 +6,8 @@ class CfgFunctions {
             class preInit { preInit = 1; };
 
             class localEffects {};
+            
             class startServerLoop {};
         };
-        
     };
 };

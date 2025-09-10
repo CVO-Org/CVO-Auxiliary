@@ -23,4 +23,15 @@ if !(_this isEqualTypeParams [""]) exitWith {
 };
 
 private _message = _this apply {if (_x isEqualType "" && {isLocalized _x}) then {localize _x} else {_x}};
-[objNull, format _message] call BIS_fnc_showCuratorFeedbackMessage;
+
+if ([] call CBA_fnc_getActiveFeatureCamera isEqualTo "curator") then {
+    
+    [objNull, format _message] call BIS_fnc_showCuratorFeedbackMessage;
+
+} else {
+    [
+        ["Zeus Message:", 1.5, [1, 1, 0, 1]],
+        format _message
+    ] call CBA_fnc_notify;
+};
+

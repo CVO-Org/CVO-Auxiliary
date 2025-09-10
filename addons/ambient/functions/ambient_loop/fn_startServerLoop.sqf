@@ -35,14 +35,14 @@ private _sounds = [];
 
 private _delay = 3 * 60;
 
-GVAR(creepySounds_pool) = + _sounds;
+GVAR(sounds) = + _sounds;
+GVAR(sounds_pool) = + _sounds;
 
 if (! isNil QGVAR(loop_id) ) exitWith { GVAR(loop_id) };
 
 GVAR(loop_id) = [
     {
-        if (GVAR(creepySounds_pool) isEqualTo []) then { GVAR(creepySounds_pool) = + GVAR(creepySounds); };
-
+        if (GVAR(sounds_pool) isEqualTo []) then { GVAR(sounds_pool) = + GVAR(sounds); };
 
         private _players = [] call CBA_fnc_players;
         private _playersTotal = count _players;
@@ -60,7 +60,7 @@ GVAR(loop_id) = [
 
         for "_i" from 1 to _desiredTargetsAmount do { _selectedTargets pushBack ( _validTargets deleteAt (floor random count _validTargets) ); };
 
-        private _sounds =  GVAR(creepySounds_pool);
+        private _sounds =  GVAR(Sounds_pool);
         private _sound = _sounds deleteAt (floor random count _sounds);
 
         [
