@@ -1,4 +1,4 @@
-#define COMPONENT Ambient
+#define COMPONENT ambient
 #define COMPONENT_BEAUTIFIED Ambient Sound Framework
 
 
