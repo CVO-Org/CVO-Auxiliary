@@ -51,8 +51,6 @@ private _map = createHashMap;
 private _return = keys _map;
 _return sort true;
 
-diag_log format ['[CVO](debug)(fn_getGroups) _return: %1', _return];
-
 _return apply {
     [
         _x,

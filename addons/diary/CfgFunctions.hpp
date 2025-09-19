@@ -8,11 +8,15 @@ class CfgFunctions
             class createDiaryCategory {};
             class createDiarySubject {};
 
-            class setEntry {};
-
-            class setPersonality {};
-
         };
-
+        class api {
+            file = PATH_TO_FUNC_SUB(api);
+            
+            class setEntry {};
+            class setPersonality {};
+            class setEnemyForces {};
+            class setAlliedForces {};
+        };
+        
     };
 };
