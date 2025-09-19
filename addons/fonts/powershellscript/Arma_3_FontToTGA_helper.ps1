@@ -1,7 +1,7 @@
 # Define array of sizes
 $sizes = @(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 44, 46, 48, 50, 54, 58, 60, 64, 70, 80, 90, 100)
 $cfgStrings = New-Object System.Collections.ArrayList
-$location = "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FontToTGA\"
+$location = "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FontToTGA\"
 # Path to the .exe file
 $exe_path = "./FontToTga.exe"
 
