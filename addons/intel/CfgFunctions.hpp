@@ -25,6 +25,8 @@ class CfgFunctions
             class intelFound {};
             class publishIntel {};
 
+            class hasBeenFoundByUnit {};
+
             class createIntelSubject {};
             class writeIntelDiary {};
         };
