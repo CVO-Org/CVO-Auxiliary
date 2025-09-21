@@ -33,3 +33,6 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
+
+#include "CfgSounds.hpp"
+#include "CVO_Ambient.hpp"
