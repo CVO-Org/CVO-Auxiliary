@@ -75,6 +75,11 @@ class CfgFunctions
 
             class orderlyDismount {};
         };
-        
+        class cutscene {
+            file = PATH_TO_FUNC_SUB(cutscene);
+            
+            class cutscene {};
+            class processTimelineEntry {};
+        };
     };
 };
