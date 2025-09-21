@@ -69,8 +69,20 @@ if (_actionSounds isNotEqualTo []) then { _object setVariable [QGVAR(nextTimeFor
     // * 5: Code to check each frame <CODE> (default: {true})
     {
         params ["_args", "", "", ""];
-        _args params ["_object", "", "", "_actionSounds"];
+        _args params ["_object", "_player", "_id", "_actionSounds"];
 
+        if (
+            !(lifeState _player in ["HEALTHY", "INJURED"])
+            ||
+            {
+                isNull _object
+                ||
+                {
+                    [_player, _id] call FUNC(hasBeenFoundByUnit)
+                }
+            }
+        ) exitWith { false };
+        
         private _time = CBA_missionTime;
         private _nextTimeForSound = _object getVariable [QGVAR(nextTimeForSound), _time];
 
@@ -82,6 +94,7 @@ if (_actionSounds isNotEqualTo []) then { _object setVariable [QGVAR(nextTimeFor
             _object setVariable [QGVAR(nextTimeForSound), _time + _nextDelay];
         };
 
+        // return: Can Continue Progressbar?
         true
     }
 ] call ace_common_fnc_progressBar;
