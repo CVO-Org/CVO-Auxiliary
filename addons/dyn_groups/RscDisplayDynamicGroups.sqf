@@ -1729,7 +1729,7 @@ switch _mode do
 		if (isNull _player) exitWith { ""; };
 
 		private ["_icon", "_texture"];
-		_icon 		= getText (configFile >> "CfgVehicles" >> typeOf _player >> "icon");
+		_icon 		= getText (configOf _player >> "icon");
 		_texture	= if (_icon != "") then {getText (configFile >> "CfgVehicleIcons" >> _icon)} else {""};
 
 		_texture;
