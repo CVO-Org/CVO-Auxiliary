@@ -65,6 +65,11 @@ class CfgFunctions
 
             class subtitles {};
             class makeRemovable {};
+
+            class removeNavitems {};
+            class skipTimeTo {};
+
+            class setupReadyAction {};
         };
 
         class vehicles {
