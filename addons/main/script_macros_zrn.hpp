@@ -2,6 +2,12 @@
 //#ifdef __A3_DEBUG__
 //#endif
 
+#ifdef LOG_SYS_FORMAT
+    #undef LOG_SYS_FORMAT
+    #define LOG_SYS_FORMAT(LEVEL,MESSAGE) format ['[%1] (%2) (%3) %4: %5', toUpper 'PREFIX', 'COMPONENT', __FILE_SHORT__, LEVEL, MESSAGE]
+#endif
+
+
 // CBA Settings
 #define SET(var1) TRIPLES(ADDON,set,var1)
 #define QSET(var1) Q(SET(var1))
