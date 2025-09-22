@@ -5,7 +5,9 @@
 * Function to add a role to the Unit
 *
 * Arguments:
-*
+* 0 - OBJECT - Unit whose roll shall be configured
+* 1 - STRING or ARRAY OF STRINGS - Role Identifier - needs to match the role property of the kit configuration. Not case-sensitive.
+* 
 * Return Value:
 * None
 *
@@ -13,7 +15,7 @@
 * [this, "someRole"] call cvo_arsenal_fnc_addUnitRoles;
 * [this, ["someRole", "anotherRole"]] call cvo_arsenal_fnc_addUnitRoles;
 *
-* Public: No
+* Public: yes
 */
 
 params [

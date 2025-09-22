@@ -29,6 +29,9 @@ extends = "default"
 dlc = ["ws","rf"]
 mission = "Stratis.Stratis"
 
+[intel]
+extends = "default"
+mission = "intel.VR"
 
 [greenmag]
 extends = "stratis"
@@ -69,3 +72,8 @@ mission = "Arsenal.Altis"
 [deploy]
 extends = "default"
 mission = "Deploy.Altis"
+
+[ambient]
+extends = "default"
+workshop = ["3355988282"] # cvo-ogg
+mission = "ambient.VR"

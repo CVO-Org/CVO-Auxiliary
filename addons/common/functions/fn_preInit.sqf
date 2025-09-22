@@ -70,6 +70,5 @@
 ] call CBA_fnc_addEventHandler;
 
 
-
-// fn_RadioMessage
+[QGVAR(EH_zeusMessage), FUNC(zeusMessage)] call CBA_fnc_addEventHandler;
 [QGVAR(EH_chatMessage), FUNC(chatMessage_remote)] call CBA_fnc_addEventHandler;
