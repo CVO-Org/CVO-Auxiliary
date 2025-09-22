@@ -25,7 +25,7 @@ private _target = _destination get "target";
 // Vehicle Info
 private "_vehicleInfo";
 if (_type isEqualTo "VIC") then {
-    private _name = getText (configFile >> "CfgVehicles" >> (typeOf _target) >> "displayName");
+    private _name = getText (configOf _target >> "displayName");
     private _occSeats = count fullCrew [_target, "", false];
     private _allSeats = count fullCrew [_target, "", true];
     _vehicleInfo = format ["%1 (%2/%3)", _name, _occSeats, _allSeats];
