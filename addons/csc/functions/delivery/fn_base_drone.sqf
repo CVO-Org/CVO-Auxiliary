@@ -130,15 +130,15 @@ _endWP_Pos = switch true do {
         // Wait until Drone is below a certain ATL
         private _statement = {
             params ["_drone"];
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 7.0] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 8.0] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 9.0] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 10.0] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 11.0] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 12.1] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 12.2] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "beep", 100, true, false, true], 12.3] call CBA_fnc_waitAndExecute;
-            [ CBA_fnc_globalSay3D, [_drone, "cvo_ula_broke", 100, true, true, true], 12.5] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true],  7.0] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true],  8.0] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true],  9.0] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true], 10.0] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true], 11.0] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true], 12.1] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true], 12.2] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "beep",          100, true, false, true], 12.3] call CBA_fnc_waitAndExecute;
+            [ CBA_fnc_globalSay3D, [_drone, "cvo_ula_broke", 100, true, true,  true], 12.5] call CBA_fnc_waitAndExecute;
             [ { { detach _x } forEach attachedObjects _this }, _drone, 12.55] call CBA_fnc_waitAndExecute;
             [ { (_this#0) flyInHeight (_this#3); }, _this, 13.0 ] call CBA_fnc_waitAndExecute;
             [
