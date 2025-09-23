@@ -8,7 +8,14 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+*   [
+*       allUnits - allPlayers,      // unit(s)
+*       true,                       // remove Map
+*       true,                       // Remove GPS
+*       false,                      // Remove Compass
+*       false,                      // Remove Radio
+*       false                       // Remove Watch
+*   ] call cvo_common_fnc_removeNavItems;
 *
 * Public: No
 */
@@ -59,18 +66,38 @@ if (count _units > 0) then {
 /*
 // EXAMLPE HOW TO USE
 // RUN postInit
-
+// RUN Once on Mission Start to remove Items from existing Units
 [{
     diag_log "[CVO](debug)(fn_init) inital remove";
-    [ allUnits - allPlayers, true, true, false, false, false ] call cvo_common_fnc_removeNavItems;
+    [
+        allUnits - allPlayers,      // unit(s)
+        true,                       // remove Map
+        true,                       // Remove GPS
+        false,                      // Remove Compass
+        false,                      // Remove Radio
+        false                       // Remove Watch
+    ] call cvo_common_fnc_removeNavItems;
 
 } , [], 1] call CBA_fnc_waitAndExecute;
 
-
+// ADD EH for all units created during the mission
 addMissionEventHandler ["EntityCreated", {
 	params ["_entity"];
-    if (_entity isKindOf "CAManBase") then { [ { [ _this#0, true, true, false, false, false ] call cvo_common_fnc_removeNavItems; }, [ _entity ], 1 ] call CBA_fnc_waitAndExecute; };
+    if (_entity isKindOf "CAManBase") then {
+        [
+            {
+                [
+                    _this,      // unit(s)
+                    true,       // remove Map
+                    true,       // Remove GPS
+                    false,      // Remove Compass
+                    false,      // Remove Radio
+                    false       // Remove Watch
+                ] call cvo_common_fnc_removeNavItems;
+            },
+            _entity,
+            1
+        ] call CBA_fnc_waitAndExecute;
+    };
 }];
-
-
 */
