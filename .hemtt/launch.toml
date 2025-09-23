@@ -75,5 +75,4 @@ mission = "Deploy.Altis"
 
 [ambient]
 extends = "default"
-workshop = ["3355988282"] # cvo-ogg
 mission = "ambient.VR"
