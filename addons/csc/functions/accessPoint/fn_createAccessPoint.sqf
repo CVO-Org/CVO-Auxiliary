@@ -66,10 +66,10 @@ private _conditionCode = switch (_accessPoint getOrDefault ["conditionType", "AL
 private _aceAction = [_conditionCode, _accessPoint] call FUNC(createAction);
 
 [
-    _targetObject                    	// * 0: Object the action should be assigned to <OBJECT>
-    ,0                         		    // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
-    ,["ACE_MainActions"]             	// * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
-    ,_aceAction    	         			// * 3: Action <ARRAY>    
+    _targetObject                        // * 0: Object the action should be assigned to <OBJECT>
+    ,0                                     // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
+    ,["ACE_MainActions"]                 // * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
+    ,_aceAction                             // * 3: Action <ARRAY>    
 ] call ace_interact_menu_fnc_addActionToObject;
 
 ZRN_LOG_MSG_1(AccessPoint Established on,_targetObject);

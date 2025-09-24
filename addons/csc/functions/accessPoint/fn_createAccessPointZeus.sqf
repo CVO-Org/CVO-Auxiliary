@@ -32,5 +32,5 @@ private _aceAction = [_conditionCode, _accessPoint] call FUNC(createAction);
 
 [
     ["ACE_ZeusActions"]                      // * 0: Parent path of the new action (e.g. ["ACE_ZeusActions"]) <ARRAY>
-    ,_aceAction	         	        		// * 1: Action <ARRAY>
+    ,_aceAction                                 // * 1: Action <ARRAY>
 ] call ace_interact_menu_fnc_addActionToZeus;

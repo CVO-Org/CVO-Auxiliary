@@ -7,7 +7,7 @@
 
 class CfgSounds
 {
-	sounds[] = {}; // OFP required it filled, now it can be empty or absent depending on the game's version
+    sounds[] = {}; // OFP required it filled, now it can be empty or absent depending on the game's version
 
     class GVAR(drone400)
     {

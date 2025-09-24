@@ -5,13 +5,13 @@
 * Creates Waypoints to Slingload slingloadable cargo to an destination and then returns to a waiting point.
 *
 * Arguments:
-* 0: _heli	        <Object or Group>	- Group of Heli Crew
-* 1: _cargoObj	    <Object>			- Object to be slung - needs to be slingloadable!
-* 2: _dropOffPos    <Object or Pos>	    - Destination of the Cargo Object. Ether Pos or Object, like empty Helipad.
-* 3: _returnPos	    <Object or Pos>	    - Point of return for the helicopter once the cargo has been delivered. Ether Pos or Object, like empty Helipad.
-* 4: _direction	    <Number>			- Direction of Ingress / Egress - Default: "AUTO"
-* 5: _kickout	    <Boolean>		    - If true, empties crew and locks the seat during airlift    <Default: false>
-* 5: _protected	    <Boolean>		    - If true, Disable Damage for helicopter and Crew            <Default: true>
+* 0: _heli            <Object or Group>    - Group of Heli Crew
+* 1: _cargoObj        <Object>            - Object to be slung - needs to be slingloadable!
+* 2: _dropOffPos    <Object or Pos>        - Destination of the Cargo Object. Ether Pos or Object, like empty Helipad.
+* 3: _returnPos        <Object or Pos>        - Point of return for the helicopter once the cargo has been delivered. Ether Pos or Object, like empty Helipad.
+* 4: _direction        <Number>            - Direction of Ingress / Egress - Default: "AUTO"
+* 5: _kickout        <Boolean>            - If true, empties crew and locks the seat during airlift    <Default: false>
+* 5: _protected        <Boolean>            - If true, Disable Damage for helicopter and Crew            <Default: true>
 *
 * Return Value:
 * none
@@ -25,13 +25,13 @@
 if (!isServer) exitWith {};
 
 params [
-    [ "_heli",		    grpNull,	    [objNull,grpNull]       ],
-    [ "_cargoObj",		objNull,	    [objNull]			    ],
-    [ "_dropOffPos",    "UNDEFINED",	[objNull,[]],   [2,3]   ],
-    [ "_returnPos",	    "UNDEFINED",	[objNull,[]],	[2,3]   ],
-    [ "_direction",     "AUTO",	        [0]					    ],
+    [ "_heli",            grpNull,        [objNull,grpNull]       ],
+    [ "_cargoObj",        objNull,        [objNull]                ],
+    [ "_dropOffPos",    "UNDEFINED",    [objNull,[]],   [2,3]   ],
+    [ "_returnPos",        "UNDEFINED",    [objNull,[]],    [2,3]   ],
+    [ "_direction",     "AUTO",            [0]                        ],
     [ "_kickOut",       false,          [false]                 ],
-    [ "_protected",		true,	        [false]				    ]
+    [ "_protected",        true,            [false]                    ]
 ];
 
 // Input Sanitization
@@ -56,8 +56,8 @@ switch (typeName _heli) do {
 private _helperNeeded = count getArray (configOf _cargoObj >> "slingLoadCargoMemoryPoints") == 0;
 
 
-{	_x setGroupOwner 2;	} forEach [_heliGRP, group driver _cargoObj];
-{	_x setOwner 2;	    } forEach [_cargoObj, _heliObj];
+{    _x setGroupOwner 2;    } forEach [_heliGRP, group driver _cargoObj];
+{    _x setOwner 2;        } forEach [_cargoObj, _heliObj];
 
 
 // turn off damage if _protected
@@ -69,14 +69,14 @@ if (_protected) then {
 private ["_dropOffPosObj", "_returnPosObj"];
 if (_dropOffPos isEqualType []) then {
     _dropOffPosObj = createVehicle ["Land_HelipadEmpty_F", _dropOffPos];
-} else {	_dropOffPosObj = _dropOffPos; _dropOffPos = getPos _dropOffPosObj;  };
+} else {    _dropOffPosObj = _dropOffPos; _dropOffPos = getPos _dropOffPosObj;  };
 
 
-if (_returnPos isEqualTo "UNDEFINED") then {	_returnPos = getPos leader _heliGRP;  };
+if (_returnPos isEqualTo "UNDEFINED") then {    _returnPos = getPos leader _heliGRP;  };
 
 if (_returnPos isEqualType []) then {
     _returnPosObj = createVehicle ["Land_HelipadEmpty_F", _returnPos];
-} else {	_returnPosObj = _returnPos; _returnPos = getPos _returnPosObj;  };
+} else {    _returnPosObj = _returnPos; _returnPos = getPos _returnPosObj;  };
 
 
 
@@ -106,7 +106,7 @@ private _code = {
     params ["_heliObj","_cargoObj","_kickOut"];
 
     if (_kickOut) then {
-        {	moveOut _x;	} forEach crew (_cargoOBJ);
+        {    moveOut _x;    } forEach crew (_cargoOBJ);
         _cargoOBJ lockCargo true;
         _cargoOBJ lockDriver true;
         { _cargoOBJ lockTurret [_x, true]; } forEach allTurrets [_cargoOBJ, true];

@@ -34,7 +34,7 @@ private _queue = missionNamespace getVariable [QGVAR(queue), nil];
 
 switch (_input) do {
     case "": {
-        if {isNil "_queue"} then {_queue = []};
+        if (isNil "_queue") then {_queue = [];};
         _return = _queue;
     };
     case "CLEAR": {

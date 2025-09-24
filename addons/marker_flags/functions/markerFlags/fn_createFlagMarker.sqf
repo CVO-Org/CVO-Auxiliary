@@ -66,7 +66,7 @@ _flag setVariable ["CVO_Flag_MarkerName", _marker];
 
 // Adding EventHandler on Object on deleted
 
-_flag addEventHandler ["Deleted", {	
+_flag addEventHandler ["Deleted", {    
     
     params ["_flag"];
 

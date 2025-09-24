@@ -2,9 +2,9 @@
 // #### Mission Information - https://community.bistudio.com/wiki/Description.ext
 class Header
 {
-	gameType = "Coop";	// game type
-	minPlayers =  1;	// minimum number of players the mission supports
-	maxPlayers = 10;	// maximum number of players the mission supports
+    gameType = "Coop";    // game type
+    minPlayers =  1;    // minimum number of players the mission supports
+    maxPlayers = 10;    // maximum number of players the mission supports
 };
 
 loadScreen = "img\cvo_default_title.paa";

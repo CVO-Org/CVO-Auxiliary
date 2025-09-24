@@ -87,7 +87,7 @@ for "_row" from 0 to _rows do {
 
     {
         private _type = _x;
-        private _head = ["[	       %2 ]", "[ ROW %1 %2 ]"] select (_type isEqualTo "Text");
+        private _head = ["[           %2 ]", "[ ROW %1 %2 ]"] select (_type isEqualTo "Text");
         private _str = format [
             _head,
             [_row,  2, "RIGHT", "0" ] call EFUNC(common,stringPadding),

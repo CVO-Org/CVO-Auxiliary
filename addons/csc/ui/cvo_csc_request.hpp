@@ -1,6 +1,6 @@
 class GVAR(request) {
 
-	idd = CVO_IDD_CSC_REQUEST;
+    idd = CVO_IDD_CSC_REQUEST;
 
     onLoad = Q(call FUNC(ui_onLoad));
     onUnload = Q(call FUNC(ui_onUnload));
@@ -29,7 +29,7 @@ class GVAR(request) {
         };
     };
 
-	class ControlsBackground {
+    class ControlsBackground {
         class Background: RscText {
             idc = 1004;
             text = "";

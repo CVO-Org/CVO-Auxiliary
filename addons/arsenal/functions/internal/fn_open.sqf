@@ -12,46 +12,46 @@ if (isNull GVAR(local_box)) then { GVAR(local_box) = nil;};
 
 if (isNil QGVAR(local_box)) then {
 
-	ZRN_LOG_MSG(Creating Local Box);
+    ZRN_LOG_MSG(Creating Local Box);
 
-	// Initialises Base Kits from Config
-	[] call FUNC(handleConfigKits);
+    // Initialises Base Kits from Config
+    [] call FUNC(handleConfigKits);
 
-	// Creates Virtual Arsenal box for the player locally if none has been existing before
-	GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
-	private _localBox = GVAR(local_box);
+    // Creates Virtual Arsenal box for the player locally if none has been existing before
+    GVAR(local_box) = createVehicleLocal ["B_supplyCrate_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+    private _localBox = GVAR(local_box);
 
-	player setVariable [QGVAR(local_box), _localBox, false];
+    player setVariable [QGVAR(local_box), _localBox, false];
 
-	[_localBox, false] 				call ace_dragging_fnc_setDraggable;			    // Disables Dragging
-	[_localBox, false] 				call ace_dragging_fnc_setCarryable;			    // Disables Carrying
-	[_localBox, -1] 					call ace_cargo_fnc_setSize;					// Disables Ace Cargo Loading
-	_localBox setVariable ["ace_cargo_noRename", true];							    // Disables Ace Cargo Renaming
+    [_localBox, false]                 call ace_dragging_fnc_setDraggable;                // Disables Dragging
+    [_localBox, false]                 call ace_dragging_fnc_setCarryable;                // Disables Carrying
+    [_localBox, -1]                     call ace_cargo_fnc_setSize;                    // Disables Ace Cargo Loading
+    _localBox setVariable ["ace_cargo_noRename", true];                                // Disables Ace Cargo Renaming
 
-	hideObject _localBox;															// Hides the Object
+    hideObject _localBox;                                                            // Hides the Object
 
-	clearBackpackCargo _localBox;													// Empties the ArsenalBox
-	clearMagazineCargo _localBox;
-	clearWeaponCargo _localBox;
-	clearItemCargo _localBox;
+    clearBackpackCargo _localBox;                                                    // Empties the ArsenalBox
+    clearMagazineCargo _localBox;
+    clearWeaponCargo _localBox;
+    clearItemCargo _localBox;
 
-	_localBox enableSimulation false;												// Disables Simulation
+    _localBox enableSimulation false;                                                // Disables Simulation
 
-	[_localBox, false, false] call ace_arsenal_fnc_initBox;
+    [_localBox, false, false] call ace_arsenal_fnc_initBox;
 
 } else {
 
-	// Removes current content	
-	[GVAR(local_box), false, false] call ace_arsenal_fnc_initBox;
+    // Removes current content    
+    [GVAR(local_box), false, false] call ace_arsenal_fnc_initBox;
 
 };
 
 
 // Opens the Arsenal remotely for the players
 [
-	GVAR(local_box),
-	ACE_player,
-	false
+    GVAR(local_box),
+    ACE_player,
+    false
 ] call ace_arsenal_fnc_openBox;
 
 GVAR(local_box) call FUNC(update);

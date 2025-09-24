@@ -82,7 +82,7 @@ if (count _units > 0) then {
 
 // ADD EH for all units created during the mission
 addMissionEventHandler ["EntityCreated", {
-	params ["_entity"];
+    params ["_entity"];
     if (_entity isKindOf "CAManBase") then {
         [
             {

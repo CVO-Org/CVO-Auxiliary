@@ -71,8 +71,8 @@ private _aceAction = [
 
 
 [
-    _object                     		// * 0: Object the action should be assigned to <OBJECT>
-    ,0                         		    // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
-    ,["ACE_MainActions"]             	// * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
-    ,_aceAction    	         			// * 3: Action <ARRAY>    
+    _object                             // * 0: Object the action should be assigned to <OBJECT>
+    ,0                                     // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
+    ,["ACE_MainActions"]                 // * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
+    ,_aceAction                             // * 3: Action <ARRAY>    
 ] call ace_interact_menu_fnc_addActionToObject;
