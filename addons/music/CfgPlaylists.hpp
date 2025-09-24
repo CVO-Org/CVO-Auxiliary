@@ -69,7 +69,7 @@ class CfgPlaylists
             "OM_Music03",
             "Track_O_14",
             "Track_O_13",
-            "Track_O_07",	
+            "Track_O_07",    
             "Track_O_05",
             "Track_C_20",
             "Track_C_18",

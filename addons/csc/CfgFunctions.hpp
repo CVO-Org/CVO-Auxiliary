@@ -1,7 +1,7 @@
 class CfgFunctions
 {
-	class ADDON            // Tag
-	{
+    class ADDON            // Tag
+    {
         class init {
             file = PATH_TO_FUNC_SUB(init);
             

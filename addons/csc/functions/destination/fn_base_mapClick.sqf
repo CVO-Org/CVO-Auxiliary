@@ -24,57 +24,57 @@ params ["_request", "_parameters"];
 
 // Closes Zeus Interface and Opens the Map the frame after.
 if ( !isNull (findDisplay 312) ) then {
-	findDisplay 312 closeDisplay 2;
-	missionNamespace setVariable [QGVAR(mapClick_curatorWasOpen), true];
+    findDisplay 312 closeDisplay 2;
+    missionNamespace setVariable [QGVAR(mapClick_curatorWasOpen), true];
 };
 [{ openMap [true, true]; MSG_designate; }] call CBA_fnc_execNextFrame;
 
 
 // adds Eventhandler to recieve Mouse Click Input
 private _id_mapClick = addMissionEventHandler [
-	"MapSingleClick",
-	{
-		params ["_units", "_pos", "_alt", "_shift"];
-		missionNamespace setVariable [QGVAR(mapClicked), true];
-		
-		if (_alt) exitWith { MSG_aborted; missionNamespace setVariable [QGVAR(waitForMapclick), false]; };
+    "MapSingleClick",
+    {
+        params ["_units", "_pos", "_alt", "_shift"];
+        missionNamespace setVariable [QGVAR(mapClicked), true];
+        
+        if (_alt) exitWith { MSG_aborted; missionNamespace setVariable [QGVAR(waitForMapclick), false]; };
 
-		ZRN_LOG_MSG_1(Position Defined,_pos);
+        ZRN_LOG_MSG_1(Position Defined,_pos);
         missionNamespace setVariable [QGVAR(waitForMapclick), _pos];
 
-		MSG_success;
-	}
+        MSG_success;
+    }
 ];
 
 // Handles Timeout and Cleanup
 [
-	{
-		missionNamespace getVariable [QGVAR(mapClicked), false]
-	},
-	{
-		params ["_id_mapClick"];
+    {
+        missionNamespace getVariable [QGVAR(mapClicked), false]
+    },
+    {
+        params ["_id_mapClick"];
 
-		openMap [false, false];
-		removeMissionEventHandler ["MapSingleClick", _id_mapClick];
-		missionNamespace setVariable [QGVAR(mapClicked), nil];
-		if (missionNamespace getVariable [QGVAR(curatorWasOpen), false]) then {openCuratorInterface};
+        openMap [false, false];
+        removeMissionEventHandler ["MapSingleClick", _id_mapClick];
+        missionNamespace setVariable [QGVAR(mapClicked), nil];
+        if (missionNamespace getVariable [QGVAR(curatorWasOpen), false]) then {openCuratorInterface};
 
-	},
-	[_id_mapClick],
-	60,
-	{
-		// timed out
-		params ["_id_mapClick"];
+    },
+    [_id_mapClick],
+    60,
+    {
+        // timed out
+        params ["_id_mapClick"];
 
-		openMap [false, false];
-		removeMissionEventHandler ["MapSingleClick", _id_mapClick];
-		missionNamespace setVariable [QGVAR(mapClicked), nil];
-		missionNamespace setVariable [QGVAR(waitForMapclick), false];
+        openMap [false, false];
+        removeMissionEventHandler ["MapSingleClick", _id_mapClick];
+        missionNamespace setVariable [QGVAR(mapClicked), nil];
+        missionNamespace setVariable [QGVAR(waitForMapclick), false];
 
-		if (missionNamespace getVariable [QGVAR(curatorWasOpen), false]) then {openCuratorInterface};
-		
-		MSG_aborted
-	}
+        if (missionNamespace getVariable [QGVAR(curatorWasOpen), false]) then {openCuratorInterface};
+        
+        MSG_aborted
+    }
 ] call CBA_fnc_waitUntilAndExecute;
 
 // return varname as string

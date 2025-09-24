@@ -55,10 +55,10 @@ private _conditionCode = switch (_accessPoint getOrDefault ["conditionType", "AL
 private _aceAction = [_conditionCode, _accessPoint] call FUNC(createAction);
 
 [
-    "CAManBase"                     	// * 0: Object the action should be assigned to <OBJECT>
-    ,1                         		    // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
-    ,["ACE_SelfActions"]             	// * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
-    ,_aceAction    	         			// * 3: Action <ARRAY>    
+    "CAManBase"                         // * 0: Object the action should be assigned to <OBJECT>
+    ,1                                     // * 1: Type of action, 0 for actions, 1 for self-actions <NUMBER>
+    ,["ACE_SelfActions"]                 // * 2: Parent path of the new action <ARRAY> (Example: ["ACE_SelfActions", "ACE_Equipment"])
+    ,_aceAction                             // * 3: Action <ARRAY>    
     ,true
 ] call ace_interact_menu_fnc_addActionToClass;
 

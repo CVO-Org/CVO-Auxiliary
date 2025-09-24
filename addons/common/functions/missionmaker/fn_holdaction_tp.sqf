@@ -58,13 +58,13 @@ private _completion = {
     "true",                                                         // Condition for the action to be shown
     "true",                                                         // Condition for the action to progress
     { [QGVAR(holdAction_TP_blackening), true, DURATION * 0.95 ] call BIS_fnc_blackOut; },   // Code executed when action starts
-    {},																// Code executed on every progress tick
-    _completion,							                        // Code executed on completion
+    {},                                                                // Code executed on every progress tick
+    _completion,                                                    // Code executed on completion
     { [QGVAR(holdAction_TP_blackening), true, DURATION * 0.3 ] call BIS_fnc_blackIn; },     // Code executed on interrupted
-    [_destination],												    // Arguments passed to the scripts as _this select 3
-    DURATION,																// Action duration in seconds
-    0,																// Priority
-    false,															// Remove on completion
-    false,															// Show in unconscious state
+    [_destination],                                                    // Arguments passed to the scripts as _this select 3
+    DURATION,                                                                // Action duration in seconds
+    0,                                                                // Priority
+    false,                                                            // Remove on completion
+    false,                                                            // Show in unconscious state
     true                                                            // show on screen; if false action needs to be selected from action menu to appear on screen
 ] call  BIS_fnc_holdActionAdd;

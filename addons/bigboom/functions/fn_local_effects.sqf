@@ -33,7 +33,7 @@ private _HashMapObject = createHashMapObject [[
     ["startTime", _startTime],
     ["intensity", 1],
 
-	["#flags", ["sealed","unscheduled","noCopy"]],
+    ["#flags", ["sealed","unscheduled","noCopy"]],
 
     ["fuelTank", _fuelTank],
     ["pos", _pos],
@@ -125,7 +125,7 @@ private _HashMapObject = createHashMapObject [[
 
     }],
 
-	["#delete", {
+    ["#delete", {
         diag_log "[CVO](debug)(fn_bigBoomHMO) #delete ";
         deleteVehicle (_self get "src_fire");
         deleteVehicle (_self get "src_smoke");
@@ -268,7 +268,7 @@ private _HashMapObject = createHashMapObject [[
         diag_log format ['[CVO](debug)(fn_bigBoomHMO) _helperObj: %1 - "": %2', _helperObj , "deleted event handler established"];
 
         _helperObj addEventHandler ["Deleted", {
-	        params ["_helperObj"];
+            params ["_helperObj"];
             private _varNameHMO = _helperObj getVariable "varNameHMO";
             missionNamespace setVariable [_varNameHMO, nil]; // Will delete the HMO
             diag_log format ['[CVO](debug)(fn_bigBoomHMO) isNil _varNameHMO: %1', isNil _varNameHMO];

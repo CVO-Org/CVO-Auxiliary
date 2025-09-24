@@ -1,7 +1,7 @@
 class CfgFunctions
 {
-	class ADDON            // Tag
-	{
+    class ADDON            // Tag
+    {
         class action {
             file = PATH_TO_FUNC_SUB(action);
             
@@ -37,5 +37,5 @@ class CfgFunctions
             class getGroups {};
             class updateSummary {};
         };
-	}; 
+    }; 
 };

@@ -13,7 +13,7 @@ class Crates_ListNBox: RscListNBox {
 
     colorBackground[] = {0,0,0,0.8};
 
-	drawSideArrows = 0;
+    drawSideArrows = 0;
     
     idcLeft = CVO_IDC_CSC_Crates_ListNBox_arrowMinus;
     idcRight = CVO_IDC_CSC_Crates_ListNBox_arrowPlus;
@@ -42,12 +42,12 @@ class ArrowLeft: RscButton {
     w = Q(01.00 * GUI_GRID_CENTER_W);
     h = Q(01.00 * GUI_GRID_CENTER_H);
 
-	colorBackground[] = { 1, 1, 1, 0 };
-	colorBackgroundActive[] = { 1, 1, 1, 0 };
-	colorBackgroundDisabled[] = { 1, 1, 1, 0 };
-	colorFocused[] = { 1, 1, 1, 0 };
-	colorShadow[] = { 1, 1, 1, 0 };
-	borderSize = 0;
+    colorBackground[] = { 1, 1, 1, 0 };
+    colorBackgroundActive[] = { 1, 1, 1, 0 };
+    colorBackgroundDisabled[] = { 1, 1, 1, 0 };
+    colorFocused[] = { 1, 1, 1, 0 };
+    colorShadow[] = { 1, 1, 1, 0 };
+    borderSize = 0;
 
     shadow = 0;
 
@@ -70,7 +70,7 @@ class Crates_Description: RscText {
 
     lineSpacing = 1;
     
-	font = "EtelkaMonospacePro";
+    font = "EtelkaMonospacePro";
     SizeEx = Q(GUI_TEXT_SIZE_SMALL * 0.8);
 
 

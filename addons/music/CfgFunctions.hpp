@@ -1,7 +1,7 @@
 class CfgFunctions
 {
-	class ADDON            // Tag
-	{
+    class ADDON            // Tag
+    {
         class debug
         {
             file = PATH_TO_FUNC_SUB(debug);
@@ -59,5 +59,5 @@ class CfgFunctions
             class fade_client {};
             class play_client {};
         };
-	}; 
+    }; 
 };

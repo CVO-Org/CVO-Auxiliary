@@ -21,15 +21,15 @@ if !(hasInterface) exitWith {};
 
 private _code = {
 
-	if !(SET(save_missionStart)) exitWith {};
+    if !(SET(save_missionStart)) exitWith {};
 
-	private _saveLoadout = {
-		player setVariable [QGVAR(Loadout), [player] call CBA_fnc_getLoadout];
-		diag_log "[CVO][Arsenal] player's CVO_Loadout saved";
-	};
+    private _saveLoadout = {
+        player setVariable [QGVAR(Loadout), [player] call CBA_fnc_getLoadout];
+        diag_log "[CVO][Arsenal] player's CVO_Loadout saved";
+    };
 
-	private _delay = SET(save_missionStart_delay);
-	if (_delay == 0) then _saveLoadout else { [ _saveLoadout , [], _delay] call CBA_fnc_waitAndExecute;	};
+    private _delay = SET(save_missionStart_delay);
+    if (_delay == 0) then _saveLoadout else { [ _saveLoadout , [], _delay] call CBA_fnc_waitAndExecute;    };
 
 };
 

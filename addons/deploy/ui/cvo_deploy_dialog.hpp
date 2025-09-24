@@ -1,6 +1,6 @@
 class GVAR(dialog) {
 
-	idd = CVO_IDD_DEPLOY;
+    idd = CVO_IDD_DEPLOY;
 
     onLoad = Q(call FUNC(ui_onLoad));
     onUnload = Q(call FUNC(ui_onUnload));
@@ -42,7 +42,7 @@ class GVAR(dialog) {
     };
 
 
-	class ControlsBackground {
+    class ControlsBackground {
         class Background: RscText {
             idc = 1004;
             text = "";

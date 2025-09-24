@@ -21,11 +21,11 @@
 ] call cvo_intel_fnc_setPersonality;
 
 [
-	"'Spike' Gillian",
-	"", // default Image
-	"Senior Operations Lead<br />Myrmidones Altis Branch",
-	"Mr Gillian has had a long career in the British armed forces, serving for over 20 years before his deployment to Altis under the NATO banner. On the cusp of retirement, a fellow ex-Altis war veteran reached out to him with a proposal - leave the Marines, and join the Myrmidones. Now, a few years later, Mr Gillian is a senior operations lead on Altis, delegating tasks to various Myrmidon units in the centre of the island.",
-	"\A3\Data_F\Flags\Flag_NATO_CO.paa"  // icon
+    "'Spike' Gillian",
+    "", // default Image
+    "Senior Operations Lead<br />Myrmidones Altis Branch",
+    "Mr Gillian has had a long career in the British armed forces, serving for over 20 years before his deployment to Altis under the NATO banner. On the cusp of retirement, a fellow ex-Altis war veteran reached out to him with a proposal - leave the Marines, and join the Myrmidones. Now, a few years later, Mr Gillian is a senior operations lead on Altis, delegating tasks to various Myrmidon units in the centre of the island.",
+    "\A3\Data_F\Flags\Flag_NATO_CO.paa"  // icon
 ] call cvo_intel_fnc_setPersonality;
 
 *
@@ -51,12 +51,12 @@ switch (_image) do {
 };
 
 [
-	_subject		
-	,_name
-	,_image
-	,_subtitle
-	,_text
-	,_icon
-	,_newName
-	,_target
+    _subject        
+    ,_name
+    ,_image
+    ,_subtitle
+    ,_text
+    ,_icon
+    ,_newName
+    ,_target
 ] call FUNC(setEntry);

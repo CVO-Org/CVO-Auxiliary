@@ -14,9 +14,9 @@
 *
 *
 * Arguments:
-* 	0: 	_layerName		<STRING> 			Name of the Editor Layer
-*	1:	_mode			<BOOL>				Controls mode: true: Enable - false: Disable
-*	2:	_feature		<STRING or ARRAY>	What ai feature to toggle. see link above for more details.
+*     0:     _layerName        <STRING>             Name of the Editor Layer
+*    1:    _mode            <BOOL>                Controls mode: true: Enable - false: Disable
+*    2:    _feature        <STRING or ARRAY>    What ai feature to toggle. see link above for more details.
 *
 * Return Value:
 * None
@@ -34,9 +34,9 @@
 if !(isServer) exitWith {};
 
 params [
-	[ "_layerName",	"", 	[""]    ],
-	[ "_mode", 		true, 	[true]  ],
-	[ "_features",  "all", 	["",[]] ]
+    [ "_layerName",    "",     [""]    ],
+    [ "_mode",         true,     [true]  ],
+    [ "_features",  "all",     ["",[]] ]
 ];
 
 
@@ -54,29 +54,29 @@ _features = _features select _isValid apply { toUpper _x };
 // Filter Units by Owner
 private _catalog = createHashMap;
 {
-	private _unit = _x;
-	private _owner = owner _unit;
+    private _unit = _x;
+    private _owner = owner _unit;
 
-	private _array = _catalog getOrDefault [_owner, []];
-	_array pushBack _unit;
-	_catalog set [_owner, _array];
+    private _array = _catalog getOrDefault [_owner, []];
+    _array pushBack _unit;
+    _catalog set [_owner, _array];
 } forEach _units;
 
 
 // Recursive Function:
 // Send Filtered Units to Owner, one owner per frame
 private _recursiveCodeCatalog = {
-	params ["_catalog", "_mode", "_features", "_recursiveCodeCatalog"];
+    params ["_catalog", "_mode", "_features", "_recursiveCodeCatalog"];
 
-	private _keys = keys _catalog call BIS_fnc_sortNum;
-	private _units = _catalog deleteAt _keys#0;
+    private _keys = keys _catalog call BIS_fnc_sortNum;
+    private _units = _catalog deleteAt _keys#0;
 
-	diag_log format ['[CVO](debug)(fn_toggleLayerAI) Sending Package: %1 to owner: %2', [count _units, _mode, _features], owner (_units#0)];
-	[QGVAR(eh_toggleAIfeature), [_units, _mode, _features], _units#0] call CBA_fnc_targetEvent;
+    diag_log format ['[CVO](debug)(fn_toggleLayerAI) Sending Package: %1 to owner: %2', [count _units, _mode, _features], owner (_units#0)];
+    [QGVAR(eh_toggleAIfeature), [_units, _mode, _features], _units#0] call CBA_fnc_targetEvent;
 
-	if (count _catalog == 0) exitWith {};
+    if (count _catalog == 0) exitWith {};
 
-	[_recursiveCodeCatalog, [_catalog, _mode, _features, _recursiveCodeCatalog]] call CBA_fnc_execNextFrame;
+    [_recursiveCodeCatalog, [_catalog, _mode, _features, _recursiveCodeCatalog]] call CBA_fnc_execNextFrame;
 };
 
 [_catalog, _mode, _features, _recursiveCodeCatalog] call _recursiveCodeCatalog;
