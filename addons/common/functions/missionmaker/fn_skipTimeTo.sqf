@@ -4,7 +4,7 @@ params [
 
 private _desired = 1 + 49/60;
 
-private _current = daytime;
+private _current = dayTime;
 
 private _timeToSkip = switch (true) do {
     case ( _desired > _current ): {  _desired - _current };
