@@ -18,7 +18,7 @@
 if !(hasInterface) exitWith {};
 
 addMusicEventHandler ["MusicStart", {
-	params ["_musicClassname", "_eventHandlerId", "_currentPosition", "_totalLength"];
+    params ["_musicClassname", "_eventHandlerId", "_currentPosition", "_totalLength"];
 
     [_musicClassname] call FUNC(updateHistory);
 

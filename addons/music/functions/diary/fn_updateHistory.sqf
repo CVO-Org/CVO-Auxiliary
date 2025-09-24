@@ -41,7 +41,7 @@ private _time = systemTime apply {if (_x < 10) then {"0" + str _x} else {str _x}
 private _timeStr = format ["%1:%2", _time#3, _time#4];
 
 if (_class != "INIT") then {
-	_history pushBack [_timeStr, _class, [_class] call FUNC(getMusicName)];
+    _history pushBack [_timeStr, _class, [_class] call FUNC(getMusicName)];
 };
 
 
@@ -51,13 +51,13 @@ private _array = [ format ["<font face='EtelkaMonospacePro' color='#0099ff' size
 private _longestIndex = count str count _history;
 
 {
-	// Index
-	private _index = _forEachIndex + 1;
-	private _maxChars = _longestIndex;
-	private _str = str _index;
-	private _numStr = count _str;
-	if (_numStr < _maxChars) then { for "_i" from 1 to (_maxChars - _numStr) do { _str = _str insert [0, " "]; }; };
-	_index = _str;
+    // Index
+    private _index = _forEachIndex + 1;
+    private _maxChars = _longestIndex;
+    private _str = str _index;
+    private _numStr = count _str;
+    if (_numStr < _maxChars) then { for "_i" from 1 to (_maxChars - _numStr) do { _str = _str insert [0, " "]; }; };
+    _index = _str;
 
     private _string = format ["<font size=10 face='EtelkaMonospacePro'>%1. %2 - %3</font>", _index, _x#0, _x#2];
     

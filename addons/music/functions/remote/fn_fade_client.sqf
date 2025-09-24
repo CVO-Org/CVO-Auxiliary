@@ -20,7 +20,7 @@
 if !(hasInterface) exitWith {};
 
 params [
-	["_fadeTime", 5, [0]]
+    ["_fadeTime", 5, [0]]
 ];
 
 if ( GETMGVAR(isFading,false) ) exitWith {};
@@ -29,11 +29,11 @@ SETMGVAR(isFading,true);
 private _savedMusicVolume = musicVolume;
 _fadeTime fadeMusic 0;
 [
-	{
-		playMusic "";
-		0 fadeMusic _this;
-		SETMGVAR(isFading,false);
-	},										// Code
-	_savedMusicVolume,						// Parameters
-	(_fadeTime + 1)							// Time To wait
+    {
+        playMusic "";
+        0 fadeMusic _this;
+        SETMGVAR(isFading,false);
+    },                                        // Code
+    _savedMusicVolume,                        // Parameters
+    (_fadeTime + 1)                            // Time To wait
 ] call CBA_fnc_waitAndExecute;

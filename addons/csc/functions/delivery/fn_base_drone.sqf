@@ -167,7 +167,7 @@ missionNamespace setVariable [_isBusyVarName, true, true];
 // Revert isBusy once the aircraft is deleted
 _drone setVariable [QGVAR(isBusyVarName), _isBusyVarName, true];
 _drone addEventHandler ["Deleted", {
-	params ["_drone"];
+    params ["_drone"];
     private _isBusyVarName = _drone getVariable QGVAR(isBusyVarName);
     missionNamespace setVariable [_isBusyVarName, nil, true];
 }];

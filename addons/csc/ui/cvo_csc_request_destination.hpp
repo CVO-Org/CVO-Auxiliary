@@ -20,7 +20,7 @@ class Destination_Mode_Desc: RscText {
     style = ST_MULTI;
     lineSpacing = 1;
 
-	font = "EtelkaMonospacePro";
+    font = "EtelkaMonospacePro";
     SizeEx = Q(GUI_TEXT_SIZE_SMALL);
 
 

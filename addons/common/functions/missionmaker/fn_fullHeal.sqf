@@ -1,35 +1,35 @@
 #include "../../script_component.hpp"
 /*
-	Author: Mr. Zorn
+    Author: Mr. Zorn
 
-	Description:
-		 Adds an Ace Interaction to a vehicle class so players can perform a fullheal with a progressbar (30s) on said vehicle.
+    Description:
+         Adds an Ace Interaction to a vehicle class so players can perform a fullheal with a progressbar (30s) on said vehicle.
  
- 	Dependency: ACE, CBA
-	
-	Parameter(s):
-		0: <_target> can be one of: 
-						<Object>	     	    							- Individual Object to add the Full Heal ACE Action
-						<String of classname>   							- Entire Class to add the Full Heal ACE Action
+     Dependency: ACE, CBA
+    
+    Parameter(s):
+        0: <_target> can be one of: 
+                        <Object>                                             - Individual Object to add the Full Heal ACE Action
+                        <String of classname>                               - Entire Class to add the Full Heal ACE Action
 
-		1:  <_duration>	<Number in secounds>    <Optional> <Default: 30>	- Duration of the Healing Process
-		2: 	<_chance> 	<Number 0..100> 		<Optional> <Default: 5>		- Defines the chance for the Easeregg sound - 0 disables the Easteregg
+        1:  <_duration>    <Number in secounds>    <Optional> <Default: 30>    - Duration of the Healing Process
+        2:     <_chance>     <Number 0..100>         <Optional> <Default: 5>        - Defines the chance for the Easeregg sound - 0 disables the Easteregg
 
-	Returns:
-		Returns False when <_target> is not defined.
+    Returns:
+        Returns False when <_target> is not defined.
 
-	Examples:
-		[ourMedicalVehicleObject]                call CVO_Others_fnc_fullHeal;	// Adds Full Health Check on a single object
-		["mod_vehicle_medical_classname", 30, 0] call CVO_Others_fnc_fullHeal;	// Adds Full Health Check on all objects of this classname and disables the easteregg
+    Examples:
+        [ourMedicalVehicleObject]                call CVO_Others_fnc_fullHeal;    // Adds Full Health Check on a single object
+        ["mod_vehicle_medical_classname", 30, 0] call CVO_Others_fnc_fullHeal;    // Adds Full Health Check on all objects of this classname and disables the easteregg
 */
 
 
 
 
 params [
-	["_target",		"", 	["",objNull]],
-	["_duration", 	30, 	[0]			],
-	["_chance", 	1, 		[0]			]
+    ["_target",        "",     ["",objNull]],
+    ["_duration",     30,     [0]            ],
+    ["_chance",     1,         [0]            ]
 ];
 if (_target isEqualTo "") exitWith {false};
 
@@ -37,19 +37,19 @@ if (_target isEqualTo "") exitWith {false};
 
  private _code = {
 
-	params ["_target", "_player", "_parameter"];
-	private _dur = _parameter # 0;
-	private _egg = _parameter # 1;
+    params ["_target", "_player", "_parameter"];
+    private _dur = _parameter # 0;
+    private _egg = _parameter # 1;
 
-	if (round random 100 < _egg) then {
-		playSound3D ["zrn\cvo\addons\common\data\medical_healsound.ogg", _target];
-	};
+    if (round random 100 < _egg) then {
+        playSound3D ["zrn\cvo\addons\common\data\medical_healsound.ogg", _target];
+    };
     [
-        _dur,                              	// Total Time (in game "time" seconds) <NUMBER>
+        _dur,                                  // Total Time (in game "time" seconds) <NUMBER>
         [],                                     // Arguments, passed to condition, fail and finish <ARRAY>
         {
             systemChat "Finish Start";
-			[_player] call ace_medical_treatment_fnc_fullHealLocal;
+            [_player] call ace_medical_treatment_fnc_fullHealLocal;
             hint "You have been treated!";
         },                                      // On Finish:  Code called or STRING raised as event. <CODE, STRING>
         {hint "You have been interrupted!"},    // On Failure: Code called or STRING raised as event. <CODE, STRING>
@@ -59,36 +59,36 @@ if (_target isEqualTo "") exitWith {false};
 
 // Here we create the action which we later attach to something
 _cvo_fullAceHeal = [
-	"CVO_FullHeal",									// Action Name
-	"Get full health Check",						// Name for the ACE Interaction Menu
-	"zrn\cvo\addons\common\data\redCrystal.paa",		// custom Icon
-	_code,											// Statement - the code you're executing
-	{true},											// Condition
-	{},												// Insert Children
-	[_duration, _chance]							// action parameters
+    "CVO_FullHeal",                                    // Action Name
+    "Get full health Check",                        // Name for the ACE Interaction Menu
+    "zrn\cvo\addons\common\data\redCrystal.paa",        // custom Icon
+    _code,                                            // Statement - the code you're executing
+    {true},                                            // Condition
+    {},                                                // Insert Children
+    [_duration, _chance]                            // action parameters
 
 ] call ace_interact_menu_fnc_createAction;
 
 
 switch (typeName _target) do {
 
-	case "STRING": {
-		[
-			_target,										// Class the action should be assigned to
-			0,												// Type of action, 0 for action, 1 for self-actionIDs
-			["ACE_MainActions"],							// Parent path of the new action <Array>
-			_cvo_fullAceHeal
-		] call ace_interact_menu_fnc_addActionToClass;		// Alternative: ace_interact_menu_fnc_addActionToObject 
-	};
+    case "STRING": {
+        [
+            _target,                                        // Class the action should be assigned to
+            0,                                                // Type of action, 0 for action, 1 for self-actionIDs
+            ["ACE_MainActions"],                            // Parent path of the new action <Array>
+            _cvo_fullAceHeal
+        ] call ace_interact_menu_fnc_addActionToClass;        // Alternative: ace_interact_menu_fnc_addActionToObject 
+    };
 
-	case "OBJECT": {
-		[
-			_target,										// Class the action should be assigned to
-			0,												// Type of action, 0 for action, 1 for self-actionIDs
-			["ACE_MainActions"],							// Parent path of the new action <Array>
-			_cvo_fullAceHeal
-		] call ace_interact_menu_fnc_addActionToObject;		// Alternative: ace_interact_menu_fnc_addActionToObject 
-	};
+    case "OBJECT": {
+        [
+            _target,                                        // Class the action should be assigned to
+            0,                                                // Type of action, 0 for action, 1 for self-actionIDs
+            ["ACE_MainActions"],                            // Parent path of the new action <Array>
+            _cvo_fullAceHeal
+        ] call ace_interact_menu_fnc_addActionToObject;        // Alternative: ace_interact_menu_fnc_addActionToObject 
+    };
 
 };
 

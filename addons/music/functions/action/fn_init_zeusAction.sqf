@@ -19,5 +19,5 @@ private _zeusAction = [] call FUNC(createAction);
 
 [
     ["ACE_ZeusActions"]                      // * 0: Parent path of the new action (e.g. ["ACE_ZeusActions"]) <ARRAY>
-    ,_zeusAction	         	        		// * 1: Action <ARRAY>
+    ,_zeusAction                                 // * 1: Action <ARRAY>
 ] call ace_interact_menu_fnc_addActionToZeus;

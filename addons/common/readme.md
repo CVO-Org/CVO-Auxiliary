@@ -46,21 +46,21 @@ https://www.youtube.com/watch?v=pVdZ5OpLhb4
 ```sqf
 /*
 Description:
-	 Adds an Ace Interaction to a vehicle class so players can perform a fullheal with a progressbar (30s) on said vehicle.
+     Adds an Ace Interaction to a vehicle class so players can perform a fullheal with a progressbar (30s) on said vehicle.
 
 Dependency: ACE, CBA
 
 Parameter(s):
-	0: <_target> can be one of: 
-					<Object>	     	    							- Individual Object to add the Full Heal ACE Action
-					<String of classname>   							- Entire Class to add the Full Heal ACE Action
-		1:  <_duration>	<Number in secounds>    <Optional> <Default: 30>	- Duration of the Healing Process
-	2: 	<_chance> 	<Number 0..100> 		<Optional> <Default: 5>		- Defines the chance for the Easeregg sound - 0 disables the Easteregg
-	Returns:
-	Returns False when <_target> is not defined.
+    0: <_target> can be one of: 
+                    <Object>                                             - Individual Object to add the Full Heal ACE Action
+                    <String of classname>                               - Entire Class to add the Full Heal ACE Action
+        1:  <_duration>    <Number in secounds>    <Optional> <Default: 30>    - Duration of the Healing Process
+    2:     <_chance>     <Number 0..100>         <Optional> <Default: 5>        - Defines the chance for the Easeregg sound - 0 disables the Easteregg
+    Returns:
+    Returns False when <_target> is not defined.
 
 */
-		[ourMedicalVehicleObject]                 call CVO_Others_fnc_fullHeal;	// Adds Full Health Check on a single object
-		["mod_vehicle_medical_classname", 30, 0]  call CVO_Others_fnc_fullHeal;	// Adds Full Health Check on all objects of this classname and disables the easteregg
+        [ourMedicalVehicleObject]                 call CVO_Others_fnc_fullHeal;    // Adds Full Health Check on a single object
+        ["mod_vehicle_medical_classname", 30, 0]  call CVO_Others_fnc_fullHeal;    // Adds Full Health Check on all objects of this classname and disables the easteregg
 ```
 

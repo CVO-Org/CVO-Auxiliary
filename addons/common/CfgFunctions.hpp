@@ -1,13 +1,13 @@
 class CfgFunctions
 {
-	class ADDON            // Tag
-	{
-		class COMPONENT           // Category
-		{
+    class ADDON            // Tag
+    {
+        class COMPONENT           // Category
+        {
             file = PATH_TO_FUNC;
 
             class preInit { preInit = 1; };
-		};
+        };
 
         class autoInit {
             file = PATH_TO_FUNC_SUB(autoInit);

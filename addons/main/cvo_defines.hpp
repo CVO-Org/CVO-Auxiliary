@@ -1,9 +1,9 @@
 // This file is used to store some more or less important Numbers, values etc. as macros
 
 
-#define GUI_TEXT_SIZE_SMALL 	(GUI_GRID_H * 0.8)
-#define GUI_TEXT_SIZE_MEDIUM 	(GUI_GRID_H * 1)
-#define GUI_TEXT_SIZE_LARGE 	(GUI_GRID_H * 1.2)
+#define GUI_TEXT_SIZE_SMALL     (GUI_GRID_H * 0.8)
+#define GUI_TEXT_SIZE_MEDIUM     (GUI_GRID_H * 1)
+#define GUI_TEXT_SIZE_LARGE     (GUI_GRID_H * 1.2)
 
 
 // CVO IDDs
