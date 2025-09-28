@@ -15,7 +15,7 @@
 * Public: No
 */
 
-params [ "_unit", "_message", "_type", "_addParams" ];
+params [ "_unit", "_message", "_type" ];
 
 switch (toLower _type) do {
     case "globalchat":  { _unit globalChat _message; };
@@ -23,9 +23,5 @@ switch (toLower _type) do {
     case "groupchat":   { _unit groupChat _message; };
     case "vehiclechat": { _unit vehicleChat _message; };
     case "commandchat": { _unit commandChat _message; };
-    case "customChat":  {
-        radioChannelCreate [];
-        _unit customChat _message;
-    };
     default {};
 };
