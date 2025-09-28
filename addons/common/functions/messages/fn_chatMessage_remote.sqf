@@ -17,21 +17,15 @@
 
 params [ "_unit", "_message", "_type", "_addParams" ];
 
-
 switch (toLower _type) do {
     case "globalchat":  { _unit globalChat _message; };
     case "sidechat":    { _unit sideChat _message; };
     case "groupchat":   { _unit groupChat _message; };
     case "vehiclechat": { _unit vehicleChat _message; };
     case "commandchat": { _unit commandChat _message; };
-    case "customChat": {
-
-        radioChannelCreate [
-            
-        ];
-
+    case "customChat":  {
+        radioChannelCreate [];
         _unit customChat _message;
-
     };
     default {};
 };
