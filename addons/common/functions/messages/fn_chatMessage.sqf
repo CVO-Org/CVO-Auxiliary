@@ -48,4 +48,4 @@ private _unit = switch (typeName _sender) do {
     };
 };
 
-[ QGVAR(EH_chatMessage), [ _unit, _message, _type, _addParams ] ] call CBA_fnc_globalEvent;
+[ CBA_fnc_globalEvent, [ QGVAR(EH_chatMessage), [ _unit, _message, _type, _addParams ] ] ] call CBA_fnc_execNextFrame;
