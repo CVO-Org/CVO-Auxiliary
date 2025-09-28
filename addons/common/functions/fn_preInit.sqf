@@ -55,8 +55,9 @@
     }
 ] call CBA_fnc_addEventHandler;
 
+
 [
-    QGVAR(EH_UnitIntoVehicle), // eventname
+    QGVAR(EH_UnitIntoVehicle),
     {
         params ["_unit", "_slot"];
         _slot params  ["_vic", "_index"];
@@ -68,5 +69,3 @@
     }
 ] call CBA_fnc_addEventHandler;
 
-
- [QGVAR(EH_zeusMessage), FUNC(zeusMessage)] call CBA_fnc_addEventHandler;
