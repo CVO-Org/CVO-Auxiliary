@@ -6,18 +6,6 @@
 *
 * Arguments:
 *
-*   []
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
 *
 * Return Value:
 * None
@@ -28,8 +16,6 @@
 * Public: No
 */
 
-params [ [ "_inputArray", [], [[]] ] ];
-
-{ _x call FUNC(processTimelineEntry); } forEach _inputArray;
+{ _x call FUNC(processTimelineEntry); } forEach _this;
 
 missionNamespace setVariable [QGVAR(cutscene_delay), nil];
