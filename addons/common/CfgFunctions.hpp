@@ -21,6 +21,8 @@ class CfgFunctions
             class getMedianPosASL {};
             class getSizeOf {};
             class getBoundingBoxRealOf {};
+
+            class pointAt {};
         };
 
         class cutscene {
