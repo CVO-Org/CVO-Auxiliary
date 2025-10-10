@@ -130,7 +130,7 @@ switch (_mode) do
     case "RegisterInitialPlayerGroups" :
     {
         {
-            if (isPlayer leader _x && {count units _x > 0}) then
+            if (isPlayer leader _x && {units _x isNotEqualTo []}) then
             {
                 ["RegisterGroup", [_x, leader _x]] call GROUPS;
             };
@@ -194,7 +194,7 @@ switch (_mode) do
 
         if (!isNull _group && {["IsGroupRegistered", [_group]] call GROUPS}) then
         {
-            if (_keep || {count units _group > 0}) then
+            if (_keep || {units _group isNotEqualTo []}) then
             {
                 _group setVariable [VAR_GROUP_REGISTERED, nil, IS_PUBLIC];
                 _group setVariable [VAR_GROUP_CREATOR, nil, IS_PUBLIC];
@@ -299,7 +299,7 @@ switch (_mode) do
             // Log
             if (LOG_ENABLED) then
             {
-                ["CreateNewGroupFor: %1 / %2 / %3 / %4 / %5", _newGroup, _player, units _newGroup, leader _newGroup, _group] call BIS_fnc_logFormat;
+                ["CreateNewGroupFor: %1 / %2 / %3 / %4 / %5", _newGroup, _player, units _newGroup, leader _newGroup] call BIS_fnc_logFormat;
             };
         };
     };
@@ -486,7 +486,7 @@ switch (_mode) do
         _groups = [];
 
         {
-            if (isPlayer leader _x && {count units _x > 0} && {["IsGroupRegistered", [_x]] call GROUPS}) then
+            if (isPlayer leader _x && {units _x isNotEqualTo []} && {["IsGroupRegistered", [_x]] call GROUPS}) then
             {
                 _groups pushBack _x;
             };

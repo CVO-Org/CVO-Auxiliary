@@ -35,7 +35,7 @@ ZRN_LOG_2(_deleteLayer,count _objects);
 
 // Add cleanup: delete Entry from HMO
 
-_hashMap deleteAt _layerName;
+_hashMap deleteAt _revealLayer;
 
 // Delete HMO when empty
 

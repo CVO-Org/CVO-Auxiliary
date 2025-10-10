@@ -40,7 +40,7 @@ params [
 diag_log "[CVO](debug)(fn_register) Init";
 
 if (_obj isEqualTo objNull) exitWith {false};
-if (count _layer == 0) exitWith {false};
+if (_layers isEqualTo []) exitWith {false};
 if (_distance <= 0) exitWith {false};
 
 _obj setVariable [QGVAR(playSound), _playSound, true];

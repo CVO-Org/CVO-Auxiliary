@@ -43,7 +43,7 @@ params [
 if (_features isEqualType "") then { _features = [_features] };
 
 // Get Units from Layer
-private _units = (getMissionLayerEntities _layer) select 0 select { _x isKindOf "CAManBase" } select { alive _x };
+private _units = (getMissionLayerEntities _layerName) select 0 select { _x isKindOf "CAManBase" } select { alive _x };
 
 
 // Validate Features

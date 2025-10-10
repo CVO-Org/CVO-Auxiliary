@@ -152,7 +152,7 @@ while {_addWheels > 0}    do { ["ACE_Wheel",           _box]  call ace_cargo_fnc
 while {_addJerryCans > 0} do { ["Land_CanisterFuel_F", _box]  call ace_cargo_fnc_loadItem; _addJerryCans = _addJerryCans -1 };
 while {_addTracks > 0}    do { ["ACE_Track",           _box]  call ace_cargo_fnc_loadItem; _addTracks = _addTracks -1};
 
-[QGVAR(api_crateSpawned), [_box, _title] ] call CBA_fnc_ServerEvent;
+[QGVAR(api_crateSpawned), [_box] ] call CBA_fnc_ServerEvent;
 
 _box setVehiclePosition [[0,0,0], [], 100];
 

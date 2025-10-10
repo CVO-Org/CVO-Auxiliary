@@ -48,7 +48,7 @@ private _targets = switch (toUpper _shareWith) do {
     case "GROUP": {
         private _targetGroup = group _finder;
         private _foundByGroup = _intelData getVariable "foundByGroup";
-        _foundBySide pushBackUnique _targetGroup;
+        _foundByGroup pushBackUnique _targetGroup;
         _intelData setVariable ["foundByGroup", _foundByGroup, true];
 
         units _targetGroup select { isPlayer _x }

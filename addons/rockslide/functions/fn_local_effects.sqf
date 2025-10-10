@@ -84,5 +84,5 @@ _PP_dynamic ppEffectCommit _duration/3;
     _this#0 ppEffectCommit _this#1;
 } , [_PP_dynamic, _duration/3], _duration/2] call CBA_fnc_waitAndExecute;
 [{
-    ppEffectDestroy _this#0;
+    ppEffectDestroy (_this#0);
 } , [_PP_dynamic], _duration * 1.1] call CBA_fnc_waitAndExecute;
