@@ -53,7 +53,7 @@ switch (typeName _heli) do {
 };
 
 //Check if target can be airlifted
-private _helperNeeded = count getArray (configOf _cargoObj >> "slingLoadCargoMemoryPoints") == 0;
+private _helperNeeded = getArray (configOf _cargoObj >> "slingLoadCargoMemoryPoints") isEqualTo [];
 
 
 {    _x setGroupOwner 2;    } forEach [_heliGRP, group driver _cargoObj];

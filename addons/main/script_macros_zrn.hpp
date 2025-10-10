@@ -90,7 +90,6 @@
     #define _DEBUG_PREINIT_ preInit = 0;
 #endif
 
-
 #define DEBUG_HEADER format [QUOTE([PREFIX][COMPONENT](%1)),_fnc_scriptName]
 
 #define ZRN_LOG_MSG(MSG) diag_log (DEBUG_HEADER + " " + QUOTE(MSG))

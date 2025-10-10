@@ -27,7 +27,7 @@ private _dependenciesLoaded = true;
     if ( ! isClass (configFile >> "CfgPatches" >> _x ) ) exitWith { _dependencyLoaded = false };
 } forEach _dependencies;
 
-if (!_dependencyLoaded) exitWith {ZRN_LOG_MSG_1(Dependency Missing,_name);};
+if (!_dependenciesLoaded) exitWith {ZRN_LOG_MSG_1(Dependency Missing,_name);};
 
 private _tracks = getArray (_cfg >> "tracks");
 

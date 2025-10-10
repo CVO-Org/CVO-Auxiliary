@@ -25,7 +25,7 @@ params [
 ];
 
 // Check Addon Dependency
-if ( _addon isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _dependency ) } ) exitWith { false };
+if ( _addon isNotEqualTo "" && {! isClass ( configFile >> "CfgPatches" >> _addon ) } ) exitWith { false };
 
 private _entry = createHashMapFromArray [
     [ "items",     _items ],

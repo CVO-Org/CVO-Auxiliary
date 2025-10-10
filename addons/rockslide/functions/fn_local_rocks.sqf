@@ -75,11 +75,11 @@ _rock setDropInterval 0.2;
 // PerFrameHandler
 private _startTime = CBA_missionTime;
 private _endTime = CBA_missionTime + _duration / 1.5;
-private _parameters = [_startTime, _endTime, _particleSource, _tgtOBJ, _posStart, _posEnd, _layerName, _duration];
+private _parameters = [_startTime, _endTime, _tgtOBJ, _posStart, _posEnd, _layerName, _duration];
 private _condition = { _this#1 > CBA_missionTime };
 
 private _codeToRun = {
-    params ["_startTime", "_endTime", "_particleSource", "_tgtOBJ", "_posStart", "_posEnd", "_layerName", "_duration"];
+    params ["_startTime", "_endTime", "_tgtOBJ", "_posStart", "_posEnd", "_layerName", "_duration"];
 
     private _dir = _posStart getDir _posEnd;
 
@@ -99,7 +99,7 @@ private _delay = 0;
     } else {
         _handle call CBA_fnc_removePerFrameHandler;
     };
-}, _delay, [_codeToRun, _parameters, _exitCode, _condition]] call CBA_fnc_addPerFrameHandler;
+}, _delay, [_codeToRun, _parameters, {}, _condition]] call CBA_fnc_addPerFrameHandler;
 
 [{ {deleteVehicle _x} forEach _this; }, [_rock, _bolovani], _duration * 0.8] call CBA_fnc_waitAndExecute;
 [{ {deleteVehicle _x} forEach _this; }, [_tgtOBJ, _dust_cloud], _duration * 1,2] call CBA_fnc_waitAndExecute;

@@ -28,7 +28,7 @@ if (!local _vic) exitWith {};
 
 private _crew = crew _vic;
 
-if (_disableDamage) then { { _x allowDamage false } forEach (units _crew + [_heli]);  };
+if (_disableDamage) then { { _x allowDamage false } forEach (units _crew + [_vic]);  };
 if (_lockDriver)    then { _vic lockDriver true; };
 if (_lockTurrets)   then { { _vic lockTurret [_x, true] } forEach allTurrets [_vic, false]; };
 if (_claimCrew)     then { { [_x, _x] call ace_common_fnc_claim; } forEach _crew; };

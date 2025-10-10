@@ -92,6 +92,6 @@ private _playerUID = getPlayerUID _unit;
     
     ZRN_LOG_MSG_1(Added:,_kitName);
 
-} forEach _kits_catalog;
+} forEach _kits;
 
 _returnArray arrayIntersect _returnArray // remove duplicates and return

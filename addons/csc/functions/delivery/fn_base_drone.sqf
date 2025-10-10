@@ -109,7 +109,7 @@ _tgtWP setWaypointTimeout [2, 3.5, 5];
 private _alt_drop = 0 max ( (_totalOffset * -1 max _totalOffset) + (_parameters getOrDefault ["alt_drop", 9]) ) min 9.9;
 _tgtWP setWaypointStatements [
     "true",
-    format ["private _drone = vehicle this; _drone flyInHeight [ %1, true]; _drone setVariable [""decending"", true];", _alt_drop ] + _stringCode
+    format ["private _drone = vehicle this; _drone flyInHeight [ %1, true]; _drone setVariable [""decending"", true];", _alt_drop ]
 ];
 
 // Return Waypoint
