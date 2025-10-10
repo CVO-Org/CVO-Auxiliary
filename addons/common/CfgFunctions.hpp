@@ -18,11 +18,13 @@ class CfgFunctions
         class code {
             file = PATH_TO_FUNC_SUB(code);
 
-            class getMedianPosASL {};
             class getSizeOf {};
             class getBoundingBoxRealOf {};
 
             class pointAt {};
+            
+            class getMedianPosASL {};
+            class getMedianPosFromUnits {};
         };
 
         class cutscene {
