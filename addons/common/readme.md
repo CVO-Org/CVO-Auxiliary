@@ -1,5 +1,8 @@
 # CVO_Common
 
+## Systems
+### [Common - Cutscene](/addons/common/functions/cutscene/readme.md)
+
 ## functions
 
 ### `cvo_common_fnc_makeCosmetic`
@@ -14,6 +17,14 @@ Turns an item, like guns (technically, ground weapon holders), into an non inter
 ### `cvo_common_fnc_executeUnit`
 
 adds force to a unit and sets damage to 1 afterwards.
+
+#### Example
+```sqf
+// to be used in the units init file
+[this] call cvo_common_fnc_executeUnit;
+
+[_unit, 0, 300] call cvo_common_fnc_executeUnit; 
+```
 
 Parameters:
 ```sqf
@@ -33,13 +44,7 @@ params  [
 #### Preview
 https://www.youtube.com/watch?v=pVdZ5OpLhb4
 
-#### Example
-```sqf
-// to be used in the units init file
-[this] call cvo_common_fnc_executeUnit;
 
-[_unit, 0, 300] call cvo_common_fnc_executeUnit; 
-```
 
 ## cvo_common_medical
 
