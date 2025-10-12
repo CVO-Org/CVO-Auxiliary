@@ -62,13 +62,11 @@
         params ["_unit", "_slot"];
         _slot params  ["_role", "_vic", "_params"];
 
-        // moveOut _unit;
+        moveOut _unit;
 
         private _statement = {
             params ["_unit", "_slot"];
             _slot params  ["_role", "_vic", "_params"];
-
-            diag_log format ['[CVO](debug)(EH_UnitIntoVehicle) _slot: %1', _slot];
 
             switch (_role) do {
                 case "driver": {
@@ -92,10 +90,7 @@
                     _unit assignAsCargoIndex [_vic, _params];
                 };
             };
-            diag_log format ['[CVO](debug)(fn_preInit) Success: %1 _slot: %2',_unit in _vic, _slot];
         };
-
         [_statement, _this] call CBA_fnc_execNextFrame;
-
     }
 ] call CBA_fnc_addEventHandler;
