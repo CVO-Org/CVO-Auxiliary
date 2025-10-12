@@ -18,34 +18,45 @@
 */
 
 params [
-    ["_units",          [],         [[]]            ],
-    ["_vehicles",       [],         [[]]            ],
+    ["_units",          [],         [objNull, []]   ],
+    ["_vehicles",       [],         [objNull, []]   ],
     ["_roles",          "DEFAULT",  [[], ""]        ],  // "driver","gunner","commander","cargo","turret", "personTurret"
     ["_blockCopilot",   true,       [true]          ],
     ["_prioMap",        "HELI",     [createHashMap] ]
 ];
 
 // Input Sanitisation
+if (_units isEqualType objNull) then { _units = [_units] };
+if (_vehicles isEqualType objNull) then { _vehicles = [_vehicles] };
+
 if ( _units isEqualTo [] || {_vehicles isEqualTo []} ) exitWith { ZRN_LOG_MSG(No units or vehicles provided); };
-if (_roles isEqualType "") then { _roles = [ _roles ]; };
-if ("DEFAULT" in _roles) then { _roles = ["cargo", "personturret", "turret"]; };
-_roles = _roles apply { toLowerANSI _x } select { _x in ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
+
+_roles = switch (true) do {
+    case (_roles isEqualTo "DEFAULT"): { ["cargo", "personturret", "turret", "gunner", "commander"] };
+    case (_roles isEqualTo "ALL"): { ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
+    default {
+        if (_roles isEqualType "") then { _roles = [ _roles ]; };
+        _roles = _roles apply { toLowerANSI _x } select { _x in ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
+    };
+};
+
 if (_roles isEqualTo []) exitWith { ZRN_LOG_MSG(No valid whitelisted roles provided); };
 
-// Handle Priority
+diag_log format ['[CVO](debug)(fn_moveUnitsIntoVehicles) _roles: %1', _roles];
 
+// Handle Priority
 if (_prioMap isEqualType "") then {
 
     _prioMap = switch (_prioMap) do {
         case "HELI": { 
             createHashMapFromArray [
-                 [ "cargo",         0 ]
-                ,[ "personturret",  0 ]
-                ,[ "turret",       -1 ]
-                ,[ "copilot",      -2 ]
-                ,[ "gunner",       -3 ]
-                ,[ "driver",       -3 ]
-                ,[ "commander",    -3 ]
+                 [ "cargo",         0 ] // Passenger
+                ,[ "personturret",  0 ] // Passenger FFV
+                ,[ "turret",       -1 ] // DoorGunners
+                ,[ "gunner",       -2 ] // DoorGunners ?
+                ,[ "copilot",      -3 ] // CoPilot(s)
+                ,[ "driver",       -4 ] // Pilot
+                ,[ "commander",    -5 ] // ?
             ];
         };
         
@@ -64,32 +75,60 @@ if (_prioMap isEqualType "") then {
     };
 };
 
-// Create Slot Array - [ role, vehicle, args, specialState ]
+// Create Slot Array - [ role, vehicle, args ]
 // args can be nil, cargoIndex or turretPath
-// specialState can be "" or "COPILOT"
 
 // [slot, priority]
 private _slots = [];
 
 {
     private _vic = _x;
+    diag_log format ['[CVO](debug)()(forEach) _vic: %1', _vic];
     
     // Free Seats
     private _seats = fullCrew [_vic, "", true] select { isNull (_x select 0) };
+    { diag_log format ['[CVO](debug)(allFreeSeats): %1', _x]; } forEach _seats;
+
 
     {
         // Filter only whitelisted Roles
         private _role = _x;
-
+        diag_log format ['[CVO](debug)() _role: %1', _role];
         switch (_role) do {
-            case "driver";
-            case "gunner";
+            case "driver": {
+                private _filteredSeats = _seats select { (_x select 1) isEqualTo _role };
+                // _args: nil - specialState: ""
+                {
+                    diag_log format ['[CVO](debug)(seat) _x: %1', _x];
+                    if (lockedDriver _vic) then { continue };
+                    _slots pushBack [
+                        [_role, _vic ],
+                        _prioMap getOrDefault [_role, 0]
+                    ];
+                } forEach _filteredSeats;
+            };  
+
+            case "gunner": {
+                private _filteredSeats = _seats select { (_x select 1) isEqualTo _role };
+                // _args: nil - specialState: ""
+                {
+                    diag_log format ['[CVO](debug)(seat) _x: %1', _x];
+                    if (_vic lockedTurret (_x select 3) ) then { continue };
+                    _slots pushBack [
+                        [_role, _vic ],
+                        _prioMap getOrDefault [_role, 0]
+                    ];
+                } forEach _filteredSeats;
+            };
+
             case "commander": {
                 private _filteredSeats = _seats select { (_x select 1) isEqualTo _role };
                 // _args: nil - specialState: ""
                 {
+                    diag_log format ['[CVO](debug)(seat) _x: %1', _x];
+                    if (_vic lockedTurret (_x select 3) ) then { continue };
                     _slots pushBack [
-                        [_role, _vic, nil ],
+                        [_role, _vic ],
                         _prioMap getOrDefault [_role, 0]
                     ];
                 } forEach _filteredSeats;
@@ -99,7 +138,9 @@ private _slots = [];
                 private _filteredSeats = _seats select { (_x select 1) isEqualTo _role };
                 // _args: cargoIndex - specialState: ""
                 {
+                    diag_log format ['[CVO](debug)(seat) _x: %1', _x];
                     private _cargoIndex = _x select 2;
+                    if (_vic lockedCargo _cargoIndex ) then { continue };
                     _slots pushBack [
                         [_role, _vic, _cargoIndex ],
                         _prioMap getOrDefault [_role, 0]
@@ -107,11 +148,13 @@ private _slots = [];
                 } forEach _filteredSeats;
             };
 
-            case "turret": {    // ToDo Check if turret is locked!
+            case "turret": {
+                diag_log format ['[CVO](debug)(seat) _x: %1', _x];
                 private _filteredSeats = _seats select { (_x select 1) isEqualTo "turret" && { _x select 4 isEqualTo false } };
                 // _args: turretPath - specialState: "" or "COPILOT")
                 {
                     private _turretPath = _x select 3;
+                    if ( _vic lockedTurret _turretPath ) then { continue };
 
                     private _isCopilot = getNumber ([_vic, _turretPath] call BIS_fnc_turretConfig >> "isCopilot") isEqualTo 1;
                     if (_isCopilot && _blockCopilot) then { continue };
@@ -126,10 +169,12 @@ private _slots = [];
             };
 
             case "personturret": {
+                diag_log format ['[CVO](debug)(seat) _x: %1', _x];
                 private _filteredSeats = _seats select { (_x select 1) isEqualTo "turret" && { _x select 4 isEqualTo true  } };
                 // _args: turretPath - specialState: nil
                 {
                     private _turretPath = _x select 3;
+                    if (_vic lockedTurret _turretPath) then { continue };
 
                     private _isCopilot = getNumber ([_vic, _turretPath] call BIS_fnc_turretConfig >> "isCopilot") isEqualTo 1;
                     if (_isCopilot && _blockCopilot) then { continue };
@@ -144,11 +189,18 @@ private _slots = [];
     } forEach _roles;
 } forEach _vehicles;
 
+{ diag_log format ['[CVO](debug)(slots): %1', _x]; } forEach _slots;
+
 // Prep Priority Slots  
 private _slots_prio_first = [_slots, [], { _x select 1 }, "DESCEND", { (_x select 1) > 0 } ] call BIS_fnc_sortBy apply { _x select 0 };
-private _slots_prio_mid =    _slots select { (_x select 1) isEqualTo 0 }                                         apply { _x select 0 };
-private _slots_prio_last =  [_slots, [], { _x select 1 }, "DESCEND", { (_x select 1) < 0 } ] call BIS_fnc_sortBy apply { _x select 0 };
+private _slots_prio_mid   =  _slots select { (_x select 1) isEqualTo 0 }                                         apply { _x select 0 };
+private _slots_prio_last  = [_slots, [], { _x select 1 }, "DESCEND", { (_x select 1) < 0 } ] call BIS_fnc_sortBy apply { _x select 0 };
 
+{ diag_log format ['[CVO](debug)(first): %1', _x]; } forEach _slots_prio_first;
+{ diag_log format ['[CVO](debug)(mid): %1', _x]; } forEach _slots_prio_mid;
+{ diag_log format ['[CVO](debug)(last): %1', _x]; } forEach _slots_prio_last;
+
+private _return = [];
 
 {
     private _unit = _x;
@@ -156,17 +208,26 @@ private _slots_prio_last =  [_slots, [], { _x select 1 }, "DESCEND", { (_x selec
     // take random slot, remove it from the main array and apply it to a player.
     private _slot = switch (true) do {
         case ( _slots_prio_first isNotEqualTo [] ): { _slots_prio_first deleteAt 0 };
-        case ( _slots_prio_mid   isNotEqualTo [] ): { _slots_prio_mid   deleteAt ( floor random count _slots ) };
+        case ( _slots_prio_mid   isNotEqualTo [] ): { _slots_prio_mid   deleteAt ( floor random count _slots_prio_mid ) };
         case ( _slots_prio_last  isNotEqualTo [] ): { _slots_prio_last  deleteAt 0 };
         default { nil };
     };
 
-    if (isNil "_slot") then { break };
+    diag_log format ['[CVO](debug)()(forEach Units) _unit: %1 - _slot: %2', _unit , _slot];
 
-    [QGVAR(EH_UnitIntoVehicle), [_unit, _slot], _unit] call CBA_fnc_targetEvent;
+    if (isNil "_slot") then {
+        _return pushBack _unit;
+    } else {
+        [QGVAR(EH_UnitIntoVehicle), [_unit, _slot], _unit] call CBA_fnc_targetEvent;
+    };
 
 } forEach _units;
 
+if (_return isEqualTo []) then { _return = true; };
+
+diag_log format ['[CVO](debug)() _return: %1', _return];
+
+_return
 
 // Data 
 
