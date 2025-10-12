@@ -23,6 +23,13 @@ workshop = [
     "1585582292", # Arma Debug Engine
 ]
 
+[vn]
+extends = "default"
+dlc = ["vn"]
+
+[ef]
+extends = "default"
+dlc = ["ef"]
 
 [stratis]
 extends = "default"

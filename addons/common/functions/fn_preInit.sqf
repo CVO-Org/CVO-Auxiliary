@@ -60,12 +60,37 @@
     QGVAR(EH_UnitIntoVehicle),
     {
         params ["_unit", "_slot"];
-        _slot params  ["_vic", "_index"];
+        _slot params  ["_role", "_vic", "_params"];
 
         moveOut _unit;
 
-        _unit moveInCargo [_vic, _index, false];
-        _unit assignAsCargoIndex [_vic, _index];
+        private _statement = {
+            params ["_unit", "_slot"];
+            _slot params  ["_role", "_vic", "_params"];
+
+            switch (_role) do {
+                case "driver": {
+                    _unit moveInDriver _vic;
+                    _unit assignAsDriver _vic;
+                };
+                case "commander": {
+                    _unit moveInCommander _vic;
+                    _unit assignAsCommander _vic;
+                };
+                case "gunner": {
+                    _unit moveInGunner _vic;
+                    _unit assignAsGunner _vic;
+                };
+                case "turret": {
+                    _unit moveInTurret [_vic, _params];
+                    _unit assignAsTurret [_vic, _params];
+                };
+                case "cargo": {
+                    _unit moveInCargo [_vic, _params, false];
+                    _unit assignAsCargoIndex [_vic, _params];
+                };
+            };
+        };
+        [_statement, _this] call CBA_fnc_execNextFrame;
     }
 ] call CBA_fnc_addEventHandler;
-
