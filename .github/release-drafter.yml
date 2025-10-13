@@ -1,6 +1,6 @@
 # Automatically generates draft releases based on merged PRs
 
-name-template: 'v$NEXT_PATCH_VERSION 🌟'
+name-template: 'v$NEXT_PATCH_VERSION'
 tag-template: 'v$NEXT_PATCH_VERSION'
 
 categories:
@@ -24,7 +24,7 @@ categories:
 exclude-labels:
   - pr/ignoreChangelog
 
-change-template: '* $TITLE (#$NUMBER) by $AUTHOR'
+change-template: '* $TITLE (#$NUMBER) by @$AUTHOR'
 template: |
   _Requires the latest Version of [CBA](https://github.com/CBATeam/CBA_A3) and [ACE](https://github.com/acemod/ACE3)._
 
