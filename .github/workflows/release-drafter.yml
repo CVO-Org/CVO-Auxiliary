@@ -3,20 +3,21 @@ name: Release Drafter
 on:
   push:
     branches:
-      - main  # Change this if your default branch is different
-  workflow_dispatch: # Allow manual triggering
+    - main
+    - release-drafter  # for testing edits to this configuration
+
+permissions:
+  contents: read
 
 jobs:
-  update_release_draft:
+  draft:
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Update Release Draft
+      - name: Draft Release
         uses: release-drafter/release-drafter@v6
-        with:
-          config-name: release-drafter.yml
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
