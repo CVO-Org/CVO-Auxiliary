@@ -22,7 +22,8 @@ params [
 ];
 
 
-private _posTarget = switch (typeName _target) do {
+// get positions in ASL
+private _posASL_target = switch (typeName _target) do {
     case "ARRAY": { _target };
     case "OBJECT": { getPosASL _target };
     default { nil };
@@ -30,13 +31,11 @@ private _posTarget = switch (typeName _target) do {
 
 if (isNil "_object" || { isNil "_target" }) exitWith {};
 
-
 // get positions in ASL
-private _posObject = getPosASL _object;
-private _posTarget = getPosASL _target;
+private _posASL_object = getPosASL _object;
 
 // direction vector (normalized)
-private _dir = _posObject vectorFromTo _posTarget;
+private _dir = _posASL_object vectorFromTo _posASL_target;
 
 // define "up" vector (so the object is properly oriented in 3D)
 private _up = [0,0,1]; // world up reference
