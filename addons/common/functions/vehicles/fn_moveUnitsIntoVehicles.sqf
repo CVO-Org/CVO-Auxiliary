@@ -12,7 +12,7 @@
 * None
 *
 * Example:
-* ['something', player] call prefix_component_fnc_functionname
+* [_units, _vehicles] call cvo_common_fnc_moveUnitsIntoVehicles;
 *
 * Public: No
 */
