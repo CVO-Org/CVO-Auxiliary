@@ -31,6 +31,10 @@ dlc = ["vn"]
 extends = "default"
 dlc = ["ef"]
 
+[gm]
+extends = "default"
+dlc = ["gm"]
+
 [stratis]
 extends = "default"
 dlc = ["ws","rf"]
