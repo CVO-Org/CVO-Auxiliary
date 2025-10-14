@@ -15,35 +15,83 @@
 * Public: No
 */
 
-params [ [ "_type", "", [""] ], ["_args", []] ];
-
-diag_log format ['[CVO](debug)(fn_processTimelineEntry) _type: %1', _type];
-diag_log format ['[CVO](debug)(fn_processTimelineEntry) _args: %1', _args];
-
-private _delay = missionNamespace getVariable [QGVAR(cutscene_delay), 0.1];
-
-private _defaultDelay = missionNamespace getVariable [QGVAR(cutscene_defaultDelay), 7];
-
-
 #define LAYER_NUM_IMG 100000
 #define LAYER_NUM_TEXT_PLAIN 10000
 #define LAYER_NUM_TEXT 1000
 #define LAYER_NUM_BG 100
 
+
+params [ [ "_type", "", [""] ], ["_args", []] ];
+
+
+private _delay = missionNamespace getVariable [QGVAR(cutscene_delay), 0.1];
+private _defaultDelay = missionNamespace getVariable [QGVAR(cutscene_defaultDelay), 7];
+
+if (is3DENPreview) then {
+    diag_log format ['[CVO](debug)(fn_processTimelineEntry) [%1] [%2] %3', _delay , _type ,_args];
+};
+
+
 switch (toUpperANSI _type) do {
 
     case "START": {
         _args params [ [ "_duration", _defaultDelay, [0] ] ];
-        [{ LAYER_NUM_BG cutText ["", "BLACK OUT", _this, true, false, true]; }, _duration, _delay] call CBA_fnc_waitAndExecute;            
+
+        // Handle additional Code
+        [
+            {
+                GVAR(cutscene_cache_dui) = diwako_dui_main_toggled_off;
+                diwako_dui_main_toggled_off = true;
+                openMap [false, true];
+            },
+            "",
+            _delay
+        ] call CBA_fnc_waitAndExecute; 
+        
+        // Handle Visuals        
+        [{ LAYER_NUM_BG cutText ["", "BLACK OUT", _this, true, false, true]; }, _duration, _delay] call CBA_fnc_waitAndExecute; 
         _delay = _delay + _duration;
-        [{ LAYER_NUM_BG cutText ["", "BLACK FADED", _this, true, false, true]; }, 999, _delay] call CBA_fnc_waitAndExecute;            
+        [{ LAYER_NUM_BG cutText ["", "BLACK FADED", _this, true, false, true]; }, 999, _delay] call CBA_fnc_waitAndExecute; 
+        [
+            { 
+                disableUserInput true;
+            },
+            "",
+            _delay
+        ] call CBA_fnc_waitAndExecute; 
+    };
+
+
+    case "END": {
+        _args params [ [ "_duration", _defaultDelay, [0] ] ];
+
+        // Handle Visuals        
+        [{ LAYER_NUM_BG cutText ["", "BLACK IN", _this, true, false, true]; }, _duration, _delay] call CBA_fnc_waitAndExecute;
+
+        // Handle additional Code
+        [
+            {
+                openMap [false, false];
+                while {userInputDisabled} do {disableUserInput false;};
+            },
+            "",
+            _delay
+        ] call CBA_fnc_waitAndExecute; 
+        
+        [
+            {
+                diwako_dui_main_toggled_off = GVAR(cutscene_cache_dui);
+                GVAR(cutscene_cache_dui) = nil;
+            },
+            "",
+            ( (_delay * 10) max 150 ) min 600
+        ] call CBA_fnc_waitAndExecute; 
+
     };
 
     case "BLUR_IN": {
         _args params [ [ "_duration", _defaultDelay, [0] ] ];
-
-        diag_log format ['[CVO](debug)(fn_processTimelineEntry) blur_in _duration: %1', _duration];
-        
+              
         [
             {
                 if (!isNil QGVAR(dynamicBlurHandle)) then {
@@ -62,8 +110,6 @@ switch (toUpperANSI _type) do {
     };
     case "BLUR_OUT": {
         _args params [ [ "_duration", _defaultDelay, [0] ] ];
-
-        diag_log format ['[CVO](debug)(fn_processTimelineEntry) blur_out _duration: %1', _duration];
 
         [
             { 
@@ -85,10 +131,6 @@ switch (toUpperANSI _type) do {
         ] call CBA_fnc_waitAndExecute;
     };
 
-    case "END": {
-        _args params [ [ "_duration", _defaultDelay, [0] ] ];
-        [{ LAYER_NUM_BG cutText ["", "BLACK IN", _this, true, false, true]; }, _duration, _delay] call CBA_fnc_waitAndExecute;
-    };
 
     case "CODE": {
         _args params [ [ "_code", {}, [{}] ], "_params"];
@@ -149,9 +191,97 @@ switch (toUpperANSI _type) do {
         [{ LAYER_NUM_IMG cutText [_this#0, "PLAIN", _this#1, true, true, true]; }, [_string, _duration * 0.10], _delay] call CBA_fnc_waitAndExecute;
     };
 
+    case "QUIET": {
+        _args params [ [ "_duration", _defaultDelay, [0] ] ];
+
+        private _string = format ["<img shadow='0' size=10 image='%1'/>",QPATHTOF(data\quietplease.paa)];
+        [{ LAYER_NUM_IMG cutText [_this#0, "PLAIN", _this#1, true, true, true]; }, [_string, _duration * 0.10], _delay] call CBA_fnc_waitAndExecute;
+    };
+
+    case "MUTE": {
+        _args params [ [ "_duration", _defaultDelay, [0] ] ];
+
+        [
+            {
+                ace_hearing_disableVolumeUpdate = true;
+                _this fadeSound 0;
+                _this fadeEnvironment 0;
+                [0.05] call acre_api_fnc_setGlobalVolume;
+            },
+            _duration,
+            _delay
+        ] call CBA_fnc_waitAndExecute;
+    };
+
+    case "UNMUTE": {
+        _args params [ [ "_duration", _defaultDelay, [0] ] ];
+
+        [
+            {
+                _this fadeSound 1;
+                _this fadeEnvironment 1;
+                [1] call acre_api_fnc_setGlobalVolume;
+            },
+            _duration,
+            _delay
+        ] call CBA_fnc_waitAndExecute;
+
+        [
+            {
+                ace_hearing_disableVolumeUpdate = nil;
+            },
+            "",
+            _delay + _duration
+        ] call CBA_fnc_waitAndExecute;
+    };
+
+    case "MUSIC_BOOST": {
+        _args params [ [ "_duration", 2, [0] ] ];
+
+        [
+            {
+                GVAR(cutscene_cache_allowFadeMusic) = ace_common_allowFadeMusic;
+                ace_common_allowFadeMusic = true;
+                
+                GVAR(cutscene_cache_prevMusicVolume) = musicVolume;
+                _this fadeMusic 2;
+            },
+            _duration,
+            _delay
+        ] call CBA_fnc_waitAndExecute;
+    };
+
+    case "MUSIC_RESET": {
+        _args params [ [ "_duration", _defaultDelay, [0] ] ];
+
+        [
+            {
+                _this fadeMusic GVAR(cutscene_cache_prevMusicVolume);
+                GVAR(cutscene_cache_prevMusicVolume) = nil;
+            },
+            _duration,
+            _delay
+        ] call CBA_fnc_waitAndExecute;
+
+        [
+            {
+                // reset and Cleanup after fade complete
+                ace_common_allowFadeMusic = GVAR(cutscene_cache_allowFadeMusic);
+                GVAR(cutscene_cache_allowFadeMusic) = nil;
+            },
+            "",
+            _delay + _duration
+        ] call CBA_fnc_waitAndExecute;
+    };
+
+    case "MUSIC": {
+        _args params [ [ "_musicClass", "", [""] ]];
+
+        [ { playMusic _this }, _musicClass, _delay ] call CBA_fnc_waitAndExecute;
+    };
+
     default { WARNING_1("Not Compatible Input: %1",_this); };
 };
 
-diag_log format ['[CVO](debug)(fn_processTimelineEntry) _type: %1 - _delay: %2', _type , _delay];
-
 missionNamespace setVariable [QGVAR(cutscene_delay), _delay];
+
