@@ -36,7 +36,7 @@ _roles = switch (true) do {
     case (_roles isEqualTo "ALL"): { ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
     default {
         if (_roles isEqualType "") then { _roles = [ _roles ]; };
-        _roles = _roles apply { toLowerANSI _x } select { _x in ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
+        _roles apply { toLowerANSI _x } select { _x in ["driver", "gunner", "commander", "cargo", "turret", "personturret"] };
     };
 };
 
