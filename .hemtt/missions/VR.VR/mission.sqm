@@ -5,17 +5,17 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=517;
+	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=187;
+		nextID=191;
 	};
 	class Camera
 	{
-		pos[]={2.7006025,7.134984,-7.4723735};
-		dir[]={0.75554872,-0.48625356,0.43898022};
-		up[]={0.42044038,0.87381786,0.24427943};
-		aside[]={0.50237048,0,-0.86465263};
+		pos[]={8.8852358,13.759591,1.9900184};
+		dir[]={-0.44025859,-0.63908696,-0.63068157};
+		up[]={-0.36581543,0.76912928,-0.52403969};
+		aside[]={-0.81998366,-2.3667235e-07,0.57240397};
 	};
 };
 binarizationWanted=0;
@@ -23,13 +23,15 @@ sourceName="vr";
 addons[]=
 {
 	"A3_Characters_F",
-	"A3_Props_F_Oldman_Items"
+	"A3_Characters_F_Kart",
+	"cba_xeh",
+	"A3_Soft_F_Kart_Kart_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -39,8 +41,15 @@ class AddonsMetaData
 		};
 		class Item1
 		{
-			className="A3_Props_F_Oldman";
-			name="Arma 3 Old Man - Decorative and Mission Objects";
+			className="A3_Characters_F_Kart";
+			name="Arma 3 Karts - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Soft_F_Kart";
+			name="Arma 3 Karts - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -48,7 +57,7 @@ class AddonsMetaData
 };
 dlcs[]=
 {
-	"Oldman"
+	"Kart"
 };
 randomSeed=4540948;
 class ScenarioData
@@ -78,7 +87,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			dataType="Group";
@@ -92,6 +101,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={0,5.0014391,-7.9499998};
+						angles[]={0,4.7189088,-0};
 					};
 					side="West";
 					flags=7;
@@ -140,21 +150,79 @@ class Mission
 		};
 		class Item1
 		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={-57.44701,5.0014391,-15.99926};
+					};
+					side="Civilian";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=189;
+					type="C_Driver_1_F";
+				};
+				class Item1
+				{
+					dataType="Waypoint";
+					loiterAltitude=-3.4028235e+38;
+					position[]={-6,5,-6};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					id=190;
+					type="Move";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=189;
+						item1=188;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=187;
+		};
+		class Item2
+		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={7.0970001,5.1560721,-4.0380001};
-				angles[]={0,4.0316234,0};
+				position[]={-57.44701,6.0527129,-16.049259};
 			};
-			side="Empty";
-			flags=4;
+			side="Civilian";
+			flags=6;
 			class Attributes
 			{
-				init="[""intel_test""] call cvo_intel_fnc_createIntel";
-				name="intel_test";
 			};
-			id=186;
-			type="Land_Laptop_Intel_02_F";
+			id=188;
+			type="C_Kart_01_Fuel_F";
 		};
 	};
 };
