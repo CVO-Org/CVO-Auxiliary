@@ -14,7 +14,8 @@ Each entry is an array: `[type, arguments...]`.
 
 ```sqf
 [
-	["QUIET", 6],
+	["JIP", true],
+    ["QUIET", 6],
 	["DELAY", 2],
 	["MUTE"],
 	["START", 6], // Fade to black for 6 seconds
@@ -23,6 +24,7 @@ Each entry is an array: `[type, arguments...]`.
 	["MUSIC", "EventTrack01_F_EPA"],
 	["DELAY", 2],
 	["TEXT", "In 1974, the colonial government of Bocano collapsed with the fall of the Estado Novo."],
+    ["CODE", { systemChat format ["Player did JIP: %1", _isJIP]; } ],
 	["TEXT", "Good Luck....."],
 	["DELAY", 2],
 	["RAVEN", 6], // Show Raven image for 6 seconds
