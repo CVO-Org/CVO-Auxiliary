@@ -20,9 +20,8 @@
 #define LAYER_NUM_TEXT 1000
 #define LAYER_NUM_BG 100
 
-
-params [ [ "_type", "", [""] ], ["_args", []] ];
-
+params [ "_data", "_isJIP"];
+_data params [ [ "_type", "", [""] ], ["_args", []] ];
 
 private _delay = missionNamespace getVariable [QGVAR(cutscene_delay), 0.1];
 private _defaultDelay = missionNamespace getVariable [QGVAR(cutscene_defaultDelay), 7];
@@ -133,8 +132,15 @@ switch (toUpperANSI _type) do {
 
 
     case "CODE": {
-        _args params [ [ "_code", {}, [{}] ], "_params"];
-        [ _code, _params, _delay ] call CBA_fnc_waitAndExecute;
+        _args params [ [ "_code", {}, [{}] ], ["_params", []]];
+        [
+            {
+                params ["", "", "_isJIP"];
+                (_this#0) call (_this#1);
+            },
+            [_params, _code, _isJIP],
+            _delay
+        ] call CBA_fnc_waitAndExecute;
     };
 
     case "DELAY": {

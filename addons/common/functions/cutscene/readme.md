@@ -53,10 +53,12 @@ Each entry is an array: `[type, arguments...]`.
 | `MUSIC`       | Plays Music                 | CfgMusic Classname (string)                 |           No           | `["MUSIC", "mySong"]`                     |                                         |
 | `MUSIC_BOOST` | Aplifies Music Volume       | Duration (number, seconds)                  |           No           | `["MUSIC_IN", 6]`                         | handles radio, sound, environemnt, acre |
 | `MUSIC_RESET` | Reverts Music Volume        | Duration (number, seconds)                  |           No           | `["MUSIC_OUT", 6]`                        | handles radio, sound, environemnt, acre |
+| `JIP`         | Controls _isJIP             | Boolean                                     |           No           | `["JIP", true]`                           | handles radio, sound, environemnt, acre |
 
 **Notes:**
 - For `TEXT` and `TEXT_PLAIN`, you can pass a single string or an array of strings.
 - For `CODE`, you may optionally pass parameters as the second argument.
+- For `CODE`, the magic variable `_isJIP` will be available, based on the presence of `JIP` and/or its param
 ---
 
 ## Customization
@@ -83,3 +85,5 @@ missionNamespace setVariable ["cvo_common_cutscene_defaultFont", "PuristaMedium"
 - Always execute on clients, not the server.
 - Use `CODE` entries for custom logic (e.g., disabling controls).
 - Combine types for more complex cutscenes.
+
+
