@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="cvo">
+    <Package name="zen">
+        <Key ID="STR_cvo_zen_OpenMedicalMenu">
+            <English>Open Medical Menu</English>
+        </Key>
+    </Package>
+</Project>
