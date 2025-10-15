@@ -81,12 +81,9 @@ private _slots = [];
 
 {
     private _vic = _x;
-    diag_log format ['[CVO](debug)()(forEach) _vic: %1', _vic];
     
     // Free Seats
     private _seats = fullCrew [_vic, "", true] select { isNull (_x select 0) };
-    { diag_log format ['[CVO](debug)(allFreeSeats): %1', _x]; } forEach _seats;
-
 
     {
         // Filter only whitelisted Roles
