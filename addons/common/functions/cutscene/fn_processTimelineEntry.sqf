@@ -26,9 +26,6 @@ _data params [ [ "_type", "", [""] ], ["_args", []] ];
 private _delay = missionNamespace getVariable [QGVAR(cutscene_delay), 0.1];
 private _defaultDelay = missionNamespace getVariable [QGVAR(cutscene_defaultDelay), 7];
 
-if (is3DENPreview) then {
-    diag_log format ['[CVO](debug)(fn_processTimelineEntry) [%1] [%2] %3', _delay , _type ,_args];
-};
 
 
 switch (toUpperANSI _type) do {
