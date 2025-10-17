@@ -18,8 +18,11 @@
 params [
     [ "_actionObject",      objNull, [objNull] ],
     [ "_codeAllReady",      {},      [{}]      ],
-    [ "_codeJIPReady",      {},      [{}]      ]
+    [ "_codeJIPReady",      {},      [{}]      ],
+    [ "_setTexture",      true,      [true]    ]
 ];
+
+if (_setTexture) then { _actionObject setObjectTexture [0, '#(rgb,512,512,3)text(1,1,"EraserRegular",0.1,"#ffffffff","#ff0000","Ready Up !")']  };
 
 
 // REGISTER SERVER EVENT
