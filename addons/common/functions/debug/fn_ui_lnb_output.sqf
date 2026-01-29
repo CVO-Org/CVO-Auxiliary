@@ -19,6 +19,8 @@ params [
     [ "_ctrl", controlNull, [controlNull, 0] ]
 ];
 
+if (isNull _ctrl) exitWith {};
+
 lnbSize _ctrl params ["_rows", "_columns"];
 
 _rows = _rows -1;
@@ -79,7 +81,7 @@ private _line = ["", _fullWidth, "RIGHT", "-" ] call FUNC(stringPadding);
 private _lineDouble = ["", _fullWidth, "RIGHT", "=" ] call FUNC(stringPadding);
 
 _outputArray pushBack _lineDouble;
-_outputArray pushBack (diag_log format ['[CVO](debug)(fn_ui_lnb_output) _ctrl: %1', _ctrl]);
+_outputArray pushBack (format ['[CVO](debug)(fn_ui_lnb_output) _ctrl: %1', _ctrl]);
 _outputArray pushBack _title;
 _outputArray pushBack _lineDouble;
 

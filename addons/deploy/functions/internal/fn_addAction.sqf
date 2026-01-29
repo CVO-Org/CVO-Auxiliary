@@ -18,14 +18,14 @@
 
 params [
     ["_object",      objNull, [objNull] ],
-    ["_networkName", false,   [""]      ],
+    ["_networkName", nil,     [""]      ],
     ["_offset",      [0,0,0], [[]], [3] ]
 ];
 
 if (_object isEqualTo objNull) exitWith {};
 
 // Get Cat Name
-if (_networkName isEqualTo false) then {
+if (isNil "_networkName") then {
     _networkName = _object getVariable [QGVAR(NetworkName),false];
     if (_networkName isEqualTo false) exitWith {};
 };

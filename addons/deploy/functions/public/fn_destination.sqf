@@ -17,15 +17,16 @@
 
 
 params [
-    ["_target",      false,     [objNull, []], [2,3] ],
+    ["_target",      nil,       [objNull, []], [2,3] ],
     ["_networkName", "Default", [""]                 ],
     ["_params",      [],        [[]]                 ]
 ];
 
+if (isNil "_target") exitWith {};
+
 private _network = [_networkName] call FUNC(network);
 
 private _type = switch (true) do {
-    case (_target isEqualType false):        { false };
     case (_target isEqualType []):           { "POS" };
     case ( _target isKindOf "AllVehicles" ): { "VIC" };
     case ( _target isKindOf "Static" ):      { "STATIC" };

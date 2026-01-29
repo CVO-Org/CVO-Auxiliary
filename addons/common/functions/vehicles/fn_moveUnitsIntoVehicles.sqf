@@ -22,7 +22,7 @@ params [
     ["_vehicles",       [],         [objNull, []]   ],
     ["_roles",          "DEFAULT",  [[], ""]        ],  // "driver","gunner","commander","cargo","turret", "personTurret"
     ["_blockCopilot",   true,       [true]          ],
-    ["_prioMap",        "HELI",     [createHashMap] ]
+    ["_prioMap",        "HELI",     ["",createHashMap] ]
 ];
 
 // Input Sanitisation

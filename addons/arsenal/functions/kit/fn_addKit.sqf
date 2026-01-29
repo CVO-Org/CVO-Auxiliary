@@ -16,13 +16,13 @@
 */
 
 params [
-    ["_entry", "", [createHashMap] ],
-    [ "_key", "", [""] ]
+    ["_entry", nil, [createHashMap] ],
+    [ "_key", nil, [""] ]
 ];
 
-if (_entry isEqualTo "") exitWith { false };
+if (isNil "_entry") exitWith { false };
 
-if (_key isEqualTo "") then {
+if (isNil "_key") then {
     private _index = missionNamespace getVariable [QGVAR(kit_index), 0];
     GVAR(kit_index) = _index + 1;
     _key = [QADDON, "Kit", _index] joinString "_";

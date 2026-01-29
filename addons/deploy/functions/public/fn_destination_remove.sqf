@@ -16,11 +16,11 @@
 */
 
 params [
-    ["_target",  false,     [objNull, []], [2,3] ],
-    ["_networkName", "Default", [""] ]
+    ["_target",         nil,        [objNull, []], [2,3] ],
+    ["_networkName",    "Default",  [""] ]
 ];
 
-if (_target isEqualTo false) exitWith {false};
+if (isNil "_target") exitWith {false};
 
 private _network = [_networkName] call FUNC(network);
 
