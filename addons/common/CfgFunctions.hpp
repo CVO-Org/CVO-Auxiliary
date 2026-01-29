@@ -25,6 +25,8 @@ class CfgFunctions
             
             class getMedianPosASL {};
             class getMedianPosFromUnits {};
+
+            class allUnits_code {};
         };
 
         class cutscene {
