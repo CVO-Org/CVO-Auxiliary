@@ -14,8 +14,8 @@
 *
 *
 * Arguments:
-*     0:     _layerName        <STRING>             Name of the Editor Layer
-*    1:    _mode            <BOOL>                Controls mode: true: Enable - false: Disable
+*    0:    _layerName      <STRING>             Name of the Editor Layer
+*    1:    _mode           <BOOL>                Controls mode: true: Enable - false: Disable
 *    2:    _feature        <STRING or ARRAY>    What ai feature to toggle. see link above for more details.
 *
 * Return Value:
@@ -34,9 +34,9 @@
 if !(isServer) exitWith {};
 
 params [
-    [ "_layerName",    "",     [""]    ],
-    [ "_mode",         true,     [true]  ],
-    [ "_features",  "all",     ["",[]] ]
+    [ "_layerName",  "",       [""]    ],
+    [ "_mode",       true,     [true]  ],
+    [ "_features",   "all",    ["",[]] ]
 ];
 
 
