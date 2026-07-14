@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CVO">
+    <Package name="Difficulty">
+        <Key ID="STR_CVO_Difficulty_DifficultyDescription">
+            <English>Custom CVO settings.</English>
+        </Key>
+        <Key ID="STR_CVO_Difficulty_DifficultyName">
+            <English>ChorniVoron</English>
+        </Key>
+        <Key ID="STR_CVO_Difficulty_DifficultyNameTPP">
+            <English>ChorniVoron (TPP)</English>
+        </Key>
+    </Package>
+</Project>
