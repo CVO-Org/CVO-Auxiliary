@@ -32,7 +32,13 @@ class CfgPatches {
             QPVAR(Banner_Red),
             QPVAR(Banner_Olive),
 
-            QPVAR(Portrait_Director)
+            QPVAR(Leadership_Portrait),
+
+            QPVAR(Kitbag_blk),
+
+            QPVAR(stencil_white),
+            QPVAR(stencil_black),
+            QPVAR(stencil_red)
         };
 
         // List of weapons (CfgWeapons classes) contained in the addon.

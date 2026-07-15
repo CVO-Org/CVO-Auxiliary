@@ -1345,7 +1345,7 @@ switch (_mode) do
 
         private ["_actionKeysNames", "_keyText", "_string"];
         _actionKeysNames        = actionKeysNamesArray ["TeamSwitch", 1];
-        _keyText                = if (count _actionKeysNames > 0) then { _actionKeysNames select 0 } else { "N/A" };
+        _keyText                = if (_actionKeysNames isNotEqualTo []) then { _actionKeysNames select 0 } else { "N/A" };
         _string                 = format ["<t color = '%2'>[%1]</t>", _keyText, (["GUI", "BCG_RGB"] call BIS_fnc_displayColorGet) call BIS_fnc_colorRGBtoHTML];
 
         _notificationParams pushBack _string;
@@ -1428,7 +1428,7 @@ switch (_mode) do
     /**
      * Log error in case of unknown given mode
      */
-    case default
+    default
     {
         ["Unknown mode: %1", _mode] call BIS_fnc_error;
     };

@@ -25,19 +25,19 @@
 if (!isServer) exitWith {};
 
 params [
-    [ "_heli",            grpNull,        [objNull,grpNull]       ],
-    [ "_cargoObj",        objNull,        [objNull]                ],
-    [ "_dropOffPos",    "UNDEFINED",    [objNull,[]],   [2,3]   ],
-    [ "_returnPos",        "UNDEFINED",    [objNull,[]],    [2,3]   ],
-    [ "_direction",     "AUTO",            [0]                        ],
-    [ "_kickOut",       false,          [false]                 ],
-    [ "_protected",        true,            [false]                    ]
+    [ "_heli",          grpNull,    [objNull,grpNull]           ],
+    [ "_cargoObj",      objNull,    [objNull]                   ],
+    [ "_dropOffPos",    nil,        [objNull,[]],       [2,3]   ],
+    [ "_returnPos",     nil,        [objNull,[]],       [2,3]   ],
+    [ "_direction",     "AUTO",     [0, ""]                     ],
+    [ "_kickOut",       false,      [false]                     ],
+    [ "_protected",     true,       [false]                     ]
 ];
 
 // Input Sanitization
 if (_heli isEqualTo grpNull) exitWith {};
 if (_cargoObj isEqualTo objNull) exitWith {};
-if (_dropOffPos isEqualTo "UNDEFINED") exitWith {};
+if (isNil "_dropOffPos") exitWith {};
 
 private ["_heliOBJ", "_heliGRP"];
 
@@ -72,7 +72,7 @@ if (_dropOffPos isEqualType []) then {
 } else {    _dropOffPosObj = _dropOffPos; _dropOffPos = getPos _dropOffPosObj;  };
 
 
-if (_returnPos isEqualTo "UNDEFINED") then {    _returnPos = getPos leader _heliGRP;  };
+if (isNil "_returnPos") then { _returnPos = getPos leader _heliGRP; };
 
 if (_returnPos isEqualType []) then {
     _returnPosObj = createVehicle ["Land_HelipadEmpty_F", _returnPos];

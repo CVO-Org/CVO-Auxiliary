@@ -17,9 +17,9 @@
 
 
 params [
-    ["_object",     objNull,    [objNull] ],
-    ["_networkName",    "Default",  [objNull] ],
-    ["_offset",     [0,0,0],    [[]], [3] ]
+    ["_object",         objNull,    [objNull] ],
+    ["_networkName",    "Default",  [""]      ],
+    ["_offset",         [0,0,0],    [[]], [3] ]
 ];
 
 if (_object isEqualTo objNull) exitWith {};

@@ -305,7 +305,7 @@ switch _mode do
                 case west :         { format["#(argb,8,8,3)color(%1,%2,%3,0.6)", _sideColor select 0, _sideColor select 1, _sideColor select 2] };
                 case east :         { format["#(argb,8,8,3)color(%1,%2,%3,0.6)", _sideColor select 0, _sideColor select 1, _sideColor select 2] };
                 case resistance :     { format["#(argb,8,8,3)color(%1,%2,%3,0.6)", _sideColor select 0, _sideColor select 1, _sideColor select 2] };
-                case default         { "#(argb,8,8,3)color(0.9,0.9,0.9,0.6)" };
+                default         { "#(argb,8,8,3)color(0.9,0.9,0.9,0.6)" };
             };
             _sidePicture ctrlSetText _sideColorString;
 
@@ -1067,7 +1067,7 @@ switch _mode do
             case (_hasGroup && {_isLeader} && {_isSelfSelected}) :     { ["OnLeaveGroupButtonClick"] call DISPLAY; };
             case (_hasGroup && {_isLeader} && {!_isSelfSelected}) : { ["OnKickPlayerButtonClick", [_selectedUid]] call DISPLAY; };
             case (_hasGroup && {!_isLeader}) :            { ["OnLeaveGroupButtonClick"] call DISPLAY; };
-            case default                         { ["OnCreateGroupButtonClick"] call DISPLAY; };
+            default                         { ["OnCreateGroupButtonClick"] call DISPLAY; };
         };
     };
 
@@ -1577,7 +1577,7 @@ switch _mode do
         {
             case (_wasUpdated && {!_groupNameWasClamped}) :     { [resistance] call BIS_fnc_sideColor };
             case (_wasUpdated && {_groupNameWasClamped}) :      { [civilian] call BIS_fnc_sideColor };
-            case default                         { [east] call BIS_fnc_sideColor };
+            default                         { [east] call BIS_fnc_sideColor };
         };
         _backgroundGroupName ctrlSetBackgroundColor _color;
         _editGroupName ctrlSetTextColor [1,1,1,1];
@@ -1710,7 +1710,7 @@ switch _mode do
             case east :         { "#(argb,8,8,3)color(1,0,0,0.6)" };
             case resistance :     { "#(argb,8,8,3)color(0,1,0,0.6)" };
             case civilian :     { "#(argb,8,8,3)color(0.5,0.5,0.5,0.6)" };
-            case default         { "#(argb,8,8,3)color(0,0,0,0.6)" };
+            default         { "#(argb,8,8,3)color(0,0,0,0.6)" };
         };
 
         _color;
@@ -1746,7 +1746,7 @@ switch _mode do
             case west :         { localize "STR_A3_texturesources_blu0" };
             case east :         { localize "STR_A3_truck_02_transport_base_f_texturesources_opfor0" };
             case resistance :     { localize "STR_A3_cfggroups_indep0" };
-            case default         { localize "STR_A3_cfgvehicles_c_man_10" };
+            default         { localize "STR_A3_cfgvehicles_c_man_10" };
         };
 
         _string;
@@ -1775,7 +1775,7 @@ switch _mode do
         _outString;
     };
 
-    case default
+    default
     {
         ["Unknown mode: %1", _mode] call BIS_fnc_error;
     };
