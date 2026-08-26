@@ -56,7 +56,7 @@ _unit setUnitLoadout [
     ]
 ];
 
-if (count _units > 0) then {
+if (_units isNotEqualTo []) then {
     _statement = {};
     _parameters = [];
     [zrn_fnc_removeNavItems, _this, 5] call cba_fnc_execAfterNFrames;
