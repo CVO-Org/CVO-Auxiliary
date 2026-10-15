@@ -1,6 +1,6 @@
 name = "24th Chorni Voron - Auxiliary Mod"
 prefix = "cvo"
-mainprefix = "zrn"
+mainprefix = "cvo"
 
 [properties]
 author = "CVO Team - Mr. Zorn"
