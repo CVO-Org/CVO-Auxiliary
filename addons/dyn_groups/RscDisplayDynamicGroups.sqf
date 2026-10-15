@@ -2,7 +2,7 @@
 disableSerialization;
 
 // Include common defines file
-#include "\cvo\cvo\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "\cvo\cvo\addons\dyn_groups\DynamicGroupsCommonDefines.inc"
 
 // Script parameters
 private ["_mode", "_params"];
@@ -313,7 +313,7 @@ switch _mode do
             private _insignia = missionNamespace getVariable [VAR_FORCED_INSIGNIA, ""];
             private _insigniaTexture = if (_insignia != "") then {["GetInsigniaTexture", [_insignia]] call GROUPS} else {["GetInsigniaTexture", [_groupPicture]] call GROUPS};
             if (_insigniaTexture == "") then {
-                _groupIcon ctrlSetText "\cvo\cvo\addons\dynGroups\data\noInsignia.paa";
+                _groupIcon ctrlSetText "\cvo\cvo\addons\dyn_groups\data\noInsignia.paa";
             } else {
                 _groupIcon ctrlSetText _insigniaTexture;
             };
