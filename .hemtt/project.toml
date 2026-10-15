@@ -22,7 +22,6 @@ exclude = [
     "*.md",
     "/.vscode/",
     ".ogg",
-    "/template_addon/",
 ]
 
 [version]
