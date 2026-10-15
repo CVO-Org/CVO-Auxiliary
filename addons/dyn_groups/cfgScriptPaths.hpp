@@ -1,3 +1,3 @@
 class CfgScriptPaths {
-    grad_dynGroups = "\zrn\cvo\addons\dynGroups\";
+    grad_dynGroups = "\cvo\cvo\addons\dynGroups\";
 };
