@@ -4,7 +4,7 @@
 
 [
     QSET(delay_min),                        //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(delayMin),
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title), LSTRING(set_subcat_serverSetting)],        //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -16,7 +16,7 @@
 
 [
     QSET(delay_random),                        //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(delayRnd),
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title), LSTRING(set_subcat_serverSetting)],        //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -28,7 +28,7 @@
 
 [
     QSET(default_duration),                    //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(default_duration),
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title), LSTRING(set_subcat_serverSetting)],        //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -40,7 +40,7 @@
 
 [
     QSET(systemChatCurrentMusic),                    //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(systemChatCurrentMusic),
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title), LSTRING(set_subcat_serverSetting)],        //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
