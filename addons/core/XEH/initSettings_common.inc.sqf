@@ -2,7 +2,7 @@
 [
     
     QSET(displayMusic),                    //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     ["Display Music Title","This enables the message of the currently played music title by the CVO Music System"],
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     ["CVO", "CVO Music"],                    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -15,7 +15,7 @@
 
 [
     QSET(enable_dynamicGroups),                            //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                            //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                            //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(enable_dynamicGroups),
                                                         //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title),LSTRING(set_subcat_core)],    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>

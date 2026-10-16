@@ -7,7 +7,7 @@
 
 [
     QSET(on_arsenalClosed),            //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     [LSTRING(set_on_arsenalClosed),LSTRING(set_on_arsenalClosed_desc)],
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title)],                    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -22,7 +22,7 @@
 
 [
     QSET(on_missionStart),        //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     [LSTRING(set_on_missionStart),LSTRING(set_on_missionStart_desc)],
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title)],                    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -34,7 +34,7 @@
 
 [
     QSET(autoAssignTraits),                    //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     SETLSTRING(autoAssignTraits),
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title)],                //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -49,7 +49,7 @@
 
 [
     "CVO_SET_Insignia_on_GroupChange",        //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "CHECKBOX",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     ["AutoAssign on Join/Leave of Group","Identifes and AutoAssigns Units Insignia when someone joins/leaves the Squad."],
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title)],                    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
@@ -74,7 +74,7 @@ Whenever Unit Joins or Leaves the squad. GroupIdChanged
 
 [
     QSET(threshold_SL),        //    _setting     - Unique setting name. Matches resulting variable name <STRING>
-    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "SLIDER",                                //    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     [LSTRING(set_threshold_SL),LSTRING(set_threshold_SL_desc)],
                                             //    _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     [LSTRING(set_cat_title)],                    //    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
