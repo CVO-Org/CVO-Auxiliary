@@ -4,7 +4,7 @@ class PVAR(stencil_black): UserTexture1m_F {
 
         _generalMacro=QPVAR(stencil_black);
 
-        author="$STR_cvo_Author";
+        author="$STR_cvo_main_Author";
         scope = 2;
         scopeCurator = 2;
 

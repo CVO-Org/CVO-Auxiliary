@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="cvo-auxiliary">
+<Project name="cvo">
     <Package name="Insignia">
         <Container name="CBA Settings">
             <Key ID="STR_cvo_insignia_set_autoAssignTraits">

@@ -3,7 +3,7 @@ class ace_flags_white;
 class CBA_MiscItem_ItemInfo;
 
 class PVAR(flag_red_cvo): ace_flags_white {
-    author = "$STR_cvo_Author";
+    author = "$STR_cvo_main_Author";
     displayName = "Flag (CVO - Red - Small)";
 
     ace_flags_texture = QPATHTOF(data\ace_portable_flag_cvo_red.paa); // Path to the flag texture
@@ -25,7 +25,7 @@ class PVAR(flag_red_cvo): ace_flags_white {
 
 
 class PVAR(flag_olive_cvo): PVAR(flag_red_cvo) {
-    author = "$STR_cvo_Author";
+    author = "$STR_cvo_main_Author";
     displayName = "Flag (CVO - Olive - Small)";
 
     ace_flags_texture = QPATHTOF(data\ace_portable_flag_cvo_olive.paa); // Path to the flag texture
