@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="cvo-aux">
+<Project name="cvo">
     <Package name="branding">
         <Key ID="STR_CVO_branding_olive_display">
             <English>Flag (CVO - Olive)</English>
